@@ -63,8 +63,7 @@ Answer:"""
     def generate(
         self,
         query: str,
-        context: str,
-        max_tokens: int = 500
+        context: str
     ) -> str:
         try:
             # Create the prompt
@@ -75,8 +74,7 @@ Answer:"""
                 model=self.model,
                 contents=prompt,
                 config={
-                    'temperature': self.temperature,
-                    'max_output_tokens': max_tokens,
+                    'temperature': self.temperature
                 }
             )
             
@@ -105,8 +103,7 @@ Answer:"""
     def generate_with_validation(
         self,
         query: str,
-        context: str,
-        max_tokens: int = 500
+        context: str
     ) -> Dict[str, any]:
         
         # Check if should refuse
@@ -121,7 +118,28 @@ Answer:"""
         
         # Generate answer
         try:
-            answer = self.generate(query, context, max_tokens)
+            answer = self.generate(query, context)
+            
+            # Check if LLM generated a refusal response (even when we didn't explicitly refuse)
+            # This catches cases where LLM decides to refuse based on irrelevant context
+            refusal_indicators = [
+                "I don't have information",
+                "I don't have that information",
+                "not in the academic documents",
+                "cannot find information",
+                "no information about that"
+            ]
+            
+            is_refusal = any(indicator.lower() in answer.lower() for indicator in refusal_indicators)
+            
+            if is_refusal:
+                return {
+                    'answer': self.get_refusal_message(),
+                    'refused': True,
+                    'context_used': False,
+                    'sources_count': 0,
+                    'confidence': 'none'
+                }
             
             # Count sources (simple heuristic: number of [Source:...] markers)
             import re

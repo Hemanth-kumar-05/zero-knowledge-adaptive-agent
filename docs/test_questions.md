@@ -356,3 +356,40 @@
 - Agent must NOT guess or infer beyond document content
 - Agent must cite sources when answering
 - Agent must refuse gracefully when information is unavailable
+
+## Natural Student Questions to Test
+
+**1. Course Planning Query:**
+> "Hey, I'm a bit confused about my timetable for next semester. I'm thinking of adding one more elective but I'm not sure if it's too late now. Like, is there still a way to add courses after registration closes? And who do I need to talk to about this?"
+
+*Tests: Course add process, approval workflow*
+
+---
+
+**2. Assessment Confusion:**
+> "So I missed the mid-sem test last week because I was sick. My friend said I might get a chance to write it again, but I'm not sure. What should I do? Do I just email the professor or is there some official process I need to follow?"
+
+*Tests: Missed CA components, alternate assessment procedures*
+
+---
+
+**3. Final Year Project Concern:**
+> "I'm in my final year and we're supposed to start our project soon. I wanted to check - can I do this project alone or do I have to team up with others? Also, how exactly is the project graded? Is it just based on the final report or are there reviews in between?"
+
+*Tests: Project structure, evaluation process, group formation*
+
+---
+
+**4. Grade Worry:**
+> "I got my semester results last week and I'm not happy with one of my marks. I think there might be some mistake in the evaluation. Is there any way I can get my answer sheet checked again? Also, does this apply to all my marks or just the final exam?"
+
+*Tests: Revaluation process, ESE vs CA distinction*
+
+---
+
+**5. Internship Deadline Panic:**
+> "I found this really good internship opportunity for the summer break but they want me to join next month. The thing is, I haven't registered it with the college yet. Is internship registration mandatory? And if yes, how do I go about it? I don't want to lose this opportunity!"
+
+*Tests: Internship registration requirement, process, timing*
+
+---

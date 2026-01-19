@@ -39,8 +39,7 @@ class RAGPipeline:
         self,
         question: str,
         top_k: int = 5,
-        min_similarity: float = 0.3,
-        max_tokens: int = 500
+        min_similarity: float = 0.3
     ) -> Dict:
         
         start_time = time.time()
@@ -76,8 +75,7 @@ class RAGPipeline:
         generation_start = time.time()
         generation_result = self.generator.generate_with_validation(
             query=question,
-            context=context,
-            max_tokens=max_tokens
+            context=context
         )
         generation_time = (time.time() - generation_start) * 1000
         
@@ -85,14 +83,16 @@ class RAGPipeline:
             print(f"Generated answer in {generation_time:.0f}ms")
         
         # Step 4: Package results with source information
+        # Only include sources if the query was answered (not refused)
         sources = []
-        for chunk in retrieved_chunks:
-            sources.append({
-                'doc_id': chunk['metadata'].get('doc_id', 'unknown'),
-                'section': chunk['metadata'].get('section', 'unknown'),
-                'similarity': chunk.get('similarity', 0.0),
-                'confidence': chunk['metadata'].get('confidence', 1.0)
-            })
+        if not generation_result['refused']:
+            for chunk in retrieved_chunks:
+                sources.append({
+                    'doc_id': chunk['metadata'].get('doc_id', 'unknown'),
+                    'section': chunk['metadata'].get('section', 'unknown'),
+                    'similarity': chunk.get('similarity', 0.0),
+                    'confidence': chunk['metadata'].get('confidence', 1.0)
+                })
         
         total_time = (time.time() - start_time) * 1000
         

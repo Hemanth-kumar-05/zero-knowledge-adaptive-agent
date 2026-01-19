@@ -5,6 +5,7 @@ import Message from './Message';
 function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSidebarOpen, onToggleSidebar, currentSession }) {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
+  const textareaRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -13,6 +14,19 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Auto-resize textarea as user types
+  const adjustTextareaHeight = () => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = Math.min(textarea.scrollHeight, 200) + 'px';
+    }
+  };
+
+  useEffect(() => {
+    adjustTextareaHeight();
+  }, [input]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,9 +54,6 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
           </svg>
         </button>
         <h1 className="chat-title">NCIE Agent</h1>
-        {currentSession && (
-          <span className="session-info">Session: {currentSession.message_count || 0} messages</span>
-        )}
       </div>
 
       {error && (
@@ -87,11 +98,11 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
       <div className="input-container">
         <form onSubmit={handleSubmit} className="input-form">
           <textarea
+            ref={textareaRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask about academic policies, exams, courses..."
-            rows="1"
             className="message-input"
             disabled={loading}
           />
