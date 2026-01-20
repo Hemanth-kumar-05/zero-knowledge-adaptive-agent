@@ -65,7 +65,6 @@ Phase 1 establishes a measurable zero-knowledge baseline for future enhancements
 - `POST /api/v1/sessions/` - Create new session
 - `GET /api/v1/sessions/` - List all sessions
 - `GET /api/v1/sessions/{id}` - Get session details
-- `DELETE /api/v1/sessions/{id}` - Delete session
 
 ### Messages
 - `GET /api/v1/sessions/{id}/messages` - Get session messages
