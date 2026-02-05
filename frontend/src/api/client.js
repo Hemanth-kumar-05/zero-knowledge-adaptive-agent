@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { auth } from '../utils/auth';
 
 const client = axios.create({
   baseURL: '/api/v1',
@@ -8,19 +9,60 @@ const client = axios.create({
   timeout: 30000, // 30 second timeout
 });
 
+// Request interceptor to add auth token
+client.interceptors.request.use(
+  (config) => {
+    const token = auth.getToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 // Response interceptor for error handling
 client.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response) {
       // Server responded with error status
-      const message = error.response.data?.detail || error.response.data?.message || error.message;
+      const status = error.response.status;
+      const data = error.response.data;
+      
+      // Handle authentication errors
+      if (status === 401) {
+        const wasLoggedIn = auth.isAuthenticated();
+        auth.logout();
+        // Only redirect if user was previously logged in to avoid infinite loops
+        if (wasLoggedIn && window.location.pathname !== '/') {
+          window.location.href = '/';
+        }
+        throw new Error('Session expired. Please sign in again.');
+      }
+      
+      // Handle specific error codes with user-friendly messages
+      let message;
+      if (status === 403) {
+        message = 'You do not have permission to perform this action.';
+      } else if (status === 404) {
+        message = 'The requested resource was not found.';
+      } else if (status === 429) {
+        message = 'Too many requests. Please slow down.';
+      } else if (status >= 500) {
+        message = 'Server error. Please try again later.';
+      } else {
+        message = data?.detail || data?.message || error.message;
+      }
+      
       throw new Error(message);
     } else if (error.request) {
       // Request made but no response
       throw new Error('No response from server. Please check your connection.');
+    } else if (error.code === 'ECONNABORTED') {
+      throw new Error('Request timeout. Please try again.');
     } else {
-      throw new Error(error.message);
+      throw new Error(error.message || 'An unexpected error occurred.');
     }
   }
 );
@@ -55,12 +97,12 @@ const api = {
   },
 
   // Session endpoints
-  createSession: async (userId = 'default-user') => {
-    const response = await client.post('/sessions/', { user_id: userId });
+  createSession: async () => {
+    const response = await client.post('/sessions/', {});
     // Map backend response to frontend format
     return {
       id: response.data.session_id,
-      user_id: userId,
+      user_id: response.data.user_id,
       created_at: new Date().toISOString(),
       message_count: 0,
     };
@@ -91,6 +133,11 @@ const api = {
     };
   },
 
+  deleteSession: async (sessionId) => {
+    const response = await client.delete(`/sessions/${sessionId}`);
+    return response.data;
+  },
+
   // Message endpoints
   getSessionMessages: async (sessionId) => {
     const response = await client.get(`/sessions/${sessionId}/messages`);
@@ -103,6 +150,62 @@ const api = {
   // Query endpoint
   query: async (data) => {
     const response = await client.post('/query', data);
+    return response.data;
+  },
+
+  // Preference endpoints
+  getPreferences: async () => {
+    const response = await client.get('/users/preferences');
+    return response.data;
+  },
+
+  getUserPreferences: async () => {
+    // Alias for getPreferences for consistency
+    const response = await client.get('/users/preferences');
+    return response.data;
+  },
+
+  getPreferencesMetadata: async () => {
+    const response = await client.get('/users/preferences/metadata');
+    return response.data;
+  },
+
+  getPreferencesCategories: async () => {
+    const response = await client.get('/users/preferences/categories');
+    return response.data;
+  },
+
+  updatePreferenceLock: async (key, locked) => {
+    const response = await client.put(`/users/preferences/${key}/lock`, { locked });
+    return response.data;
+  },
+
+  deletePreference: async (key) => {
+    const response = await client.delete(`/users/preferences/${key}`);
+    return response.data;
+  },
+
+  resetPreferences: async () => {
+    const response = await client.post('/users/preferences/reset');
+    return response.data;
+  },
+
+  addManualPreference: async (naturalLanguageInput) => {
+    const response = await client.post('/users/preferences/manual', { 
+      preference_text: naturalLanguageInput 
+    });
+    return response.data;
+  },
+
+  checkPreferenceConflicts: async () => {
+    const response = await client.post('/users/preferences/check-conflicts');
+    return response.data;
+  },
+
+  resolvePreferenceConflict: async (preferenceKey, action) => {
+    const response = await client.post('/users/preferences/resolve-conflict', null, {
+      params: { preference_key: preferenceKey, action }
+    });
     return response.data;
   },
 };

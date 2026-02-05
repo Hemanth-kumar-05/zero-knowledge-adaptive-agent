@@ -15,8 +15,21 @@ class RAGAdapter:
         
         self.rag_pipeline = RAGPipeline(persist_directory=chroma_db_path)
     
-    def query(self, question: str) -> dict:
-        """Query the RAG pipeline with fixed Phase-1 parameters"""
-        return self.rag_pipeline.query(question=question)
+    def query(
+        self, 
+        question: str, 
+        conversation_history: list = None, 
+        conversation_metadata: dict = None,
+        user_preferences: list = None,
+        preference_instructions: str = None
+    ) -> dict:
+        """Query the RAG pipeline with conversation history and user preferences"""
+        return self.rag_pipeline.query(
+            question=question,
+            conversation_history=conversation_history or [],
+            conversation_metadata=conversation_metadata or {},
+            user_preferences=user_preferences or [],
+            preference_instructions=preference_instructions
+        )
     
 rag_adapter = RAGAdapter()

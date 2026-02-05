@@ -80,7 +80,16 @@
   opacity: 0.7;
 }
 
+.session-item-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
 .session-item {
+  flex: 1;
   width: 100%;
   padding: 12px;
   background-color: transparent;
@@ -92,9 +101,31 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 4px;
   text-align: left;
   transition: background-color 0.2s;
+}
+
+.delete-session-btn {
+  padding: 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #8e8ea0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.session-item-wrapper:hover .delete-session-btn {
+  opacity: 1;
+}
+
+.delete-session-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
 }
 
 .session-item:hover {
@@ -156,6 +187,10 @@
   50% { opacity: 0.5; }
 }
 
+.user-section {
+  position: relative;
+}
+
 .user-info {
   display: flex;
   align-items: center;
@@ -174,18 +209,92 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #10a37f;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.user-avatar.has-image {
+  background-color: transparent;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
   font-weight: 600;
   color: white;
+  background-color: #10a37f;
+  border-radius: 50%;
+}
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .user-name {
   font-size: 14px;
   color: #ececec;
+  flex: 1;
+}
+
+.user-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  margin-bottom: 8px;
+  background-color: #2a2a2a;
+  border: 1px solid #4d4d4d;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.user-menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #ececec;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: left;
+}
+
+.user-menu-item:hover {
+  background-color: #343541;
+}
+
+.user-menu-item.logout {
+  color: #ef4444;
+}
+
+.user-menu-item.logout:hover {
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
 .sidebar-overlay {

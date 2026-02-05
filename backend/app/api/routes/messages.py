@@ -15,7 +15,9 @@ async def get_session_messages(session_id: str):
         role=msg["role"],
         content=msg["content"],
         timestamp=msg["timestamp"],
-        metadata=msg.get("metadata", None)
+        metadata=msg.get("metadata", None),
+        extracted_preferences=msg.get("extracted_preferences", None),
+        applied_preferences=msg.get("applied_preferences", None)
         ) for msg in result["messages"]
     ]
     result = {

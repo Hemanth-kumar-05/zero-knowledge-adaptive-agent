@@ -37,6 +37,7 @@ class SessionService:
             session_id = await self._get_session_repo().create_session(user_id)
             return SessionCreateResponse(
                 session_id=session_id,
+                user_id=user_id,
                 message="Session created successfully"
             )
         except Exception as e:
@@ -55,10 +56,10 @@ class SessionService:
             message_count=session.get("message_count", 0)
         )
 
-    async def get_all_sessions(self) -> SessionsListResponse | str:
+    async def get_all_sessions(self, user_id: Optional[str] = None) -> SessionsListResponse | str:
         """Get all sessions, optionally filtered by user_id."""
         try:
-            sessions = await self._get_session_repo().get_all_sessions()
+            sessions = await self._get_session_repo().get_all_sessions(user_id=user_id)
             sessions = [
                 SessionResponse(
                     id=session["_id"],
@@ -74,6 +75,30 @@ class SessionService:
             )
         except Exception as e:
             return f"Failed to retrieve sessions: {str(e)}"
+
+    async def delete_session(self, session_id: str) -> dict | str:
+        """Delete a session and all its related data (messages and query logs)."""
+        try:
+            # Delete all messages for this session
+            messages_deleted = await self._get_message_repo().delete_session_messages(session_id)
+            
+            # Delete all query logs for this session
+            logs_deleted = await self._get_log_repo().delete_session_logs(session_id)
+            
+            # Delete the session itself
+            session_deleted = await self._get_session_repo().delete_session(session_id)
+            
+            if not session_deleted:
+                return "Session not found"
+            
+            return {
+                "message": "Session deleted successfully",
+                "session_id": session_id,
+                "messages_deleted": messages_deleted,
+                "logs_deleted": logs_deleted
+            }
+        except Exception as e:
+            return f"Failed to delete session: {str(e)}"
 
 # Global session service instance
 session_service = SessionService()

@@ -35,6 +35,33 @@ class Config:
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
     
     # ============================================
+    # Authentication & Authorization (Phase 2)
+    # ============================================
+    # Google OAuth
+    GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+    GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+    GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:8000/api/auth/google/callback")
+    
+    # JWT Configuration
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "your-secret-key-change-in-production")
+    JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
+    JWT_EXPIRATION_HOURS = int(os.getenv("JWT_EXPIRATION_HOURS", "24"))
+    
+    # LLM for Preference Extraction
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    
+    # Preference Extraction Settings
+    PREFERENCE_EXTRACTION_ENABLED = os.getenv("PREFERENCE_EXTRACTION_ENABLED", "true").lower() == "true"
+    PREFERENCE_MIN_CONFIDENCE = float(os.getenv("PREFERENCE_MIN_CONFIDENCE", "0.70"))
+    PREFERENCE_MAX_PER_USER = int(os.getenv("PREFERENCE_MAX_PER_USER", "50"))
+    PREFERENCE_DAILY_LIMIT = int(os.getenv("PREFERENCE_DAILY_LIMIT", "20"))
+    
+    # Application URLs
+    FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+    BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+    
+    # ============================================
     # CORS Configuration
     # ============================================
     CORS_ORIGINS = os.getenv("CORS_ORIGINS", '["*"]')

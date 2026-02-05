@@ -44,3 +44,11 @@ class MongoDB:
 
 mongodb = MongoDB()
 
+
+# Dependency function for FastAPI
+async def get_db() -> AsyncIOMotorDatabase:
+    """
+    Get database instance (async)
+    Usage: db = Depends(get_db)
+    """
+    return MongoDB.get_db()

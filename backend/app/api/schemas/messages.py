@@ -10,6 +10,8 @@ class MessageResponse(BaseModel):
     content: str
     timestamp: datetime
     metadata: Optional[dict] = None
+    extracted_preferences: Optional[list] = None  # For user messages that triggered preference extraction
+    applied_preferences: Optional[list] = None  # For assistant messages that used preferences
 
 class MessagesListResponse(BaseModel):
     messages: list[MessageResponse]

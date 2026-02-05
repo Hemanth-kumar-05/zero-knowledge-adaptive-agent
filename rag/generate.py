@@ -3,41 +3,78 @@ from typing import List, Dict, Optional
 from dotenv import load_dotenv
 
 from google import genai
+from groq import Groq
 
 # Load environment variables
 load_dotenv()
 
 class Generator:
-    """Handles LLM-based answer generation"""
+    """Handles LLM-based answer generation with multiple providers"""
     
     def __init__(
         self,
-        model: str = "gemini-1.5-flash-8b",
-        temperature: float = 0.3
+        model: str = None,
+        temperature: float = 0.3,
+        provider: str = None
     ):
-        self.model = model
+        # Determine provider from env or parameter
+        self.provider = provider or os.getenv("LLM_PROVIDER", "gemini")
         self.temperature = temperature
         
-        self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+        # Initialize based on provider
+        if self.provider == "groq":
+            self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+            self.model = model or "llama-3.1-8b-instant"  # Updated to latest model
+            print(f"🚀 Using Groq with model: {self.model}")
+        else:
+            self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+            self.model = model or "gemini-1.5-flash-8b"
+            print(f"🤖 Using Gemini with model: {self.model}")
     
     def create_rag_prompt(
         self,
         query: str,
         context: str,
-        system_instructions: Optional[str] = None
+        system_instructions: Optional[str] = None,
+        conversation_history: List[Dict[str, str]] = None,
+        preference_instructions: Optional[str] = None
     ) -> str:
         if system_instructions is None:
             system_instructions = self._get_default_system_instructions()
         
-        # Build the complete RAG prompt
+        # Add preference instructions if provided
+        if preference_instructions:
+            system_instructions = f"{system_instructions}\n\n{preference_instructions}"
+            print(f"\n🎯 APPLYING USER PREFERENCES")
+            print(f"  Preference instructions added to system prompt")
+        
+        # Build conversation history section if available
+        history_section = ""
+        if conversation_history:
+            print(f"\n💬 BUILDING PROMPT WITH HISTORY")
+            print(f"  Including {len(conversation_history)} history entries")
+            history_section = "\n\nPrevious Conversation:\n"
+            for msg in conversation_history[-6:]:  # Last 6 messages for context
+                role_label = "Student" if msg.get("role") == "user" else "Advisor"
+                content_preview = msg.get('content', '')[:60] + '...' if len(msg.get('content', '')) > 60 else msg.get('content', '')
+                print(f"    {role_label}: {content_preview}")
+                history_section += f"{role_label}: {msg.get('content', '')}\n"
+            history_section += "\n"
+        else:
+            print(f"\n💬 NO CONVERSATION HISTORY - First message in session")
+        
+        # Build the complete RAG prompt with history
         prompt = f"""{system_instructions}
-
+{history_section}
 Context:
 {context}
 
-Question: {query}
+Current Question (answer THIS question specifically): {query}
 
-Answer:"""
+Provide a clear, direct answer to the current question above:"""
+        
+        print(f"\n📤 Final prompt length: {len(prompt)} characters")
+        print(f"🎯 Current Question: {query}")
         
         return prompt
     
@@ -48,12 +85,29 @@ Answer:"""
         Your role is to help students understand academic policies and procedures.
         
         CRITICAL CONSTRAINTS:
-        - Answer ONLY using information from the provided context
+        - Answer ONLY the CURRENT QUESTION being asked, not previous questions
+        - Use ONLY information from the provided context
         - If the context does not contain relevant information, you MUST respond with: 
-          "I don't have information about that in the academic documents I have access to."
+          "I don't have information about that in the academic documents I have access to. Please contact the academic office directly or check the student portal for more information."
         - Do NOT use external knowledge or make assumptions
-        - Be precise and cite the relevant policy section when possible
-        - Keep answers concise and focused on the question
+        - Do NOT answer questions from the conversation history - ONLY answer the current question
+        - Keep answers concise, natural, and conversational
+        - Do NOT include source citations, references, or document names in your answer
+        - Do NOT add "(Source: ...)" or similar references in your response
+        - Provide direct, clean answers without metadata
+        
+        SPECIAL CASES - Conversational Closings:
+        - If the user says "bye", "goodbye", or similar closing: respond with ONLY "Goodbye! Feel free to return if you have more questions."
+        - If the user says "no", "no thanks", "that's all" after you offered help: respond with ONLY "Alright! Let me know if you need anything else."
+        - Keep closing responses very brief - do NOT ask follow-up questions
+        - Do NOT repeat the same response multiple times in a row
+        
+        FORMATTING RULES:
+        - Write in a friendly, helpful tone
+        - Use natural language without technical annotations
+        - Answer as if you're having a conversation with a student
+        - Never mention document names, sections, or source identifiers in your response
+        - Use very simple markdown for formatting (e.g., bullet points, bold) if needed
         
         Remember: You are a zero-knowledge baseline system. Accuracy is more important than coverage.
         """
@@ -63,27 +117,43 @@ Answer:"""
     def generate(
         self,
         query: str,
-        context: str
+        context: str,
+        conversation_history: List[Dict[str, str]] = None,
+        preference_instructions: Optional[str] = None
     ) -> str:
         try:
-            # Create the prompt
-            prompt = self.create_rag_prompt(query, context)
-            
-            # Call Gemini API with correct format
-            response = self.client.models.generate_content(
-                model=self.model,
-                contents=prompt,
-                config={
-                    'temperature': self.temperature
-                }
+            # Create the prompt with history and preferences
+            prompt = self.create_rag_prompt(
+                query, 
+                context, 
+                conversation_history=conversation_history,
+                preference_instructions=preference_instructions
             )
             
-            # Extract and return the text
-            return response.text
+            # Call appropriate API based on provider
+            if self.provider == "groq":
+                # Groq uses OpenAI-compatible API
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=self.temperature,
+                    max_tokens=1024
+                )
+                return response.choices[0].message.content
+            else:
+                # Gemini API
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=prompt,
+                    config={
+                        'temperature': self.temperature
+                    }
+                )
+                return response.text
             
         except Exception as e:
             # Handle errors gracefully - show full error for debugging
-            print(e)
+            print(f"❌ Error in {self.provider}: {e}")
             return "I apologize, but I encountered an error while generating a response."
     
     def should_refuse(self, context: str, query: str) -> bool:
@@ -103,7 +173,9 @@ Answer:"""
     def generate_with_validation(
         self,
         query: str,
-        context: str
+        context: str,
+        conversation_history: List[Dict[str, str]] = None,
+        preference_instructions: Optional[str] = None
     ) -> Dict[str, any]:
         
         # Check if should refuse
@@ -116,9 +188,14 @@ Answer:"""
                 'confidence': 'none'
             }
         
-        # Generate answer
+        # Generate answer with history and preferences
         try:
-            answer = self.generate(query, context)
+            answer = self.generate(
+                query, 
+                context, 
+                conversation_history=conversation_history,
+                preference_instructions=preference_instructions
+            )
             
             # Check if LLM generated a refusal response (even when we didn't explicitly refuse)
             # This catches cases where LLM decides to refuse based on irrelevant context

@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FaMagic } from 'react-icons/fa';
 import './ChatArea.css';
 import Message from './Message';
 
-function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSidebarOpen, onToggleSidebar, currentSession }) {
+function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSidebarOpen, onToggleSidebar, currentSession, user, showToast }) {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
@@ -14,6 +15,22 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Check for newly extracted preferences
+  useEffect(() => {
+    if (messages.length > 0 && showToast) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === 'user' && lastMessage.extracted_preferences && lastMessage.extracted_preferences.length > 0) {
+        const prefs = lastMessage.extracted_preferences;
+        const prefCount = prefs.length;
+        const prefSummary = prefs.map(p => p.category.replace(/_/g, ' ')).join(', ');
+        showToast(
+          <><FaMagic style={{ marginRight: '6px' }} /> Preference{prefCount > 1 ? 's' : ''} saved: {prefSummary}</>,
+          'info'
+        );
+      }
+    }
+  }, [messages, showToast]);
 
   // Auto-resize textarea as user types
   const adjustTextareaHeight = () => {
@@ -72,7 +89,7 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
         )}
 
         {messages.map((message) => (
-          <Message key={message.id} message={message} />
+          <Message key={message.id} message={message} user={user} />
         ))}
 
         {loading && (

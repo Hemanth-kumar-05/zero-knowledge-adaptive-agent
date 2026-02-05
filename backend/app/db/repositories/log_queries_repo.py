@@ -25,3 +25,8 @@ class QueryLogRepository:
     async def get_session_logs(self, session_id: str) -> list:
         cursor = self.collection.find({"session_id": ObjectId(session_id)}).sort("timestamp", -1)
         return await cursor.to_list(length=None)
+
+    async def delete_session_logs(self, session_id: str) -> int:
+        """Delete all query logs for a session."""
+        result = await self.collection.delete_many({"session_id": ObjectId(session_id)})
+        return result.deleted_count

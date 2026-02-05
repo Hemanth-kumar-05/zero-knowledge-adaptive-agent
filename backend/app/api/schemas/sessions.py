@@ -8,6 +8,7 @@ class SessionCreateRequest(BaseModel):
 
 class SessionCreateResponse(BaseModel):
     session_id: str
+    user_id: Optional[str] = None
     message: str
 
 class SessionResponse(BaseModel):

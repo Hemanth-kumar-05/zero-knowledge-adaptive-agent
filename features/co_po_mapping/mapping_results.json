@@ -1,0 +1,167 @@
+{
+  "course_info": {
+    "course_code": "CS0001",
+    "course_name": "Engineering Practices Lab",
+    "semester": 5,
+    "credits": 4,
+    "department": "Computer Science and Engineering"
+  },
+  "mappings": [
+    {
+      "co_id": "CO1",
+      "co_description": "Learn to assemble and disassemble the PC, monitor CPU performance and troubleshoot various problems related to it.",
+      "po_mappings": [
+        {
+          "po_id": "PO1",
+          "level": 2,
+          "justification": "Applies basic engineering and computing concepts for hardware."
+        },
+        {
+          "po_id": "PO2",
+          "level": 3,
+          "justification": "Directly involves identifying, analyzing, and troubleshooting hardware problems."
+        },
+        {
+          "po_id": "PO3",
+          "level": 1,
+          "justification": "Minor solution implementation and refinement during troubleshooting."
+        },
+        {
+          "po_id": "PO4",
+          "level": 2,
+          "justification": "Investigates hardware problems, analyzes performance data, draws conclusions."
+        },
+        {
+          "po_id": "PO5",
+          "level": 2,
+          "justification": "Applies diagnostic tools for performance monitoring and troubleshooting."
+        },
+        {
+          "po_id": "PO6",
+          "level": 0,
+          "justification": "No direct correlation with societal, ethical, or legal aspects."
+        },
+        {
+          "po_id": "PO7",
+          "level": 0,
+          "justification": "No direct correlation with environmental or sustainability issues."
+        },
+        {
+          "po_id": "PO8",
+          "level": 0,
+          "justification": "No direct correlation with ethical dilemmas or code of ethics."
+        },
+        {
+          "po_id": "PO9",
+          "level": 1,
+          "justification": "Typically individual lab work, potential for teamwork."
+        },
+        {
+          "po_id": "PO10",
+          "level": 1,
+          "justification": "May involve documenting observations and troubleshooting steps."
+        },
+        {
+          "po_id": "PO11",
+          "level": 0,
+          "justification": "No direct correlation with project management or finance."
+        },
+        {
+          "po_id": "PO12",
+          "level": 1,
+          "justification": "Requires adapting to new problems, fostering continuous learning."
+        }
+      ],
+      "pso_mappings": [
+        {
+          "pso_id": "PSO1",
+          "level": 2,
+          "justification": "Identifies, analyzes hardware problems, applies computing tools."
+        },
+        {
+          "pso_id": "PSO2",
+          "level": 2,
+          "justification": "Applies practices for PC assembly and hardware troubleshooting."
+        }
+      ]
+    },
+    {
+      "co_id": "CO2",
+      "co_description": " Implement the electronic circuits using electronic components and Equipments.",
+      "po_mappings": [
+        {
+          "po_id": "PO1",
+          "level": 3,
+          "justification": "Directly applies basic sciences and core engineering fundamentals."
+        },
+        {
+          "po_id": "PO2",
+          "level": 2,
+          "justification": "Analyzes circuit requirements and behavior for implementation."
+        },
+        {
+          "po_id": "PO3",
+          "level": 3,
+          "justification": "Directly involves designing and implementing electronic circuits."
+        },
+        {
+          "po_id": "PO4",
+          "level": 3,
+          "justification": "Designs, experiments, and analyzes electronic circuit performance."
+        },
+        {
+          "po_id": "PO5",
+          "level": 3,
+          "justification": "Directly uses electronic lab equipment and simulation tools."
+        },
+        {
+          "po_id": "PO6",
+          "level": 1,
+          "justification": "Basic understanding of how circuits contribute to technology."
+        },
+        {
+          "po_id": "PO7",
+          "level": 1,
+          "justification": "Minor awareness of component disposal or energy efficiency."
+        },
+        {
+          "po_id": "PO8",
+          "level": 0,
+          "justification": "No direct correlation with ethical dilemmas or code of ethics."
+        },
+        {
+          "po_id": "PO9",
+          "level": 2,
+          "justification": "Often involves individual implementation, potential for teamwork."
+        },
+        {
+          "po_id": "PO10",
+          "level": 2,
+          "justification": "Requires documenting circuit designs, procedures, and results."
+        },
+        {
+          "po_id": "PO11",
+          "level": 1,
+          "justification": "Basic management of components and time for implementation."
+        },
+        {
+          "po_id": "PO12",
+          "level": 2,
+          "justification": "Requires continuous learning of new components and techniques."
+        }
+      ],
+      "pso_mappings": [
+        {
+          "pso_id": "PSO1",
+          "level": 3,
+          "justification": "Identifies, analyzes, and solves problems with electronic circuits."
+        },
+        {
+          "pso_id": "PSO2",
+          "level": 3,
+          "justification": "Applies industry practices for designing, implementing, and evaluating hardware."
+        }
+      ]
+    }
+  ]
+}

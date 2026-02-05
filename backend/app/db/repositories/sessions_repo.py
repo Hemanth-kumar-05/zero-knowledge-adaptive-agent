@@ -34,9 +34,13 @@ class SessionRepository:
             session["_id"] = str(session["_id"])
         return session
 
-    async def get_all_sessions(self) -> list:
+    async def get_all_sessions(self, user_id: Optional[str] = None) -> list:
         """Get all sessions, optionally filtered by user_id."""
-        cursor = self.collection.find().sort("updated_at", -1)
+        query = {}
+        if user_id:
+            query["user_id"] = user_id
+        
+        cursor = self.collection.find(query).sort("updated_at", -1)
         sessions = await cursor.to_list(length=None)
         
         for session in sessions:
@@ -61,4 +65,9 @@ class SessionRepository:
             }
         )
         return result.modified_count > 0
+
+    async def delete_session(self, session_id: str) -> bool:
+        """Delete a session by ID."""
+        result = await self.collection.delete_one({"_id": ObjectId(session_id)})
+        return result.deleted_count > 0
 

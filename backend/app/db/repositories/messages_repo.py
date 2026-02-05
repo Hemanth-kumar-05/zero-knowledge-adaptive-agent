@@ -13,15 +13,22 @@ class MessageRepository:
         session_id: str,
         role: Literal["user", "assistant"],
         content: str,
-        metadata: Optional[dict] = None
+        user_id: Optional[str] = None,
+        metadata: Optional[dict] = None,
+        applied_preferences: Optional[list] = None,
+        extracted_preferences: Optional[list] = None
     ) -> str:
         """Create a new message in a session."""
         message_data = {
             "session_id": ObjectId(session_id),
+            "user_id": user_id,
             "role": role,
             "content": content,
             "timestamp": datetime.now(),
-            "metadata": metadata or {}
+            "metadata": metadata or {},
+            "applied_preferences": applied_preferences or [],
+            "extracted_preferences": extracted_preferences or [],
+            "has_feedback": False
         }
         result = await self.collection.insert_one(message_data)
         return str(result.inserted_id)
@@ -35,3 +42,8 @@ class MessageRepository:
             message["_id"] = str(message["_id"])
             message["session_id"] = str(message["session_id"])
         return messages
+
+    async def delete_session_messages(self, session_id: str) -> int:
+        """Delete all messages for a session."""
+        result = await self.collection.delete_many({"session_id": ObjectId(session_id)})
+        return result.deleted_count

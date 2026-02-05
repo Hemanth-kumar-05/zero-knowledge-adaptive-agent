@@ -8,6 +8,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from rag.retrieve import Retriever
 from rag.generate import Generator
+from rag.query_rewriter import QueryRewriter
 
 
 class RAGPipeline:
@@ -17,7 +18,7 @@ class RAGPipeline:
         self,
         persist_directory: str = "data/chroma_db",
         collection_name: str = "academic_docs",
-        llm_model: str = "gemini-2.5-flash",
+        llm_model: str = None,  # Will be determined by provider
         verbose: bool = True
     ):
         self.verbose = verbose
@@ -27,10 +28,18 @@ class RAGPipeline:
             print("Initializing retriever...")
         self.retriever = Retriever(persist_directory, collection_name)
         
-        # Initialize generator
+        # Initialize generator (it will auto-detect provider and set correct model)
         if self.verbose:
             print("Initializing generator...")
-        self.generator = Generator(model=llm_model)
+        self.generator = Generator(model=llm_model)  # Pass None to use provider defaults
+        
+        # Initialize query rewriter
+        if self.verbose:
+            print("Initializing query rewriter...")
+        self.query_rewriter = QueryRewriter(
+            self.generator.client,
+            provider=self.generator.provider
+        )
         
         if self.verbose:
             print("RAG Pipeline initialized")
@@ -39,14 +48,97 @@ class RAGPipeline:
         self,
         question: str,
         top_k: int = 5,
-        min_similarity: float = 0.3
+        min_similarity: float = 0.3,
+        conversation_history: list = None,
+        conversation_metadata: dict = None,
+        user_preferences: list = None,
+        preference_instructions: str = None
     ) -> Dict:
+        
+        conversation_history = conversation_history or []
+        conversation_metadata = conversation_metadata or {}
+        user_preferences = user_preferences or []
         
         start_time = time.time()
         
+        # Log if preferences are being applied
+        if preference_instructions and self.verbose:
+            print(f"\n🎯 PERSONALIZATION ENABLED")
+            print(f"  Applying {len(user_preferences)} user preferences")
+        
+        # First attempt with original query
+        if self.verbose:
+            print(f"\n🎯 ATTEMPT 1: Original query")
+        
+        result = self._execute_query(
+            question=question,
+            top_k=top_k,
+            min_similarity=min_similarity,
+            conversation_history=conversation_history,
+            conversation_metadata=conversation_metadata,
+            preference_instructions=preference_instructions
+        )
+        
+        # If refused AND we have conversation context, try rewriting
+        if result['refused'] and conversation_history and len(conversation_history) >= 2:
+            if self.verbose:
+                print(f"\n⚠️ First attempt refused - trying with contextualized query...")
+                print(f"🔄 ATTEMPT 2: Query rewriting")
+            
+            # Rewrite query with context
+            rewritten_question = self.query_rewriter.contextualize_if_needed(
+                question,
+                conversation_history
+            )
+            
+            # Only retry if query actually changed
+            if rewritten_question != question:
+                if self.verbose:
+                    print(f"  📝 Original: '{question}'")
+                    print(f"  ✨ Enhanced: '{rewritten_question}'")
+                    print(f"\n🎯 Retrying with enhanced query...")
+                
+                # Retry with rewritten query
+                result = self._execute_query(
+                    question=rewritten_question,
+                    top_k=top_k,
+                    min_similarity=min_similarity,
+                    conversation_history=conversation_history,
+                    conversation_metadata=conversation_metadata,
+                    preference_instructions=preference_instructions
+                )
+                
+                # Keep original question in result for user
+                result['question'] = question
+                
+                if self.verbose:
+                    if result['refused']:
+                        print(f"  ❌ Still refused after rewriting")
+                    else:
+                        print(f"  ✅ Success with rewritten query!")
+            else:
+                if self.verbose:
+                    print(f"  ℹ️ Query unchanged, skipping retry")
+        
+        total_time = (time.time() - start_time) * 1000
+        result['total_time_ms'] = total_time
+        
+        return result
+    
+    def _execute_query(
+        self,
+        question: str,
+        top_k: int,
+        min_similarity: float,
+        conversation_history: list,
+        conversation_metadata: dict,
+        preference_instructions: str = None
+    ) -> Dict:
+        """Execute a single query attempt."""
+        
         # Step 1: Retrieval
         if self.verbose:
-            print(f"\nRetrieving relevant chunks...")
+            print(f"  🔍 Retrieving relevant chunks...")
         
         retrieval_start = time.time()
         retrieved_chunks = self.retriever.retrieve(
@@ -57,33 +149,39 @@ class RAGPipeline:
         retrieval_time = (time.time() - retrieval_start) * 1000
         
         if self.verbose:
-            print(f"Retrieved {len(retrieved_chunks)} chunks in {retrieval_time:.0f}ms")
+            print(f"  📦 Retrieved {len(retrieved_chunks)} chunks in {retrieval_time:.0f}ms")
+            if conversation_metadata.get("has_context"):
+                print(f"  💬 Using conversation context: {conversation_metadata.get('total_messages', 0)} messages")
         
         # Step 2: Format context
         if self.verbose:
-            print(f"Formatting context...")
+            print(f"  📝 Formatting context...")
         
         context = self.retriever.format_context_for_llm(retrieved_chunks)
         
         if self.verbose:
-            print(f"Context size: {len(context)} characters")
+            print(f"  📄 Context size: {len(context)} characters")
         
-        # Step 3: Generate answer
+        # Step 3: Generate answer with conversation history and preferences
         if self.verbose:
-            print(f"Generating answer...")
+            print(f"  🤖 Generating answer...")
         
         generation_start = time.time()
         generation_result = self.generator.generate_with_validation(
             query=question,
-            context=context
+            context=context,
+            conversation_history=conversation_history,
+            preference_instructions=preference_instructions
         )
         generation_time = (time.time() - generation_start) * 1000
         
         if self.verbose:
-            print(f"Generated answer in {generation_time:.0f}ms")
+            if generation_result['refused']:
+                print(f"  ❌ Refused - insufficient context")
+            else:
+                print(f"  ✅ Generated answer in {generation_time:.0f}ms")
         
         # Step 4: Package results with source information
-        # Only include sources if the query was answered (not refused)
         sources = []
         if not generation_result['refused']:
             for chunk in retrieved_chunks:
@@ -94,8 +192,6 @@ class RAGPipeline:
                     'confidence': chunk['metadata'].get('confidence', 1.0)
                 })
         
-        total_time = (time.time() - start_time) * 1000
-        
         result = {
             'question': question,
             'answer': generation_result['answer'],
@@ -104,7 +200,7 @@ class RAGPipeline:
             'retrieval_count': len(retrieved_chunks),
             'retrieval_time_ms': retrieval_time,
             'generation_time_ms': generation_time,
-            'total_time_ms': total_time,
+            'total_time_ms': 0,  # Will be set by main query method
             'confidence': generation_result.get('confidence', 'unknown')
         }
         

@@ -34,13 +34,38 @@
   width: 32px;
   height: 32px;
   border-radius: 4px;
-  background-color: #10a37f;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.user-avatar.has-image {
+  background-color: transparent;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.user-avatar .avatar-initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  background-color: #10a37f;
+  border-radius: 4px;
 }
 
 .message-content {
@@ -52,9 +77,22 @@
   color: #ececec;
   font-size: 16px;
   line-height: 1.6;
-  white-space: pre-wrap;
+  white-space: normal;
   word-wrap: break-word;
   margin-bottom: 12px;
+}
+
+.message-text p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.message-text p:first-child {
+  margin-top: 0;
+}
+
+.message-text p:last-child {
+  margin-bottom: 0;
 }
 
 .message-text strong {
@@ -77,40 +115,40 @@
 }
 
 .message-text ul {
-  margin: 0;
-  padding-left: 20px;
+  margin: 12px 0;
+  padding-left: 24px;
+  list-style-type: disc;
 }
 
 .message-text ol {
-  margin: 0;
-  padding-left: 20px;
-  counter-reset: item;
+  margin: 12px 0;
+  padding-left: 24px;
+  list-style-type: decimal;
 }
 
 .message-text li {
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
+  margin: 6px 0;
+  padding-left: 4px;
+  line-height: 1.6;
   color: #ececec;
+}
+
+.message-text ul li {
+  list-style-type: disc;
 }
 
 .message-text ul li::marker {
   color: #10a37f;
+  font-size: 1.2em;
 }
 
 .message-text ol li {
-  counter-increment: item;
-  display: block;
-  position: relative;
-  padding-left: 8px;
+  list-style-type: decimal;
 }
 
-.message-text ol li::before {
-  content: counter(item) ".";
+.message-text ol li::marker {
   color: #10a37f;
   font-weight: 600;
-  position: absolute;
-  left: -24px;
 }
 
 /* Source Tags (ChatGPT style) */
@@ -355,6 +393,40 @@
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 11px;
+}
+
+.preference-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  margin-top: 8px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-left: 2px solid #a855f7;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #c4b5fd;
+  font-weight: 500;
+  animation: slideInLeft 0.3s ease;
+}
+
+.preference-indicator svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+  width: 13px;
+  height: 13px;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideDown {
