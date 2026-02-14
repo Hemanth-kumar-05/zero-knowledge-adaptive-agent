@@ -39,11 +39,17 @@ class UsersRepository:
             "last_login": datetime.utcnow(),
             "account_status": "active",
             "preferences": [],
+            "facts": [],  # NEW: Initialize facts array
             "personalization_metadata": {
                 "total_interactions": 0,
                 "preference_updates_count": 0,
                 "last_preference_update": None,
                 "total_preferences": 0
+            },
+            "memory_settings": {  # NEW: Memory control settings
+                "auto_extract_enabled": True,
+                "require_confirmation": True,
+                "default_retention": "permanent"
             }
         }
         
@@ -295,3 +301,115 @@ class UsersRepository:
             return None
         
         return user.get("personalization_metadata", {})
+    
+    # ==================== Fact Memory Management ====================
+    
+    async def get_user_facts(self, user_id: str) -> List[Dict]:
+        """Get all facts stored for a user"""
+        user = await self.get_user_by_id(user_id)
+        if not user:
+            return []
+        return user.get("facts", [])
+    
+    async def add_fact(self, user_id: str, fact: Dict) -> bool:
+        """
+        Add a new fact to user's facts array
+        
+        Args:
+            user_id: User's MongoDB _id
+            fact: Fact object with category, key, value, retention, confidence, etc.
+            
+        Returns:
+            True if successful
+        """
+        fact_doc = {
+            "category": fact["category"],
+            "key": fact["key"],
+            "value": fact["value"],
+            "retention": fact.get("retention", "permanent"),
+            "locked": fact.get("locked", False),
+            "confidence": fact.get("confidence", 1.0),
+            "explanation": fact.get("explanation", ""),
+            "source": fact.get("source", "conversation"),
+            "extracted_at": fact.get("extracted_at", datetime.utcnow()),
+            "extraction_method": fact.get("extraction_method"),
+            "llm_provider": fact.get("llm_provider"),
+            "llm_model": fact.get("llm_model"),
+            "confirmed_by_user": fact.get("confirmed_by_user", False),
+            "confirmed_at": fact.get("confirmed_at")
+        }
+        
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$push": {"facts": fact_doc}}
+        )
+        
+        return result.modified_count > 0
+    
+    async def update_fact(self, user_id: str, key: str, updates: Dict) -> bool:
+        """
+        Update an existing fact
+        
+        Args:
+            user_id: User's MongoDB _id
+            key: Fact key to update
+            updates: Dictionary of fields to update
+            
+        Returns:
+            True if successful
+        """
+        # Build update document
+        set_updates = {}
+        for update_key, value in updates.items():
+            set_updates[f"facts.$.{update_key}"] = value
+        
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id), "facts.key": key},
+            {"$set": set_updates}
+        )
+        
+        return result.modified_count > 0
+    
+    async def delete_fact(self, user_id: str, key: str) -> bool:
+        """Delete a specific fact by key"""
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$pull": {"facts": {"key": key}}}
+        )
+        
+        return result.modified_count > 0
+    
+    async def delete_all_facts(self, user_id: str, category: Optional[str] = None) -> bool:
+        """
+        Delete all facts for a user, optionally filtered by category
+        
+        Args:
+            user_id: User's MongoDB _id
+            category: Optional category filter
+            
+        Returns:
+            True if successful
+        """
+        if category:
+            # Delete only facts in specified category
+            result = await self.collection.update_one(
+                {"_id": ObjectId(user_id)},
+                {"$pull": {"facts": {"category": category}}}
+            )
+        else:
+            # Delete all facts
+            result = await self.collection.update_one(
+                {"_id": ObjectId(user_id)},
+                {"$set": {"facts": []}}
+            )
+        
+        return result.modified_count > 0
+    
+    async def lock_fact(self, user_id: str, key: str, locked: bool) -> bool:
+        """Lock or unlock a fact to prevent/allow updates"""
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id), "facts.key": key},
+            {"$set": {"facts.$.locked": locked}}
+        )
+        
+        return result.modified_count > 0

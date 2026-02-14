@@ -21,15 +21,17 @@ class RAGAdapter:
         conversation_history: list = None, 
         conversation_metadata: dict = None,
         user_preferences: list = None,
-        preference_instructions: str = None
+        preference_instructions: str = None,
+        user_context: str = None
     ) -> dict:
-        """Query the RAG pipeline with conversation history and user preferences"""
+        """Query the RAG pipeline with conversation history, user preferences, and user context"""
         return self.rag_pipeline.query(
             question=question,
             conversation_history=conversation_history or [],
             conversation_metadata=conversation_metadata or {},
             user_preferences=user_preferences or [],
-            preference_instructions=preference_instructions
+            preference_instructions=preference_instructions,
+            user_context=user_context
         )
     
 rag_adapter = RAGAdapter()

@@ -51,7 +51,7 @@ class AIPreferenceExtractor:
         
         if self.llm_provider == "groq":
             self.groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = "llama-3.1-8b-instant"
+            self.model = "llama-3.3-70b-versatile"
             logger.info("🤖 AIPreferenceExtractor initialized with Groq")
         else:
             genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -69,13 +69,18 @@ class AIPreferenceExtractor:
         Returns:
             Formatted prompt string
         """
-        # Format conversation history
-        conversation = []
+        # Format conversation history - ONLY USER MESSAGES
+        user_messages = []
         for msg in messages:
-            role = "User" if msg["role"] == "user" else "Assistant"
-            conversation.append(f"{role}: {msg['content']}")
+            if msg["role"] == "user":
+                user_messages.append(f"User: {msg['content']}")
         
-        conversation_text = "\n".join(conversation)
+        if not user_messages:
+            return ""
+        
+        # Focus on the LAST user message
+        last_message = user_messages[-1]
+        prev_context = "\n".join(user_messages[:-1]) if len(user_messages) > 1 else "No previous context"
         
         # Build category descriptions
         category_descriptions = []
@@ -87,37 +92,38 @@ class AIPreferenceExtractor:
         
         categories_text = "\n".join(category_descriptions)
         
-        prompt = f"""You are an EXTREMELY STRICT preference analyzer. User preferences are CRITICAL and should ONLY be extracted when there is OVERWHELMING evidence IN THE CURRENT CONTEXT.
+        prompt = f"""You are an EXTREMELY STRICT preference analyzer. Only extract preferences from USER statements, NEVER from assistant responses.
 
-**CRITICAL RULES - READ CAREFULLY:**
-1. Preferences are NOT mandatory and should RARELY be extracted
-2. ONLY extract if THIS SPECIFIC MESSAGE EXPLICITLY states a preference
-3. DO NOT infer preferences from past context or behavior patterns
-4. IGNORE one-off requests - only extract if the user says "I prefer...", "I want...", "Please always..."
-5. If the user is just asking a normal question, DO NOT extract anything
-6. Require VERY HIGH confidence (minimum 0.75) - if unsure, DON'T extract
+**CRITICAL RULES:**
+1. ONLY analyze the LAST USER message shown below
+2. NEVER extract preferences from what the assistant said
+3. 95% of messages have NO preferences - that's NORMAL
+4. Only extract if user EXPLICITLY says "I prefer", "I want", "Please always", "From now on"
+5. IGNORE one-time requests, acknowledgments, or normal questions
+6. Match preferences to the valid categories below - if it doesn't fit, DON'T extract
 
-**Current Message to Analyze:**
-{conversation_text}
+**Previous Context (for reference only):**
+{prev_context}
 
-**Preference Categories:**
+**LAST USER MESSAGE (analyze THIS ONLY):**
+{last_message}
+
+**Valid Preference Categories:**
 {categories_text}
 
-**WHEN TO EXTRACT (MUST BE IN CURRENT MESSAGE):**
-✓ User says "I prefer X" or "I want responses to be X"
-✓ User says "Please always do X" or "From now on, X"
-✓ User explicitly states "Update my preference to X"
+**When to Extract:**
+✓ "I prefer brief/detailed/concise answers"
+✓ "Please always include/exclude examples"  
+✓ "I want formal/casual tone from now on"
+✓ "Keep responses short" or "Give me comprehensive explanations"
 
-**WHEN NOT TO EXTRACT:**
-✗ User asking a normal question (even if related to previous preferences)
-✗ User acknowledging something ("ok", "thanks", "got it")
-✗ User making a one-time request for this specific topic
-✗ Inferring from conversation patterns or past behavior
-✗ ANY message that doesn't explicitly state "I prefer" or similar language
+**When NOT to Extract:**
+✗ Normal questions ("What's the deadline?")
+✗ Acknowledgments ("Got it", "Thanks", "OK")
+✗ One-time requests ("Can you explain this briefly?")
+✗ Assistant statements ("I'll keep it brief") - NEVER EXTRACT THESE
 
-**CRITICAL: Only look at the LAST user message. Do NOT analyze conversation history or patterns.**
-
-**Output Format (JSON only):**
+**Output JSON Format:**
 {{
   "preferences": [
     {{

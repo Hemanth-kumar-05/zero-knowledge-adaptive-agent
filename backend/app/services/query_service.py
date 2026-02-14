@@ -1,5 +1,5 @@
 from app.core.rag_adapter import rag_adapter
-from app.api.schemas.query import QueryRequest, QueryResponse, Source
+from app.api.schemas.query import QueryRequest, QueryResponse, Source, RiskAlert
 from app.db.mongo import MongoDB
 from app.db.repositories.log_queries_repo import QueryLogRepository
 from app.db.repositories.sessions_repo import SessionRepository
@@ -8,11 +8,18 @@ from app.db.repositories.users_repo import UsersRepository
 from app.utils.context_builder import ConversationContextBuilder
 from app.services.preference_extraction_service import AIPreferenceExtractor
 from app.services.preference_application_service import preference_applier
+from app.services.risk_prediction_service import risk_predictor
+from app.services.fact_extraction_service import fact_extractor
+from app.services.memory_control_service import create_memory_controller
 from datetime import datetime
 from bson import ObjectId
 import logging
 
 logger = logging.getLogger(__name__)
+
+# Session limits for context window management
+SESSION_SOFT_LIMIT = 20  # Suggest new session
+SESSION_HARD_LIMIT = 30  # Strong warning
 
 class QueryService:
     def __init__(self):
@@ -91,6 +98,7 @@ class QueryService:
         user_preferences = []
         preference_instructions = None
         applied_preferences = []
+        user_context = None  # User memory context
         
         if user_id:
             user = await self._get_users_repo().get_user_by_id(user_id)
@@ -107,17 +115,24 @@ class QueryService:
                     )
                     
                     logger.info(
-                        f"🎯 Applying {len(applied_preferences)} preferences "
-                        f"for user {user_id}"
+                        f"🎯 Applying {len(applied_preferences)} preferences for user {user_id}"
                     )
+                
+                # Build user context from stored facts
+                memory_controller = create_memory_controller(self._get_users_repo())
+                user_context = await memory_controller.build_user_context(user_id)
+                
+                if user_context:
+                    logger.info(f"🧠 User context built from memory: {len(user_context)} characters")
 
-        # Pass history and preferences to RAG adapter
+        # Pass history, preferences, and user context to RAG adapter
         rag_response = self.rag_adapter.query(
             request.question,
             conversation_history=formatted_history,
             conversation_metadata=conversation_metadata,
             user_preferences=user_preferences,
-            preference_instructions=preference_instructions
+            preference_instructions=preference_instructions,
+            user_context=user_context
         )
 
         log_data = {
@@ -134,6 +149,40 @@ class QueryService:
             "confidence": rag_response.get("confidence")
         }
 
+        # === RISK DETECTION (BEFORE saving messages) ===
+        risk_alerts_list = []
+        try:
+            if user_id and conversation_history:
+                message_count = len(conversation_history)
+                simple_greetings = ["hi", "hey", "hello", "bye", "goodbye", "thanks", "thank you", "ok", "okay"]
+                is_simple = request.question.lower().strip() in simple_greetings
+                
+                should_analyze = (
+                    message_count >= 2 and 
+                    not is_simple and
+                    len(request.question.split()) > 2
+                )
+                
+                if should_analyze:
+                    detected_risks = await risk_predictor.analyze_risks(
+                        conversation_history=conversation_history,
+                        current_question=request.question
+                    )
+                    
+                    if detected_risks:
+                        risk_alerts_list = [
+                            {
+                                "risk_type": risk.risk_type,
+                                "severity": risk.severity,
+                                "confidence": risk.confidence,
+                                "message": risk.message,
+                                "indicators": risk.indicators,
+                                "detected_at": risk.detected_at.isoformat()
+                            } for risk in detected_risks
+                        ]
+        except Exception as e:
+            logger.error(f"❌ Error in risk prediction: {e}", exc_info=True)
+
         try:
             # Save user message
             await self._get_message_repo().create_message(
@@ -144,13 +193,14 @@ class QueryService:
             )
             await self._get_session_repo().increment_message_count(request.session_id)
             
-            # Save assistant message with metadata and applied preferences
+            # Save assistant message with metadata, applied preferences, and risk alerts
             metadata = {
                 "sources": rag_response.get("sources", []),
                 "confidence": rag_response.get("confidence"),
                 "retrieval_time_ms": rag_response.get("retrieval_time_ms"),
                 "generation_time_ms": rag_response.get("generation_time_ms"),
-                "total_time_ms": rag_response.get("total_time_ms")
+                "total_time_ms": rag_response.get("total_time_ms"),
+                "risk_alerts": risk_alerts_list if risk_alerts_list else []
             }
             await self._get_message_repo().create_message(
                 session_id=request.session_id,
@@ -168,9 +218,30 @@ class QueryService:
             # Update session (timestamp and message_count incremented by message creation)
             await self._get_session_repo().update_session_timestamp(request.session_id)
             
-            # Extract preferences if user is authenticated
+            # Extract preferences and facts if user is authenticated
             if user_id:
-                await self._extract_preferences_if_needed(request.session_id, user_id)
+                messages = await self._get_message_repo().get_session_messages(request.session_id)
+                message_count = len(messages)
+                
+                # Skip on very short messages (greetings, single words)
+                last_user_msg = request.question
+                is_substantial = len(last_user_msg.split()) > 2  # At least 3 words
+                
+                if is_substantial:
+                    # Preferences: Extract every 2 messages or in first 4 messages
+                    should_extract_preferences = (message_count % 2 == 0 or message_count <= 4)
+                    
+                    # Facts: Extract every 5 messages or in first 4 messages
+                    should_extract_facts = (message_count % 5 == 0 or message_count <= 4)
+                    
+                    if should_extract_preferences or should_extract_facts:
+                        logger.info(f"🔍 Running extractions at message {message_count} (prefs: {should_extract_preferences}, facts: {should_extract_facts})")
+                        
+                        if should_extract_preferences:
+                            await self._extract_preferences_if_needed(request.session_id, user_id)
+                        
+                        if should_extract_facts:
+                            await self._extract_facts_if_needed(request.session_id, user_id)
         except Exception as e:
             logger.error(f"❌ Error logging query: {e}", exc_info=True)
 
@@ -183,13 +254,55 @@ class QueryService:
             ) for src in rag_response.get("sources", [])
         ]
 
+        # Analyze risks from conversation patterns (optimized - only every 3 messages after 3rd message)
+        risk_alerts_list = None
+        session_warning = None
+        
+        # Check session message count for context window management
+        if conversation_history:
+            msg_count = len(conversation_history)
+            
+            if msg_count >= SESSION_HARD_LIMIT:
+                session_warning = {
+                    "severity": "high",
+                    "message": f"Your conversation has {msg_count} messages. For optimal performance and relevance, we strongly recommend starting a new session.",
+                    "current_count": msg_count,
+                    "suggestion": "Start a new session to maintain conversation quality and avoid context overload."
+                }
+                logger.warning(f"⚠️ Session {request.session_id} reached hard limit: {msg_count} messages")
+            
+            elif msg_count >= SESSION_SOFT_LIMIT:
+                session_warning = {
+                    "severity": "medium",
+                    "message": f"You have {msg_count} messages in this session. Consider starting a new session for better performance.",
+                    "current_count": msg_count,
+                    "suggestion": "Starting a new session helps maintain conversation clarity and system performance."
+                }
+                logger.info(f"ℹ️ Session {request.session_id} approaching limit: {msg_count} messages")
+        
+        # Convert risk alert dicts to RiskAlert objects for response
+        risk_alerts_for_response = None
+        if risk_alerts_list:
+            risk_alerts_for_response = [
+                RiskAlert(
+                    risk_type=alert["risk_type"],
+                    severity=alert["severity"],
+                    confidence=alert["confidence"],
+                    message=alert["message"],
+                    indicators=alert["indicators"],
+                    detected_at=alert["detected_at"]
+                ) for alert in risk_alerts_list
+            ]
+        
         response = QueryResponse(
             question=rag_response.get("question", request.question),
             answer=rag_response.get("answer", "Error generating answer."),
             sources=sources if sources else None,
             refused=rag_response.get("refused", False),
             session_id=request.session_id,
-            confidence=rag_response.get("confidence")
+            confidence=rag_response.get("confidence"),
+            risk_alerts=risk_alerts_for_response,
+            session_limit_warning=session_warning
         )
 
         return response if response.answer else "Error generating answer."
@@ -212,20 +325,7 @@ class QueryService:
             messages = await self._get_message_repo().get_session_messages(session_id)
             message_count = len(messages)
             
-            # Get last user message content for filtering short messages
-            last_user_message = None
-            for msg in reversed(messages):
-                if msg["role"] == "user":
-                    last_user_message = msg.get("content", "")
-                    break
-            
-            # Check if we should extract
-            should_extract = self.preference_extractor.should_extract_preferences(
-                user, message_count, last_user_message
-            )
-            
-            if not should_extract:
-                return
+            # Already checked in main query method - skip redundant checks
             
             logger.info(f"🔍 Extracting preferences for user {user_id} (session: {session_id})")
             
@@ -236,16 +336,22 @@ class QueryService:
                     recent_user_msg = msg
                     break
             
-            # Format messages for extraction (last 10 for context)
-            formatted_messages = [
+            # Format ONLY user messages for extraction to avoid analyzing assistant responses
+            # Only pass last 3 USER messages for context
+            user_messages = [
                 {"role": msg["role"], "content": msg["content"]}
-                for msg in messages[-10:]
-            ]
+                for msg in messages
+                if msg["role"] == "user"
+            ][-3:]  # Last 3 user messages only
             
-            # Extract new preferences
+            if not user_messages:
+                logger.info("📊 No user messages to analyze")
+                return
+            
+            # Extract new preferences (analyzing user messages only)
             extracted_prefs = await self.preference_extractor.extract_preferences(
-                formatted_messages,
-                min_confidence=0.75  # Stricter confidence threshold
+                user_messages,
+                min_confidence=0.80  # Stricter confidence threshold (increased from 0.75)
             )
             
             # Add source tracking to extracted preferences
@@ -326,6 +432,84 @@ class QueryService:
             
         except Exception as e:
             logger.error(f"❌ Error in preference extraction: {e}", exc_info=True)
+    
+    async def _extract_facts_if_needed(self, session_id: str, user_id: str):
+        """
+        Extract factual information about user from conversation
+        
+        Args:
+            session_id: Current session ID
+            user_id: Authenticated user ID
+        """
+        try:
+            # Get user data to check memory settings
+            user = await self._get_users_repo().get_user_by_id(user_id)
+            if not user:
+                return
+            
+            memory_settings = user.get("memory_settings", {})
+            if not memory_settings.get("auto_extract_enabled", True):
+                logger.info(f"📊 Fact extraction disabled for user {user_id}")
+                return
+            
+            # Get session messages
+            messages = await self._get_message_repo().get_session_messages(session_id)
+            if not messages:
+                return
+            
+            # Get last user message
+            last_user_message = None
+            for msg in reversed(messages):
+                if msg.get("role") == "user":
+                    last_user_message = msg.get("content", "")
+                    break
+            
+            if not last_user_message:
+                return
+            
+            # Check for explicit memory commands
+            memory_command = fact_extractor.detect_memory_commands(last_user_message)
+            if memory_command:
+                logger.info(f"🧠 Detected memory command: {memory_command['command']}")
+                return
+            
+            # Already checked in main query method - proceed with extraction
+            logger.info(f"🧠 Extracting facts for user {user_id}")
+            
+            # Format recent messages for extraction
+            formatted_msgs = [
+                {"role": msg.get("role", "user"), "content": msg.get("content", "")}
+                for msg in messages[-5:]  # Last 5 messages for context
+            ]
+            
+            # Extract facts
+            extracted_facts = await fact_extractor.extract_facts(
+                messages=formatted_msgs,
+                current_message=last_user_message,
+                min_confidence=0.70
+            )
+            
+            if not extracted_facts:
+                logger.info("📊 No new facts extracted")
+                return
+            
+            # Store facts using memory controller
+            memory_controller = create_memory_controller(self._get_users_repo())
+            
+            counts = await memory_controller.store_facts_bulk(
+                user_id,
+                extracted_facts,
+                require_confirmation=memory_settings.get("require_confirmation", True)
+            )
+            
+            logger.info(
+                f"✅ Fact extraction completed for user {user_id}: "
+                f"{counts['stored']} new, {counts['updated']} updated, "
+                f"{counts['failed']} failed"
+            )
+            
+        except Exception as e:
+            logger.error(f"❌ Error in fact extraction: {e}", exc_info=True)
     
 # Global query service instance
 query_service = QueryService()

@@ -71,6 +71,15 @@
 .message-content {
   flex: 1;
   min-width: 0;
+  position: relative;
+}
+
+/* Risk Alert Indicator in Bottom Right */
+.message-risk-indicator {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  z-index: 10;
 }
 
 .message-text {

@@ -24,7 +24,7 @@ class Generator:
         # Initialize based on provider
         if self.provider == "groq":
             self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = model or "llama-3.1-8b-instant"  # Updated to latest model
+            self.model = model or "llama-3.3-70b-versatile"  # Updated to latest model
             print(f"🚀 Using Groq with model: {self.model}")
         else:
             self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -37,7 +37,8 @@ class Generator:
         context: str,
         system_instructions: Optional[str] = None,
         conversation_history: List[Dict[str, str]] = None,
-        preference_instructions: Optional[str] = None
+        preference_instructions: Optional[str] = None,
+        user_context: Optional[str] = None
     ) -> str:
         if system_instructions is None:
             system_instructions = self._get_default_system_instructions()
@@ -47,6 +48,12 @@ class Generator:
             system_instructions = f"{system_instructions}\n\n{preference_instructions}"
             print(f"\n🎯 APPLYING USER PREFERENCES")
             print(f"  Preference instructions added to system prompt")
+        
+        # Add user context (memory) if provided
+        if user_context:
+            system_instructions = f"{system_instructions}\n\n{user_context}"
+            print(f"\n🧠 APPLYING USER MEMORY")
+            print(f"  User context: {user_context[:100]}..." if len(user_context) > 100 else f"  User context: {user_context}")
         
         # Build conversation history section if available
         history_section = ""
@@ -71,6 +78,13 @@ Context:
 
 Current Question (answer THIS question specifically): {query}
 
+INSTRUCTIONS FOR ANSWERING:
+1. First, review the context above carefully
+2. Identify which specific parts of the context (if any) are relevant to the question
+3. If you cannot find explicit information to answer the question, you MUST refuse - do not guess or extrapolate
+4. Only include information that is directly stated in the context
+5. If the context only provides vague information (e.g., "may influence"), answer ONLY with that vague information - do NOT add specifics
+
 Provide a clear, direct answer to the current question above:"""
         
         print(f"\n📤 Final prompt length: {len(prompt)} characters")
@@ -84,17 +98,44 @@ Provide a clear, direct answer to the current question above:"""
         
         Your role is to help students understand academic policies and procedures.
         
-        CRITICAL CONSTRAINTS:
+        MEMORY & PERSONALIZATION:
+        - If you receive a CONTEXT section with user information (name, year, courses, etc.), use it naturally in your responses
+        - For greetings ("Hey", "Hello", etc.), respond warmly and casually - you can use their name if available but don't make it awkward
+        - ONLY explicitly mention "remembering" when directly asked ("do you remember me?", "what do you know about me?", etc.)
+        - Incorporate remembered details naturally and helpfully when relevant to the conversation
+        - Be conversational and friendly, not robotic about using memory
+        
+        CRITICAL CONSTRAINTS - ANTI-HALLUCINATION RULES:
+        ⚠️ ABSOLUTE RULE: Every single fact, number, percentage, threshold, deadline, or policy detail in your answer MUST appear verbatim in the provided context. If it's not in the context, DO NOT include it in your answer.
+        
         - Answer ONLY the CURRENT QUESTION being asked, not previous questions
-        - Use ONLY information from the provided context
-        - If the context does not contain relevant information, you MUST respond with: 
-          "I don't have information about that in the academic documents I have access to. Please contact the academic office directly or check the student portal for more information."
-        - Do NOT use external knowledge or make assumptions
-        - Do NOT answer questions from the conversation history - ONLY answer the current question
-        - Keep answers concise, natural, and conversational
-        - Do NOT include source citations, references, or document names in your answer
-        - Do NOT add "(Source: ...)" or similar references in your response
-        - Provide direct, clean answers without metadata
+        - Use ONLY information explicitly stated in the provided context below
+        - NEVER use your general knowledge, common sense, or make educated guesses
+        - NEVER invent numbers, percentages, thresholds, or specific policy details (e.g., "75%", "two weeks", "five steps")
+        - NEVER extrapolate or infer consequences that aren't explicitly stated in the context
+        - NEVER add procedural steps or requirements not mentioned in the context
+        - NEVER mention specific courses, departments, or entities unless they appear in the context
+        
+        ⚠️ VERIFICATION CHECKLIST (check before responding):
+        1. Is EVERY specific detail in my answer explicitly present in the context?
+        2. Did I invent any numbers, percentages, or thresholds? If yes, REFUSE.
+        3. Did I extrapolate consequences not stated in the context? If yes, REFUSE.
+        4. Did I use phrases like "typically", "usually", "may lead to" without explicit context? If yes, REFUSE.
+        5. If the context only says something "may" happen, do NOT provide specific details about what happens.
+        
+        WHEN TO REFUSE (STRICT REFUSAL POLICY):
+        - If the context is vague (e.g., "may influence eligibility") - Answer ONLY what's stated, do NOT elaborate
+        - If specific numbers/thresholds are asked but not in context - REFUSE IMMEDIATELY
+        - Questions about clubs/societies unless explicitly mentioned in context
+        - Questions about campus facilities, locations, or infrastructure
+        - Questions about specific people (faculty, staff, students) unless in context
+        - Questions about events, schedules, or activities not in the documents
+        - Anything requiring real-world knowledge beyond the provided academic policies
+        - Any question where the answer would require you to invent details
+        
+        REFUSAL RESPONSE:
+        If the context does not contain sufficient specific information, you MUST respond with: 
+        "I don't have specific information about that in the academic documents I have access to. The documents mention [summarize ONLY what's actually stated], but don't provide the specific details you're asking about. Please contact the academic office directly or check the student portal for more precise information."
         
         SPECIAL CASES - Conversational Closings:
         - If the user says "bye", "goodbye", or similar closing: respond with ONLY "Goodbye! Feel free to return if you have more questions."
@@ -103,13 +144,15 @@ Provide a clear, direct answer to the current question above:"""
         - Do NOT repeat the same response multiple times in a row
         
         FORMATTING RULES:
-        - Write in a friendly, helpful tone
         - Use natural language without technical annotations
         - Answer as if you're having a conversation with a student
         - Never mention document names, sections, or source identifiers in your response
         - Use very simple markdown for formatting (e.g., bullet points, bold) if needed
+        - If you can only partially answer, clearly state what information is missing
         
-        Remember: You are a zero-knowledge baseline system. Accuracy is more important than coverage.
+        Remember: You are a zero-knowledge baseline system. Accuracy is more important than coverage. When in doubt, refuse. Better to say "I don't know" than to provide incorrect information.
+        
+        ⛔ HALLUCINATION = FAILURE. If you cannot answer using ONLY the provided context, you MUST refuse.
         """
         
         return instructions
@@ -119,15 +162,17 @@ Provide a clear, direct answer to the current question above:"""
         query: str,
         context: str,
         conversation_history: List[Dict[str, str]] = None,
-        preference_instructions: Optional[str] = None
+        preference_instructions: Optional[str] = None,
+        user_context: Optional[str] = None
     ) -> str:
         try:
-            # Create the prompt with history and preferences
+            # Create the prompt with history, preferences, and user context
             prompt = self.create_rag_prompt(
                 query, 
                 context, 
                 conversation_history=conversation_history,
-                preference_instructions=preference_instructions
+                preference_instructions=preference_instructions,
+                user_context=user_context
             )
             
             # Call appropriate API based on provider
@@ -157,44 +202,162 @@ Provide a clear, direct answer to the current question above:"""
             return "I apologize, but I encountered an error while generating a response."
     
     def should_refuse(self, context: str, query: str) -> bool:
+        """
+        Enhanced refusal logic that checks if context is sufficient to answer the query.
+        Returns True if we should refuse to answer.
+        """
+        import re
         
         # Check if context is empty or too short
         if not context or len(context.strip()) < 50:
             return True
+        
+        # If query asks about specific numbers/thresholds, check if context has them
+        number_queries = ['how many', 'how much', 'percentage', '%', 'threshold', 'minimum', 'maximum']
+        asks_for_numbers = any(phrase in query.lower() for phrase in number_queries)
+        
+        if asks_for_numbers:
+            # Check if context has actual numbers
+            has_percentages = bool(re.search(r'\d+%', context))
+            has_numbers = bool(re.search(r'\b\d+\s+(weeks?|days?|months?|credits?|points?|hours?)\b', context))
+            
+            # If query asks for numbers but context doesn't have them, refuse
+            if not (has_percentages or has_numbers):
+                print(f"   ⚠️ Query asks for specific numbers but context lacks them - refusing")
+                return True
+        
+        # Check if context is just generic/vague and doesn't actually answer the question
+        # If context is very short and only has vague language, it's probably not sufficient
+        vague_only_phrases = ['may be', 'may influence', 'potentially', 'could', 'might']
+        vague_count = sum(1 for phrase in vague_only_phrases if phrase in context.lower())
+        
+        # If context is short AND mostly vague, consider refusing
+        if len(context.strip()) < 200 and vague_count >= 2:
+            print(f"   ⚠️ Context is too vague ({vague_count} vague phrases in short context) - refusing")
+            return True
+        
         return False
     
-    def get_refusal_message(self) -> str:
-        return (
-            "I don't have information about that in the academic documents "
-            "I have access to. Please contact the academic office directly "
-            "or check the student portal for more information."
+    def detect_hallucination(self, answer: str, context: str) -> Dict[str, any]:
+        """
+        Detect potential hallucinations by checking if specific facts in answer appear in context.
+        Returns dict with 'is_hallucinating' bool and 'hallucination_indicators' list.
+        """
+        import re
+        
+        hallucination_indicators = []
+        
+        # Extract percentages from answer (e.g., "75%", "80%")
+        answer_percentages = set(re.findall(r'\b\d+%', answer))
+        context_percentages = set(re.findall(r'\b\d+%', context))
+        
+        # Check if answer has percentages not in context
+        invented_percentages = answer_percentages - context_percentages
+        if invented_percentages:
+            hallucination_indicators.append(f"Invented percentages: {', '.join(invented_percentages)}")
+        
+        # Extract specific numbers followed by common units/words
+        # Pattern: number + (weeks|days|months|years|steps|points|courses|credits)
+        number_pattern = r'\b(\d+)\s+(weeks?|days?|months?|years?|steps?|points?|courses?|credits?|semesters?)\b'
+        answer_numbers = set(re.findall(number_pattern, answer.lower()))
+        context_numbers = set(re.findall(number_pattern, context.lower()))
+        
+        invented_numbers = answer_numbers - context_numbers
+        if invented_numbers:
+            hallucination_indicators.append(f"Invented specific counts: {', '.join([f'{num} {unit}' for num, unit in invented_numbers])}")
+        
+        # Check for suspicious patterns that indicate extrapolation
+        suspicious_patterns = [
+            (r'step \d+:', 'numbered steps'),
+            (r'consequence', 'consequences'),
+            (r'will be required to', 'specific requirements'),
+            (r'must meet with', 'specific procedures'),
+            (r'may lead to', 'extrapolated outcomes'),
+        ]
+        
+        for pattern, description in suspicious_patterns:
+            if re.search(pattern, answer.lower()) and not re.search(pattern, context.lower()):
+                # Only flag if the answer is being very specific about something vague in context
+                if 'may' in answer.lower() and ('must' in answer.lower() or 'will' in answer.lower()):
+                    hallucination_indicators.append(f"Extrapolation detected: {description}")
+        
+        # Check for invented policy details
+        # If answer mentions very specific procedures but context only has vague language
+        vague_context_indicators = ['may influence', 'may be considered', 'typically', 'generally']
+        has_vague_context = any(indicator in context.lower() for indicator in vague_context_indicators)
+        
+        specific_answer_indicators = ['you must', 'you will', 'you are required', 'it will', 'this will lead to']
+        has_specific_answer = any(indicator in answer.lower() for indicator in specific_answer_indicators)
+        
+        if has_vague_context and has_specific_answer:
+            hallucination_indicators.append("Converted vague context into specific claims")
+        
+        is_hallucinating = len(hallucination_indicators) > 0
+        
+        return {
+            'is_hallucinating': is_hallucinating,
+            'hallucination_indicators': hallucination_indicators,
+            'confidence': 'low' if is_hallucinating else 'medium'
+        }
+    
+    def get_refusal_message(self, context: str = None) -> str:
+        """
+        Generate a refusal message, optionally summarizing what IS in the context.
+        """
+        base_message = (
+            "I don't have specific information about that in the academic documents "
+            "I have access to."
         )
+        
+        # If context is provided and has some content, try to summarize what's actually there
+        if context and len(context.strip()) > 50:
+            # Check if context mentions the topic vaguely
+            if 'attendance' in context.lower():
+                base_message += (
+                    " The documents mention that attendance records may be considered "
+                    "as part of the Continuous Assessment framework and may influence eligibility, "
+                    "but don't provide specific thresholds or consequences."
+                )
+            elif 'may' in context.lower() or 'generally' in context.lower():
+                base_message += (
+                    " The documents provide some general information but lack the specific "
+                    "details needed to fully answer your question."
+                )
+        
+        base_message += (
+            " Please contact the academic office directly or check the student portal "
+            "for more precise information."
+        )
+        
+        return base_message
     
     def generate_with_validation(
         self,
         query: str,
         context: str,
         conversation_history: List[Dict[str, str]] = None,
-        preference_instructions: Optional[str] = None
+        preference_instructions: Optional[str] = None,
+        user_context: Optional[str] = None
     ) -> Dict[str, any]:
         
         # Check if should refuse
         if self.should_refuse(context, query):
             return {
-                'answer': self.get_refusal_message(),
+                'answer': self.get_refusal_message(context),
                 'refused': True,
                 'context_used': False,
                 'sources_count': 0,
                 'confidence': 'none'
             }
         
-        # Generate answer with history and preferences
+        # Generate answer with history, preferences, and user context
         try:
             answer = self.generate(
                 query, 
                 context, 
                 conversation_history=conversation_history,
-                preference_instructions=preference_instructions
+                preference_instructions=preference_instructions,
+                user_context=user_context
             )
             
             # Check if LLM generated a refusal response (even when we didn't explicitly refuse)
@@ -202,6 +365,7 @@ Provide a clear, direct answer to the current question above:"""
             refusal_indicators = [
                 "I don't have information",
                 "I don't have that information",
+                "I don't have specific information",
                 "not in the academic documents",
                 "cannot find information",
                 "no information about that"
@@ -211,11 +375,31 @@ Provide a clear, direct answer to the current question above:"""
             
             if is_refusal:
                 return {
-                    'answer': self.get_refusal_message(),
+                    'answer': self.get_refusal_message(context),
                     'refused': True,
                     'context_used': False,
                     'sources_count': 0,
                     'confidence': 'none'
+                }
+            
+            # ⚠️ NEW: Detect hallucinations in the generated answer
+            hallucination_check = self.detect_hallucination(answer, context)
+            
+            if hallucination_check['is_hallucinating']:
+                print(f"\n🚨 HALLUCINATION DETECTED!")
+                for indicator in hallucination_check['hallucination_indicators']:
+                    print(f"   ⚠️ {indicator}")
+                print(f"   → Forcing refusal response")
+                
+                # Force refusal if hallucination detected
+                return {
+                    'answer': self.get_refusal_message(context),
+                    'refused': True,
+                    'context_used': False,
+                    'sources_count': 0,
+                    'confidence': 'none',
+                    'hallucination_detected': True,
+                    'hallucination_indicators': hallucination_check['hallucination_indicators']
                 }
             
             # Count sources (simple heuristic: number of [Source:...] markers)
@@ -223,7 +407,7 @@ Provide a clear, direct answer to the current question above:"""
             sources_count = len(re.findall(r'\[Source:', context))
             
             # Determine if context was actually used
-            context_used = len(answer) > 0 and answer != self.get_refusal_message()
+            context_used = len(answer) > 0 and answer != self.get_refusal_message(context)
             
             # Estimate confidence based on answer length and source count
             if sources_count >= 3 and len(answer) > 100:
@@ -237,13 +421,14 @@ Provide a clear, direct answer to the current question above:"""
                 'answer': answer,
                 'refused': False,
                 'context_used': context_used,
-                'confidence': confidence
+                'confidence': confidence,
+                'hallucination_detected': False
             }
             
         except Exception as e:
             print(f"Error in generate_with_validation: {e}")
             return {
-                'answer': self.get_refusal_message(),
+                'answer': self.get_refusal_message(context),
                 'refused': True,
                 'context_used': False,
                 'confidence': 'none'

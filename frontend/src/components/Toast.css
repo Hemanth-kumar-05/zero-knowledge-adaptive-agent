@@ -58,6 +58,14 @@
   color: #ef4444;
 }
 
+.toast-warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.toast-warning .toast-icon {
+  color: #f59e0b;
+}
+
 .toast-info {
   border-left: 4px solid #8e8ea0;
 }

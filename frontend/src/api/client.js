@@ -208,6 +208,56 @@ const api = {
     });
     return response.data;
   },
+
+  // Memory management endpoints
+  getMemory: async () => {
+    const response = await client.get('/memory/view');
+    return response.data;
+  },
+
+  storeFact: async (fact, requireConfirmation = true) => {
+    const response = await client.post('/memory/store', {
+      fact,
+      require_confirmation: requireConfirmation
+    });
+    return response.data;
+  },
+
+  updateFact: async (key, updates) => {
+    const response = await client.put(`/memory/update/${key}`, updates);
+    return response.data;
+  },
+
+  forgetFact: async (key) => {
+    const response = await client.delete(`/memory/forget/${key}`);
+    return response.data;
+  },
+
+  resetMemory: async (category = null) => {
+    const params = category ? { category } : {};
+    const response = await client.delete('/memory/reset', { params });
+    return response.data;
+  },
+
+  confirmFact: async (key) => {
+    const response = await client.post(`/memory/confirm/${key}`);
+    return response.data;
+  },
+
+  lockFact: async (key, locked) => {
+    const response = await client.post(`/memory/lock/${key}`, { locked });
+    return response.data;
+  },
+
+  setRetention: async (key, retention) => {
+    const response = await client.put(`/memory/retention/${key}`, { retention });
+    return response.data;
+  },
+
+  cleanupFacts: async () => {
+    const response = await client.post('/memory/cleanup');
+    return response.data;
+  },
 };
 
 export default api;

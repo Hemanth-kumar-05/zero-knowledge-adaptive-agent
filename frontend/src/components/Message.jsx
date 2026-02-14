@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Message.css';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import RiskAlertDisplay from './RiskAlertDisplay';
 
 /* ---------------- MARKDOWN CONFIG ---------------- */
 
@@ -71,6 +72,7 @@ function Message({ message, user }) {
 
   const topSources = message.metadata?.sources?.slice(0, 3) || [];
   const hasExtractedPreferences = message.extracted_preferences && message.extracted_preferences.length > 0;
+  const hasRiskAlerts = message.metadata?.risk_alerts && message.metadata.risk_alerts.length > 0;
 
   return (
     <div className={`message ${message.role} ${isError ? 'error' : ''}`}>
@@ -106,6 +108,13 @@ function Message({ message, user }) {
       </div>
 
       <div className="message-content">
+        {/* Risk Alert Indicator - Top Right */}
+        {!isUser && hasRiskAlerts && (
+          <div className="message-risk-indicator">
+            <RiskAlertDisplay riskAlerts={message.metadata.risk_alerts} />
+          </div>
+        )}
+
         {/* 🔥 FIXED MARKDOWN RENDERING */}
         <div
           className="message-text"

@@ -52,7 +52,8 @@ class RAGPipeline:
         conversation_history: list = None,
         conversation_metadata: dict = None,
         user_preferences: list = None,
-        preference_instructions: str = None
+        preference_instructions: str = None,
+        user_context: str = None
     ) -> Dict:
         
         conversation_history = conversation_history or []
@@ -66,6 +67,11 @@ class RAGPipeline:
             print(f"\n🎯 PERSONALIZATION ENABLED")
             print(f"  Applying {len(user_preferences)} user preferences")
         
+        # Log if user context is available
+        if user_context and self.verbose:
+            print(f"\n🧠 USER MEMORY ENABLED")
+            print(f"  User context: {user_context[:100]}..." if len(user_context) > 100 else f"  User context: {user_context}")
+        
         # First attempt with original query
         if self.verbose:
             print(f"\n🎯 ATTEMPT 1: Original query")
@@ -76,7 +82,8 @@ class RAGPipeline:
             min_similarity=min_similarity,
             conversation_history=conversation_history,
             conversation_metadata=conversation_metadata,
-            preference_instructions=preference_instructions
+            preference_instructions=preference_instructions,
+            user_context=user_context
         )
         
         # If refused AND we have conversation context, try rewriting
@@ -105,7 +112,8 @@ class RAGPipeline:
                     min_similarity=min_similarity,
                     conversation_history=conversation_history,
                     conversation_metadata=conversation_metadata,
-                    preference_instructions=preference_instructions
+                    preference_instructions=preference_instructions,
+                    user_context=user_context
                 )
                 
                 # Keep original question in result for user
@@ -132,7 +140,8 @@ class RAGPipeline:
         min_similarity: float,
         conversation_history: list,
         conversation_metadata: dict,
-        preference_instructions: str = None
+        preference_instructions: str = None,
+        user_context: str = None
     ) -> Dict:
         """Execute a single query attempt."""
         
@@ -171,7 +180,8 @@ class RAGPipeline:
             query=question,
             context=context,
             conversation_history=conversation_history,
-            preference_instructions=preference_instructions
+            preference_instructions=preference_instructions,
+            user_context=user_context
         )
         generation_time = (time.time() - generation_start) * 1000
         

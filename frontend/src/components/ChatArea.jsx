@@ -2,11 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { FaMagic } from 'react-icons/fa';
 import './ChatArea.css';
 import Message from './Message';
+import SessionWarning from './SessionWarning';
 
-function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSidebarOpen, onToggleSidebar, currentSession, user, showToast }) {
+function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSidebarOpen, onToggleSidebar, currentSession, user, showToast, onNewSession }) {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
+  const [sessionWarning, setSessionWarning] = useState(null);
+  const [dismissedWarning, setDismissedWarning] = useState(false);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -15,6 +18,16 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Check for session limit warning in latest message
+  useEffect(() => {
+    if (messages.length > 0 && !dismissedWarning) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.role === 'assistant' && lastMessage.metadata?.session_limit_warning) {
+        setSessionWarning(lastMessage.metadata.session_limit_warning);
+      }
+    }
+  }, [messages, dismissedWarning]);
 
   // Check for newly extracted preferences
   useEffect(() => {
@@ -78,6 +91,21 @@ function ChatArea({ messages, onSendMessage, loading, error, onClearError, isSid
           <span>{error}</span>
           <button onClick={onClearError}>×</button>
         </div>
+      )}
+      
+      {sessionWarning && !dismissedWarning && (
+        <SessionWarning 
+          warning={sessionWarning}
+          onNewSession={() => {
+            setDismissedWarning(true);
+            setSessionWarning(null);
+            if (onNewSession) onNewSession();
+          }}
+          onContinue={() => {
+            setDismissedWarning(true);
+            setSessionWarning(null);
+          }}
+        />
       )}
 
       <div className="messages-container">

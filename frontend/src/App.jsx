@@ -7,6 +7,7 @@ import ChatArea from './components/ChatArea';
 import Auth from './components/Auth';
 import OAuthCallback from './components/OAuthCallback';
 import PreferencesPage from './components/PreferencesPage';
+import MemoryDashboard from './components/MemoryDashboard';
 import Toast from './components/Toast';
 import { auth } from './utils/auth';
 
@@ -23,8 +24,8 @@ function ChatView() {
   const [user, setUser] = useState(auth.getUser());
   const [toast, setToast] = useState(null);
 
-  const showToast = (message, type = 'info') => {
-    setToast({ message, type });
+  const showToast = (message, type = 'info', duration = 5000) => {
+    setToast({ message, type, duration });
   };
 
   useEffect(() => {
@@ -147,10 +148,30 @@ function ChatView() {
         metadata: { 
           sources: response.sources,
           confidence: response.confidence,
-          refused: response.refused
+          refused: response.refused,
+          risk_alerts: response.risk_alerts, // NEW: Risk alerts from AI analysis
+          session_limit_warning: response.session_limit_warning // NEW: Session limit warning
         },
       };
       setMessages((prev) => [...prev, assistantMessage]);
+      
+      // Show session limit warning toast if present
+      if (response.session_limit_warning) {
+        const warning = response.session_limit_warning;
+        if (warning.severity === 'high') {
+          showToast(
+            `⚠️ ${warning.message}`,
+            'warning',
+            10000  // Show for 10 seconds
+          );
+        } else if (warning.severity === 'medium') {
+          showToast(
+            `ℹ️ ${warning.message}`,
+            'info',
+            8000  // Show for 8 seconds
+          );
+        }
+      }
 
       // Update session in list (increment message count)
       setSessions(prevSessions => 
@@ -246,11 +267,13 @@ function ChatView() {
         currentSession={currentSession}
         user={user}
         showToast={showToast}
+        onNewSession={createNewSession}
       />
       {toast && (
         <Toast
           message={toast.message}
           type={toast.type}
+          duration={toast.duration}
           onClose={() => setToast(null)}
         />
       )}
@@ -333,6 +356,82 @@ function PreferencesView() {
   );
 }
 
+function MemoryView() {
+  const navigate = useNavigate();
+  const [sessions, setSessions] = useState([]);
+  const [user, setUser] = useState(auth.getUser());
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = 'info') => {
+    setToast({ message, type });
+  };
+
+  useEffect(() => {
+    if (user) {
+      loadSessions();
+    }
+  }, [user]);
+
+  const loadSessions = async () => {
+    try {
+      const data = await api.getSessions();
+      setSessions(data.sessions || []);
+    } catch (error) {
+      console.error('Failed to load sessions:', error);
+      showToast('Failed to load sessions', 'error');
+    }
+  };
+
+  const handleLogout = () => {
+    auth.logout();
+    setUser(null);
+    navigate('/');
+  };
+
+  const handleDeleteSession = async (sessionId) => {
+    try {
+      await api.deleteSession(sessionId);
+      setSessions(sessions.filter(s => s.id !== sessionId));
+      showToast('Chat deleted successfully', 'success');
+    } catch (error) {
+      console.error('Failed to delete session:', error);
+      showToast('Failed to delete session', 'error');
+    }
+  };
+
+  return (
+    <div className="app">
+      <Sidebar
+        sessions={sessions}
+        currentSession={null}
+        onNewChat={() => navigate('/')}
+        onSelectSession={(session) => navigate(`/${session.id}`)}
+        onRefresh={loadSessions}
+        isOpen={isSidebarOpen}
+        onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+        user={user}
+        healthStatus={null}
+        onLogout={handleLogout}
+        onDeleteSession={handleDeleteSession}
+      />
+      <MemoryDashboard 
+        user={user}
+        isSidebarOpen={isSidebarOpen} 
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        showToast={showToast}
+      />
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+    </div>
+  );
+}
+
 function App() {
   const navigate = useNavigate();
 
@@ -348,6 +447,7 @@ function App() {
       <Route path="/:sessionId" element={<ChatView />} />
       <Route path="/auth/callback" element={<OAuthCallback onSuccess={handleAuthSuccess} />} />
       <Route path="/preferences" element={<PreferencesView />} />
+      <Route path="/memory" element={<MemoryView />} />
     </Routes>
   );
 }

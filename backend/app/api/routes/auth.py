@@ -54,13 +54,36 @@ async def initiate_google_auth(request: GoogleAuthRequest):
 
 
 @router.get("/google/callback")
-async def google_callback(code: str, db=Depends(get_db)):
+async def google_callback(code: str = None, error: str = None, db=Depends(get_db)):
     """
     Handle Google OAuth callback
     Exchange authorization code for user info and generate JWT
     """
     try:
+        # Check for OAuth errors
+        if error:
+            logger.error(f"OAuth error from Google: {error}")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Authentication failed: {error}"
+            )
+        
+        if not code:
+            logger.error("No authorization code received")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="No authorization code received"
+            )
+        
         logger.info("Processing Google OAuth callback with code")
+        
+        # Validate config
+        if not Config.GOOGLE_CLIENT_ID or not Config.GOOGLE_CLIENT_SECRET:
+            logger.error("Google OAuth credentials not configured")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="OAuth not configured properly"
+            )
         
         # Exchange authorization code for tokens
         from google.oauth2.credentials import Credentials
@@ -86,16 +109,36 @@ async def google_callback(code: str, db=Depends(get_db)):
         )
         flow.redirect_uri = Config.GOOGLE_REDIRECT_URI
         
-        # Exchange code for tokens
-        flow.fetch_token(code=code)
-        credentials = flow.credentials
+        logger.info(f"Using redirect URI: {Config.GOOGLE_REDIRECT_URI}")
         
-        # Verify the ID token
-        idinfo = id_token.verify_oauth2_token(
-            credentials.id_token,
-            requests.Request(),
-            Config.GOOGLE_CLIENT_ID
-        )
+        # Exchange code for tokens
+        try:
+            flow.fetch_token(code=code)
+            credentials = flow.credentials
+            logger.info("Successfully exchanged code for tokens")
+        except Exception as token_error:
+            logger.error(f"Token exchange failed: {str(token_error)}")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"Failed to exchange authorization code: {str(token_error)}"
+            )
+        
+        # Verify the ID token with clock skew tolerance
+        try:
+            # Add 60 seconds of clock skew tolerance to handle time sync issues
+            idinfo = id_token.verify_oauth2_token(
+                credentials.id_token,
+                requests.Request(),
+                Config.GOOGLE_CLIENT_ID,
+                clock_skew_in_seconds=60
+            )
+            logger.info("ID token verified successfully")
+        except Exception as verify_error:
+            logger.error(f"Token verification failed: {str(verify_error)}")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail=f"Token verification failed: {str(verify_error)}"
+            )
         
         # Check issuer
         if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:

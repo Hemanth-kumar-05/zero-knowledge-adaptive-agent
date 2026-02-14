@@ -12,6 +12,15 @@ class Source(BaseModel):
     similarity: float
     confidence: float
 
+class RiskAlert(BaseModel):
+    """Risk alert detected from conversation patterns"""
+    risk_type: str  # 'attendance', 'deadline', 'policy_confusion'
+    severity: str  # 'low', 'medium', 'high'
+    confidence: float  # 0.0 to 1.0
+    message: str
+    indicators: List[str]
+    detected_at: str  # ISO format datetime
+
 class QueryResponse(BaseModel):
     question: str
     answer: str
@@ -19,3 +28,5 @@ class QueryResponse(BaseModel):
     refused: bool = Field(default=False)
     session_id: str
     confidence: Optional[str]
+    risk_alerts: Optional[List[RiskAlert]] = Field(default=None)  # NEW: Risk alerts
+    session_limit_warning: Optional[dict] = Field(default=None)  # NEW: Session limit suggestion
