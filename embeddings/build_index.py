@@ -70,6 +70,7 @@ class VectorIndex:
             similarity = results['distances'][0][i]
             if similarity >= min_similarity:
                 hit = {
+                    'id': results['ids'][0][i],  # Include chunk ID for policy unlearning
                     'text': results['documents'][0][i],
                     'metadata': results['metadatas'][0][i],
                     'similarity': similarity
@@ -134,43 +135,16 @@ def build_index_from_documents(
 #         data_dir="data/raw",
 #         chunk_size=800,
 #         chunk_overlap=100,
-#         recreate=True
+#         recreate=False  # Set to True to reset index during testing
 #     )
     
-#     # Test search
+#     # Get stats
 #     if index:
-#         print("\n" + "="*60)
-#         print("🔍 Testing Search Functionality")
-#         print("="*60)
-        
-#         embedder = Embedder()
-        
-#         test_queries = [
-#             "How do I register for exams?",
-#             "What is the grading system?",
-#             "Tell me about final year projects"
-#         ]
-        
-#         for query in test_queries:
-#             print(f"\n📝 Query: '{query}'")
-#             results = index.search(query, embedder, top_k=3)
-            
-#             if results:
-#                 print(f"   Found {len(results)} relevant chunks:")
-#                 for i, result in enumerate(results, 1):
-#                     print(f"\n   [{i}] Similarity: {result.get('similarity', 0):.3f}")
-#                     print(f"       Doc ID: {result['metadata'].get('doc_id', 'unknown')}")
-#                     print(f"       Section: {result['metadata'].get('section', 'unknown')}")
-#                     print(f"       Type: {result['metadata'].get('type', 'unknown')}")
-#                     print(f"       Text: {result['text'][:100]}...")
-#             else:
-#                 print("   ⚠️  No relevant results found")
+#         stats = index.get_stats()
+#         print(f"\n📊 Index Stats:")
+#         print(f"   Collection: {stats['collection_name']}")
+#         print(f"   Total chunks: {stats['total_documents']}")
     
 #     print("\n" + "="*60)
-#     print("✅ All tests complete!")
+#     print("✅ Index rebuild complete!")
 #     print("="*60)
-#     print("\n💡 Next steps:")
-#     print("   1. Experiment with different chunk_size values")
-#     print("   2. Try different embedding models")
-#     print("   3. Test with more queries")
-#     print("   4. Move on to building the RAG pipeline (generate.py)")

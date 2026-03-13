@@ -5,6 +5,7 @@ from app.db.repositories.log_queries_repo import QueryLogRepository
 from app.db.repositories.sessions_repo import SessionRepository
 from app.db.repositories.messages_repo import MessageRepository
 from app.db.repositories.users_repo import UsersRepository
+from app.db.repositories.extensions_repo import ExtensionsRepository
 from app.utils.context_builder import ConversationContextBuilder
 from app.services.preference_extraction_service import AIPreferenceExtractor
 from app.services.preference_application_service import preference_applier
@@ -14,6 +15,22 @@ from app.services.memory_control_service import create_memory_controller
 from datetime import datetime
 from bson import ObjectId
 import logging
+import asyncio
+
+# Phase 3: Policy Unlearning imports (conditional)
+try:
+    from config import config
+    if config.ENABLE_POLICY_UNLEARNING:
+        from app.services.claim_detection_service import claim_detection_agent
+        from app.services.contradiction_analyzer_service import contradiction_analyzer
+        from app.services.evidence_extraction_service import evidence_extractor
+        from app.services.trust_scoring_service import trust_scorer
+        from app.db.repositories.policy_update_tickets_repo import PolicyUpdateTicketsRepository
+        PHASE_3_ENABLED = True
+    else:
+        PHASE_3_ENABLED = False
+except ImportError:
+    PHASE_3_ENABLED = False
 
 logger = logging.getLogger(__name__)
 
@@ -28,6 +45,7 @@ class QueryService:
         self.session_repo = None
         self.message_repo = None
         self.users_repo = None
+        self.extension_repo = None
         self.context_builder = None
         self.preference_extractor = AIPreferenceExtractor()
 
@@ -51,21 +69,80 @@ class QueryService:
             self.users_repo = UsersRepository(MongoDB.get_db())
         return self.users_repo
     
+    def _get_extension_repo(self) -> ExtensionsRepository:
+        if self.extension_repo is None:
+            self.extension_repo = ExtensionsRepository(MongoDB.get_db())
+        return self.extension_repo
+    
     def _get_context_builder(self) -> ConversationContextBuilder:
         if self.context_builder is None:
             # We'll pass the OpenAI client later, for now use None
             self.context_builder = ConversationContextBuilder(None)
         return self.context_builder
 
-    async def query(self, request: QueryRequest, user_id: str = None) -> QueryResponse | str:
+    async def query(self, request: QueryRequest, user_id: str = None, file_data: dict = None) -> QueryResponse | str:
         """Handle user query and return answer with sources."""
         if not request.question or not request.session_id:
             return "Invalid request"
+
+        # Store original question for display/saving
+        original_question = request.question
 
         # Check if session exists
         session_exists = await self._get_session_repo().session_exists(request.session_id)
         if not session_exists:
             return "Session not found. Please create a new session first."
+        
+        # Fetch session details to check for extension
+        session = await self._get_session_repo().get_session(request.session_id)
+        extension_system_prompt = None
+        script_execution_result = None
+        augmented_prompt = None  # For extensions - full prompt with data
+        
+        # If session has an extension, fetch its system prompt
+        if session and session.get("extension_id"):
+            extension_id = session.get("extension_id")
+            extension = await self._get_extension_repo().get_extension_by_id(extension_id)
+            if extension:
+                extension_system_prompt = extension.get("system_prompt")
+                print(f"\n🧩 EXTENSION MODE ACTIVE")
+                print(f"Extension: {extension.get('name')}")
+                print(f"Extension ID: {extension_id}")
+                
+                # Execute extension script if file was uploaded
+                if file_data and extension.get("extension_type") == "script-based":
+                    print(f"\n📁 FILE UPLOAD DETECTED - Executing extension script...")
+                    from app.services.extension_executor import ExtensionExecutor
+                    
+                    executor = ExtensionExecutor(MongoDB.get_db())
+                    script_result = await executor.execute_script(
+                        extension=extension,
+                        file_data=file_data["content"],  # Pass bytes content
+                        session_id=request.session_id,
+                        user_id=user_id or "anonymous"
+                    )
+                    
+                    if script_result.get("success"):
+                        script_execution_result = script_result.get("result")
+                        print(f"✅ Script executed successfully")
+                        print(f"Result type: {script_execution_result.get('result_type')}")
+                        
+                        # Build augmented prompt for LLM (don't modify request.question)
+                        script_prompt = script_execution_result.get("mapping_prompt") or script_execution_result.get("prompt") or ""
+                        if script_prompt:
+                            augmented_prompt = f"{original_question}\n\n{script_prompt}"
+                            print(f"📋 Built augmented prompt for LLM ({len(augmented_prompt)} chars)")
+                    else:
+                        print(f"❌ Script execution failed: {script_result.get('error')}")
+                        # Return error to user
+                        return QueryResponse(
+                            question=original_question,
+                            answer=f"Error processing file: {script_result.get('error')}",
+                            sources=[],
+                            refused=False,
+                            session_id=request.session_id,
+                            confidence="low"
+                        )
         
         # Fetch conversation history for this session
         conversation_history = await self._get_message_repo().get_session_messages(request.session_id)
@@ -76,7 +153,7 @@ class QueryService:
         
         # Build smart context from history
         context_builder = self._get_context_builder()
-        formatted_history = context_builder.build_context(conversation_history, request.question)
+        formatted_history = context_builder.build_context(conversation_history, original_question)
         
         # Get conversation metadata
         conversation_metadata = context_builder.build_system_context(conversation_history)
@@ -114,31 +191,94 @@ class QueryService:
                         user_preferences
                     )
                     
-                    logger.info(
-                        f"🎯 Applying {len(applied_preferences)} preferences for user {user_id}"
-                    )
+                    # logger.info(
+                    #     f"🎯 Applying {len(applied_preferences)} preferences for user {user_id}"
+                    # )
                 
                 # Build user context from stored facts
                 memory_controller = create_memory_controller(self._get_users_repo())
                 user_context = await memory_controller.build_user_context(user_id)
                 
-                if user_context:
-                    logger.info(f"🧠 User context built from memory: {len(user_context)} characters")
+                # if user_context:
+                    # logger.info(f"🧠 User context built from memory: {len(user_context)} characters")
 
-        # Pass history, preferences, and user context to RAG adapter
-        rag_response = self.rag_adapter.query(
-            request.question,
-            conversation_history=formatted_history,
-            conversation_metadata=conversation_metadata,
-            user_preferences=user_preferences,
-            preference_instructions=preference_instructions,
-            user_context=user_context
-        )
+        # === EXTENSION DIRECT GENERATION - BYPASS RAG ===
+        # Extensions (both script-based and prompt-based) bypass RAG
+        if extension_system_prompt:
+            print(f"\n🎯 EXTENSION DIRECT GENERATION - Bypassing RAG pipeline")
+            
+            # Import Generator
+            from rag.generate import Generator
+            generator = Generator()
+            
+            # For script-based: use augmented prompt (with data)
+            # For prompt-based: use original question
+            query_for_llm = augmented_prompt or original_question
+            print(f"Using Generator directly with {'script-augmented' if augmented_prompt else 'original'} prompt")
+            
+            # Generate response directly (no RAG retrieval needed)
+            answer = generator.generate(
+                query=query_for_llm,
+                context="",  # No context needed - extension prompt is self-contained
+                conversation_history=formatted_history,
+                preference_instructions=None,  # Extensions don't use preferences
+                user_context=None,
+                extension_system_prompt=extension_system_prompt
+            )
+            
+            # Build response without sources
+            rag_response = {
+                "answer": answer,
+                "sources": [],
+                "refused": False,
+                "confidence": "high"
+            }
+            print(f"✅ Extension response generated ({len(answer)} chars)")
+        else:
+            # Standard RAG pipeline for regular queries
+            # Pass history, preferences, and user context to RAG adapter
+            rag_response = self.rag_adapter.query(
+                original_question,  # Use original question for RAG
+                conversation_history=formatted_history,
+                conversation_metadata=conversation_metadata,
+                user_preferences=user_preferences,
+                preference_instructions=preference_instructions,
+                user_context=user_context
+            )
+
+        print("🔍 RAG response received")
+        print(f"🔍 RAG Response keys: {rag_response.keys()}")
+        print(f"🔍 RAG Response sources count: {len(rag_response.get('sources', []))}")
+        print(f"🔍 RAG Response refused: {rag_response.get('refused', False)}")
+
+        # === PHASE 3: POLICY CLAIM DETECTION ===
+        # Detect policy change claims and request proof from user
+        policy_claim_detected = None
+        print(f"🔍 Phase 3 check: ENABLED={PHASE_3_ENABLED}, user_id={user_id}")
+        if PHASE_3_ENABLED and user_id:
+            print(f"🔍 Phase 3 claim detection starting for user {user_id}")
+            logger.info(f"🔍 Phase 3 claim detection starting for user {user_id}")
+            try:
+                policy_claim_detected = await self._detect_policy_claims(
+                    user_id=user_id,
+                    session_id=request.session_id,
+                    user_message=original_question,
+                    rag_sources=rag_response.get("sources", [])
+                )
+            except Exception as e:
+                print(f"❌ Error in claim detection: {e}")
+                logger.error(f"❌ Error in claim detection: {e}", exc_info=True)
+        elif PHASE_3_ENABLED and not user_id:
+            print(f"⚠️  Phase 3 enabled but no user_id - skipping")
+            logger.warning(f"⚠️  Phase 3 enabled but no user_id - skipping policy claim detection")
+        else:
+            print(f"Phase 3 skipped (enabled={PHASE_3_ENABLED}, user_id={user_id})")
+            logger.debug(f"Phase 3 claim detection skipped (enabled={PHASE_3_ENABLED}, user_id={user_id})")
 
         log_data = {
             "session_id": request.session_id,  # Will be converted to ObjectId in repository
             "user_id": user_id,  # Add user_id to query logs
-            "question": request.question,
+            "question": original_question,
             "answer": rag_response.get("answer", ""),
             "sources": rag_response.get("sources", []),
             "refused": rag_response.get("refused", False),
@@ -155,18 +295,18 @@ class QueryService:
             if user_id and conversation_history:
                 message_count = len(conversation_history)
                 simple_greetings = ["hi", "hey", "hello", "bye", "goodbye", "thanks", "thank you", "ok", "okay"]
-                is_simple = request.question.lower().strip() in simple_greetings
+                is_simple = original_question.lower().strip() in simple_greetings
                 
                 should_analyze = (
                     message_count >= 2 and 
                     not is_simple and
-                    len(request.question.split()) > 2
+                    len(original_question.split()) > 2
                 )
                 
                 if should_analyze:
                     detected_risks = await risk_predictor.analyze_risks(
                         conversation_history=conversation_history,
-                        current_question=request.question
+                        current_question=original_question
                     )
                     
                     if detected_risks:
@@ -188,7 +328,7 @@ class QueryService:
             await self._get_message_repo().create_message(
                 session_id=request.session_id,
                 role="user",
-                content=request.question,
+                content=original_question,
                 user_id=user_id  # Add user_id to messages
             )
             await self._get_session_repo().increment_message_count(request.session_id)
@@ -224,7 +364,7 @@ class QueryService:
                 message_count = len(messages)
                 
                 # Skip on very short messages (greetings, single words)
-                last_user_msg = request.question
+                last_user_msg = original_question
                 is_substantial = len(last_user_msg.split()) > 2  # At least 3 words
                 
                 if is_substantial:
@@ -294,15 +434,35 @@ class QueryService:
                 ) for alert in risk_alerts_list
             ]
         
+        # Prepare policy claim data if detected
+        policy_claim_response = None
+        if policy_claim_detected:
+            from app.api.schemas.query import PolicyClaimDetected
+            policy_claim_response = PolicyClaimDetected(
+                claim_detected=True,
+                ticket_id_pending=policy_claim_detected["ticket_id_pending"],
+                claim_text=policy_claim_detected["claim_text"],
+                claim_type=policy_claim_detected["claim_type"],
+                confidence_level=policy_claim_detected["confidence_level"],
+                trust_score=policy_claim_detected["trust_score"],
+                requires_proof=True,
+                message_to_user=(
+                    f"I noticed you mentioned a policy change. To help verify this information, "
+                    f"could you please upload supporting documents (circular, official notice, or screenshot)? "
+                    f"This will help our team  review and update the policy database if needed."
+                )
+            )
+        
         response = QueryResponse(
-            question=rag_response.get("question", request.question),
+            question=rag_response.get("question", original_question),
             answer=rag_response.get("answer", "Error generating answer."),
             sources=sources if sources else None,
             refused=rag_response.get("refused", False),
             session_id=request.session_id,
             confidence=rag_response.get("confidence"),
             risk_alerts=risk_alerts_for_response,
-            session_limit_warning=session_warning
+            session_limit_warning=session_warning,
+            policy_claim_detected=policy_claim_response
         )
 
         return response if response.answer else "Error generating answer."
@@ -510,6 +670,202 @@ class QueryService:
             
         except Exception as e:
             logger.error(f"❌ Error in fact extraction: {e}", exc_info=True)
+    
+    async def _should_analyze_for_claims(self, user_message: str) -> bool:
+        """
+        Use LLM to quickly determine if the message warrants policy claim detection.
+        Returns True if the message appears to be making a policy claim, False otherwise.
+        """
+        from groq import Groq
+        import os
+        
+        try:
+            client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+            
+            prompt = f"""You are a classifier that determines if a user message contains a policy claim or update.
+
+A policy claim would be statements like:
+- "The new circular says CA is 50%"
+- "According to the latest update, internships are now mandatory"
+- "The policy changed - ESE is now 60%"
+- "I heard that the add/drop deadline is extended"
+
+NOT policy claims:
+- Simple greetings: "Hi", "Hello", "Thanks"
+- Questions about existing policy: "What is the CA weightage?"
+- Acknowledgments: "Ok", "Got it", "Thanks"
+- Short responses: "Yes", "No", "Sure"
+
+User message: "{user_message}"
+
+Does this message contain a policy claim or update? Answer with ONLY "yes" or "no"."""
+
+            response = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=10
+            )
+            
+            answer = response.choices[0].message.content.strip().lower()
+            print(f"🤖 LLM decision for '{user_message[:50]}': {answer}")
+            
+            return "yes" in answer
+            
+        except Exception as e:
+            print(f"❌ Error in LLM pre-check: {e}")
+            # On error, default to analyzing (safer to check than miss)
+            return True
+    
+    async def _detect_policy_claims(
+        self,
+        user_id: str,
+        session_id: str,
+        user_message: str,
+        rag_sources: list
+    ):
+        """
+        Phase 3: Detect policy change claims and create review tickets
+        Runs as non-blocking background task
+        
+        Args:
+            user_id: Authenticated user ID
+            session_id: Current session ID
+            user_message: User's message to analyze
+            rag_sources: Retrieved chunks from RAG
+        """
+        try:
+            if not PHASE_3_ENABLED:
+                print("📊 Phase 3 not enabled, returning")
+                return
+            
+            # Use LLM to quickly check if message warrants claim detection
+            should_analyze = await self._should_analyze_for_claims(user_message)
+            if not should_analyze:
+                print(f"📊 LLM decided to skip claim detection for: '{user_message[:50]}'")
+                return
+            
+            print(f"🔍 Phase 3: Analyzing message for policy claims")
+            logger.info(f"🔍 Phase 3: Analyzing message for policy claims")
+            
+            # Step 1: Detect claim
+            claim_result = await claim_detection_agent.detect_claim(user_message)
+            
+            if not claim_result or claim_result.get("claim_detected") is False:
+                logger.info("📊 No policy claim detected")
+                return
+            
+            claim_confidence = claim_result.get("confidence", 0.0)
+            claim_type = claim_result.get("claim_type", "unknown")
+            
+            logger.info(
+                f"🎯 Policy claim detected: {claim_type} "
+                f"(confidence: {claim_confidence:.2f})"
+            )
+            
+            # Step 2: Extract evidence FIRST (to check if user provides proof)
+            evidence_result = await evidence_extractor.extract_evidence(
+                claim_text=claim_result.get("claim_text", user_message),
+                user_message=user_message
+            )
+            
+            evidence_strength = evidence_result.get("evidence_strength", "weak")
+            # Collect evidence fields that have values
+            evidence_fields = {
+                k: v for k, v in evidence_result.items()
+                if k in ["circular_number", "date_mentioned", "policy_reference"] and v is not None
+            }
+            
+            has_evidence = len(evidence_fields) > 0
+            
+            logger.info(
+                f"📄 Evidence extracted: strength={evidence_strength}, "
+                f"fields={list(evidence_fields.keys())}"
+            )
+            
+            # Step 3: Analyze contradictions with retrieved chunks
+            print(f"🔍 About to call contradiction_analyzer with {len(rag_sources)} rag_sources")
+            contradiction_result = await contradiction_analyzer.analyze_contradiction(
+                claim_text=user_message,
+                retrieved_chunks=rag_sources
+            )
+            print(f"🔍 Contradiction analysis returned: {contradiction_result.get('contradictions_found')}")
+            
+            contradictions_found = contradiction_result.get("contradictions_found", False)
+            overall_confidence = contradiction_result.get("overall_confidence", 0.0)
+            affected_chunks = contradiction_result.get("affected_chunks", [])
+            print(f"🔍 Affected chunks count: {len(affected_chunks)}")
+            
+            # If no contradictions found BUT user provides evidence (circular, date),
+            # still proceed as it might be a new policy we don't know about yet
+            if not contradictions_found and not has_evidence:
+                logger.info("✅ No contradictions or evidence found - skipping claim")
+                return
+            
+            if contradictions_found:
+                logger.info(
+                    f"⚠️  Contradictions detected: {len(affected_chunks)} chunks affected "
+                    f"(confidence: {overall_confidence:.2f})"
+                )
+            elif has_evidence:
+                logger.info(
+                    f"📋 No contradictions detected, but user provided evidence - "
+                    f"treating as potential new/updated policy"
+                )
+            
+            # Step 4: Compute trust score (not async)
+            trust_result = trust_scorer.compute_trust_score(
+                claim_confidence=claim_confidence,
+                contradiction_confidence=contradiction_result.get("overall_confidence", 0.0),
+                evidence_strength=evidence_result.get("evidence_strength", "weak"),
+                user_history=None  # Future enhancement
+            )
+            
+            trust_score = trust_result.get("trust_score", 0.0)
+            requires_approval = trust_result.get("requires_approval", True)
+            confidence_level = trust_result.get("confidence_level", "low")
+            
+            logger.info(
+                f"⭐ Trust score computed: {trust_score:.2f} "
+                f"(level: {confidence_level}, requires_approval: {requires_approval})"
+            )
+            
+            # Step 5: Store claim data for proof upload (don't auto-create ticket)
+            # Return claim detection data to prompt user for proof upload
+            claim_data = {
+                "claim_detected": True,
+                "ticket_id_pending": f"PENDING-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}",
+                "user_id": user_id,
+                "session_id": session_id,
+                "claim_text": user_message,
+                "claim_type": claim_type,
+                "claim_confidence": claim_confidence,
+                "confidence_level": confidence_level,
+                "extracted_fields": evidence_result,
+                "affected_chunks": affected_chunks,
+                "trust_score": trust_score,
+                "requires_proof": True,  # Always require proof
+                "claim_detection_result": claim_result,
+                "contradiction_analysis": contradiction_result
+            }
+            
+            # Store in session metadata for later retrieval
+            session_repo = SessionRepository(MongoDB.get_db())
+            await session_repo.update_metadata(
+                session_id, 
+                {"pending_policy_claim": claim_data}
+            )
+            
+            logger.info(
+                f"🔔 Policy claim detected - requesting proof from user "
+                f"(trust: {trust_score:.2f}, confidence: {confidence_level})"
+            )
+            
+            return claim_data
+            
+        except Exception as e:
+            logger.error(f"❌ Error in policy claim detection: {e}", exc_info=True)
+            return None
     
 # Global query service instance
 query_service = QueryService()

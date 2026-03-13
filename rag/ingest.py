@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from typing import List, Dict
 import re
+from datetime import datetime
 
 
 def load_markdown_files(data_dir: str) -> List[Dict[str, str]]:
@@ -66,7 +67,12 @@ def create_chunks_with_metadata(
                 'section': section,
                 'text': chunk_text.strip(),
                 'confidence': 1.0,
-                'active': True
+                'active': True,
+                # Phase 3: Policy Unlearning metadata
+                'status': 'active',  # 'active' or 'deprecated'
+                'version': 1,        # Policy version number
+                'created_at': datetime.now().isoformat(),
+                'updated_at': datetime.now().isoformat()
             }
             all_chunks.append(chunk_metadata)
             position += (chunk_size - chunk_overlap)

@@ -51,6 +51,7 @@ async def get_current_user(authorization: Optional[str] = Header(None)) -> Dict:
         "user_id": user_id,
         "email": email,
         "name": payload.get("name"),
+        "role": payload.get("role", "student"),
     }
 
 
@@ -79,4 +80,5 @@ async def get_optional_user(authorization: Optional[str] = Header(None)) -> Opti
         "user_id": payload.get("user_id"),
         "email": payload.get("email"),
         "name": payload.get("name"),
+        "role": payload.get("role", "student"),
     }

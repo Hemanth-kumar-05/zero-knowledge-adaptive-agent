@@ -137,12 +137,20 @@ class MessageService:
         except Exception as e:
             logger.error(f"❌ Error in preference extraction: {e}", exc_info=True)
 
-    async def get_session_messages(self, session_id: str) -> dict:
-        """Get all messages for a session."""
+    async def get_session_messages(self, session_id: str, requester_user_id: Optional[str] = None) -> dict:
+        """Get all messages for a session with optional owner check."""
         # Check if session exists
         session_exists = await self._get_session_repo().session_exists(session_id)
         if not session_exists:
             return {"error": "Session not found"}
+
+        # Enforce ownership when requester context is provided.
+        if requester_user_id:
+            session = await self._get_session_repo().get_session(session_id)
+            if not session:
+                return {"error": "Session not found"}
+            if session.get("user_id") != requester_user_id:
+                return {"error": "Access denied"}
 
         try:
             messages = await self._get_message_repo().get_session_messages(session_id)

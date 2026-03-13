@@ -137,7 +137,7 @@ async def _extract_preferences_if_needed(self, session_id: str, user_id: str):
   "update_count": 3,
   "explanation": "User frequently asks for more detail and elaboration",
   "llm_provider": "groq",
-  "llm_model": "llama-3.3-70b-versatile"
+  "llm_model": "llama-3.1-8b-instant"
 }
 ```
 

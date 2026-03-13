@@ -31,6 +31,10 @@ class UserInfo(BaseModel):
     email: EmailStr
     name: str
     profile_picture: Optional[str] = None
+    role: str
+    verification_required: bool = True
+    verification_status: str = "pending"
+    verified_role: Optional[str] = None
 
 
 class MessageResponse(BaseModel):

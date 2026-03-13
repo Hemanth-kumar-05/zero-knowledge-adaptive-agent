@@ -35,6 +35,18 @@ class UsersRepository:
             "email": user_data["email"],
             "name": user_data.get("name", ""),
             "profile_picture": user_data.get("profile_picture", ""),
+            "role": user_data.get("role", "student"),
+            "identity_verification": {
+                "required": user_data.get("verification_required", True),
+                "status": user_data.get("verification_status", "pending"),
+                "verified_role": None,
+                "verified_at": None,
+                "provider": None,
+                "confidence": None,
+                "decision": None,
+                "reasons": [],
+                "updated_at": datetime.utcnow(),
+            },
             "created_at": datetime.utcnow(),
             "last_login": datetime.utcnow(),
             "account_status": "active",
@@ -69,6 +81,44 @@ class UsersRepository:
     async def get_user_by_email(self, email: str) -> Optional[Dict]:
         """Get user by email"""
         return await self.collection.find_one({"email": email})
+
+    async def update_identity_verification(self, user_id: str, verification_update: Dict) -> bool:
+        """Update identity verification state for a user."""
+        set_data = {
+            "identity_verification.updated_at": datetime.utcnow(),
+        }
+        for key, value in verification_update.items():
+            set_data[f"identity_verification.{key}"] = value
+
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$set": set_data}
+        )
+        return result.modified_count > 0
+
+    async def set_role_and_verification(
+        self,
+        user_id: str,
+        role: str,
+        verification_update: Dict,
+        name_override: Optional[str] = None,
+    ) -> bool:
+        """Atomically update role and verification result."""
+        set_data = {
+            "role": role,
+            "identity_verification.updated_at": datetime.utcnow(),
+        }
+        if name_override:
+            set_data["name"] = name_override
+
+        for key, value in verification_update.items():
+            set_data[f"identity_verification.{key}"] = value
+
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$set": set_data}
+        )
+        return result.modified_count > 0
     
     async def update_last_login(self, user_id: str) -> bool:
         """Update user's last login timestamp"""
@@ -90,7 +140,7 @@ class UsersRepository:
             Updated user document
         """
         # Only allow specific fields to be updated
-        allowed_fields = ["name", "profile_picture"]
+        allowed_fields = ["name", "profile_picture", "role"]
         update_data = {k: v for k, v in updates.items() if k in allowed_fields}
         
         if not update_data:
@@ -412,4 +462,53 @@ class UsersRepository:
             {"$set": {"facts.$.locked": locked}}
         )
         
+        return result.modified_count > 0
+
+    # ==================== Admin User Management ====================
+
+    async def list_users_for_admin(self, limit: int = 500) -> List[Dict]:
+        """List users for admin dashboard (newest first)."""
+        cursor = self.collection.find({}).sort("created_at", -1).limit(limit)
+        return await cursor.to_list(length=limit)
+
+    async def update_user_role_admin(self, user_id: str, role: str) -> bool:
+        """Admin action: update a user's role."""
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {
+                "$set": {
+                    "role": role,
+                    "identity_verification.verified_role": role,
+                    "identity_verification.updated_at": datetime.utcnow(),
+                }
+            }
+        )
+        return result.modified_count > 0
+
+    async def update_account_status_admin(self, user_id: str, account_status: str) -> bool:
+        """Admin action: activate/suspend a user account."""
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$set": {"account_status": account_status}}
+        )
+        return result.modified_count > 0
+
+    async def reset_verification_admin(self, user_id: str) -> bool:
+        """Admin action: reset identity verification to pending."""
+        result = await self.collection.update_one(
+            {"_id": ObjectId(user_id)},
+            {
+                "$set": {
+                    "identity_verification.required": True,
+                    "identity_verification.status": "pending",
+                    "identity_verification.verified_role": None,
+                    "identity_verification.verified_at": None,
+                    "identity_verification.provider": "manual_admin_reset",
+                    "identity_verification.confidence": None,
+                    "identity_verification.decision": "manual_review",
+                    "identity_verification.reasons": ["Verification reset by admin"],
+                    "identity_verification.updated_at": datetime.utcnow(),
+                }
+            }
+        )
         return result.modified_count > 0

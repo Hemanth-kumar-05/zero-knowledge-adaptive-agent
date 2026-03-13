@@ -53,7 +53,8 @@ class RAGPipeline:
         conversation_metadata: dict = None,
         user_preferences: list = None,
         preference_instructions: str = None,
-        user_context: str = None
+        user_context: str = None,
+        extension_system_prompt: str = None
     ) -> Dict:
         
         conversation_history = conversation_history or []
@@ -61,6 +62,11 @@ class RAGPipeline:
         user_preferences = user_preferences or []
         
         start_time = time.time()
+        
+        # Log if extension is being used
+        if extension_system_prompt and self.verbose:
+            print(f"\n🧩 EXTENSION MODE ACTIVE")
+            print(f"  Using specialized extension prompt")
         
         # Log if preferences are being applied
         if preference_instructions and self.verbose:
@@ -83,7 +89,8 @@ class RAGPipeline:
             conversation_history=conversation_history,
             conversation_metadata=conversation_metadata,
             preference_instructions=preference_instructions,
-            user_context=user_context
+            user_context=user_context,
+            extension_system_prompt=extension_system_prompt
         )
         
         # If refused AND we have conversation context, try rewriting
@@ -141,7 +148,8 @@ class RAGPipeline:
         conversation_history: list,
         conversation_metadata: dict,
         preference_instructions: str = None,
-        user_context: str = None
+        user_context: str = None,
+        extension_system_prompt: str = None
     ) -> Dict:
         """Execute a single query attempt."""
         
@@ -181,7 +189,8 @@ class RAGPipeline:
             context=context,
             conversation_history=conversation_history,
             preference_instructions=preference_instructions,
-            user_context=user_context
+            user_context=user_context,
+            extension_system_prompt=extension_system_prompt
         )
         generation_time = (time.time() - generation_start) * 1000
         
@@ -192,15 +201,18 @@ class RAGPipeline:
                 print(f"  ✅ Generated answer in {generation_time:.0f}ms")
         
         # Step 4: Package results with source information
+        # IMPORTANT: Always include sources, even when refused, for Phase 3 policy claim detection
         sources = []
-        if not generation_result['refused']:
-            for chunk in retrieved_chunks:
-                sources.append({
-                    'doc_id': chunk['metadata'].get('doc_id', 'unknown'),
-                    'section': chunk['metadata'].get('section', 'unknown'),
-                    'similarity': chunk.get('similarity', 0.0),
-                    'confidence': chunk['metadata'].get('confidence', 1.0)
-                })
+        for chunk in retrieved_chunks:
+            sources.append({
+                'id': chunk.get('id', 'unknown'),  # Chunk ID for Phase 3
+                'text': chunk.get('text', ''),  # Full chunk text for Phase 3
+                'doc_id': chunk['metadata'].get('doc_id', 'unknown'),
+                'section': chunk['metadata'].get('section', 'unknown'),
+                'similarity': chunk.get('similarity', 0.0),
+                'confidence': chunk['metadata'].get('confidence', 1.0),
+                'metadata': chunk.get('metadata', {})  # Full metadata
+            })
         
         result = {
             'question': question,
@@ -352,6 +364,31 @@ class RAGPipeline:
                 print("Please try again or rephrase your question.")
             
             print()  # Empty line for readability
+
+
+# ============================================================================
+# MODULE-LEVEL INSTANCE (Singleton for imports)
+# ============================================================================
+
+# Create a module-level instance that can be imported by other modules
+# This is initialized lazily to avoid startup overhead
+_rag_pipeline_instance = None
+
+def get_rag_pipeline(verbose: bool = False) -> RAGPipeline:
+    """Get or create the RAG pipeline singleton instance"""
+    global _rag_pipeline_instance
+    if _rag_pipeline_instance is None:
+        # Construct absolute path to ChromaDB (project_root/data/chroma_db)
+        project_root = Path(__file__).parent.parent
+        chroma_path = str(project_root / "data" / "chroma_db")
+        _rag_pipeline_instance = RAGPipeline(
+            persist_directory=chroma_path,
+            verbose=verbose
+        )
+    return _rag_pipeline_instance
+
+# For backward compatibility, expose as rag_pipeline
+rag_pipeline = get_rag_pipeline()
 
 
 # ============================================================================

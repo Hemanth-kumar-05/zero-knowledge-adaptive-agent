@@ -26,6 +26,27 @@ export const auth = {
       }
     }
     localStorage.setItem(USER_KEY, JSON.stringify(user));
+    window.dispatchEvent(new Event('auth-user-updated'));
+  },
+
+  // Fast local update without image re-download, used by periodic profile sync
+  syncUser(partialUser) {
+    const current = this.getUser() || {};
+    const next = { ...current, ...partialUser };
+
+    // Keep already cached base64 avatar when backend still returns URL.
+    if (
+      typeof current.profile_picture === 'string' &&
+      current.profile_picture.startsWith('data:') &&
+      typeof next.profile_picture === 'string' &&
+      next.profile_picture.startsWith('http')
+    ) {
+      next.profile_picture = current.profile_picture;
+    }
+
+    localStorage.setItem(USER_KEY, JSON.stringify(next));
+    window.dispatchEvent(new Event('auth-user-updated'));
+    return next;
   },
 
   getUser() {
@@ -68,6 +89,7 @@ export const auth = {
   logout() {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_KEY);
+    window.dispatchEvent(new Event('auth-user-updated'));
   },
 
   // Get authorization header

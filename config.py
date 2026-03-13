@@ -57,6 +57,23 @@ class Config:
     PREFERENCE_MAX_PER_USER = int(os.getenv("PREFERENCE_MAX_PER_USER", "50"))
     PREFERENCE_DAILY_LIMIT = int(os.getenv("PREFERENCE_DAILY_LIMIT", "20"))
     
+    # ============================================
+    # Phase 3 - Policy Unlearning (Feature Flags)
+    # ============================================
+    ENABLE_POLICY_UNLEARNING = os.getenv("ENABLE_POLICY_UNLEARNING", "false").lower() == "true"
+    POLICY_UPDATE_APPROVAL_REQUIRED = os.getenv("POLICY_UPDATE_APPROVAL_REQUIRED", "true").lower() == "true"
+    
+    # Confidence thresholds for auto-categorization
+    POLICY_CLAIM_CONFIDENCE_LOW = float(os.getenv("POLICY_CLAIM_CONFIDENCE_LOW", "0.3"))
+    POLICY_CLAIM_CONFIDENCE_MEDIUM = float(os.getenv("POLICY_CLAIM_CONFIDENCE_MEDIUM", "0.6"))
+    POLICY_CLAIM_CONFIDENCE_HIGH = float(os.getenv("POLICY_CLAIM_CONFIDENCE_HIGH", "0.85"))
+    
+    # Cloudinary Configuration (Phase 3 - Proof Upload)
+    CLOUDINARY_CLOUD_NAME = os.getenv("CLOUDINARY_CLOUD_NAME")
+    CLOUDINARY_API_KEY = os.getenv("CLOUDINARY_API_KEY")
+    CLOUDINARY_API_SECRET = os.getenv("CLOUDINARY_API_SECRET")
+    CLOUDINARY_FOLDER = os.getenv("CLOUDINARY_FOLDER", "policy_proofs")
+    
     # Application URLs
     FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
     BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")

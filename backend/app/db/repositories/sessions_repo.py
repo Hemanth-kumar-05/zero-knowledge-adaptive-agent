@@ -8,7 +8,15 @@ class SessionRepository:
     def __init__(self, db: AsyncIOMotorDatabase):
         self.collection = db.chat_sessions
 
-    async def create_session(self, user_id: Optional[str] = None) -> str:
+    async def create_session(
+        self, 
+        user_id: Optional[str] = None,
+        extension_id: Optional[str] = None,
+        extension_name: Optional[str] = None,
+        extension_icon: Optional[str] = None,
+        extension_welcome_message: Optional[str] = None,
+        extension_input_placeholder: Optional[str] = None
+    ) -> str:
         """Create a new chat session and return its ID."""
         session_data = {
             "user_id": user_id,
@@ -16,6 +24,15 @@ class SessionRepository:
             "updated_at": datetime.now(),
             "message_count": 0
         }
+        
+        # Add extension info if provided
+        if extension_id:
+            session_data["extension_id"] = extension_id
+            session_data["extension_name"] = extension_name
+            session_data["extension_icon"] = extension_icon
+            session_data["extension_welcome_message"] = extension_welcome_message
+            session_data["extension_input_placeholder"] = extension_input_placeholder
+        
         result = await self.collection.insert_one(session_data)
         return str(result.inserted_id)
 
@@ -70,4 +87,25 @@ class SessionRepository:
         """Delete a session by ID."""
         result = await self.collection.delete_one({"_id": ObjectId(session_id)})
         return result.deleted_count > 0
+
+    async def update_metadata(self, session_id: str, metadata: dict) -> bool:
+        """Update session metadata (for storing temporary data like pending claims)."""
+        result = await self.collection.update_one(
+            {"_id": ObjectId(session_id)},
+            {
+                "$set": {
+                    "metadata": metadata,
+                    "updated_at": datetime.now()
+                }
+            }
+        )
+        return result.modified_count > 0
+
+    async def get_metadata(self, session_id: str) -> Optional[dict]:
+        """Get session metadata."""
+        session = await self.collection.find_one(
+            {"_id": ObjectId(session_id)},
+            {"metadata": 1}
+        )
+        return session.get("metadata") if session else None
 

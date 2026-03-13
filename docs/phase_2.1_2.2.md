@@ -447,8 +447,8 @@ LLM_PROVIDER=groq
 GROQ_API_KEY=gsk_xxxxx
 
 # Models Available:
-- llama-3.3-70b-versatile (default, most capable)
-- llama-3.3-70b-versatile (fastest)
+- llama-3.1-8b-instant (default, most capable)
+- llama-3.1-8b-instant (fastest)
 - mixtral-8x7b-32768 (long context)
 - gemma2-9b-it (efficient)
 ```
@@ -485,7 +485,7 @@ class Generator:
         
         if self.provider == "groq":
             self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = model or "llama-3.3-70b-versatile"
+            self.model = model or "llama-3.1-8b-instant"
         else:
             self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
             self.model = model or "gemini-1.5-flash-8b"

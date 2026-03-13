@@ -1,0 +1,949 @@
+/* ChunkEditorPage.css - Full-page chunk editor (Dark Theme) */
+
+.chunk-editor-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #212121;
+  overflow: hidden;
+}
+
+/* ========================================
+   TOP HEADER BAR
+   ======================================== */
+
+.ce-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: rgba(26, 26, 30, 0.98);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  gap: 40px;
+}
+
+.ce-header-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ce-header-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ce-btn-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ce-btn-back:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+.ce-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.ce-ticket-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  overflow: hidden;
+  flex: 1;
+  min-width: 0;
+}
+
+.ce-ticket-label {
+  color: #64748b;
+  font-weight: 500;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.ce-ticket-id {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  color: #94a3b8;
+  font-weight: 600;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.ce-ticket-separator {
+  color: #475569;
+  flex-shrink: 0;
+}
+
+.ce-ticket-claim {
+  color: #cbd5e1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+/* ========================================
+   WORKFLOW PROGRESS INDICATOR
+   ======================================== */
+
+.ce-workflow-progress {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ce-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.ce-step-number {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  color: #64748b;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ce-step-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #64748b;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ce-step.active .ce-step-number {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+.ce-step.active .ce-step-label {
+  color: #3b82f6;
+}
+
+.ce-step.completed .ce-step-number {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.ce-step.completed .ce-step-label {
+  color: #10b981;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.ce-btn-secondary {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: #ececec;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ce-btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.ce-btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.ce-btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  border: none;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.ce-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+}
+
+.ce-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.ce-btn-large {
+  padding: 14px 36px;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 3px 12px rgba(59, 130, 246, 0.35);
+}
+
+.ce-btn-large:hover:not(:disabled) {
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* ========================================
+   MAIN CONTENT AREA
+   ======================================== */
+
+.ce-content {
+  flex: 1;
+  overflow: auto;
+  padding: 40px;
+  background: linear-gradient(180deg, #1a1a1e 0%, #212121 100%);
+}
+
+.ce-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ce-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ce-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.ce-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   WORKFLOW STEPS
+   ======================================== */
+
+.ce-workflow-step {
+  animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ce-workflow-step h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.ce-workflow-step > p {
+  font-size: 1.0625rem;
+  color: #94a3b8;
+  margin: 0 0 48px 0;
+  line-height: 1.7;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ce-workflow-step.ce-edit-step {
+  padding: 0;
+  max-width: 100%;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   SEARCH STEP
+   ======================================== */
+
+.ce-search-step .ce-step-content {
+  max-width: 100%;
+}
+
+.ce-search-step h3 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.03em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.ce-search-step .ce-step-description {
+  font-size: 1.125rem;
+  color: #94a3b8;
+  margin: 0 0 56px 0;
+  line-height: 1.7;
+  text-align: center;
+  font-weight: 400;
+}
+
+.ce-form-group {
+  margin-bottom: 48px;
+}
+
+.ce-form-group label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ce-form-group textarea {
+  width: 100%;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  line-height: 1.7;
+  resize: vertical;
+  min-height: 160px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ce-form-group textarea:focus {
+  outline: none;
+  border-color: rgba(59, 130, 246, 0.6);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.ce-form-group textarea::placeholder {
+  color: #8e8ea0;
+}
+
+.ce-action-banner {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.04));
+  border: 1.5px solid rgba(59, 130, 246, 0.2);
+  border-left: 4px solid #3b82f6;
+  border-radius: 12px;
+  padding: 32px 36px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ce-action-banner p {
+  margin: 0 0 28px 0;
+  color: #e2e8f0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ========================================
+   SELECT STEP
+   ======================================== */
+
+.ce-select-step .ce-step-header {
+  margin-bottom: 40px;
+}
+
+.ce-select-step .ce-step-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ececec;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.ce-select-step .ce-step-header p {
+  font-size: 0.875rem;
+  color: #8e8ea0;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.ce-step-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 56px;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ce-step-actions.ce-fixed-bottom {
+  position: sticky;
+  bottom: 0;
+  margin: 0;
+  border-radius: 0;
+  z-index: 10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+
+.ce-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #8e8ea0;
+  padding: 80px 32px;
+  min-height: 400px;
+}
+
+.ce-loading p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ce-spinner {
+  animation: spin 1s linear infinite;
+  font-size: 2.5rem;
+  color: #3b82f6;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Step actions button styling */
+.ce-step-actions button {
+  min-width: 160px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+/* ========================================
+   EDIT STEP - ENHANCED SPACING
+   ======================================== */
+
+/* Override Individual Chunk Editor styles for full-page layout */
+.ce-content .individual-chunk-editor {
+  height: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.ce-content .master-detail-container {
+  height: calc(100vh - 180px);
+  min-height: 700px;
+  grid-template-columns: 420px 1fr;
+}
+
+/* Enhanced Header Spacing */
+.ce-content .individual-chunk-editor .editor-header {
+  padding: 24px 32px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ce-content .individual-chunk-editor .editor-header h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ce-content .editor-stats {
+  gap: 16px;
+  font-size: 0.9375rem;
+}
+
+/* Change Selection Button - Enhanced */
+.ce-content .btn-change-selection {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.ce-content .btn-change-selection:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Master Panel - Enhanced Spacing */
+.ce-content .master-panel {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.ce-content .master-header {
+  padding: 20px 24px;
+  font-size: 0.9375rem;
+}
+
+.ce-content .progress-badge {
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+}
+
+/* Chunk List Items - More Breathing Room */
+.ce-content .chunk-list-item {
+  padding: 16px 20px;
+  margin-bottom: 2px;
+}
+
+.ce-content .chunk-list-item.active {
+  padding-left: 17px;
+  background: rgba(59, 130, 246, 0.18);
+}
+
+.ce-content .chunk-list-item.edited {
+  padding-left: 17px;
+}
+
+.ce-content .chunk-list-item.edited.active {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+.ce-content .chunk-list-header {
+  margin-bottom: 10px;
+}
+
+.ce-content .chunk-number {
+  font-size: 0.9375rem;
+}
+
+.ce-content .chunk-list-meta {
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.ce-content .chunk-doc {
+  font-size: 0.8125rem;
+}
+
+.ce-content .chunk-section {
+  font-size: 0.75rem;
+}
+
+.ce-content .chunk-list-preview {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* Detail Panel - Enhanced Spacing */
+.ce-content .detail-header {
+  padding: 20px 28px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ce-content .chunk-title-section h4 {
+  font-size: 1.125rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.ce-content .chunk-meta-inline {
+  font-size: 0.8125rem;
+}
+
+.ce-content .navigation-buttons {
+  gap: 12px;
+}
+
+.ce-content .nav-btn {
+  padding: 10px 20px;
+  font-size: 0.9375rem;
+}
+
+/* Editor Hint - More Prominent */
+.ce-content .editor-hint {
+  padding: 16px 28px;
+  font-size: 0.9375rem;
+  gap: 12px;
+  background: rgba(59, 130, 246, 0.12);
+  border-left-width: 4px;
+}
+
+/* Split View - Enhanced Spacing */
+.ce-content .pane-header {
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ce-content .section-label {
+  font-size: 0.8125rem;
+  gap: 8px;
+}
+
+.ce-content .modified-badge {
+  font-size: 0.75rem;
+  margin-left: 10px;
+}
+
+/* Pane Content - More Padding */
+.ce-content .original-text-display {
+  padding: 24px;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+/* Editor with backdrop for highlighting */
+.ce-content .editor-backdrop {
+  padding: 24px;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+.ce-content .chunk-textarea {
+  padding: 24px;
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+.ce-content .pane-footer {
+  padding: 12px 20px;
+}
+
+.ce-content .char-count {
+  font-size: 0.8125rem;
+}
+
+/* Detail Footer - Enhanced */
+.ce-content .detail-footer {
+  padding: 16px 28px;
+  font-size: 0.8125rem;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Empty State - Better Spacing */
+.ce-content .editor-empty {
+  padding: 80px 32px;
+  gap: 16px;
+}
+
+.ce-content .editor-empty svg {
+  font-size: 3rem;
+}
+
+.ce-content .editor-empty p {
+  font-size: 0.9375rem;
+}
+
+/* Step Actions at Bottom of Edit Step */
+.ce-edit-step .ce-step-actions {
+  margin-top: 0;
+}
+
+.ce-edit-step .ce-step-actions.ce-fixed-bottom {
+  padding: 24px 40px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .ce-header {
+    padding: 16px 24px;
+    gap: 20px;
+  }
+
+  .ce-header-left {
+    gap: 16px;
+  }
+
+  .ce-workflow-progress {
+    gap: 16px;
+    padding: 4px 12px;
+  }
+
+  .ce-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+
+  .ce-step-label {
+    font-size: 0.625rem;
+  }
+
+  .ce-workflow-step {
+    padding: 32px 24px;
+  }
+
+  /* Edit step adjustments for medium screens */
+  .ce-content .master-detail-container {
+    grid-template-columns: 340px 1fr;
+    height: calc(100vh - 200px);
+  }
+
+  .ce-content .individual-chunk-editor .editor-header {
+    padding: 20px 24px;
+  }
+
+  .ce-content .chunk-list-item {
+    padding: 14px 18px;
+  }
+
+  .ce-content .detail-header {
+    padding: 18px 24px;
+  }
+
+  .ce-content .original-text-display,
+  .ce-content .editor-backdrop,
+  .ce-content .chunk-textarea {
+    padding: 20px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ce-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .ce-header-left {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .ce-header-right {
+    justify-content: center;
+  }
+
+  .ce-divider {
+    display: none;
+  }
+
+  .ce-ticket-info {
+    flex-wrap: wrap;
+  }
+
+  .ce-ticket-claim {
+    flex-basis: 100%;
+    white-space: normal;
+    line-height: 1.4;
+  }
+
+  .ce-workflow-progress {
+    justify-content: space-around;
+  }
+
+  .ce-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.875rem;
+  }
+
+  .ce-workflow-step {
+    padding: 24px 16px;
+  }
+
+  .ce-search-step h3 {
+    font-size: 1.5rem;
+  }
+
+  .ce-search-step .ce-step-description {
+    font-size: 0.9375rem;
+  }
+
+  .ce-step-actions {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .ce-step-actions button {
+    width: 100%;
+  }
+
+  .ce-btn-back {
+    padding: 8px 14px;
+    font-size: 0.8125rem;
+  }
+
+  .ce-form-group textarea {
+    font-size: 13px;
+  }
+
+  .ce-action-banner {
+    padding: 20px;
+  }
+
+  .ce-action-banner p {
+    font-size: 0.875rem;
+  }
+
+  .ce-btn-large {
+    padding: 12px 24px;
+    font-size: 0.9375rem;
+  }
+
+  /* Edit step mobile adjustments */
+  .ce-content .master-detail-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .ce-content .master-panel {
+    height: 280px;
+  }
+
+  .ce-content .detail-panel {
+    min-height: 500px;
+  }
+
+  .ce-content .individual-chunk-editor .editor-header {
+    padding: 18px 20px;
+  }
+
+  .ce-content .chunk-list-item {
+    padding: 12px 16px;
+  }
+
+  .ce-content .detail-header {
+    padding: 16px 20px;
+  }
+
+  .ce-content .editor-hint {
+    padding: 14px 20px;
+    font-size: 0.875rem;
+  }
+
+  .ce-content .original-text-display,
+  .ce-content .editor-backdrop,
+  .ce-content .chunk-textarea {
+    padding: 16px;
+    font-size: 0.8125rem;
+  }
+
+  .ce-edit-step .ce-step-actions.ce-fixed-bottom {
+    padding: 16px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ce-header {
+    padding: 12px 16px;
+  }
+
+  .ce-btn-back {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ce-ticket-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .ce-ticket-separator {
+    display: none;
+  }
+
+  .ce-workflow-progress {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .ce-step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8125rem;
+  }
+
+  .ce-step-label {
+    font-size: 0.5625rem;
+  }
+}
+

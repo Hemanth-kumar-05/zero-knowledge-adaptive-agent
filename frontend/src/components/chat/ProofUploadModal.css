@@ -1,0 +1,342 @@
+/* Proof Upload Modal */
+.proof-upload-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.proof-upload-modal-content {
+  background: linear-gradient(135deg, #2a2a2a, #1f1f1f);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.proof-upload-modal-header {
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.proof-upload-modal-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ececec;
+  margin: 0;
+}
+
+.proof-upload-modal-close {
+  background: transparent;
+  border: none;
+  color: #8e8ea0;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.proof-upload-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ececec;
+}
+
+.proof-upload-modal-body {
+  padding: 24px;
+}
+
+.proof-upload-info {
+  margin-bottom: 24px;
+}
+
+.proof-upload-message {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #ececec;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(16, 163, 127, 0.1);
+  border-left: 3px solid #10a37f;
+  border-radius: 6px;
+}
+
+.proof-upload-claim-details {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.proof-upload-claim-details h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #8e8ea0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+}
+
+.claim-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #ececec;
+  margin: 0 0 12px 0;
+  font-style: italic;
+}
+
+.claim-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-low {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.badge-medium {
+  background-color: rgba(33, 150, 243, 0.2);
+  color: #2196f3;
+}
+
+.badge-high {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.badge-info {
+  background-color: rgba(156, 39, 176, 0.2);
+  color: #9c27b0;
+}
+
+.proof-upload-section {
+  margin-top: 24px;
+}
+
+.proof-upload-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ececec;
+  margin-bottom: 12px;
+}
+
+.proof-upload-label small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #8e8ea0;
+  margin-top: 4px;
+}
+
+.proof-upload-input {
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #ececec;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.proof-upload-input:hover {
+  border-color: rgba(16, 163, 127, 0.5);
+  background: rgba(16, 163, 127, 0.05);
+}
+
+.proof-upload-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.proof-upload-file-list {
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.proof-upload-file-list h4 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ececec;
+  margin: 0 0 12px 0;
+}
+
+.proof-upload-file-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.proof-upload-file-item:last-child {
+  margin-bottom: 0;
+}
+
+.file-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.file-name {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #ececec;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-size {
+  font-size: 0.75rem;
+  color: #8e8ea0;
+  flex-shrink: 0;
+}
+
+.file-progress {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.file-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #10a37f, #0d8566);
+  transition: width 0.3s ease;
+}
+
+.file-remove {
+  background: rgba(244, 67, 54, 0.2);
+  border: none;
+  color: #f44336;
+  font-size: 1.25rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.file-remove:hover {
+  background: rgba(244, 67, 54, 0.4);
+}
+
+.proof-upload-error {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 8px;
+  color: #f44336;
+  font-size: 0.875rem;
+}
+
+.proof-upload-modal-footer {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-primary {
+  background: #10a37f;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #0d8566;
+  box-shadow: 0 2px 8px rgba(16, 163, 127, 0.3);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  color: #ececec;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #333333;
+  border-color: #4a4a4a;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Scrollbar styling for modal */
+.proof-upload-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.proof-upload-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.proof-upload-modal-content::-webkit-scrollbar-thumb {
+  background: #2f2f2f;
+  border-radius: 4px;
+}
+
+.proof-upload-modal-content::-webkit-scrollbar-thumb:hover {
+  background: #3e3e3e;
+}

@@ -24,7 +24,7 @@ class Generator:
         # Initialize based on provider
         if self.provider == "groq":
             self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = model or "llama-3.3-70b-versatile"  # Updated to latest model
+            self.model = model or "llama-3.1-8b-instant"  # Updated to latest model
             print(f"🚀 Using Groq with model: {self.model}")
         else:
             self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -38,9 +38,15 @@ class Generator:
         system_instructions: Optional[str] = None,
         conversation_history: List[Dict[str, str]] = None,
         preference_instructions: Optional[str] = None,
-        user_context: Optional[str] = None
+        user_context: Optional[str] = None,
+        extension_system_prompt: Optional[str] = None
     ) -> str:
-        if system_instructions is None:
+        # Use extension system prompt if provided, otherwise use default
+        if extension_system_prompt:
+            system_instructions = extension_system_prompt
+            print(f"\n🧩 USING EXTENSION SYSTEM PROMPT")
+            print(f"  Extension prompt: {extension_system_prompt[:100]}..." if len(extension_system_prompt) > 100 else f"  Extension prompt: {extension_system_prompt}")
+        elif system_instructions is None:
             system_instructions = self._get_default_system_instructions()
         
         # Add preference instructions if provided
@@ -163,16 +169,18 @@ Provide a clear, direct answer to the current question above:"""
         context: str,
         conversation_history: List[Dict[str, str]] = None,
         preference_instructions: Optional[str] = None,
-        user_context: Optional[str] = None
+        user_context: Optional[str] = None,
+        extension_system_prompt: Optional[str] = None
     ) -> str:
         try:
-            # Create the prompt with history, preferences, and user context
+            # Create the prompt with history, preferences, user context, and extension
             prompt = self.create_rag_prompt(
                 query, 
                 context, 
                 conversation_history=conversation_history,
                 preference_instructions=preference_instructions,
-                user_context=user_context
+                user_context=user_context,
+                extension_system_prompt=extension_system_prompt
             )
             
             # Call appropriate API based on provider
@@ -182,7 +190,7 @@ Provide a clear, direct answer to the current question above:"""
                     model=self.model,
                     messages=[{"role": "user", "content": prompt}],
                     temperature=self.temperature,
-                    max_tokens=1024
+                    max_tokens=4096  # Increased for long responses (question papers, etc.)
                 )
                 return response.choices[0].message.content
             else:
@@ -191,7 +199,8 @@ Provide a clear, direct answer to the current question above:"""
                     model=self.model,
                     contents=prompt,
                     config={
-                        'temperature': self.temperature
+                        'temperature': self.temperature,
+                        'max_output_tokens': 4096  # Increased for long responses
                     }
                 )
                 return response.text
@@ -337,7 +346,8 @@ Provide a clear, direct answer to the current question above:"""
         context: str,
         conversation_history: List[Dict[str, str]] = None,
         preference_instructions: Optional[str] = None,
-        user_context: Optional[str] = None
+        user_context: Optional[str] = None,
+        extension_system_prompt: Optional[str] = None
     ) -> Dict[str, any]:
         
         # Check if should refuse
@@ -350,14 +360,15 @@ Provide a clear, direct answer to the current question above:"""
                 'confidence': 'none'
             }
         
-        # Generate answer with history, preferences, and user context
+        # Generate answer with history, preferences, user context, and extension
         try:
             answer = self.generate(
                 query, 
                 context, 
                 conversation_history=conversation_history,
                 preference_instructions=preference_instructions,
-                user_context=user_context
+                user_context=user_context,
+                extension_system_prompt=extension_system_prompt
             )
             
             # Check if LLM generated a refusal response (even when we didn't explicitly refuse)

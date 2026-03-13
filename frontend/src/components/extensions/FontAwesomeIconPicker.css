@@ -1,0 +1,260 @@
+/* FontAwesome Icon Picker Styles */
+
+.icon-picker-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.icon-picker-container label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e0e0;
+  margin-bottom: 8px;
+}
+
+.icon-picker-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-picker-trigger:hover {
+  border-color: #6366f1;
+  background: #333;
+}
+
+.selected-icon-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.selected-icon-preview i {
+  font-size: 20px;
+  color: #6366f1;
+  width: 24px;
+  text-align: center;
+}
+
+.selected-icon-preview span {
+  color: #e0e0e0;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selected-icon-preview .placeholder {
+  color: #888;
+}
+
+.icon-picker-trigger svg {
+  color: #888;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.icon-picker-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.icon-picker-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-picker-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid #333;
+}
+
+.icon-picker-search svg {
+  color: #888;
+  flex-shrink: 0;
+}
+
+.icon-picker-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 14px;
+  outline: none;
+}
+
+.icon-picker-search input::placeholder {
+  color: #666;
+}
+
+.icon-picker-categories {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #333;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.icon-picker-categories::-webkit-scrollbar {
+  height: 4px;
+}
+
+.icon-picker-categories::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.icon-picker-categories::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 2px;
+}
+
+.category-tab {
+  padding: 6px 12px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #888;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.category-tab:hover {
+  background: #333;
+  color: #e0e0e0;
+}
+
+.category-tab.active {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: #fff;
+}
+
+.icon-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.icon-picker-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.icon-picker-grid::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.icon-picker-grid::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.icon-picker-grid::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.icon-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 8px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-option:hover {
+  background: #333;
+  border-color: #6366f1;
+  transform: translateY(-2px);
+}
+
+.icon-option.selected {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: #6366f1;
+}
+
+.icon-option i {
+  font-size: 24px;
+  color: #e0e0e0;
+}
+
+.icon-option.selected i {
+  color: #6366f1;
+}
+
+.icon-option span {
+  font-size: 11px;
+  color: #888;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.icon-option.selected span {
+  color: #a5b4fc;
+  font-weight: 500;
+}
+
+.no-icons {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 32px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .icon-picker-dropdown {
+    max-height: 400px;
+  }
+
+  .icon-picker-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-picker-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

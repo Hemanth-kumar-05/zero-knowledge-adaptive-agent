@@ -40,6 +40,13 @@ python-dotenv>=1.0.0
 
 # Utilities
 python-multipart>=0.0.6
+Pillow>=10.0.0
+numpy>=1.24.0
+rapidocr-onnxruntime
+
+# File Upload & Storage (Phase 3)
+cloudinary>=1.36.0
+python-magic>=0.4.27
 
 # Authentication & Authorization (Phase 2)
 google-auth>=2.25.0

@@ -4,7 +4,7 @@ Pydantic models for user management endpoints
 """
 
 from pydantic import BaseModel, EmailStr
-from typing import Optional, List
+from typing import Optional, List, Literal
 from datetime import datetime
 
 
@@ -12,6 +12,7 @@ class UserProfileUpdate(BaseModel):
     """Request to update user profile"""
     name: Optional[str] = None
     profile_picture: Optional[str] = None
+    role: Optional[str] = None
 
 
 class Preference(BaseModel):
@@ -51,6 +52,16 @@ class ManualPreferenceInput(BaseModel):
     preference_text: str
 
 
+class AdminUserRoleUpdate(BaseModel):
+    """Admin request to update a user's role"""
+    role: Literal["student", "faculty", "admin"]
+
+
+class AdminUserStatusUpdate(BaseModel):
+    """Admin request to update a user's account status"""
+    account_status: Literal["active", "suspended"]
+
+
 class PreferencesResponse(BaseModel):
     """Response with all user preferences"""
     preferences: List[Preference]
@@ -73,6 +84,7 @@ class UserProfile(BaseModel):
     email: EmailStr
     name: str
     profile_picture: Optional[str]
+    role: str
     created_at: datetime
     last_login: datetime
     account_status: str
@@ -87,6 +99,7 @@ class UserProfile(BaseModel):
                 "email": "user@example.com",
                 "name": "John Doe",
                 "profile_picture": "https://example.com/photo.jpg",
+                "role": "student",
                 "created_at": "2026-01-28T10:00:00",
                 "last_login": "2026-01-28T15:30:00",
                 "account_status": "active",

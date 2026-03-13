@@ -6,7 +6,7 @@ const client = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  timeout: 30000, // 30 second timeout
+  timeout: 0, // No timeout - allow long-running operations like semantic search
 });
 
 // Request interceptor to add auth token
@@ -68,6 +68,31 @@ client.interceptors.response.use(
 );
 
 const api = {
+  getCurrentAuthUser: async () => {
+    const response = await axios.get('/api/auth/me', {
+      headers: {
+        ...auth.getAuthHeader(),
+        'Content-Type': 'application/json',
+      },
+    });
+    return response.data;
+  },
+
+  getCurrentUserProfile: async () => {
+    const response = await client.get('/users/profile');
+    return response.data;
+  },
+
+  verifyIdentity: async (formData) => {
+    const response = await axios.post('/api/auth/verify-identity', formData, {
+      headers: {
+        ...auth.getAuthHeader(),
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  },
+
   // Health endpoints
   checkHealth: async () => {
     try {
@@ -97,14 +122,18 @@ const api = {
   },
 
   // Session endpoints
-  createSession: async () => {
-    const response = await client.post('/sessions/', {});
+  createSession: async (extensionId = null) => {
+    const params = extensionId ? { extension_id: extensionId } : {};
+    const response = await client.post('/sessions/', {}, { params });
     // Map backend response to frontend format
     return {
       id: response.data.session_id,
       user_id: response.data.user_id,
       created_at: new Date().toISOString(),
       message_count: 0,
+      extension_id: response.data.extension_id,
+      requires_files: response.data.requires_files,
+      required_file_types: response.data.required_file_types,
     };
   },
 
@@ -118,6 +147,11 @@ const api = {
       updated_at: session.updated_at,
       message_count: session.message_count || 0,
       title: `Session ${session.message_count || 0} messages`,
+      extension_id: session.extension_id,
+      extension_name: session.extension_name,
+      extension_icon: session.extension_icon,
+      extension_welcome_message: session.extension_welcome_message,
+      extension_input_placeholder: session.extension_input_placeholder
     }));
     return { sessions, count: response.data.count };
   },
@@ -150,6 +184,16 @@ const api = {
   // Query endpoint
   query: async (data) => {
     const response = await client.post('/query', data);
+    return response.data;
+  },
+
+  // Query with file attachment
+  queryWithFile: async (formData) => {
+    const response = await client.post('/query', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return response.data;
   },
 
@@ -258,6 +302,109 @@ const api = {
     const response = await client.post('/memory/cleanup');
     return response.data;
   },
+
+  // Policy Updates Management (Phase 3)
+  getPolicyUpdateTickets: async (status = null) => {
+    const params = status ? { status } : {};
+    const response = await client.get('/policy-updates/tickets', { params });
+    return response.data;
+  },
+
+  getPolicyUpdateTicket: async (ticketId) => {
+    const response = await client.get(`/policy-updates/tickets/${ticketId}`);
+    return response.data;
+  },
+
+  approvePolicyUpdate: async (ticketId, approvalData) => {
+    const response = await client.post(
+      `/policy-updates/tickets/${ticketId}/approve`,
+      approvalData
+    );
+    return response.data;
+  },
+
+  rejectPolicyUpdate: async (ticketId, rejectionData) => {
+    const response = await client.post(
+      `/policy-updates/tickets/${ticketId}/reject`,
+      rejectionData
+    );
+    return response.data;
+  },
+
+  getPolicyAuditLog: async (limit = 50, skip = 0) => {
+    const response = await client.get('/policy-updates/audit', {
+      params: { limit, skip }
+    });
+    return response.data;
+  },
+
+  getPolicyUpdateStats: async () => {
+    const response = await client.get('/policy-updates/stats');
+    return response.data;
+  },
+
+  // Find affected chunks for deprecation (Phase 3)
+  findAffectedChunks: async (ticketId) => {
+    const response = await client.post(
+      `/policy-updates/tickets/${ticketId}/find-affected-chunks`
+    );
+    return response.data;
+  },
+
+  // Apply policy deprecation (Phase 3)
+  applyPolicyDeprecation: async (ticketId, deprecationData) => {
+    const response = await client.post(
+      `/policy-updates/tickets/${ticketId}/apply-deprecation`,
+      deprecationData
+    );
+    return response.data;
+  },
+
+  // Policy Proof Upload (Phase 3)
+  uploadPolicyProof: async (file, ticketIdPending) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('ticket_id_pending', ticketIdPending);
+    
+    const response = await client.post('/policy-proofs/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+    return response.data;
+  },
+
+  createTicketWithProofs: async (sessionId, proofUrls) => {
+    const response = await client.post('/policy-proofs/create-ticket', {
+      session_id: sessionId,
+      proof_urls: proofUrls
+    });
+    return response.data;
+  },
+
+  // Admin user management
+  getAdminUsers: async () => {
+    const response = await client.get('/users/admin/users');
+    return response.data;
+  },
+
+  updateAdminUserRole: async (userId, role) => {
+    const response = await client.patch(`/users/admin/users/${userId}/role`, { role });
+    return response.data;
+  },
+
+  updateAdminUserStatus: async (userId, accountStatus) => {
+    const response = await client.patch(`/users/admin/users/${userId}/status`, {
+      account_status: accountStatus,
+    });
+    return response.data;
+  },
+
+  resetAdminUserVerification: async (userId) => {
+    const response = await client.post(`/users/admin/users/${userId}/verification/reset`);
+    return response.data;
+  },
 };
 
+export { client };
 export default api;

@@ -32,7 +32,8 @@ class Retriever:
         self,
         query: str,
         top_k: int = 5,
-        min_similarity: float = 0.3
+        min_similarity: float = 0.3,
+        active_only: bool = True  # Phase 3: Filter deprecated chunks
     ) -> List[Dict]:
         results = self.index.search(
             query,
@@ -40,6 +41,14 @@ class Retriever:
             min_similarity=min_similarity,
             embedder=self.embedder
         )
+        
+        # Phase 3: Filter out deprecated chunks if active_only=True
+        if active_only:
+            results = [
+                r for r in results 
+                if r.get('metadata', {}).get('status', 'active') == 'active'
+            ]
+        
         return results
     
     def format_context_for_llm(self, results: List[Dict]) -> str:
