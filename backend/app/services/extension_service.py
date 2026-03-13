@@ -245,6 +245,13 @@ class ExtensionService:
         Returns:
             Formatted extension data
         """
+        script_config = extension.get("script_config", None)
+        if script_config and isinstance(script_config, dict):
+            script_config = {
+                key: value for key, value in script_config.items()
+                if key != "script_source_b64"
+            }
+
         return {
             "id": extension["extension_id"],
             "name": extension["name"],
@@ -259,5 +266,5 @@ class ExtensionService:
             "welcomeMessage": extension.get("welcome_message", ""),
             "inputPlaceholder": extension.get("input_placeholder", ""),
             "extensionType": extension.get("extension_type", "prompt-based"),
-            "scriptConfig": extension.get("script_config", None)
+            "scriptConfig": script_config
         }

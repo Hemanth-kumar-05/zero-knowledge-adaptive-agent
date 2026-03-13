@@ -24,7 +24,7 @@ class Generator:
         # Initialize based on provider
         if self.provider == "groq":
             self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = model or "llama-3.1-8b-instant"  # Updated to latest model
+            self.model = model or "llama-3.3-70b-versatile"  # Updated to latest model
             print(f"🚀 Using Groq with model: {self.model}")
         else:
             self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))

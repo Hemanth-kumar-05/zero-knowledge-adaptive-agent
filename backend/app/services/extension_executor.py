@@ -7,8 +7,10 @@ import importlib.util
 import tempfile
 import os
 import asyncio
+import base64
 from typing import Dict, Optional
 from bson import ObjectId
+from gridfs.errors import NoFile
 
 
 class ExtensionExecutor:
@@ -56,23 +58,42 @@ class ExtensionExecutor:
             
             script_file_id = script_config.get("script_file_id")
             handler_function = script_config.get("handler_function", "process")
+            script_source_b64 = script_config.get("script_source_b64")
             
-            if not script_file_id:
+            script_content = None
+            if not script_file_id and script_source_b64:
+                script_content = base64.b64decode(script_source_b64)
+            elif not script_file_id:
                 return {
                     "success": False,
                     "error": "No script file uploaded",
                     "fallback": "prompt-based"
                 }
             
-            # Retrieve script from GridFS
-            from motor.motor_asyncio import AsyncIOMotorGridFSBucket
-            from io import BytesIO
-            fs = AsyncIOMotorGridFSBucket(self.db)
-            
-            # Download script content
-            stream = BytesIO()
-            await fs.download_to_stream(ObjectId(script_file_id), stream)
-            script_content = stream.getvalue()
+            if script_content is None:
+                # Retrieve script from GridFS
+                from motor.motor_asyncio import AsyncIOMotorGridFSBucket
+                from io import BytesIO
+                fs = AsyncIOMotorGridFSBucket(self.db)
+                
+                # Download script content
+                stream = BytesIO()
+                try:
+                    await fs.download_to_stream(ObjectId(script_file_id), stream)
+                    script_content = stream.getvalue()
+                except NoFile:
+                    if script_source_b64:
+                        script_content = base64.b64decode(script_source_b64)
+                    else:
+                        return {
+                            "success": False,
+                            "error": (
+                                "Extension script file not found in GridFS. "
+                                "The script may have been deleted from fs.files/fs.chunks. "
+                                "Please re-upload the extension script from the admin panel."
+                            ),
+                            "fallback": "prompt-based"
+                        }
             
             # Execute script with timeout
             result = await self._execute_with_timeout(

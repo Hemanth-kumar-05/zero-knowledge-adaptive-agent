@@ -96,6 +96,7 @@ class QueryService:
         # Fetch session details to check for extension
         session = await self._get_session_repo().get_session(request.session_id)
         extension_system_prompt = None
+        extension_type = None
         script_execution_result = None
         augmented_prompt = None  # For extensions - full prompt with data
         
@@ -105,6 +106,7 @@ class QueryService:
             extension = await self._get_extension_repo().get_extension_by_id(extension_id)
             if extension:
                 extension_system_prompt = extension.get("system_prompt")
+                extension_type = extension.get("extension_type", "prompt-based")
                 print(f"\n🧩 EXTENSION MODE ACTIVE")
                 print(f"Extension: {extension.get('name')}")
                 print(f"Extension ID: {extension_id}")
@@ -203,8 +205,14 @@ class QueryService:
                     # logger.info(f"🧠 User context built from memory: {len(user_context)} characters")
 
         # === EXTENSION DIRECT GENERATION - BYPASS RAG ===
-        # Extensions (both script-based and prompt-based) bypass RAG
-        if extension_system_prompt:
+        # Prompt-based extensions use system prompt.
+        # Script-based extensions bypass RAG when script execution produced augmented prompt data.
+        use_extension_direct_mode = (
+            bool(extension_system_prompt) or
+            (extension_type == "script-based" and bool(augmented_prompt))
+        )
+
+        if use_extension_direct_mode:
             print(f"\n🎯 EXTENSION DIRECT GENERATION - Bypassing RAG pipeline")
             
             # Import Generator
@@ -213,17 +221,29 @@ class QueryService:
             
             # For script-based: use augmented prompt (with data)
             # For prompt-based: use original question
-            query_for_llm = augmented_prompt or original_question
+            query_for_llm = original_question
+            context_for_llm = augmented_prompt or ""
+
+            # If script-based extension has no explicit system prompt, provide a safe default.
+            effective_extension_prompt = extension_system_prompt
+            if extension_type == "script-based" and not effective_extension_prompt:
+                effective_extension_prompt = (
+                    "You are a specialized extension assistant. "
+                    "Use ONLY the structured data provided in the context to answer the user's task. "
+                    "Do not call external knowledge. "
+                    "Return a clear, direct result in markdown."
+                )
+
             print(f"Using Generator directly with {'script-augmented' if augmented_prompt else 'original'} prompt")
             
             # Generate response directly (no RAG retrieval needed)
             answer = generator.generate(
                 query=query_for_llm,
-                context="",  # No context needed - extension prompt is self-contained
+                context=context_for_llm,
                 conversation_history=formatted_history,
                 preference_instructions=None,  # Extensions don't use preferences
                 user_context=None,
-                extension_system_prompt=extension_system_prompt
+                extension_system_prompt=effective_extension_prompt
             )
             
             # Build response without sources

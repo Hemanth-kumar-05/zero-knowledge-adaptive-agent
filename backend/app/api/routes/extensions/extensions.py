@@ -249,6 +249,8 @@ async def create_extension(
                 "script_file_id": str(script_file_id),
                 "script_filename": script_filename,
                 "handler_function": handlerFunction,
+                # Backup script source to allow execution recovery if GridFS entries are deleted.
+                "script_source_b64": base64.b64encode(script_content).decode("ascii"),
                 "version": "1.0.0",
                 "uploaded_at": datetime.now(),
                 "dependencies": [d.strip() for d in dependencies.split(",")] if dependencies else []

@@ -79,7 +79,7 @@ Answer:"""
         try:
             if self.provider == "groq":
                 response = self.llm_client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
+                    model="llama-3.3-70b-versatile",
                     messages=[{"role": "user", "content": judgment_prompt}],
                     temperature=0.1,
                     max_tokens=10
@@ -145,7 +145,7 @@ Rewritten query:"""
             # Call LLM to rewrite query
             if self.provider == "groq":
                 response = self.llm_client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
+                    model="llama-3.3-70b-versatile",
                     messages=[{"role": "user", "content": rewrite_prompt}],
                     temperature=0.3,
                     max_tokens=150
