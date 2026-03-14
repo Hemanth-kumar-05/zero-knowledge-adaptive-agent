@@ -202,7 +202,11 @@ function MemoryDashboard({ user, isSidebarOpen, onToggleSidebar, showToast }) {
           </div>
         </div>
         <div className="memory-content">
-          <div className="loading-spinner">Loading...</div>
+          <div className="memory-loading-state" role="status" aria-live="polite">
+            <div className="memory-loading-spinner"></div>
+            <p className="memory-loading-title">Loading your memory...</p>
+            <p className="memory-loading-subtitle">Gathering saved facts and categories</p>
+          </div>
         </div>
       </div>
     );

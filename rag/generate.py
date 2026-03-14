@@ -24,7 +24,7 @@ class Generator:
         # Initialize based on provider
         if self.provider == "groq":
             self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = model or "llama-3.3-70b-versatile"  # Updated to latest model
+            self.model = model or "llama-3.1-8b-instant"  # Updated to latest model
             print(f"🚀 Using Groq with model: {self.model}")
         else:
             self.client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -75,6 +75,30 @@ class Generator:
             history_section += "\n"
         else:
             print(f"\n💬 NO CONVERSATION HISTORY - First message in session")
+
+        # Extension mode should not inherit the strict RAG refusal scaffold,
+        # especially when no policy-doc context is provided.
+        if extension_system_prompt:
+            extension_context = context if context and context.strip() else "(none provided)"
+            prompt = f"""{system_instructions}
+{history_section}
+Extension Context:
+{extension_context}
+
+Current User Request:
+{query}
+
+INSTRUCTIONS FOR EXTENSION RESPONSE:
+1. Complete the user's request directly.
+2. Do not refuse only because policy-document context is empty.
+3. If requirements are missing, make reasonable assumptions and state them briefly.
+4. When asked for code/lab content, provide concrete, actionable output.
+
+Return the best possible response for the extension task."""
+
+            print(f"\n📤 Final extension prompt length: {len(prompt)} characters")
+            print(f"🎯 Current Extension Request: {query}")
+            return prompt
         
         # Build the complete RAG prompt with history
         prompt = f"""{system_instructions}
@@ -170,7 +194,8 @@ Provide a clear, direct answer to the current question above:"""
         conversation_history: List[Dict[str, str]] = None,
         preference_instructions: Optional[str] = None,
         user_context: Optional[str] = None,
-        extension_system_prompt: Optional[str] = None
+        extension_system_prompt: Optional[str] = None,
+        max_tokens: int = 4096
     ) -> str:
         try:
             # Create the prompt with history, preferences, user context, and extension
@@ -190,7 +215,7 @@ Provide a clear, direct answer to the current question above:"""
                     model=self.model,
                     messages=[{"role": "user", "content": prompt}],
                     temperature=self.temperature,
-                    max_tokens=4096  # Increased for long responses (question papers, etc.)
+                    max_tokens=max_tokens
                 )
                 return response.choices[0].message.content
             else:
@@ -200,7 +225,7 @@ Provide a clear, direct answer to the current question above:"""
                     contents=prompt,
                     config={
                         'temperature': self.temperature,
-                        'max_output_tokens': 4096  # Increased for long responses
+                        'max_output_tokens': max_tokens
                     }
                 )
                 return response.text
@@ -347,7 +372,8 @@ Provide a clear, direct answer to the current question above:"""
         conversation_history: List[Dict[str, str]] = None,
         preference_instructions: Optional[str] = None,
         user_context: Optional[str] = None,
-        extension_system_prompt: Optional[str] = None
+        extension_system_prompt: Optional[str] = None,
+        max_tokens: int = 4096
     ) -> Dict[str, any]:
         
         # Check if should refuse
@@ -368,7 +394,8 @@ Provide a clear, direct answer to the current question above:"""
                 conversation_history=conversation_history,
                 preference_instructions=preference_instructions,
                 user_context=user_context,
-                extension_system_prompt=extension_system_prompt
+                extension_system_prompt=extension_system_prompt,
+                max_tokens=max_tokens
             )
             
             # Check if LLM generated a refusal response (even when we didn't explicitly refuse)

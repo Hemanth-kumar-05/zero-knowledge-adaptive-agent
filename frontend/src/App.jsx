@@ -56,7 +56,9 @@ function ChatView() {
     if (sessionId && sessions.length > 0) {
       const session = sessions.find(s => s.id === sessionId);
       if (session) {
-        setCurrentSession(session);
+        // Avoid resetting current session object on every sessions refresh.
+        // This prevents unnecessary message reloads that can wipe optimistic UI data.
+        setCurrentSession(prev => (prev?.id === session.id ? prev : session));
       } else {
         // Session ID in URL doesn't exist, redirect to home
         navigate('/');
@@ -129,6 +131,49 @@ function ChatView() {
 
   const handleSendMessage = async (content, file = null) => {
     let sessionToUse = currentSession;
+
+    const buildFileMessageMeta = async (uploadedFile) => {
+      if (!uploadedFile) return null;
+
+      const nameLower = uploadedFile.name.toLowerCase();
+      const isImage = uploadedFile.type.startsWith('image/');
+      const isPdf = uploadedFile.type === 'application/pdf' || nameLower.endsWith('.pdf');
+      const isTextLike =
+        uploadedFile.type.startsWith('text/') ||
+        nameLower.endsWith('.json') ||
+        nameLower.endsWith('.md') ||
+        nameLower.endsWith('.py') ||
+        nameLower.endsWith('.js') ||
+        nameLower.endsWith('.jsx') ||
+        nameLower.endsWith('.ts') ||
+        nameLower.endsWith('.tsx') ||
+        nameLower.endsWith('.sql') ||
+        nameLower.endsWith('.yaml') ||
+        nameLower.endsWith('.yml');
+
+      const fileMeta = {
+        name: uploadedFile.name,
+        size: uploadedFile.size,
+        type: uploadedFile.type,
+        preview_kind: isImage ? 'image' : (isPdf ? 'pdf' : (isTextLike ? 'text' : 'other')),
+      };
+
+      if (isImage || isPdf || isTextLike) {
+        fileMeta.preview_url = URL.createObjectURL(uploadedFile);
+      }
+
+      if (isTextLike && uploadedFile.size <= 1024 * 1024) {
+        try {
+          const rawText = await uploadedFile.text();
+          fileMeta.preview_text = rawText.slice(0, 25000);
+          fileMeta.preview_text_truncated = rawText.length > 25000;
+        } catch {
+          // Ignore text extraction issues and fall back to URL preview.
+        }
+      }
+
+      return fileMeta;
+    };
     
     // Create new session if none exists
     if (!sessionToUse) {
@@ -140,12 +185,14 @@ function ChatView() {
     }
 
     // Add user message optimistically
+    const fileMessageMeta = file ? await buildFileMessageMeta(file) : null;
+
     const userMessage = {
       id: `user-${Date.now()}`,
       role: 'user',
       content,
       timestamp: new Date().toISOString(),
-      file: file ? { name: file.name, size: file.size, type: file.type } : null,
+      file: fileMessageMeta,
     };
     setMessages((prev) => [...prev, userMessage]);
     setLoading(true);

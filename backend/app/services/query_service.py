@@ -235,16 +235,35 @@ class QueryService:
                 )
 
             print(f"Using Generator directly with {'script-augmented' if augmented_prompt else 'original'} prompt")
+
+            # Script-based helpers may need a larger completion budget for full JSON payloads.
+            extension_max_tokens = 4096
+            if extension_type == "script-based":
+                extension_max_tokens = 8192
             
             # Generate response directly (no RAG retrieval needed)
-            answer = generator.generate(
-                query=query_for_llm,
-                context=context_for_llm,
-                conversation_history=formatted_history,
-                preference_instructions=None,  # Extensions don't use preferences
-                user_context=None,
-                extension_system_prompt=effective_extension_prompt
-            )
+            try:
+                answer = generator.generate(
+                    query=query_for_llm,
+                    context=context_for_llm,
+                    conversation_history=formatted_history,
+                    preference_instructions=None,  # Extensions don't use preferences
+                    user_context=None,
+                    extension_system_prompt=effective_extension_prompt,
+                    max_tokens=extension_max_tokens
+                )
+            except Exception as ext_gen_err:
+                print(f"⚠️ Extension generation failed with max_tokens={extension_max_tokens}: {ext_gen_err}")
+                print("↩️ Retrying extension generation with max_tokens=4096")
+                answer = generator.generate(
+                    query=query_for_llm,
+                    context=context_for_llm,
+                    conversation_history=formatted_history,
+                    preference_instructions=None,
+                    user_context=None,
+                    extension_system_prompt=effective_extension_prompt,
+                    max_tokens=4096
+                )
             
             # Build response without sources
             rag_response = {
@@ -344,12 +363,46 @@ class QueryService:
             logger.error(f"❌ Error in risk prediction: {e}", exc_info=True)
 
         try:
+            user_message_metadata = {}
+            if file_data:
+                filename = file_data.get("filename")
+                content_type = file_data.get("content_type")
+                content_bytes = file_data.get("content") or b""
+                file_kind = "other"
+                lower_name = (filename or "").lower()
+
+                if content_type and content_type.startswith("image/"):
+                    file_kind = "image"
+                elif content_type == "application/pdf" or lower_name.endswith(".pdf"):
+                    file_kind = "pdf"
+                elif (content_type and content_type.startswith("text/")) or lower_name.endswith((".json", ".txt", ".md", ".py", ".js", ".jsx", ".ts", ".tsx", ".sql", ".yaml", ".yml")):
+                    file_kind = "text"
+
+                persisted_file = {
+                    "name": filename,
+                    "type": content_type,
+                    "size": len(content_bytes),
+                    "preview_kind": file_kind,
+                }
+
+                # Persist text snippet for text-like uploads so preview remains useful after reload.
+                if file_kind == "text" and len(content_bytes) <= 1024 * 1024:
+                    try:
+                        raw_text = content_bytes.decode("utf-8", errors="replace")
+                        persisted_file["preview_text"] = raw_text[:25000]
+                        persisted_file["preview_text_truncated"] = len(raw_text) > 25000
+                    except Exception:
+                        pass
+
+                user_message_metadata["file"] = persisted_file
+
             # Save user message
             await self._get_message_repo().create_message(
                 session_id=request.session_id,
                 role="user",
                 content=original_question,
-                user_id=user_id  # Add user_id to messages
+                user_id=user_id,  # Add user_id to messages
+                metadata=user_message_metadata
             )
             await self._get_session_repo().increment_message_count(request.session_id)
             
@@ -721,7 +774,7 @@ User message: "{user_message}"
 Does this message contain a policy claim or update? Answer with ONLY "yes" or "no"."""
 
             response = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="llama-3.1-8b-instant",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=10

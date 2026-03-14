@@ -11,6 +11,7 @@ function Sidebar({ sessions, currentSession, onNewChat, onSelectSession, onRefre
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, sessionId: null });
   const [imageError, setImageError] = useState(false);
   const [extensions, setExtensions] = useState([]);
+  const [totalExtensionsCount, setTotalExtensionsCount] = useState(0);
   const [isLoadingExtensions, setIsLoadingExtensions] = useState(false);
   const [showFilesModal, setShowFilesModal] = useState(false);
   const [pendingSession, setPendingSession] = useState(null);
@@ -29,11 +30,13 @@ function Sidebar({ sessions, currentSession, onNewChat, onSelectSession, onRefre
         try {
           setIsLoadingExtensions(true);
           const extensionsData = await extensionsAPI.getAllExtensions(true);
+          setTotalExtensionsCount(extensionsData.length);
           // Show only first 3 as featured
           setExtensions(extensionsData.slice(0, 3));
         } catch (error) {
           console.error('Failed to load extensions:', error);
           setExtensions([]);
+          setTotalExtensionsCount(0);
         } finally {
           setIsLoadingExtensions(false);
         }
@@ -152,6 +155,8 @@ function Sidebar({ sessions, currentSession, onNewChat, onSelectSession, onRefre
     return colors[category] || '#6366f1';
   };
 
+  const hiddenExtensionsCount = Math.max(totalExtensionsCount - extensions.length, 0);
+
   return (
     <>
       <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
@@ -203,12 +208,22 @@ function Sidebar({ sessions, currentSession, onNewChat, onSelectSession, onRefre
                         <div 
                           className="extension-icon" 
                         >
-                          <i className={extension.icon} style={{ fontSize: '16px' }}></i>
+                          <i className={extension.icon} style={{ fontSize: '14px' }}></i>
                         </div>
                         <span className="extension-name">{extension.name}</span>
                       </button>
                     </div>
                   ))}
+
+                  {hiddenExtensionsCount > 0 && (
+                    <div className="extensions-more-indicator" onClick={handleExploreExtensions}>
+                      <span className="extensions-more-dot"></span>
+                      <span>
+                        {hiddenExtensionsCount} more extension{hiddenExtensionsCount > 1 ? 's' : ''} available
+                      </span>
+                    </div>
+                  )}
+
                   <button
                     className="explore-extensions-btn"
                     onClick={handleExploreExtensions}
@@ -220,6 +235,9 @@ function Sidebar({ sessions, currentSession, onNewChat, onSelectSession, onRefre
                       <rect x="3" y="14" width="7" height="7"></rect>
                     </svg>
                     <span>Explore Extensions</span>
+                    {hiddenExtensionsCount > 0 && (
+                      <span className="explore-extensions-count-badge">+{hiddenExtensionsCount}</span>
+                    )}
                   </button>
                 </>
               ) : (

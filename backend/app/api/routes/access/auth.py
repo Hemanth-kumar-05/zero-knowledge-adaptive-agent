@@ -44,7 +44,7 @@ except Exception:
 ALLOWED_ID_EXTENSIONS = {"png", "jpg", "jpeg", "pdf"}
 GROQ_PROVIDER = os.getenv("LLM_PROVIDER", "groq").lower()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
 GROQ_VISION_MODEL = os.getenv("GROQ_VISION_MODEL", GROQ_MODEL)
 GROQ_ENABLED = GROQ_PROVIDER == "groq" and bool(GROQ_API_KEY) and Groq is not None
 groq_client = Groq(api_key=GROQ_API_KEY) if GROQ_ENABLED else None

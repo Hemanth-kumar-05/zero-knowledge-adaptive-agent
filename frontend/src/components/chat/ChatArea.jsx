@@ -29,6 +29,43 @@ function ChatArea({
   const [sessionWarning, setSessionWarning] = useState(null);
   const [dismissedWarning, setDismissedWarning] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [filePreviewUrl, setFilePreviewUrl] = useState(null);
+
+  const formatFileSize = (bytes) => {
+    if (!bytes) return '';
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  };
+
+  const getFileIcon = (file) => {
+    if (file.type.startsWith('image/')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+      );
+    }
+    if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
+      return (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="9" y1="13" x2="15" y2="13"></line>
+          <line x1="9" y1="17" x2="15" y2="17"></line>
+          <polyline points="9 9 10 9 10 9"></polyline>
+        </svg>
+      );
+    }
+    return (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+        <polyline points="13 2 13 9 20 9"></polyline>
+      </svg>
+    );
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -105,6 +142,13 @@ function ChatArea({
       onSendMessage(input.trim(), selectedFile);
       setInput('');
       setSelectedFile(null);
+      if (filePreviewUrl) {
+        URL.revokeObjectURL(filePreviewUrl);
+        setFilePreviewUrl(null);
+      }
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     }
   };
 
@@ -119,11 +163,21 @@ function ChatArea({
     const file = e.target.files[0];
     if (file) {
       setSelectedFile(file);
+      if (file.type.startsWith('image/')) {
+        if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
+        setFilePreviewUrl(URL.createObjectURL(file));
+      } else {
+        setFilePreviewUrl(null);
+      }
     }
   };
 
   const handleRemoveFile = () => {
     setSelectedFile(null);
+    if (filePreviewUrl) {
+      URL.revokeObjectURL(filePreviewUrl);
+      setFilePreviewUrl(null);
+    }
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -211,13 +265,28 @@ function ChatArea({
       <div className="input-container">
         <form onSubmit={handleSubmit} className="input-form">
           {selectedFile && (
-            <div className="selected-file">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                <polyline points="13 2 13 9 20 9"></polyline>
-              </svg>
-              <span>{selectedFile.name}</span>
-              <button type="button" onClick={handleRemoveFile} className="remove-file-btn">×</button>
+            <div className="file-preview-container">
+              {filePreviewUrl ? (
+                <div className="file-preview-image-card">
+                  <img src={filePreviewUrl} alt="Preview" className="file-preview-thumbnail" />
+                  <div className="file-preview-meta">
+                    <span className="file-preview-name">{selectedFile.name}</span>
+                    <span className="file-preview-size">{formatFileSize(selectedFile.size)}</span>
+                  </div>
+                  <button type="button" onClick={handleRemoveFile} className="file-preview-remove">×</button>
+                </div>
+              ) : (
+                <div className="file-preview-doc-card">
+                  <div className="file-preview-doc-icon">
+                    {getFileIcon(selectedFile)}
+                  </div>
+                  <div className="file-preview-meta">
+                    <span className="file-preview-name">{selectedFile.name}</span>
+                    <span className="file-preview-size">{formatFileSize(selectedFile.size)}</span>
+                  </div>
+                  <button type="button" onClick={handleRemoveFile} className="file-preview-remove">×</button>
+                </div>
+              )}
             </div>
           )}
           <div className="input-row">
