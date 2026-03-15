@@ -7,6 +7,7 @@ without relying on keyword matching.
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))  # project root for config
 
 from typing import List, Dict, Optional
 from groq import Groq
@@ -14,6 +15,7 @@ import os
 import json
 from embeddings.embedder import Embedder
 import chromadb
+from config import config
 
 
 class SemanticPolicySearchService:
@@ -29,7 +31,7 @@ class SemanticPolicySearchService:
         # Connect to ChromaDB
         project_root = Path(__file__).parent.parent.parent.parent
         chroma_path = str(project_root / "data" / "chroma_db")
-        self.chroma_client = chromadb.PersistentClient(path=chroma_path)
+        self.chroma_client = config.get_chroma_client(chroma_path)
         self.collection = self.chroma_client.get_or_create_collection("academic_docs")
         
         print("✅ SemanticPolicySearchService initialized")

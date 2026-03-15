@@ -7,9 +7,9 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-import chromadb
 from datetime import datetime
 import json
+from config import config
 
 
 def view_all_chunks(limit=None, show_text_preview=True, filter_status=None):
@@ -24,12 +24,16 @@ def view_all_chunks(limit=None, show_text_preview=True, filter_status=None):
     # Connect to ChromaDB
     project_root = Path(__file__).parent.parent
     chroma_path = str(project_root / "data" / "chroma_db")
-    client = chromadb.PersistentClient(path=chroma_path)
+    client = config.get_chroma_client(chroma_path)
+    connection_info = config.get_chroma_connection_info(chroma_path)
     
     print("=" * 80)
     print("CHROMADB CHUNK VIEWER")
     print("=" * 80)
-    print(f"Database location: {chroma_path}\n")
+    if connection_info["mode"] == "http":
+        print(f"Database connection: {connection_info['url']}\n")
+    else:
+        print(f"Database location: {chroma_path}\n")
     
     try:
         collection = client.get_collection("academic_docs")
@@ -129,7 +133,7 @@ def export_to_json(output_file="chromadb_export.json"):
     """Export all chunks to JSON file"""
     project_root = Path(__file__).parent.parent
     chroma_path = str(project_root / "data" / "chroma_db")
-    client = chromadb.PersistentClient(path=chroma_path)
+    client = config.get_chroma_client(chroma_path)
     
     collection = client.get_collection("academic_docs")
     results = collection.get(include=["metadatas", "documents"])
@@ -163,7 +167,7 @@ def search_chunks(query_text, top_k=5):
     
     project_root = Path(__file__).parent.parent
     chroma_path = str(project_root / "data" / "chroma_db")
-    client = chromadb.PersistentClient(path=chroma_path)
+    client = config.get_chroma_client(chroma_path)
     
     collection = client.get_collection("academic_docs")
     embedder = Embedder()

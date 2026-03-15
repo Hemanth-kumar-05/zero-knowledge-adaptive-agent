@@ -14,6 +14,7 @@ import ChunkEditorPage from './pages/chunk-editor/ChunkEditorPage';
 import ExtensionsPage from './pages/extensions/ExtensionsPage';
 import AdminExtensionsPage from './pages/admin/AdminExtensionsPage';
 import AdminUsersPage from './pages/admin/AdminUsersPage';
+import AdminChromaChunksPage from './pages/admin/AdminChromaChunksPage';
 import Toast from './components/common/Toast';
 import Dialog from './components/common/Dialog';
 import { auth } from './utils/auth';
@@ -938,6 +939,98 @@ function AdminUsersView() {
   );
 }
 
+function AdminChromaChunksView() {
+  const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [user, setUser] = useState(auth.getUser());
+  const [sessions, setSessions] = useState([]);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = 'info', duration = 5000) => {
+    setToast({ message, type, duration });
+  };
+
+  useEffect(() => {
+    if (!user || user.role !== 'admin') {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  useEffect(() => {
+    if (user) {
+      loadSessions();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const handleAuthUserUpdate = () => setUser(auth.getUser());
+    window.addEventListener('auth-user-updated', handleAuthUserUpdate);
+    return () => window.removeEventListener('auth-user-updated', handleAuthUserUpdate);
+  }, []);
+
+  const loadSessions = async () => {
+    try {
+      const data = await api.getSessions();
+      setSessions(data.sessions || []);
+    } catch (error) {
+      console.error('Failed to load sessions:', error);
+      showToast('Failed to load sessions', 'error');
+    }
+  };
+
+  const handleDeleteSession = async (sessionId) => {
+    try {
+      await api.deleteSession(sessionId);
+      await loadSessions();
+      showToast('Chat deleted successfully', 'success');
+    } catch (error) {
+      console.error('Failed to delete session:', error);
+      showToast('Failed to delete session', 'error');
+    }
+  };
+
+  const handleLogout = () => {
+    auth.logout();
+    setUser(null);
+    navigate('/');
+  };
+
+  if (!user || user.role !== 'admin') {
+    return null;
+  }
+
+  return (
+    <div className="app">
+      <Sidebar
+        sessions={sessions}
+        currentSession={null}
+        onNewChat={() => navigate('/')}
+        onSelectSession={(session) => navigate(`/${session.id}`)}
+        onRefresh={loadSessions}
+        isOpen={isSidebarOpen}
+        onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+        user={user}
+        healthStatus={null}
+        onLogout={handleLogout}
+        onDeleteSession={handleDeleteSession}
+      />
+      <AdminChromaChunksPage
+        user={user}
+        onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+        showToast={showToast}
+      />
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          duration={toast.duration}
+          onClose={() => setToast(null)}
+        />
+      )}
+    </div>
+  );
+}
+
 function App() {
   const navigate = useNavigate();
   const [globalToast, setGlobalToast] = useState(null);
@@ -1052,6 +1145,7 @@ function App() {
         <Route path="/extensions" element={<VerificationGuard><ExtensionsView /></VerificationGuard>} />
         <Route path="/extensions/manage" element={<VerificationGuard><AdminExtensionsView /></VerificationGuard>} />
         <Route path="/admin/users" element={<VerificationGuard><AdminUsersView /></VerificationGuard>} />
+        <Route path="/admin/chroma-vault" element={<VerificationGuard><AdminChromaChunksView /></VerificationGuard>} />
         <Route path="/policy-updates" element={<VerificationGuard><PolicyUpdatesView /></VerificationGuard>} />
         <Route path="/policy-updates/:ticketId/deprecate" element={<VerificationGuard><ChunkEditorView /></VerificationGuard>} />
       </Routes>

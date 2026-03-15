@@ -10,6 +10,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 import chromadb
 from embeddings.embedder import Embedder
 import json
+from config import config
 
 
 def test_semantic_vs_keyword():
@@ -24,7 +25,7 @@ def test_semantic_vs_keyword():
     # Connect to ChromaDB (use absolute path)
     project_root = Path(__file__).parent.parent
     chroma_path = str(project_root / "data" / "chroma_db")
-    client = chromadb.PersistentClient(path=chroma_path)
+    client = config.get_chroma_client(chroma_path)
     collection = client.get_or_create_collection("academic_docs")
     embedder = Embedder()
     

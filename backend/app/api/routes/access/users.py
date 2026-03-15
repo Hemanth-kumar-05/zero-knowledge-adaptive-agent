@@ -3,8 +3,11 @@ User Routes
 User profile and preference management endpoints
 """
 
-from fastapi import APIRouter, Depends, HTTPException, status
-from typing import Dict, List
+import asyncio
+from pathlib import Path
+
+from fastapi import APIRouter, Depends, HTTPException, Query, status
+from typing import Dict, List, Optional
 from app.api.schemas.users import (
     UserProfile,
     UserProfileUpdate,
@@ -25,9 +28,12 @@ from app.services.preference_extraction_service import AIPreferenceExtractor
 from app.core.auth_middleware import get_current_user
 from app.utils.logger import get_logger
 from bson import ObjectId
+from config import config
 
 logger = get_logger(__name__)
 router = APIRouter(prefix="/users", tags=["User Management"])
+PROJECT_ROOT = Path(__file__).resolve().parents[5]
+CHROMA_COLLECTION_NAME = "academic_docs"
 
 
 def _serialize_user(user: Dict) -> Dict:
@@ -74,6 +80,19 @@ async def _require_admin(current_user: Dict, users_repo: UsersRepository):
         )
 
 
+def _build_chroma_chunk_payload(chunk_id: str, document: str, metadata: Optional[Dict]) -> Dict:
+    metadata = metadata or {}
+    return {
+        "id": chunk_id,
+        "document": document or "",
+        "metadata": metadata,
+        "preview": (document or "")[:240],
+        "source": metadata.get("source") or metadata.get("file_name") or metadata.get("document_name"),
+        "chunk_index": metadata.get("chunk_index"),
+        "status": metadata.get("status", "active"),
+    }
+
+
 @router.get("/admin/users")
 async def admin_list_users(
     current_user: Dict = Depends(get_current_user),
@@ -88,6 +107,123 @@ async def admin_list_users(
         "users": [_serialize_admin_user(user) for user in users],
         "count": len(users),
     }
+
+
+@router.get("/admin/chroma/chunks")
+async def admin_list_chroma_chunks(
+    limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
+    search: Optional[str] = Query(default=None, min_length=1),
+    status: Optional[str] = Query(default=None),
+    chunk_type: Optional[str] = Query(default=None),
+    ticket_id: Optional[str] = Query(default=None),
+    policy_updates_only: bool = Query(default=False),
+    current_user: Dict = Depends(get_current_user),
+    db=Depends(get_db)
+):
+    """Admin-only: inspect chunks from the active Chroma collection."""
+    users_repo = UsersRepository(db)
+    await _require_admin(current_user, users_repo)
+
+    chroma_path = str(PROJECT_ROOT / "data" / "chroma_db")
+
+    def _load_chunks() -> Dict:
+        client = config.get_chroma_client(chroma_path)
+        collection = client.get_collection(CHROMA_COLLECTION_NAME)
+        raw = collection.get(include=["documents", "metadatas"])
+
+        ids = raw.get("ids") or []
+        documents = raw.get("documents") or []
+        metadatas = raw.get("metadatas") or []
+
+        chunks = [
+            _build_chroma_chunk_payload(chunk_id, document, metadata)
+            for chunk_id, document, metadata in zip(ids, documents, metadatas)
+        ]
+
+        query = (search or "").strip().lower()
+        status_filter = (status or "").strip().lower()
+        chunk_type_filter = (chunk_type or "").strip().lower()
+        ticket_filter = (ticket_id or "").strip().lower()
+
+        if policy_updates_only:
+            chunks = [
+                chunk for chunk in chunks
+                if chunk["metadata"].get("type") == "policy_update"
+                or chunk["metadata"].get("ticket_id")
+                or chunk["metadata"].get("replaces")
+                or chunk["metadata"].get("version", 0) == 2
+            ]
+
+        if status_filter:
+            chunks = [
+                chunk for chunk in chunks
+                if str(chunk["metadata"].get("status", chunk.get("status", ""))).lower() == status_filter
+            ]
+
+        if chunk_type_filter:
+            chunks = [
+                chunk for chunk in chunks
+                if str(chunk["metadata"].get("type", "")).lower() == chunk_type_filter
+            ]
+
+        if ticket_filter:
+            chunks = [
+                chunk for chunk in chunks
+                if ticket_filter in str(chunk["metadata"].get("ticket_id", "")).lower()
+            ]
+
+        if query:
+            chunks = [
+                chunk for chunk in chunks
+                if query in chunk["document"].lower()
+                or query in str(chunk["metadata"]).lower()
+                or query in (chunk["source"] or "").lower()
+            ]
+
+        chunks.sort(
+            key=lambda chunk: (
+                0 if chunk["metadata"].get("type") == "policy_update" else 1,
+                0 if chunk["metadata"].get("status") == "deprecated" else 1,
+                str(
+                    chunk["metadata"].get("updated_at")
+                    or chunk["metadata"].get("created_at")
+                    or chunk["metadata"].get("deprecated_at")
+                    or ""
+                ),
+            ),
+            reverse=True,
+        )
+
+        total_chunks = len(chunks)
+        paginated_chunks = chunks[offset:offset + limit]
+        connection_info = config.get_chroma_connection_info(chroma_path)
+
+        return {
+            "collection_name": CHROMA_COLLECTION_NAME,
+            "connection": connection_info,
+            "total_chunks": total_chunks,
+            "returned_count": len(paginated_chunks),
+            "limit": limit,
+            "offset": offset,
+            "search": search,
+            "filters": {
+                "status": status,
+                "chunk_type": chunk_type,
+                "ticket_id": ticket_id,
+                "policy_updates_only": policy_updates_only,
+            },
+            "chunks": paginated_chunks,
+        }
+
+    try:
+        return await asyncio.to_thread(_load_chunks)
+    except Exception as exc:
+        logger.error("Failed to load Chroma chunks for admin page: %s", exc, exc_info=True)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to load Chroma chunks: {exc}"
+        )
 
 
 @router.patch("/admin/users/{target_user_id}/role")

@@ -6,6 +6,7 @@ Used by both backend API and RAG pipeline
 
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 from dotenv import load_dotenv
 
 # Load environment variables from .env file
@@ -82,7 +83,69 @@ class Config:
     # CORS Configuration
     # ============================================
     CORS_ORIGINS = os.getenv("CORS_ORIGINS", '["*"]')
-    
+
+    # ============================================
+    # ChromaDB Configuration
+    # ============================================
+    # When CHROMA_HOST is set the app connects via HttpClient (Docker / remote).
+    # When unset it falls back to PersistentClient using a local path (dev default).
+    CHROMA_HOST = os.getenv("CHROMA_HOST")
+    CHROMA_PORT = int(os.getenv("CHROMA_PORT", "8000"))
+    CHROMA_SSL = os.getenv("CHROMA_SSL", "false").lower() == "true"
+
+    @classmethod
+    def is_chroma_http_mode(cls) -> bool:
+        """Whether ChromaDB should be accessed over HTTP."""
+        return bool(cls.CHROMA_HOST)
+
+    @classmethod
+    def get_chroma_connection_info(cls, persist_directory: str = "data/chroma_db"):
+        """
+        Return normalized connection metadata for the active ChromaDB mode.
+
+        Accepts either:
+        - CHROMA_HOST=localhost with optional CHROMA_PORT / CHROMA_SSL
+        - CHROMA_HOST=http://localhost:8000
+        - CHROMA_HOST=https://example.com
+        """
+        if not cls.CHROMA_HOST:
+            return {
+                "mode": "persistent",
+                "persist_directory": persist_directory,
+            }
+
+        host = cls.CHROMA_HOST.strip()
+        port = cls.CHROMA_PORT
+        ssl = cls.CHROMA_SSL
+
+        if "://" in host:
+            parsed = urlparse(host)
+            host = parsed.hostname or host
+            port = parsed.port or port
+            ssl = parsed.scheme == "https"
+
+        return {
+            "mode": "http",
+            "host": host,
+            "port": port,
+            "ssl": ssl,
+            "scheme": "https" if ssl else "http",
+            "url": f"{'https' if ssl else 'http'}://{host}:{port}",
+        }
+
+    @classmethod
+    def get_chroma_client(cls, persist_directory: str = "data/chroma_db"):
+        """Return an HttpClient when CHROMA_HOST is configured, else PersistentClient."""
+        import chromadb
+        connection_info = cls.get_chroma_connection_info(persist_directory)
+        if connection_info["mode"] == "http":
+            return chromadb.HttpClient(
+                host=connection_info["host"],
+                port=connection_info["port"],
+                ssl=connection_info["ssl"]
+            )
+        return chromadb.PersistentClient(path=persist_directory)
+
     @classmethod
     def validate(cls):
         """Validate required configuration"""

@@ -7,9 +7,9 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-import chromadb
 from datetime import datetime
 import html
+from config import config
 
 
 def generate_html_viewer():
@@ -18,7 +18,8 @@ def generate_html_viewer():
     # Connect to ChromaDB
     project_root = Path(__file__).parent.parent
     chroma_path = str(project_root / "data" / "chroma_db")
-    client = chromadb.PersistentClient(path=chroma_path)
+    client = config.get_chroma_client(chroma_path)
+    connection_info = config.get_chroma_connection_info(chroma_path)
     
     try:
         collection = client.get_collection("academic_docs")
@@ -252,6 +253,7 @@ def generate_html_viewer():
             <h1>📚 ChromaDB Chunk Viewer</h1>
             <p>Interactive viewer for academic document chunks</p>
             <p style="font-size: 0.9em; margin-top: 10px;">Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Connection: {connection_info["url"] if connection_info["mode"] == "http" else chroma_path}</p>
         </div>
         
         <div class="stats">

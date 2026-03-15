@@ -404,6 +404,11 @@ const api = {
     const response = await client.post(`/users/admin/users/${userId}/verification/reset`);
     return response.data;
   },
+
+  getAdminChromaChunks: async (params = {}) => {
+    const response = await client.get('/users/admin/chroma/chunks', { params });
+    return response.data;
+  },
 };
 
 export { client };
