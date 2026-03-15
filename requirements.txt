@@ -2,46 +2,44 @@
 # Choose your embedding approach and uncomment the one you want:
 
 # Option 1: Local embeddings (FREE - recommended for learning)
-sentence-transformers>=2.2.0
+sentence-transformers
 
 # Option 2: OpenAI embeddings (PAID - better quality)
 # openai>=1.0.0
 
 # Vector Database
-chromadb>=0.4.0
+chromadb
 
 # Text Processing
-tiktoken>=0.5.0
+tiktoken
 
 # Environment Management
-python-dotenv>=1.0.0
+python-dotenv
 
 # Utilities
-tqdm>=4.65.0
+tqdm
 
 # AI Model Clients (use new google.genai package)
-google-genai>=0.1.0
+google
+groq
 
 # FastAPI Backend Requirements
 
 # Core Framework
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-pydantic>=2.0.0
-pydantic-settings>=2.0.0
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
 
 # Async MongoDB
-motor>=3.3.0
-pymongo>=4.5.0
-certifi>=2023.0.0
-
-# Environment
-python-dotenv>=1.0.0
+motor
+pymongo
+certifi
 
 # Utilities
-python-multipart>=0.0.6
-Pillow>=10.0.0
-numpy>=1.24.0
+python-multipart
+Pillow
+numpy
 rapidocr-onnxruntime
 pypdf
 PyPDF2
@@ -49,17 +47,17 @@ pdfminer
 pdfplumber
 
 # File Upload & Storage (Phase 3)
-cloudinary>=1.36.0
-python-magic>=0.4.27
+cloudinary
+python-magic
 
 # Authentication & Authorization (Phase 2)
-google-auth>=2.25.0
-google-auth-oauthlib>=1.2.0
-google-auth-httplib2>=0.2.0
-PyJWT>=2.8.0
-python-jose[cryptography]>=3.3.0
-passlib[bcrypt]>=1.7.4
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+PyJWT
+python-jose[cryptography]
+passlib[bcrypt]
 
 # LLM for Preference Extraction (Phase 2)
-openai>=1.0.0
+openai
 # anthropic>=0.8.0  # Alternative option
