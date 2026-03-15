@@ -1,4 +1,3 @@
-import chromadb
 from typing import List, Dict
 from pathlib import Path
 import sys
@@ -8,6 +7,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from embeddings.embedder import Embedder
 from rag.ingest import load_markdown_files, create_chunks_with_metadata
+from config import config
 
 
 class VectorIndex:
@@ -16,7 +16,7 @@ class VectorIndex:
     def __init__(self, persist_directory: str = "data/chroma_db"):
         self.persist_directory = persist_directory
         
-        self.client = chromadb.PersistentClient(path=persist_directory)
+        self.client = config.get_chroma_client(persist_directory)
         self.collection = None
         
     def create_collection(

@@ -4,7 +4,7 @@ import asyncio
 from typing import Dict
 from app.db.mongo import MongoDB
 from app.core.rag_adapter import rag_adapter
-from pathlib import Path
+from config import config
 
 
 class HealthRepository:
@@ -59,7 +59,7 @@ class HealthRepository:
                 return {
                     "collection_name": retriever.collection_name,
                     "document_count": count,
-                    "persist_directory": retriever.persist_directory
+                    **config.get_chroma_connection_info(retriever.persist_directory)
                 }
             
             details = await asyncio.to_thread(_check_chroma)
