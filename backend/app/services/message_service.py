@@ -161,5 +161,35 @@ class MessageService:
         except Exception as e:
             return {"error": f"Failed to retrieve messages: {str(e)}"}
 
+    async def update_execution_cache(
+        self,
+        message_id: str,
+        execution_cache: dict,
+        requester_user_id: Optional[str] = None,
+    ) -> dict:
+        """Persist execution cache metadata for an assistant message."""
+        try:
+            message = await self._get_message_repo().get_message_by_id(message_id)
+            if not message:
+                return {"error": "Message not found"}
+
+            session = await self._get_session_repo().get_session(message["session_id"])
+            if not session:
+                return {"error": "Session not found"}
+
+            if requester_user_id and session.get("user_id") != requester_user_id:
+                return {"error": "Access denied"}
+
+            success = await self._get_message_repo().update_message_metadata(
+                message_id,
+                {"execution_cache": execution_cache}
+            )
+            if not success:
+                return {"error": "Failed to update execution cache"}
+
+            return {"message": "Execution cache updated successfully"}
+        except Exception as e:
+            return {"error": f"Failed to update execution cache: {str(e)}"}
+
 # Global message service instance
 message_service = MessageService()

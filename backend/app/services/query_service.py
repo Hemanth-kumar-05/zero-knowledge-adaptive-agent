@@ -37,6 +37,8 @@ logger = logging.getLogger(__name__)
 # Session limits for context window management
 SESSION_SOFT_LIMIT = 20  # Suggest new session
 SESSION_HARD_LIMIT = 30  # Strong warning
+EXECUTABLE_DATASET_MAX_BYTES = 5 * 1024 * 1024
+DATASET_PREVIEW_CHAR_LIMIT = 25000
 
 class QueryService:
     def __init__(self):
@@ -87,6 +89,8 @@ class QueryService:
 
         # Store original question for display/saving
         original_question = request.question
+        user_message_id = None
+        assistant_message_id = None
 
         # Check if session exists
         session_exists = await self._get_session_repo().session_exists(request.session_id)
@@ -99,6 +103,7 @@ class QueryService:
         extension_type = None
         script_execution_result = None
         augmented_prompt = None  # For extensions - full prompt with data
+        is_extension_session = bool(session and session.get("extension_id"))
         
         # If session has an extension, fetch its system prompt
         if session and session.get("extension_id"):
@@ -143,6 +148,8 @@ class QueryService:
                             sources=[],
                             refused=False,
                             session_id=request.session_id,
+                            user_message_id=None,
+                            assistant_message_id=None,
                             confidence="low"
                         )
         
@@ -331,7 +338,7 @@ class QueryService:
         # === RISK DETECTION (BEFORE saving messages) ===
         risk_alerts_list = []
         try:
-            if user_id and conversation_history:
+            if user_id and conversation_history and not is_extension_session:
                 message_count = len(conversation_history)
                 simple_greetings = ["hi", "hey", "hello", "bye", "goodbye", "thanks", "thank you", "ok", "okay"]
                 is_simple = original_question.lower().strip() in simple_greetings
@@ -375,7 +382,7 @@ class QueryService:
                     file_kind = "image"
                 elif content_type == "application/pdf" or lower_name.endswith(".pdf"):
                     file_kind = "pdf"
-                elif (content_type and content_type.startswith("text/")) or lower_name.endswith((".json", ".txt", ".md", ".py", ".js", ".jsx", ".ts", ".tsx", ".sql", ".yaml", ".yml")):
+                elif (content_type and content_type.startswith("text/")) or lower_name.endswith((".csv", ".tsv", ".json", ".txt", ".md", ".py", ".js", ".jsx", ".ts", ".tsx", ".sql", ".yaml", ".yml")):
                     file_kind = "text"
 
                 persisted_file = {
@@ -386,18 +393,20 @@ class QueryService:
                 }
 
                 # Persist text snippet for text-like uploads so preview remains useful after reload.
-                if file_kind == "text" and len(content_bytes) <= 1024 * 1024:
+                if file_kind == "text" and len(content_bytes) <= EXECUTABLE_DATASET_MAX_BYTES:
                     try:
                         raw_text = content_bytes.decode("utf-8", errors="replace")
-                        persisted_file["preview_text"] = raw_text[:25000]
-                        persisted_file["preview_text_truncated"] = len(raw_text) > 25000
+                        persisted_file["execution_text"] = raw_text
+                        persisted_file["execution_text_truncated"] = False
+                        persisted_file["preview_text"] = raw_text[:DATASET_PREVIEW_CHAR_LIMIT]
+                        persisted_file["preview_text_truncated"] = len(raw_text) > DATASET_PREVIEW_CHAR_LIMIT
                     except Exception:
                         pass
 
                 user_message_metadata["file"] = persisted_file
 
             # Save user message
-            await self._get_message_repo().create_message(
+            user_message_id = await self._get_message_repo().create_message(
                 session_id=request.session_id,
                 role="user",
                 content=original_question,
@@ -413,9 +422,10 @@ class QueryService:
                 "retrieval_time_ms": rag_response.get("retrieval_time_ms"),
                 "generation_time_ms": rag_response.get("generation_time_ms"),
                 "total_time_ms": rag_response.get("total_time_ms"),
-                "risk_alerts": risk_alerts_list if risk_alerts_list else []
             }
-            await self._get_message_repo().create_message(
+            if not is_extension_session and risk_alerts_list:
+                metadata["risk_alerts"] = risk_alerts_list
+            assistant_message_id = await self._get_message_repo().create_message(
                 session_id=request.session_id,
                 role="assistant",
                 content=rag_response.get("answer", ""),
@@ -532,6 +542,8 @@ class QueryService:
             sources=sources if sources else None,
             refused=rag_response.get("refused", False),
             session_id=request.session_id,
+            user_message_id=user_message_id,
+            assistant_message_id=assistant_message_id,
             confidence=rag_response.get("confidence"),
             risk_alerts=risk_alerts_for_response,
             session_limit_warning=session_warning,

@@ -167,6 +167,12 @@
   display: block;
 }
 
+.message-file-inline-preview.csv {
+  width: min(560px, 100%);
+  padding: 0;
+  cursor: pointer;
+}
+
 /* Risk Alert Indicator in Bottom Right */
 .message-risk-indicator {
   position: absolute;
@@ -218,6 +224,93 @@
 
 .message-text pre {
   margin: 12px 0;
+}
+
+.execution-result-text {
+  margin-top: 10px;
+}
+
+.execution-result-wrapper {
+  margin: 10px 0 14px;
+}
+
+.execution-chart-wrapper {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #3f3f3f;
+  border-radius: 14px;
+  background: #202423;
+}
+
+.execution-charts-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.execution-result-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(16, 163, 127, 0.14);
+  color: #8fe0c9;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.generated-code-details {
+  margin: 10px 0 14px;
+  border: 1px solid #3f3f3f;
+  border-radius: 10px;
+  background: #232525;
+  overflow: hidden;
+}
+
+.generated-code-details summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 14px;
+  color: #b8d9cf;
+  font-size: 13px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.generated-code-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.generated-code-details summary::after {
+  content: '+';
+  float: right;
+  color: #10a37f;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.generated-code-details[open] summary::after {
+  content: '-';
+}
+
+.generated-code-content {
+  padding: 0 12px 12px;
+}
+
+.plotly-chart-canvas {
+  width: 100%;
+  min-height: 420px;
+}
+
+.plotly-chart-error {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 107, 107, 0.12);
+  color: #ff9a9a;
+  font-size: 14px;
 }
 
 /* Shared code-editor style for raw JSON and fenced code blocks */
@@ -315,6 +408,93 @@
 
 .json-viewer-pre.code-plain {
   color: #d4d4d4;
+}
+
+.execution-panel {
+  margin: 8px 0 14px;
+  border: 1px solid #3f3f3f;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1f2322;
+}
+
+.execution-panel-running {
+  padding: 10px 12px;
+  color: #cfe7df;
+  border-left: 3px solid #10a37f;
+}
+
+.execution-status-current {
+  font-weight: 600;
+  color: #e7f6f1;
+}
+
+.execution-status-log {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 180px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.execution-status-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #b8d9cf;
+  line-height: 1.4;
+}
+
+.execution-status-bullet {
+  color: #10a37f;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.execution-status-text {
+  word-break: break-word;
+}
+
+.execution-panel-error {
+  border-left: 3px solid #e25b5b;
+}
+
+.execution-panel-error strong {
+  display: block;
+  padding: 10px 12px 0;
+  color: #ffb3b3;
+}
+
+.execution-panel-error pre {
+  margin: 0;
+  padding: 10px 12px 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #ffd1d1;
+  font-family: Consolas, 'Cascadia Code', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.execution-panel-result {
+  border-left: 3px solid #10a37f;
+}
+
+.execution-panel-header {
+  padding: 8px 12px;
+  background: #2a2d2c;
+  color: #9ad7c5;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.execution-panel-body {
+  padding: 10px 12px;
 }
 
 /* JSON syntax tokens */
@@ -437,6 +617,94 @@
   border: none;
   border-radius: 8px;
   background: #111;
+}
+
+.csv-preview-shell {
+  border: 1px solid #353a39;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1b1f1e;
+}
+
+.csv-preview-scroll {
+  overflow: auto;
+  max-height: 68vh;
+}
+
+.csv-preview-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.csv-preview-scroll::-webkit-scrollbar-track {
+  background: #242827;
+}
+
+.csv-preview-scroll::-webkit-scrollbar-thumb {
+  background: #10a37f;
+  border-radius: 999px;
+}
+
+.csv-preview-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: #e8eded;
+}
+
+.csv-preview-table th,
+.csv-preview-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #303534;
+  border-right: 1px solid #2a2f2e;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.csv-preview-table th:last-child,
+.csv-preview-table td:last-child {
+  border-right: none;
+}
+
+.csv-preview-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #24302d;
+  color: #9fe1ce;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.csv-preview-table tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.csv-preview-table tbody tr:hover td {
+  background: rgba(16, 163, 127, 0.08);
+}
+
+.csv-preview-shell.compact .csv-preview-scroll {
+  max-height: 220px;
+}
+
+.csv-preview-shell.compact .csv-preview-table {
+  font-size: 12px;
+}
+
+.csv-preview-shell.compact .csv-preview-table th,
+.csv-preview-shell.compact .csv-preview-table td {
+  padding: 7px 10px;
+}
+
+.csv-preview-note {
+  padding: 10px 12px;
+  border-top: 1px solid #303534;
+  background: #222726;
+  color: #9da8a5;
+  font-size: 12px;
 }
 
 .file-previewer-text {
@@ -815,13 +1083,37 @@
 /* ============================================ */
 
 .message-text table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
-  margin: 16px 0;
+  margin: 0;
   background-color: #1e1e1e;
-  border-radius: 8px;
-  overflow: hidden;
+}
+
+.markdown-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 70vh;
+  margin: 16px 0;
+  border-radius: 12px;
   border: 1px solid #3a3a3a;
+  background: #1e1e1e;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.markdown-table-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.markdown-table-scroll::-webkit-scrollbar-track {
+  background: #262a29;
+}
+
+.markdown-table-scroll::-webkit-scrollbar-thumb {
+  background: #10a37f;
+  border-radius: 999px;
 }
 
 .message-text thead {
@@ -836,6 +1128,10 @@
   border-bottom: 2px solid #10a37f;
   font-size: 14px;
   white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #2a2a2a;
 }
 
 .message-text td {
@@ -869,9 +1165,8 @@
 
 /* Make tables scrollable on small screens */
 @media (max-width: 768px) {
-  .message-text table {
-    display: block;
-    overflow-x: auto;
+  .markdown-table-scroll {
+    max-height: 55vh;
     -webkit-overflow-scrolling: touch;
   }
   

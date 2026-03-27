@@ -6,6 +6,18 @@ class QueryRequest(BaseModel):
     question: str
     session_id: str
 
+class CodeRepairRequest(BaseModel):
+    question: str
+    code: str
+    error: str
+    traceback: Optional[str] = None
+    dataset_preview: str
+    file_name: Optional[str] = None
+    extension_name: Optional[str] = None
+
+class CodeRepairResponse(BaseModel):
+    fixed_code: str
+
 class Source(BaseModel):
     doc_id: str
     section: str
@@ -38,6 +50,8 @@ class QueryResponse(BaseModel):
     sources: Optional[List[Source]]
     refused: bool = Field(default=False)
     session_id: str
+    user_message_id: Optional[str] = Field(default=None)
+    assistant_message_id: Optional[str] = Field(default=None)
     confidence: Optional[str]
     risk_alerts: Optional[List[RiskAlert]] = Field(default=None)  # NEW: Risk alerts
     session_limit_warning: Optional[dict] = Field(default=None)  # NEW: Session limit suggestion

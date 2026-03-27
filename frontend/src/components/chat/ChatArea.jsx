@@ -5,8 +5,11 @@ import Message from './Message';
 import SessionWarning from './SessionWarning';
 import ProofUploadModal from './ProofUploadModal';
 
+const EXECUTABLE_DATASET_MAX_BYTES = 5 * 1024 * 1024;
+
 function ChatArea({ 
   messages, 
+  latestExecutionDataset,
   onSendMessage, 
   loading, 
   error, 
@@ -74,6 +77,13 @@ function ChatArea({
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    console.log('[ChatArea] Latest runnable dataset updated', {
+      name: latestExecutionDataset?.name || null,
+      hasText: Boolean(latestExecutionDataset?.text),
+    });
+  }, [latestExecutionDataset]);
 
   // Get extension-specific content
   const getExtensionContent = () => {
@@ -163,6 +173,22 @@ function ChatArea({
     const file = e.target.files[0];
     if (file) {
       setSelectedFile(file);
+      const nameLower = file.name.toLowerCase();
+      const isRunnableDataset =
+        nameLower.endsWith('.csv') ||
+        nameLower.endsWith('.tsv') ||
+        nameLower.endsWith('.json') ||
+        file.type === 'application/json' ||
+        file.type === 'text/csv';
+
+      if (isRunnableDataset && file.size > EXECUTABLE_DATASET_MAX_BYTES && showToast) {
+        showToast(
+          `Datasets larger than 5 MB can be uploaded, but live code execution and chart rendering will be disabled for ${file.name}. Please use a smaller file or split the dataset.`,
+          'warning',
+          8000
+        );
+      }
+
       if (file.type.startsWith('image/')) {
         if (filePreviewUrl) URL.revokeObjectURL(filePreviewUrl);
         setFilePreviewUrl(URL.createObjectURL(file));
@@ -187,8 +213,34 @@ function ChatArea({
     fileInputRef.current?.click();
   };
 
+  const getRunnableDatasetFromMessage = (message) => {
+    const attachment = message?.file || message?.metadata?.file || null;
+    if (!attachment) return null;
+
+    const nameLower = attachment?.name?.toLowerCase() || '';
+    const isRunnableDataset =
+      Boolean(attachment?.execution_text || attachment?.preview_text) &&
+      (
+        nameLower.endsWith('.csv') ||
+        nameLower.endsWith('.tsv') ||
+        nameLower.endsWith('.json') ||
+        attachment?.type === 'application/json' ||
+        attachment?.type === 'text/csv'
+      );
+
+    if (!isRunnableDataset) return null;
+
+    return {
+      text: attachment.execution_text || attachment.preview_text,
+      name: attachment.name || 'dataset.csv',
+      truncated: Boolean(attachment.execution_text_truncated ?? attachment.preview_text_truncated),
+    };
+  };
+
   // Show attachment button only for extension sessions
   const showAttachment = currentSession?.extension_id;
+  let latestUserQuestion = '';
+  let latestRunnableDatasetForMessage = latestExecutionDataset || null;
 
   return (
     <div className="chat-area">
@@ -238,9 +290,27 @@ function ChatArea({
           </div>
         )}
 
-        {messages.map((message) => (
-          <Message key={message.id} message={message} user={user} />
-        ))}
+        {messages.map((message) => {
+          const runnableDatasetFromMessage = getRunnableDatasetFromMessage(message);
+          if (message.role === 'user' && runnableDatasetFromMessage) {
+            latestRunnableDatasetForMessage = runnableDatasetFromMessage;
+          }
+
+          if (message.role === 'user' && message.content?.trim()) {
+            latestUserQuestion = message.content.trim();
+          }
+
+          return (
+            <Message
+              key={message.id}
+              message={message}
+              user={user}
+              executionDataset={message.role === 'assistant' ? latestRunnableDatasetForMessage : null}
+              queryText={message.role === 'assistant' ? latestUserQuestion : ''}
+              extensionName={currentSession?.extension_name || ''}
+            />
+          );
+        })}
 
         {loading && (
           <div className="message assistant">
@@ -297,7 +367,7 @@ function ChatArea({
                   type="file"
                   onChange={handleFileSelect}
                   style={{ display: 'none' }}
-                  accept=".json,.pdf,.txt,.png,.jpg,.jpeg"
+                  accept=".csv,.tsv,.json,.pdf,.txt,.png,.jpg,.jpeg"
                 />
                 <button
                   type="button"

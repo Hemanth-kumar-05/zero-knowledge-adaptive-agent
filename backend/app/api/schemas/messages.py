@@ -16,3 +16,7 @@ class MessageResponse(BaseModel):
 class MessagesListResponse(BaseModel):
     messages: list[MessageResponse]
     count: int
+
+
+class ExecutionCacheUpdateRequest(BaseModel):
+    execution_cache: dict

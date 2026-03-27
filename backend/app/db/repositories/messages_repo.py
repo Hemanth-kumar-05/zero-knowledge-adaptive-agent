@@ -43,6 +43,24 @@ class MessageRepository:
             message["session_id"] = str(message["session_id"])
         return messages
 
+    async def get_message_by_id(self, message_id: str) -> Optional[dict]:
+        """Get a single message by id."""
+        message = await self.collection.find_one({"_id": ObjectId(message_id)})
+        if not message:
+            return None
+        message["_id"] = str(message["_id"])
+        message["session_id"] = str(message["session_id"])
+        return message
+
+    async def update_message_metadata(self, message_id: str, metadata_updates: dict) -> bool:
+        """Merge metadata fields into an existing message."""
+        update_fields = {f"metadata.{key}": value for key, value in metadata_updates.items()}
+        result = await self.collection.update_one(
+            {"_id": ObjectId(message_id)},
+            {"$set": update_fields}
+        )
+        return result.modified_count > 0 or result.matched_count > 0
+
     async def delete_session_messages(self, session_id: str) -> int:
         """Delete all messages for a session."""
         result = await self.collection.delete_many({"session_id": ObjectId(session_id)})

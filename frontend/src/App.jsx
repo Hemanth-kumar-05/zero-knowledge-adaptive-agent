@@ -19,12 +19,16 @@ import Toast from './components/common/Toast';
 import Dialog from './components/common/Dialog';
 import { auth } from './utils/auth';
 
+const EXECUTABLE_DATASET_MAX_BYTES = 5 * 1024 * 1024;
+const DATASET_PREVIEW_CHAR_LIMIT = 25000;
+
 function ChatView() {
   const { sessionId } = useParams();
   const navigate = useNavigate();
   const [sessions, setSessions] = useState([]);
   const [currentSession, setCurrentSession] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [latestExecutionDatasets, setLatestExecutionDatasets] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -103,6 +107,33 @@ function ChatView() {
     try {
       const data = await api.getSessionMessages(sessionId);
       setMessages(data.messages || []);
+      let newestDataset = null;
+      for (const message of data.messages || []) {
+        const attachment = message.file || message.metadata?.file || null;
+        const nameLower = attachment?.name?.toLowerCase() || '';
+        const isRunnableDataset =
+          Boolean(attachment?.execution_text || attachment?.preview_text) &&
+          (
+            nameLower.endsWith('.csv') ||
+            nameLower.endsWith('.tsv') ||
+            nameLower.endsWith('.json') ||
+            attachment?.type === 'application/json' ||
+            attachment?.type === 'text/csv'
+          );
+        if (message.role === 'user' && isRunnableDataset) {
+          newestDataset = {
+            text: attachment.execution_text || attachment.preview_text,
+            name: attachment.name || 'dataset.csv',
+            truncated: Boolean(attachment.execution_text_truncated ?? attachment.preview_text_truncated),
+          };
+        }
+      }
+      if (newestDataset) {
+        setLatestExecutionDatasets(prev => ({
+          ...prev,
+          [sessionId]: newestDataset,
+        }));
+      }
       setError(null);
     } catch (error) {
       console.error('Failed to load messages:', error);
@@ -141,6 +172,8 @@ function ChatView() {
       const isPdf = uploadedFile.type === 'application/pdf' || nameLower.endsWith('.pdf');
       const isTextLike =
         uploadedFile.type.startsWith('text/') ||
+        nameLower.endsWith('.csv') ||
+        nameLower.endsWith('.tsv') ||
         nameLower.endsWith('.json') ||
         nameLower.endsWith('.md') ||
         nameLower.endsWith('.py') ||
@@ -163,11 +196,13 @@ function ChatView() {
         fileMeta.preview_url = URL.createObjectURL(uploadedFile);
       }
 
-      if (isTextLike && uploadedFile.size <= 1024 * 1024) {
+      if (isTextLike && uploadedFile.size <= EXECUTABLE_DATASET_MAX_BYTES) {
         try {
           const rawText = await uploadedFile.text();
-          fileMeta.preview_text = rawText.slice(0, 25000);
-          fileMeta.preview_text_truncated = rawText.length > 25000;
+          fileMeta.execution_text = rawText;
+          fileMeta.execution_text_truncated = false;
+          fileMeta.preview_text = rawText.slice(0, DATASET_PREVIEW_CHAR_LIMIT);
+          fileMeta.preview_text_truncated = rawText.length > DATASET_PREVIEW_CHAR_LIMIT;
         } catch {
           // Ignore text extraction issues and fall back to URL preview.
         }
@@ -196,6 +231,25 @@ function ChatView() {
       file: fileMessageMeta,
     };
     setMessages((prev) => [...prev, userMessage]);
+    if (
+      (fileMessageMeta?.execution_text || fileMessageMeta?.preview_text) &&
+      (
+        fileMessageMeta.name?.toLowerCase().endsWith('.csv') ||
+        fileMessageMeta.name?.toLowerCase().endsWith('.tsv') ||
+        fileMessageMeta.name?.toLowerCase().endsWith('.json') ||
+        fileMessageMeta.type === 'application/json' ||
+        fileMessageMeta.type === 'text/csv'
+      )
+    ) {
+      setLatestExecutionDatasets(prev => ({
+        ...prev,
+        [sessionToUse.id]: {
+          text: fileMessageMeta.execution_text || fileMessageMeta.preview_text,
+          name: fileMessageMeta.name || 'dataset.csv',
+          truncated: Boolean(fileMessageMeta.execution_text_truncated ?? fileMessageMeta.preview_text_truncated),
+        },
+      }));
+    }
     setLoading(true);
     setError(null);
 
@@ -226,7 +280,7 @@ function ChatView() {
 
       // Add assistant message with sources
       const assistantMessage = {
-        id: `assistant-${Date.now()}`,
+        id: response.assistant_message_id || `assistant-${Date.now()}`,
         role: 'assistant',
         content: response.answer,
         timestamp: new Date().toISOString(),
@@ -312,6 +366,12 @@ function ChatView() {
         setMessages([]);
         navigate('/');
       }
+
+      setLatestExecutionDatasets(prev => {
+        const updated = { ...prev };
+        delete updated[sessionId];
+        return updated;
+      });
       
       setError(null);
       showToast('Chat deleted successfully', 'success');
@@ -343,6 +403,7 @@ function ChatView() {
       />
       <ChatArea
         messages={messages}
+        latestExecutionDataset={currentSession ? latestExecutionDatasets[currentSession.id] || null : null}
         onSendMessage={handleSendMessage}
         loading={loading}
         error={error}

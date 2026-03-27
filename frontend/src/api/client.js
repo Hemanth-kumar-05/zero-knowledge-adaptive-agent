@@ -181,6 +181,13 @@ const api = {
     };
   },
 
+  updateMessageExecutionCache: async (messageId, executionCache) => {
+    const response = await client.patch(`/sessions/messages/${messageId}/execution-cache`, {
+      execution_cache: executionCache,
+    });
+    return response.data;
+  },
+
   // Query endpoint
   query: async (data) => {
     const response = await client.post('/query', data);
@@ -194,6 +201,11 @@ const api = {
         'Content-Type': 'multipart/form-data',
       },
     });
+    return response.data;
+  },
+
+  repairCodeExecution: async (data) => {
+    const response = await client.post('/query/code-repair', data);
     return response.data;
   },
 
