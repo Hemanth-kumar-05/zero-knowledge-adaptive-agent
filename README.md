@@ -1,119 +1,184 @@
-# Zero-Knowledge Adaptive Agent
+# Zero-Knowledge Adaptive AI Agent
 
-Phase 1: Canonical RAG System - Academic advisor chatbot for Nova Crest Institute of Engineering (NCIE).
+An academic policy assistant for Nova Crest Institute of Engineering (NCIE). The system uses Retrieval-Augmented Generation over curated policy documents, with a FastAPI backend, a React frontend, ChromaDB for policy chunks, and MongoDB for users, sessions, messages, preferences, memory facts, extensions, and policy-update workflows.
 
-### 1. Backend Setup
+## What This App Does
+
+- Answers academic-policy questions only from retrieved institutional documents.
+- Supports multi-turn chat, source citations, and refusal when evidence is missing.
+- Stores operational data in MongoDB and policy chunks in ChromaDB.
+- Supports controlled knowledge evolution through policy-update review flows when enabled.
+- Includes preference-aware and memory-aware features for authenticated users.
+
+## Project Layout
+
+- `backend/` - FastAPI app, API routes, services, and MongoDB access.
+- `frontend/` - React + Vite user interface.
+- `data/raw/` - Canonical markdown policy documents.
+- `data/chroma_db/` - Persistent ChromaDB vector store.
+- `embeddings/` - Chunking and embedding pipeline.
+- `rag/` - Document ingestion, retrieval, and query helpers.
+- `scripts/` - Maintenance utilities such as Chroma reset and visualization helpers.
+
+## Requirements
+
+- Python 3.10+.
+- Node.js 18+.
+- MongoDB connection string.
+- Google Gemini API key.
+- Optional: Groq, OAuth, Cloudinary, and policy-unlearning flags, depending on the features you want to enable.
+
+## Setup
+
+### 1. Configure the environment
+
+Copy `.env.example` to `.env` and fill in the values for your environment.
+
+Required values for the core app:
+
+- `MONGODB_URI`
+- `GOOGLE_API_KEY`
+
+Useful runtime values:
+
+- `FRONTEND_URL=http://localhost:5173`
+- `BACKEND_URL=http://localhost:8000`
+- `ENABLE_POLICY_UNLEARNING=true` if you want the policy update routes to be active.
+
+### 2. Install Python dependencies
 
 ```bash
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your API keys and MongoDB URI
-
-# Build vector index (one-time)
-python embeddings/build_index.py
-
-# Run backend
-uvicorn backend.app.main:app --reload --host 0.0.0.0 --port 8000
+python -m pip install -r requirements.txt
 ```
 
-Backend will be available at: http://localhost:8000
-- API Docs: http://localhost:8000/docs
-
-### 2. Frontend Setup
+### 3. Install frontend dependencies
 
 ```bash
 cd frontend
-
-# Install dependencies
 npm install
+```
 
-# Start development server
+## Start the Application
+
+### Backend
+
+Run the API from the repository root:
+
+```bash
+uvicorn app.main:app --app-dir backend --reload --host 0.0.0.0 --port 8000
+```
+
+The backend will be available at `http://localhost:8000`.
+
+Useful backend URLs:
+
+- Swagger UI: `http://localhost:8000/docs`
+- ReDoc: `http://localhost:8000/redoc`
+- Health check: `http://localhost:8000/api/v1/health/`
+- Liveness: `http://localhost:8000/api/v1/health/live`
+- Readiness: `http://localhost:8000/api/v1/health/ready`
+
+What happens on backend startup:
+
+- MongoDB connects automatically.
+- Required MongoDB indexes are created.
+- If policy-unlearning is enabled, the policy update collections are initialized too.
+
+### Frontend
+
+Run the UI from the frontend folder:
+
+```bash
+cd frontend
 npm run dev
 ```
 
-Frontend will be available at: http://localhost:5173
+The frontend will be available at `http://localhost:5173`.
 
-## 📋 Phase 1 Scope
+## Policy Chunk Rebuild and Database Sync
 
-### ✅ Implemented
-- Canonical RAG over 10 academic policy documents
-- Zero-knowledge constraint: answers only from retrieved context
-- Vector similarity search with ChromaDB
-- MongoDB chat history (UX only, not memory)
-- REST API with FastAPI
-- React frontend with session management
-- Source citation and confidence scoring
+### Rebuild policy chunks
 
-### ❌ Not Implemented (by design)
-- User authentication
-- Long-term memory or personalization
-- Knowledge correction or unlearning
-- File uploads or external tools
-- Chat history as context for learning
+If you edit any markdown files in `data/raw/`, rebuild the ChromaDB index so the new content is embedded and searchable:
 
-Phase 1 establishes a measurable zero-knowledge baseline for future enhancements.
+```bash
+python embeddings/build_index.py
+```
 
-## 📊 API Endpoints
+This reloads the markdown corpus, re-chunks the documents, recreates the `academic_docs` collection, and stores fresh embeddings in `data/chroma_db/`.
 
-### Query
-- `POST /api/v1/query` - Send query and get RAG response
+### Reset ChromaDB before a clean rebuild
 
-### Sessions
-- `POST /api/v1/sessions/` - Create new session
-- `GET /api/v1/sessions/` - List all sessions
-- `GET /api/v1/sessions/{id}` - Get session details
+If you want to delete the current vector collections first, run:
 
-### Messages
-- `GET /api/v1/sessions/{id}/messages` - Get session messages
+```bash
+python scripts/reset_chromadb.py
+```
 
-### Health
-- `GET /api/v1/health/` - System health check
-- `GET /api/v1/health/live` - Liveness probe
-- `GET /api/v1/health/ready` - Readiness probe
+Then rerun the build command above.
 
-## 📚 Documentation
+### MongoDB sync
 
-- [Phase 1 Instructions](docs/phase_1_instructions.md)
+There is no separate MongoDB sync script for the core app. MongoDB is connected and prepared automatically when the backend starts, and the readiness endpoint confirms whether MongoDB and ChromaDB are both reachable.
+
+## Maintenance Workflow
+
+Use this sequence when policy content changes:
+
+1. Update the source markdown file under `data/raw/`.
+2. Optionally reset ChromaDB if you want a fully clean rebuild.
+3. Run `python embeddings/build_index.py`.
+4. Restart the backend if it is already running.
+5. Check `http://localhost:8000/api/v1/health/ready` before opening the frontend.
+
+## API Surface
+
+Core routes exposed by the backend include:
+
+- `POST /api/v1/query` - Submit a policy question.
+- `POST /api/v1/sessions/` - Create a session.
+- `GET /api/v1/sessions/` - List sessions.
+- `GET /api/v1/sessions/{id}` - Get session details.
+- `GET /api/v1/sessions/{id}/messages` - Get session messages.
+- `GET /api/v1/health/` - Full health check.
+- `GET /api/v1/health/live` - Liveness probe.
+- `GET /api/v1/health/ready` - Readiness probe.
+
+If policy-unlearning is enabled, the backend also exposes policy update and proof-related routes under `/api/v1/policy-updates` and `/api/v1`.
+
+## Key Capabilities
+
+- Grounded zero-knowledge policy answering.
+- Session-based conversation history.
+- Source citation and confidence-oriented responses.
+- Preference and memory management for authenticated users.
+- Extension support for faculty and administrative workflows.
+- Human-reviewed policy update handling when enabled.
+
+## Documentation
+
+- [Report Creation Reference](docs/REPORT_CREATION_REFERENCE.md)
 - [Backend README](backend/README.md)
 - [Frontend README](frontend/README.md)
+- [Project Work II Report](reports/Project%20Work%20II%20-%20Report.md)
 
-## 🎓 Academic Documents
+## Tech Stack
 
-The system contains knowledge about:
-- Academic advising and mentorship
-- Continuous assessment
-- Course add/drop/withdrawal
-- Exam registration
-- Final year projects
-- Grading components
-- Internship evaluation
-- Lab evaluation
-- Project submission workflow
-- Revaluation process
+- Backend: FastAPI, Motor, MongoDB, ChromaDB.
+- Frontend: React 18, Vite, Axios.
+- AI/ML: Google Gemini and sentence-transformer-based embeddings.
+- Storage: MongoDB for application data, ChromaDB for policy chunks.
+- Language: Python 3.10+, JavaScript (ES modules).
 
-## 🔒 Phase 1 Constraints
+## Contributors
 
-The agent **strictly refuses** to answer questions outside canonical documents:
+- Adish Kumar S (adish9056@gmail.com)
+- Hemanthkumar V (hemanthlaxvel@gmail.com)
+- Jayavarshini S S (jayavarshini2805@gmail.com)
+- Prateekshaa T (prateekshaa04@gmail.com)
+- Praneeth M (praneethsparta@gmail.com)
 
-**Example refusal:**
-> "I don't have information about that in the academic documents I have access to. Please contact the academic office directly or check the student portal."
+## Notes
 
-This zero-knowledge baseline ensures measurable accuracy for future phases.
-
-## 🛠️ Tech Stack
-
-- **Backend**: FastAPI, Motor (async MongoDB), ChromaDB
-- **Frontend**: React 18, Vite, Axios
-- **AI/ML**: Google Gemini, Sentence Transformers
-- **Database**: MongoDB, ChromaDB (SQLite)
-- **Language**: Python 3.10+, JavaScript (ES6+)
-
-## 👥 Contributors
-
-- Hemanth Kumar (hemanthlaxvel@gmail.com)
-- 22z225@psgtech.ac.in
-
-**Phase 1 Status**: ✅ Complete - Ready for Review
+- The assistant is intended to answer from the curated academic corpus only.
+- If a query is outside the indexed policy documents, the system should refuse instead of inventing an answer.

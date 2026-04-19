@@ -1,0 +1,16397 @@
+# Application Validation Manual Review
+
+This file is intended for later manual inspection of each evaluated turn.
+
+## AVS-001 T01
+
+- Question: Hello
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 2380.33
+- Metric tags: zero_knowledge, session_context
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response is a natural, polite greeting appropriate for a fresh session with no factual claim, so no grounding required. It aligns well with the session goal and zero-knowledge expectation.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_zero_knowledge": true
+}
+```
+
+### Answer
+
+Hello! It's nice to chat with you. How can I assist you today?
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_63",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Summary",
+    "similarity": 1.3777837753295898,
+    "confidence": 1.0,
+    "text": "ramework.",
+    "metadata": {
+      "section": "Summary",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.498757",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.498755",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.7003151178359985,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "active": true,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497178",
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 1.757225751876831,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493575",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "section": "Overview",
+      "created_at": "2026-03-28T12:50:20.493573",
+      "status": "active",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_38",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Introduction",
+    "similarity": 1.784653663635254,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the Final-Year Project represents a capstone academic activity that allows students to apply accumulated knowledge and skills to a sustained problem-solving initiative. The project spans the **seventh and eighth semesters** of the undergraduate program and is conducted under faculty supervision.\n\nThe final-year project is evaluated through structured reviews and submissions and forms part of the **Continuous Assessment (CA)** framework for the relevant project modules. This document outlines the academic practices, workflow, and coordination involved in final-year project execution at NCIE.\n\n## 2. Objectives of the Final-Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative lea",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495285",
+      "status": "active",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "created_at": "2026-03-28T12:50:20.495282",
+      "section": "Introduction",
+      "active": true,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.7894107103347778,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "section": "Introduction",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.489561"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 2380.33,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": false,
+  "fact_count_before": 0,
+  "fact_count_after": 0,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-001 T02
+
+- Question: I'm Arjun, a 4th year CSE student. I'm doing my final year project and internship this semester.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 59874.55
+- Metric tags: fact_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response accurately extracts and addresses user-provided facts (identity, academic status, ongoing final year project and internship) and refers to NCIE internship registration workflow from cited documents. It personalizes the answer with user name and academic context. It lacks confirming explicit fact extraction but still aligns well with context. No hallucination or contradictions detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_fact_extraction": true
+}
+```
+
+### Answer
+
+Hello Arjun. Since you're a 4th year CSE student doing your final year project and internship this semester, I'd like to clarify a few things. From what I can see in the context, it seems that your internship registration process should follow the standard workflow mentioned in the internship guidelines. This involves submitting your internship details through the NCIE academic portal or designated departmental system, and getting approval from your Faculty Advisor or Department Academic Coordinator.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 1.1965830326080322,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495386",
+      "created_at": "2026-03-28T12:50:20.495384",
+      "active": true,
+      "section": "Objectives of the Final-Year Project",
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.2171759605407715,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497178",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "status": "active",
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_38",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Introduction",
+    "similarity": 1.2483938932418823,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the Final-Year Project represents a capstone academic activity that allows students to apply accumulated knowledge and skills to a sustained problem-solving initiative. The project spans the **seventh and eighth semesters** of the undergraduate program and is conducted under faculty supervision.\n\nThe final-year project is evaluated through structured reviews and submissions and forms part of the **Continuous Assessment (CA)** framework for the relevant project modules. This document outlines the academic practices, workflow, and coordination involved in final-year project execution at NCIE.\n\n## 2. Objectives of the Final-Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative lea",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495282",
+      "section": "Introduction",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.495285"
+    }
+  },
+  {
+    "id": "doc_43",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Evaluation Criteria and Mark Recording",
+    "similarity": 1.2669094800949097,
+    "confidence": 1.0,
+    "text": "f objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality of documentation\n* Communication and presentation effectiveness\n\nMarks awarded contribute to the **Continuous Assessment (40%)** component of the project modules and are recorded in the academic system after verification.\n\n## 10. Academic Integrity and Original Contribution\n\nStudents are expected to maintain academic integrity throughout the project. This includes:\n\n* Clearly acknowledging external references\n* Avoiding uncredited reuse of existing work\n* Demonstrating individual or group contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Coordination with Internships and External Engagements\n\nIn some cases, final-year projects may align t",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.495835",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "active": true,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Evaluation Criteria and Mark Recording",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495838"
+    }
+  },
+  {
+    "id": "doc_56",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Eligibility and Timing",
+    "similarity": 1.2742648124694824,
+    "confidence": 1.0,
+    "text": "tion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship registration is required before the commencement of the internship period.\n\n## 4. Internship Registration Workflow\n\nThe standard internship registration process at NCIE includes the following steps:\n\n1. The student identifies an internship opportunity relevant to their academic program.\n2. Internship details are submitted through the NCIE academic portal or designated departmental system.\n3. Required information may include organization details, duration, and nature of work.\n4. The submission is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n5. Upon approval, the internship registration is recorded in the academic system.\n\nInternship activities undertaken without pr",
+    "metadata": {
+      "section": "Internship Eligibility and Timing",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497431",
+      "version": 1,
+      "active": true,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497428"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 59874.55,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": false,
+  "fact_count_before": 0,
+  "fact_count_after": 6,
+  "fact_count_delta": 6,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-001 T03
+
+- Question: Just give me short direct answers from now on. I don't need long explanations.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38142.27
+- Metric tags: preference_extraction, learning_turn
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer does not respond to the user's directive for short direct answers, nor does it extract a concise preference as expected. Instead, it introduces a new question and an incomplete statement not grounded in the provided context. The answer lacks focus on preference extraction, so it fails the session goal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_preference_extraction": true
+}
+```
+
+### Answer
+
+What is the role of the Department Academic Coordinator in the project evaluation process? 
+
+The Department Academic Coordinator ensures consistency in evaluation practices across project groups.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.740525245666504,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499787",
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "section": "Summary",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.7578725814819336,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "confidence": 1.0,
+      "active": true,
+      "section": "Components of Laboratory Evaluation",
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.499084"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.7820260524749756,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "section": "Introduction",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  },
+  {
+    "id": "doc_42",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Review and Evaluation Process",
+    "similarity": 1.8287237882614136,
+    "confidence": 1.0,
+    "text": "n of implemented components\n* Technical discussions with faculty panels\n* Submission of interim reports\n\nEach review provides structured feedback to guide subsequent project phases.\n\n## 8. Project Deliverables\n\nKey deliverables associated with the final-year project may include:\n\n* Approved project proposal\n* Interim progress reports\n* Final project report\n* Source code, design files, or experimental data\n* Presentation and demonstration materials\n\nDeliverables are submitted through designated academic or departmental platforms.\n\n## 9. Evaluation Criteria and Mark Recording\n\nEvaluation of final-year projects considers multiple academic dimensions, such as:\n\n* Problem definition and clarity of objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.495723",
+      "status": "active",
+      "section": "Review and Evaluation Process",
+      "updated_at": "2026-03-28T12:50:20.495725",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_77",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Role of Faculty and Review Panels",
+    "similarity": 1.832472562789917,
+    "confidence": 1.0,
+    "text": "es technical guidance, monitors progress, and participates in evaluations.\n\n* **Review Panel Members**\n  Faculty members who assess project progress during scheduled reviews.\n\n* **Department Academic Coordinator**\n  Ensures consistency in evaluation practices across project groups.\n\nFeedback from reviews is communicated to students to support improvement in subsequent stages.\n\n## 7. Submission of Project Deliverables\n\nProject submissions at NCIE typically include one or more of the following deliverables:\n\n* Project proposal or synopsis\n* Interim reports\n* Final project report\n* Source code or design artifacts, where applicable\n* Demonstration or presentation materials\n\nSubmissions are generally made through designated academic platforms or departmental channels and are recorded for evalua",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.500417",
+      "updated_at": "2026-03-28T12:50:20.500420",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Role of Faculty and Review Panels",
+      "active": true,
+      "doc_id": "ncie_project_submission_and_review_flow"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38142.27,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": true,
+  "applied_preferences_detected": false,
+  "fact_count_before": 6,
+  "fact_count_after": 6,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-001 T04
+
+- Question: What are the key guidelines for final year project selection?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37420.95
+- Metric tags: personalization, groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer directly cites multiple relevant sections from provided documents about project topic origins, submission, approval process, matching the user's query. The response is concise per the user's preference and reflects user context as a final-year CSE student. No hallucinations detected, and evidence fully supports the claims.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+Project topics may originate from:
+
+* Student-proposed ideas
+* Faculty-suggested problem statements
+* Industry- or research-aligned themes
+
+Students are required to submit project proposals for academic review. Topic approval is coordinated at the department level to ensure feasibility, relevance, and academic alignment.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_40",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Project Duration and Structure",
+    "similarity": 0.7250118255615234,
+    "confidence": 1.0,
+    "text": ", and final evaluation.\n\nProgress across both semesters is monitored through periodic academic reviews.\n\n## 4. Project Topic Selection and Approval\n\nProject topics may originate from:\n\n* Student-proposed ideas\n* Faculty-suggested problem statements\n* Industry- or research-aligned themes\n\nStudents are required to submit project proposals for academic review. Topic approval is coordinated at the department level to ensure feasibility, relevance, and academic alignment.\n\n## 5. Group Formation and Supervision\n\nFinal-year projects may be undertaken:\n\n* Individually, or\n* In small student groups, as guided by the department\n\nEach project or group is assigned a **Project Guide** responsible for academic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.495490",
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495487",
+      "section": "Project Duration and Structure"
+    }
+  },
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 0.7656148672103882,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.495386",
+      "created_at": "2026-03-28T12:50:20.495384",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "section": "Objectives of the Final-Year Project"
+    }
+  },
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 0.7952960729598999,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "active": true,
+      "section": "Project Allocation and Topic Selection",
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.500162"
+    }
+  },
+  {
+    "id": "doc_42",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Review and Evaluation Process",
+    "similarity": 0.8297032713890076,
+    "confidence": 1.0,
+    "text": "n of implemented components\n* Technical discussions with faculty panels\n* Submission of interim reports\n\nEach review provides structured feedback to guide subsequent project phases.\n\n## 8. Project Deliverables\n\nKey deliverables associated with the final-year project may include:\n\n* Approved project proposal\n* Interim progress reports\n* Final project report\n* Source code, design files, or experimental data\n* Presentation and demonstration materials\n\nDeliverables are submitted through designated academic or departmental platforms.\n\n## 9. Evaluation Criteria and Mark Recording\n\nEvaluation of final-year projects considers multiple academic dimensions, such as:\n\n* Problem definition and clarity of objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality",
+    "metadata": {
+      "doc_id": "ncie_final_year_project_guidelines",
+      "updated_at": "2026-03-28T12:50:20.495725",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495723",
+      "section": "Review and Evaluation Process",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_74",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Types of Academic Projects",
+    "similarity": 0.8387172222137451,
+    "confidence": 1.0,
+    "text": "undergraduate programs, including:\n\n* **Course-Linked Mini Projects**\n  Projects associated with specific courses, typically conducted within a single semester.\n\n* **Departmental Mini Projects**\n  Project work undertaken as part of departmental academic requirements, often in mid-program semesters.\n\n* **Final-Year Project**\n  A multi-semester project carried out during **Semester 7 and Semester 8**, involving sustained development and evaluation.\n\nEach project type follows a similar submission and review framework, with variations in duration and evaluation depth.\n\n## 3. Project Allocation and Topic Selection\n\nProject topics at NCIE may be allocated or approved through one of the following approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.500033",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.500030",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "status": "active",
+      "section": "Types of Academic Projects"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37420.95,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 6,
+  "fact_count_after": 6,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-001 T05
+
+- Question: When should I register for my internship for next semester?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 45127.68
+- Metric tags: personalization, groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer is directly supported by source text stating registration must occur before internship period begins, aligning well with query. Personalization is adequate given prior profile info and session context. Answer is concise, matching user's stated preference. More detailed timeline or portal info could improve completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+You should register for your internship before the commencement of the internship period.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_56",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Eligibility and Timing",
+    "similarity": 0.8719151020050049,
+    "confidence": 1.0,
+    "text": "tion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship registration is required before the commencement of the internship period.\n\n## 4. Internship Registration Workflow\n\nThe standard internship registration process at NCIE includes the following steps:\n\n1. The student identifies an internship opportunity relevant to their academic program.\n2. Internship details are submitted through the NCIE academic portal or designated departmental system.\n3. Required information may include organization details, duration, and nature of work.\n4. The submission is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n5. Upon approval, the internship registration is recorded in the academic system.\n\nInternship activities undertaken without pr",
+    "metadata": {
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497428",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Internship Eligibility and Timing",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497431"
+    }
+  },
+  {
+    "id": "doc_57",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Registration Workflow",
+    "similarity": 0.9571129679679871,
+    "confidence": 1.0,
+    "text": "rnship registration is recorded in the academic system.\n\nInternship activities undertaken without prior registration may require additional verification before being recognized.\n\n## 5. Role of Faculty and Departments\n\nMultiple academic roles support internship activities at NCIE:\n\n* **Faculty Advisor**\n  Guides students on internship relevance and academic alignment.\n\n* **Department Academic Coordinator**\n  Oversees internship approvals and ensures consistency with academic objectives.\n\n* **Internship or Placement Cell (where applicable)**\n  Facilitates coordination with organizations and supports documentation processes.\n\nDepartments ensure that internship engagements align with program outcomes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the inte",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497590",
+      "section": "Internship Registration Workflow",
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497584",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.9652695655822754,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 1.0966436862945557,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497903",
+      "active": true,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "type": "canonical_knowledge",
+      "section": "Internship Evaluation Framework",
+      "version": 1,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 1.1147724390029907,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497726",
+      "status": "active",
+      "section": "Role of Faculty and Departments",
+      "type": "canonical_knowledge",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 45127.68,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 6,
+  "fact_count_after": 6,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-001 T06
+
+- Question: Do you know anything about me so far?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38827.01
+- Metric tags: memory_relevance, session_context, task_success
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer correctly recalls the user's name and preference for short answers from prior turns, showing memory use and personalization, but it lacks supporting evidence from the provided documents and does not fully address 'anything about me' beyond those points.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+You're Arjun, and I remember our previous conversation where you asked me to provide short direct answers.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_7",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "System Integration",
+    "similarity": 1.8312171697616577,
+    "confidence": 1.0,
+    "text": "13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student academic profiles\n* Course enrollment systems\n* Assessment and examination records\n* Project and internship tracking modules\n\nSystem access enables advisors to provide informed and timely guidance.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, academic advising and mentorship provide structured, continuous support for students across their academic lifecycle. Through coordinated guidance, clear communication, and system-enabled oversight, advising helps students navigate academic processes effectively while remaining aligned with institutional frameworks.",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490409",
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "section": "System Integration",
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.490406",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_63",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Summary",
+    "similarity": 1.8654893636703491,
+    "confidence": 1.0,
+    "text": "ramework.",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.498757",
+      "created_at": "2026-03-28T12:50:20.498755",
+      "type": "canonical_knowledge",
+      "section": "Summary",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.8729567527770996,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "section": "Introduction",
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.8754162788391113,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "section": "Introduction",
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.8755953311920166,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Handling Internship Variations"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38827.01,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 6,
+  "fact_count_after": 6,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-002 T01
+
+- Question: Hi, what's the weightage of CA in NCIE?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 25428.79
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer correctly states the CA weightage as 40% exactly as documented; it addresses the user query directly; personalization by greeting the user is appropriate; completeness is high although more details about the CA components could enhance it, but not required.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Hi Arjun, the weightage of Continuous Assessment (CA) at NCIE is 40%.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_47",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Components of Course Evaluation",
+    "similarity": 1.1790801286697388,
+    "confidence": 1.0,
+    "text": "ngoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Comprehensive examination conducted at the end of the semester.\n\nTogether, these components determine the final academic outcome for a course.\n\n## 3. Weightage Distribution\n\nAt NCIE, the standard weightage distribution for regular academic courses is:\n\n* **Continuous Assessment (CA): 40%**\n* **End-Semester Examination (ESE): 60%**\n\nThis distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure (such as project-only or laboratory-only modules).\n\n## 4. Continuous Assessment Contribution\n\nThe **40% Continuous Assessment** component may include one or more of the following, depending on the course design:\n\n* Mid-semester tes",
+    "metadata": {
+      "version": 1,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "section": "Components of Course Evaluation",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.496388",
+      "updated_at": "2026-03-28T12:50:20.496390",
+      "active": true,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.2935007810592651,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "status": "active",
+      "section": "Integration with End-Semester Evaluation",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 1.305103063583374,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.496587",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "confidence": 1.0,
+      "status": "active",
+      "section": "End-Semester Examination Contribution",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 1.3608801364898682,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496292",
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.496289",
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Introduction",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_32",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Online Registration Workflow",
+    "similarity": 1.3654589653015137,
+    "confidence": 1.0,
+    "text": "on modules.\n\n## 6. Examination Fee Handling\n\nFor certain examination categories, NCIE may require the payment of examination-related fees as part of the registration process. Fee handling is integrated into the academic portal and typically includes:\n\n* Fee calculation based on the number and type of courses\n* Online payment through supported digital payment methods\n* Automatic linkage of payment status with registration records\n\nIn case of payment interruption or failure, the registration status may remain pending until confirmation is completed.\n\n## 7. Late and Special Registration Cases\n\nLate registration or special consideration for exam registration may arise due to circumstances such as:\n\n* Documented medical reasons\n* Technical issues with the academic portal\n* Overlapping instituti",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.494224",
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Online Registration Workflow",
+      "created_at": "2026-03-28T12:50:20.494222",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 25428.79,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 6,
+  "fact_count_after": 6,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-002 T02
+
+- Question: Can you explain the grading weightage properly?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 41820.39
+- Metric tags: groundedness, completeness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer accurately and completely explains the grading weightage as 40% CA and 60% ESE with clear grounding in multiple high-confidence reference documents. It is directly relevant to the user's query and consistent with the prior session history. The personalized address is appropriately maintained, and no hallucinations or contradictions are detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Hi Arjun, the grading weightage at NCIE is designed to ensure transparency and consistency across courses and semesters. The standard weightage distribution for regular academic courses is:
+
+* **Continuous Assessment (CA): 40%**
+* **End-Semester Examination (ESE): 60%**
+
+This distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 0.8748252391815186,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "status": "active",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.496289",
+      "confidence": 1.0,
+      "section": "Introduction",
+      "type": "canonical_knowledge",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.496292"
+    }
+  },
+  {
+    "id": "doc_47",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Components of Course Evaluation",
+    "similarity": 0.9209713935852051,
+    "confidence": 1.0,
+    "text": "ngoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Comprehensive examination conducted at the end of the semester.\n\nTogether, these components determine the final academic outcome for a course.\n\n## 3. Weightage Distribution\n\nAt NCIE, the standard weightage distribution for regular academic courses is:\n\n* **Continuous Assessment (CA): 40%**\n* **End-Semester Examination (ESE): 60%**\n\nThis distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure (such as project-only or laboratory-only modules).\n\n## 4. Continuous Assessment Contribution\n\nThe **40% Continuous Assessment** component may include one or more of the following, depending on the course design:\n\n* Mid-semester tes",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "version": 1,
+      "status": "active",
+      "section": "Components of Course Evaluation",
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.496388",
+      "updated_at": "2026-03-28T12:50:20.496390"
+    }
+  },
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.9411754608154297,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "updated_at": "2026-03-28T12:50:20.497048",
+      "created_at": "2026-03-28T12:50:20.497044",
+      "section": "System Dependencies",
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_11",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Scheduling and Conduct of Assessments",
+    "similarity": 1.098860502243042,
+    "confidence": 1.0,
+    "text": "tments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overlap between major assessments\n* Allowing sufficient preparation time\n* Distributing assessments evenly across the semester\n\nAssessment schedules are typically communicated through:\n\n* Course briefings\n* Academic portal announcements\n* Classroom communication\n\n## 5. Evaluation and Mark Allocation\n\nEach Continuous Assessment component carries a defined weightage contributing to the overall **40% CA score**. Instructors evaluate student performance based on predefined academic criteria relevant to the course objectives.\n\nEvaluation practices emphasize:\n\n* Transparency in assessment criteria\n* Consistency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA co",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.491147",
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Scheduling and Conduct of Assessments",
+      "updated_at": "2026-03-28T12:50:20.491155"
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 1.1053566932678223,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "status": "active",
+      "section": "End-Semester Examination Contribution",
+      "created_at": "2026-03-28T12:50:20.496587",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 41820.39,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 6,
+  "fact_count_after": 9,
+  "fact_count_delta": 3,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-002 T03
+
+- Question: Okay, then how much of the final grade comes from CA?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 26785.65
+- Metric tags: groundedness, session_context
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer accurately states the CA contribution as 40%, directly grounded in multiple provided knowledge sources. It matches the user's follow-up question on CA weightage, uses the same figures previously given, and maintains consistency with session context.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+The final grade at NCIE comes from a combination of Continuous Assessment (CA) and End-Semester Examination (ESE) scores, with a **40% CA and 60% ESE** distribution.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.7009620666503906,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "version": 1,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "active": true,
+      "section": "Integration with End-Semester Evaluation",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.826147198677063,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497044",
+      "status": "active",
+      "confidence": 1.0,
+      "section": "System Dependencies",
+      "updated_at": "2026-03-28T12:50:20.497048",
+      "doc_id": "ncie_grading_components_and_weightage"
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.9305137395858765,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.496587",
+      "section": "End-Semester Examination Contribution"
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 0.9610508680343628,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Introduction",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.496289",
+      "updated_at": "2026-03-28T12:50:20.496292"
+    }
+  },
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 0.9891349077224731,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "version": 1,
+      "section": "Scheduling and Conduct of Lab Assessments",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499207",
+      "status": "active",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.499210",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 26785.65,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-002 T04
+
+- Question: Are you sure about that?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 62897.9
+- Metric tags: groundedness, session_context
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The assistant consistently affirmed the CA weightage as 40% backed by strong document evidence. It responded directly and relevantly to the user's challenge without contradiction or hallucination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+The standard weightage distribution for regular academic courses at NCIE is:
+
+* **Continuous Assessment (CA): 40%**
+* **End-Semester Examination (ESE): 60%**
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_47",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Components of Course Evaluation",
+    "similarity": 0.45745956897735596,
+    "confidence": 1.0,
+    "text": "ngoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Comprehensive examination conducted at the end of the semester.\n\nTogether, these components determine the final academic outcome for a course.\n\n## 3. Weightage Distribution\n\nAt NCIE, the standard weightage distribution for regular academic courses is:\n\n* **Continuous Assessment (CA): 40%**\n* **End-Semester Examination (ESE): 60%**\n\nThis distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure (such as project-only or laboratory-only modules).\n\n## 4. Continuous Assessment Contribution\n\nThe **40% Continuous Assessment** component may include one or more of the following, depending on the course design:\n\n* Mid-semester tes",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "created_at": "2026-03-28T12:50:20.496388",
+      "updated_at": "2026-03-28T12:50:20.496390",
+      "section": "Components of Course Evaluation",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 0.6100972890853882,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496292",
+      "created_at": "2026-03-28T12:50:20.496289",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "section": "Introduction",
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.6796263456344604,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "created_at": "2026-03-28T12:50:20.496587",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "End-Semester Examination Contribution",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_8",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 0.7103078365325928,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, Continuous Assessment (CA) represents the ongoing evaluation of student performance throughout a semester. It is designed to assess learning progression, practical understanding, and engagement with coursework prior to the end-semester examination.\n\nContinuous Assessment contributes **40% of the total course evaluation**, with the remaining **60%** assessed through the End-Semester Examination (ESE). CA activities are conducted, recorded, and monitored during the semester as part of the academic workflow.\n\nThis document outlines the structure, components, evaluation practices, and administrative flow of continuous assessment at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at N",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.490530",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.490527",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.7451673746109009,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Integration with End-Semester Evaluation",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 62897.9,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-002 T05
+
+- Question: Then what about ESE percentage?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 44441.07
+- Metric tags: groundedness, session_context
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer correctly and consistently provides ESE percentage as 60% grounded on multiple highly relevant document sections, fully addressing the follow-up query with aligned context and history.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+The standard weightage distribution for regular academic courses at NCIE is:
+
+* **Continuous Assessment (CA): 40%**
+* **End-Semester Examination (ESE): 60%**
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 1.0157735347747803,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "section": "End-Semester Examination Contribution",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.496587"
+    }
+  },
+  {
+    "id": "doc_47",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Components of Course Evaluation",
+    "similarity": 1.081477165222168,
+    "confidence": 1.0,
+    "text": "ngoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Comprehensive examination conducted at the end of the semester.\n\nTogether, these components determine the final academic outcome for a course.\n\n## 3. Weightage Distribution\n\nAt NCIE, the standard weightage distribution for regular academic courses is:\n\n* **Continuous Assessment (CA): 40%**\n* **End-Semester Examination (ESE): 60%**\n\nThis distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure (such as project-only or laboratory-only modules).\n\n## 4. Continuous Assessment Contribution\n\nThe **40% Continuous Assessment** component may include one or more of the following, depending on the course design:\n\n* Mid-semester tes",
+    "metadata": {
+      "version": 1,
+      "section": "Components of Course Evaluation",
+      "created_at": "2026-03-28T12:50:20.496388",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.496390",
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 1.1702218055725098,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.497044",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "section": "System Dependencies",
+      "confidence": 1.0,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497048"
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 1.2295315265655518,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "section": "Introduction",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.496289",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "updated_at": "2026-03-28T12:50:20.496292"
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.3229575157165527,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501093",
+      "section": "Purpose of Revaluation and Script Review",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "doc_id": "ncie_revaluation_and_answer_script_review"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 44441.07,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-002 T06
+
+- Question: And just to confirm, CA plus ESE should add up to the full grade, right?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 35074.88
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is well grounded in provided documents confirming CA and ESE are combined using prescribed weightage. Though the response confirms the integration, it does not explicitly mention that CA (40%) plus ESE (60%) sum to the full grade, which was stated in the history and source documents. The response is relevant and consistent with past turns and sources, with no hallucination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Yes, CA and ESE scores are combined according to the prescribed weightage to determine the final course grade.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.7282553315162659,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "section": "End-Semester Examination Contribution",
+      "created_at": "2026-03-28T12:50:20.496587"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.8256860375404358,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "section": "Integration with End-Semester Evaluation",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.8413007855415344,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "section": "System Dependencies",
+      "updated_at": "2026-03-28T12:50:20.497048",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497044"
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 1.0021268129348755,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "version": 1,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.496289",
+      "section": "Introduction",
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.496292"
+    }
+  },
+  {
+    "id": "doc_47",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Components of Course Evaluation",
+    "similarity": 1.0512042045593262,
+    "confidence": 1.0,
+    "text": "ngoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Comprehensive examination conducted at the end of the semester.\n\nTogether, these components determine the final academic outcome for a course.\n\n## 3. Weightage Distribution\n\nAt NCIE, the standard weightage distribution for regular academic courses is:\n\n* **Continuous Assessment (CA): 40%**\n* **End-Semester Examination (ESE): 60%**\n\nThis distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure (such as project-only or laboratory-only modules).\n\n## 4. Continuous Assessment Contribution\n\nThe **40% Continuous Assessment** component may include one or more of the following, depending on the course design:\n\n* Mid-semester tes",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.496390",
+      "version": 1,
+      "status": "active",
+      "section": "Components of Course Evaluation",
+      "created_at": "2026-03-28T12:50:20.496388",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 35074.88,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T01
+
+- Question: Please keep your answers concise from now on.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 26070.11
+- Metric tags: preference_extraction, learning_turn
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The response does not acknowledge or record the user's preference for concise answers, failing to extract or apply the preference as expected. It also does not address the user's instruction directly, instead asking for a question, which is irrelevant to the user request.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_preference_extraction": true
+}
+```
+
+### Answer
+
+Hello Arjun. I'd be happy to help you with your question. However, I don't see a specific question from you. Could you please ask your question so I can assist you better?
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.6031712293624878,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "status": "active",
+      "section": "Summary",
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499787",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "confidence": 1.0,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks"
+    }
+  },
+  {
+    "id": "doc_79",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Handling Delays and Deviations",
+    "similarity": 1.7550129890441895,
+    "confidence": 1.0,
+    "text": "to technical complexity, resource constraints, or unforeseen challenges. In such cases:\n\n* Students are expected to communicate with their project guide\n* Revised timelines may be discussed at the departmental level\n* Progress expectations may be adjusted where appropriate\n\nAll deviations are documented to maintain transparency in evaluation.\n\n## 10. Academic Integrity and Originality\n\nProject work at NCIE emphasizes originality and academic integrity. Students are expected to:\n\n* Clearly reference external resources\n* Avoid uncredited reuse of existing work\n* Demonstrate independent contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Final Submission and Closure\n\nFor projects with a final submission component, students are required to:",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "section": "Handling Delays and Deviations",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.500662",
+      "created_at": "2026-03-28T12:50:20.500659",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.7668709754943848,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "section": "Components of Laboratory Evaluation",
+      "created_at": "2026-03-28T12:50:20.499084",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.7893941402435303,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.489561",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_1",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Purpose of Academic Advising",
+    "similarity": 1.805378794670105,
+    "confidence": 1.0,
+    "text": "tudents in course planning and progression\n* Assist in understanding academic workflows and expectations\n* Identify and address academic or adjustment challenges early\n* Provide continuity and support across semesters\n\nAdvising emphasizes guidance and coordination rather than evaluation.\n\n## 3. Faculty Advisor Assignment\n\nEach student at NCIE is assigned a **Faculty Advisor** at the beginning of the academic program or academic year. The Faculty Advisor serves as the primary academic point of contact for the student throughout the advising period.\n\nAdvisor assignments are recorded in the academic system and may be updated by the department when required.\n\n## 4. Role of the Faculty Advisor\n\nThe Faculty Advisor at NCIE typically supports students by:\n\n* Guiding course selection and enrollmen",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.489714",
+      "section": "Purpose of Academic Advising",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.489711",
+      "version": 1,
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 26070.11,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T02
+
+- Question: Can you explain the exam registration process?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 43975.02
+- Metric tags: personalization, groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is fully supported by multiple provided document sections describing the exam registration process at NCIE, includes concise and relevant details, addresses the student-initiated nature and automation of the process and departmental support, aligns with the user's request for conciseness and personalization by greeting with the user's name, and contains no hallucinations or contradictions.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+Hello Arjun. The exam registration process at NCIE is a student-initiated process conducted primarily through the institutional academic portal. It's largely automated but academic offices and departments provide support for verification, exception handling, and issue resolution when required.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 0.5364534854888916,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "section": "System Dependencies and Data Flow",
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.495165",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.5791214108467102,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "active": true,
+      "section": "Overview",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493573",
+      "confidence": 1.0,
+      "doc_id": "ncie_exam_registration_process",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493575"
+    }
+  },
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 0.6694372892379761,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494512",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "doc_id": "ncie_exam_registration_process",
+      "section": "Role of Departments and Academic Offices",
+      "active": true,
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 0.6979942321777344,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "type": "canonical_knowledge",
+      "section": "Special Student Categories",
+      "created_at": "2026-03-28T12:50:20.494939",
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process"
+    }
+  },
+  {
+    "id": "doc_28",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.7245168089866638,
+    "confidence": 1.0,
+    "text": "bserved scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registration\n\nAt NCIE, exam registration applies to the following categories of assessments:\n\n* **End-Semester Examinations (ESE)**\n  Comprehensive examinations conducted at the end of each semester, contributing **60%** of the total course evaluation.\n\n* **Supplementary / Reappearance Examinations**\n  Examinations for students who need to reattempt a course evaluation from a previous semester.\n\n* **Makeup Examinations**\n  Special examinations conducted for students who were unable to appear for a scheduled exam due to approved reasons.\n\nRegistration for continuous assessment components is handled implicitly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligib",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493697",
+      "updated_at": "2026-03-28T12:50:20.493699",
+      "active": true,
+      "section": "Overview",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_exam_registration_process"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 43975.02,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T03
+
+- Question: Who checks whether my registration is valid?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 31943.9
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer explains eligibility verification is done by the NCIE academic system with relevant conditions and is grounded in the provided document sections. Personalization is applied with concise style and accurate reference to institutional processes. However, it does not explicitly name a person or office which could improve completeness slightly.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, eligibility verification is performed by the NCIE academic system before a student can complete exam registration. This system checks various conditions, including active enrollment in the course, completion status of required continuous assessment components, and absence of unresolved academic or administrative flags.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.1274749040603638,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494512",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Role of Departments and Academic Offices",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 1.1530869007110596,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.495165",
+      "status": "active",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "doc_id": "ncie_exam_registration_process",
+      "section": "System Dependencies and Data Flow",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.172917127609253,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "version": 1,
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493822",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "section": "Examinations Covered Under Registration"
+    }
+  },
+  {
+    "id": "doc_35",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Post-Registration Verification",
+    "similarity": 1.2539207935333252,
+    "confidence": 1.0,
+    "text": "to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or makeup)\n* Registration status and acknowledgment\n* Payment confirmation, if applicable\n\nEarly verification helps prevent discrepancies during examination scheduling and result processing.\n\n## 11. Modifications After Submission\n\nChanges to exam registration after submission are generally limited. However, modifications may be considered in situations such as:\n\n* Correction of clerical or system errors\n* Administrative updates initiated by academic offices\n* Approved course status changes\n\nSuch modifications require coordination between the department and the Examination Cell.\n\n## 12. Special Student Categories\n\nCertain student categories may follow slightly modified registration workflows, inclu",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.494754",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Post-Registration Verification",
+      "updated_at": "2026-03-28T12:50:20.494761",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 1.2561097145080566,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493573",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Overview",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493575"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 31943.9,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T04
+
+- Question: Okay, so what happens after registration gets confirmed?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 33017.6
+- Metric tags: personalization, groundedness, instruction_following
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is grounded and sourced from the provided document sections describing the automated nature of post-registration with academic offices handling exceptions. It is relevant and concise aligning with session goals. Some detail about specific steps after confirmation is missing, limiting completeness slightly. Personalization is applied correctly by responding in style matching prior turns and user name in history. No hallucination or contradictions detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, after registration gets confirmed, it's largely automated, but academic offices and departments provide support for verification, exception handling, and issue resolution when required.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 1.2550019025802612,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "section": "System Dependencies and Data Flow",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "active": true,
+      "doc_id": "ncie_exam_registration_process",
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "created_at": "2026-03-28T12:50:20.495165"
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.2936934232711792,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "created_at": "2026-03-28T12:50:20.493822",
+      "status": "active",
+      "active": true,
+      "section": "Examinations Covered Under Registration"
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 1.2967721223831177,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493573",
+      "updated_at": "2026-03-28T12:50:20.493575",
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "section": "Overview",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.300958275794983,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "version": 1,
+      "section": "Special Student Categories",
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494939",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_28",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 1.3024728298187256,
+    "confidence": 1.0,
+    "text": "bserved scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registration\n\nAt NCIE, exam registration applies to the following categories of assessments:\n\n* **End-Semester Examinations (ESE)**\n  Comprehensive examinations conducted at the end of each semester, contributing **60%** of the total course evaluation.\n\n* **Supplementary / Reappearance Examinations**\n  Examinations for students who need to reattempt a course evaluation from a previous semester.\n\n* **Makeup Examinations**\n  Special examinations conducted for students who were unable to appear for a scheduled exam due to approved reasons.\n\nRegistration for continuous assessment components is handled implicitly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligib",
+    "metadata": {
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "section": "Overview",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493697",
+      "updated_at": "2026-03-28T12:50:20.493699"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 33017.6,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T05
+
+- Question: What if I miss the normal registration window?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 42511.99
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer correctly states the absence of explicit info on missing registration window, but provides relevant guidance on contacting department office per source. Personalized by addressing student's issue concisely. Some incompleteness due to missing specific policy on late registration.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, if you miss the normal registration window, it's not explicitly stated what happens. However, it's mentioned that most issues can be resolved by contacting the department office with relevant details and supporting information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.2652901411056519,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "section": "Role of Departments and Academic Offices",
+      "created_at": "2026-03-28T12:50:20.494512",
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 1.3248032331466675,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "version": 1,
+      "section": "System Dependencies and Data Flow",
+      "created_at": "2026-03-28T12:50:20.495165",
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_exam_registration_process"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.3684812784194946,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "section": "Special Student Categories",
+      "active": true,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.494939",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 1.4005358219146729,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493573",
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.493575",
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "section": "Overview"
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.407698631286621,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493822",
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "section": "Examinations Covered Under Registration",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_exam_registration_process"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 42511.99,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T06
+
+- Question: Before final confirmation, what checks are usually involved?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 41095.96
+- Metric tags: personalization, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer discusses revaluation process coordinated by the Examination Cell which is unrelated to the question about 'checks before final confirmation' in the registration workflow. Although the answer is grounded in the provided documents about revaluation, it does not address the actual question about checks involved before final confirmation of registration. The personalization of addressing 'Examination Cell' is correct per documents, but the scope and relevance to the question are off, indicating a retrieval failure rather than hallucination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, before final confirmation, the Examination Cell at NCIE coordinates the revaluation process by managing revaluation request timelines, assigning answer scripts for review or reassessment, ensuring anonymity and integrity during evaluation, and updating verified results in the academic system.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.2036017179489136,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Revaluation Request Workflow",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "active": true,
+      "status": "active",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_35",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Post-Registration Verification",
+    "similarity": 1.2064687013626099,
+    "confidence": 1.0,
+    "text": "to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or makeup)\n* Registration status and acknowledgment\n* Payment confirmation, if applicable\n\nEarly verification helps prevent discrepancies during examination scheduling and result processing.\n\n## 11. Modifications After Submission\n\nChanges to exam registration after submission are generally limited. However, modifications may be considered in situations such as:\n\n* Correction of clerical or system errors\n* Administrative updates initiated by academic offices\n* Approved course status changes\n\nSuch modifications require coordination between the department and the Examination Cell.\n\n## 12. Special Student Categories\n\nCertain student categories may follow slightly modified registration workflows, inclu",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "section": "Post-Registration Verification",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.494761",
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.494754",
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.2187635898590088,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501184",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "section": "Eligibility for Revaluation Requests",
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.2770969867706299,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.501093",
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "active": true,
+      "section": "Purpose of Revaluation and Script Review"
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.2935349941253662,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493185",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "confidence": 1.0,
+      "section": "Impact on Examination Registration",
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 41095.96,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-003 T07
+
+- Question: Can you quickly summarize everything again?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 61163.82
+- Metric tags: personalization, session_context, task_success
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer repeats previous content without concisely summarizing the entire session as requested. The response mixes details about missing registration window and revaluation without direct summary or demonstrating the concise answer preference retained. It lacks clear, concise synthesis aligned to the explicit query and personalization goal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, if you miss the normal registration window, it's not explicitly stated what happens. However, it's mentioned that most issues can be resolved by contacting the department office with relevant details and supporting information.
+
+Before final confirmation of the revaluation process, the Examination Cell at NCIE coordinates the revaluation process by managing revaluation request timelines, assigning answer scripts for review or reassessment, ensuring anonymity and integrity during evaluation, and updating verified results in the academic system.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 0.841160774230957,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "section": "Eligibility for Revaluation Requests",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.501184"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 0.8779183030128479,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "version": 1,
+      "section": "Revaluation Request Workflow",
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501281"
+    }
+  },
+  {
+    "id": "doc_30",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Eligibility Verification Before Registration",
+    "similarity": 0.8795403242111206,
+    "confidence": 1.0,
+    "text": "n is not satisfied, the system may restrict registration and display an explanatory message to the student.\n\n## 4. Registration Timeline and Communication\n\nThe exam registration window is announced by the **Examination Cell** of NCIE for each semester. Information about registration timelines is communicated through:\n\n* The NCIE academic portal dashboard\n* Official institutional email communication\n* Department-level notifications\n\nThe registration period generally includes:\n\n* A **standard registration phase**\n* A **limited extension phase**, if announced\n\nStudents are expected to complete registration within the communicated timeframe to ensure inclusion in examination scheduling.\n\n## 5. Online Registration Workflow\n\nThe standard exam registration workflow at NCIE follows these steps:\n\n1",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493948",
+      "doc_id": "ncie_exam_registration_process",
+      "updated_at": "2026-03-28T12:50:20.493950",
+      "version": 1,
+      "section": "Eligibility Verification Before Registration",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_31",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Online Registration Workflow",
+    "similarity": 0.9046883583068848,
+    "confidence": 1.0,
+    "text": "nline Registration Workflow\n\nThe standard exam registration workflow at NCIE follows these steps:\n\n1. The student logs into the NCIE academic portal using institutional credentials.\n2. The system displays a list of courses eligible for end-semester examination based on enrollment data.\n3. The student reviews and selects the courses for which they intend to appear.\n4. Automated validation checks are performed by the system.\n5. Examination fee details, if applicable, are displayed.\n6. The student confirms the registration submission.\n7. A registration acknowledgment is generated and stored in the system.\n\nOnce confirmed, the registration data is forwarded to examination scheduling and evaluation modules.\n\n## 6. Examination Fee Handling\n\nFor certain examination categories, NCIE may require th",
+    "metadata": {
+      "section": "Online Registration Workflow",
+      "updated_at": "2026-03-28T12:50:20.494081",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.494079",
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 0.9428141713142395,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "created_at": "2026-03-28T12:50:20.493822",
+      "section": "Examinations Covered Under Registration",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_exam_registration_process",
+      "status": "active"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 61163.82,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T01
+
+- Question: I'm new to all this. Please explain things in a detailed beginner-friendly way.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 26082.3
+- Metric tags: preference_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is comprehensive, well-grounded in the provided sources, correctly applies the beginner-friendly explanatory style requested, and accurately reflects the information on academic advising at NCIE without hallucination. Preference extraction is implicit in the tone matching the user's request. Minor completeness deduction due to not explicitly highlighting some minor details, but overall very thorough.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_preference_extraction": true
+}
+```
+
+### Answer
+
+I'd be happy to explain things in a detailed beginner-friendly way. At Nova Crest Institute of Engineering (NCIE), academic advising and mentorship are structured support mechanisms that guide students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.
+
+Here are some key points to keep in mind:
+
+* Academic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.
+* The academic advising and mentorship framework at NCIE is designed to support informed academic decision-making, guide students in course planning and progression, and assist in understanding academic workflows and expectations.
+* Each student at NCIE is assigned a Faculty Advisor at the beginning of the academic program or academic year. The Faculty Advisor serves as the primary academic point of contact for the student throughout the advising period.
+* The Faculty Advisor supports students by guiding course selection and enrollment, monitoring progress, and addressing academic or adjustment challenges early.
+
+I hope this helps you get started with understanding academic advising at NCIE!
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.533131718635559,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.489597"
+    }
+  },
+  {
+    "id": "doc_1",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Purpose of Academic Advising",
+    "similarity": 1.540679931640625,
+    "confidence": 1.0,
+    "text": "tudents in course planning and progression\n* Assist in understanding academic workflows and expectations\n* Identify and address academic or adjustment challenges early\n* Provide continuity and support across semesters\n\nAdvising emphasizes guidance and coordination rather than evaluation.\n\n## 3. Faculty Advisor Assignment\n\nEach student at NCIE is assigned a **Faculty Advisor** at the beginning of the academic program or academic year. The Faculty Advisor serves as the primary academic point of contact for the student throughout the advising period.\n\nAdvisor assignments are recorded in the academic system and may be updated by the department when required.\n\n## 4. Role of the Faculty Advisor\n\nThe Faculty Advisor at NCIE typically supports students by:\n\n* Guiding course selection and enrollmen",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.489714",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.489711",
+      "section": "Purpose of Academic Advising",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.5558464527130127,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "section": "Introduction",
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.492490",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.6058729887008667,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "status": "active",
+      "section": "Components of Laboratory Evaluation",
+      "created_at": "2026-03-28T12:50:20.499084"
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.6260126829147339,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "section": "Add Course Process",
+      "created_at": "2026-03-28T12:50:20.492724",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492726",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 26082.3,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T02
+
+- Question: How does the policy update workflow work in this system?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 75987.86
+- Metric tags: personalization, groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response correctly refuses to answer due to lack of specific information in the documents, accurately notes the limitation, and directs the user to appropriate resources. It respects grounding and the provided context fully supports the refusal. Personalization is applied by acknowledging the user's need and explaining the situation clearly without hallucinating details.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 0.6392011642456055,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "section": "Introduction",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "version": 1,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_6",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Role of Departments in Advising Oversight",
+    "similarity": 0.7279137372970581,
+    "confidence": 1.0,
+    "text": "ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and Record Keeping\n\nAdvising-related records at NCIE may include:\n\n* Advisor assignments\n* Advising session summaries, where applicable\n* Enrollment adjustment approvals\n* Academic progression notes\n\nRecords are maintained to support continuity and coordination across academic systems.\n\n## 12. Advising Boundaries and Scope\n\nAcademic advising at NCIE focuses on guidance and coordination. It does not involve:\n\n* Modification of assessment outcomes\n* Override of evaluation decisions\n* Independent alteration of academic records\n\nFormal academic processes remain governed by established workflows.\n\n## 13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student ac",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.490266",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "updated_at": "2026-03-28T12:50:20.490268",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "section": "Role of Departments in Advising Oversight",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_62",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Coordination with Final-Year Projects",
+    "similarity": 0.8393538594245911,
+    "confidence": 1.0,
+    "text": "requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination between:\n\n* Academic portal systems\n* Departmental review mechanisms\n* Internship or placement coordination systems\n* Academic record management modules\n\nSystem synchronization ensures accurate tracking and evaluation.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, internship registration and evaluation follow a structured academic workflow that emphasizes learning outcomes, documentation, and academic relevance. Through coordinated oversight by faculty and departments, internships contribute meaningfully to student development while remaining aligned with the institutional academic framework.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Coordination with Final-Year Projects",
+      "updated_at": "2026-03-28T12:50:20.498617",
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.498612",
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 0.8408654928207397,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.492490",
+      "confidence": 1.0,
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_7",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "System Integration",
+    "similarity": 0.8572975397109985,
+    "confidence": 1.0,
+    "text": "13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student academic profiles\n* Course enrollment systems\n* Assessment and examination records\n* Project and internship tracking modules\n\nSystem access enables advisors to provide informed and timely guidance.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, academic advising and mentorship provide structured, continuous support for students across their academic lifecycle. Through coordinated guidance, clear communication, and system-enabled oversight, advising helps students navigate academic processes effectively while remaining aligned with institutional frameworks.",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.490406",
+      "section": "System Integration",
+      "updated_at": "2026-03-28T12:50:20.490409"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 75987.86,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T03
+
+- Question: What exactly does contradiction detection mean here?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 55979.7
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer correctly refuses to provide a detailed explanation due to lack of accessible information in the documents, which aligns with the policy of zero-knowledge compliance. However, it does not provide any beginner-friendly explanation or simplified technical definition for 'contradiction detection'. The refusal is appropriate, and personalization is applied correctly by noting document limitations and suggesting contacting academic offices.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 0.6855936050415039,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "section": "Introduction",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_6",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Role of Departments in Advising Oversight",
+    "similarity": 0.9022889137268066,
+    "confidence": 1.0,
+    "text": "ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and Record Keeping\n\nAdvising-related records at NCIE may include:\n\n* Advisor assignments\n* Advising session summaries, where applicable\n* Enrollment adjustment approvals\n* Academic progression notes\n\nRecords are maintained to support continuity and coordination across academic systems.\n\n## 12. Advising Boundaries and Scope\n\nAcademic advising at NCIE focuses on guidance and coordination. It does not involve:\n\n* Modification of assessment outcomes\n* Override of evaluation decisions\n* Independent alteration of academic records\n\nFormal academic processes remain governed by established workflows.\n\n## 13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student ac",
+    "metadata": {
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "section": "Role of Departments in Advising Oversight",
+      "created_at": "2026-03-28T12:50:20.490266",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.490268",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_5",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Identification and Support of Academic Challenges",
+    "similarity": 0.9289934635162354,
+    "confidence": 1.0,
+    "text": "of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n* Consistent assessment difficulties\n* Course overload concerns\n* Academic planning uncertainties\n* Adjustment issues consideration\n\nWhen necessary, advisors coordinate with departments or academic offices to guide students toward appropriate support mechanisms.\n\n## 10. Role of Departments in Advising Oversight\n\nDepartments at NCIE oversee academic advising by:\n\n* Assigning and monitoring advisor responsibilities\n* Ensuring advising consistency across student groups\n* Supporting advisors with academic information and system access\n* Coordinating interventions when needed\n\nDepartmental oversight ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Identification and Support of Academic Challenges",
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.490155",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "updated_at": "2026-03-28T12:50:20.490157",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 0.9314513206481934,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "section": "Advising Related to Assessment and Performance",
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.490028",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_7",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "System Integration",
+    "similarity": 0.9314797520637512,
+    "confidence": 1.0,
+    "text": "13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student academic profiles\n* Course enrollment systems\n* Assessment and examination records\n* Project and internship tracking modules\n\nSystem access enables advisors to provide informed and timely guidance.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, academic advising and mentorship provide structured, continuous support for students across their academic lifecycle. Through coordinated guidance, clear communication, and system-enabled oversight, advising helps students navigate academic processes effectively while remaining aligned with institutional frameworks.",
+    "metadata": {
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490406",
+      "section": "System Integration",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.490409",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 55979.7,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T04
+
+- Question: Once a policy claim is detected, what happens next?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 65162.12
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer properly refuses to provide specific details on the policy claim workflow based on the documents, is grounded in the available academic documents, correctly applies personalization by acknowledging the limitation, and appropriately handles knowledge gaps without hallucination or contradiction.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.3131890296936035,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.501278",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Revaluation Request Workflow",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 1.338442087173462,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Delays, Extensions, and Special Cases",
+      "created_at": "2026-03-28T12:50:20.498377",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "version": 1,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_6",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Role of Departments in Advising Oversight",
+    "similarity": 1.390754222869873,
+    "confidence": 1.0,
+    "text": "ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and Record Keeping\n\nAdvising-related records at NCIE may include:\n\n* Advisor assignments\n* Advising session summaries, where applicable\n* Enrollment adjustment approvals\n* Academic progression notes\n\nRecords are maintained to support continuity and coordination across academic systems.\n\n## 12. Advising Boundaries and Scope\n\nAcademic advising at NCIE focuses on guidance and coordination. It does not involve:\n\n* Modification of assessment outcomes\n* Override of evaluation decisions\n* Independent alteration of academic records\n\nFormal academic processes remain governed by established workflows.\n\n## 13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student ac",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490268",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "type": "canonical_knowledge",
+      "active": true,
+      "status": "active",
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Role of Departments in Advising Oversight",
+      "created_at": "2026-03-28T12:50:20.490266"
+    }
+  },
+  {
+    "id": "doc_88",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Special Considerations",
+    "similarity": 1.4116652011871338,
+    "confidence": 1.0,
+    "text": "managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflow depends on integration between:\n\n* Examination result databases\n* Academic performance records\n* Student academic portals\n* Evaluation assignment systems\n\nAccurate system synchronization ensures reliable updates.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, the revaluation and answer script review process provides a structured academic pathway for students to seek verification of end-semester examination evaluation. Through centralized coordination, controlled workflows, and transparent result updates, NCIE maintains fairness and confidence in its assessment system.",
+    "metadata": {
+      "section": "Special Considerations",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.501575",
+      "updated_at": "2026-03-28T12:50:20.501577",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.4143636226654053,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.501184",
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "section": "Eligibility for Revaluation Requests",
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 65162.12,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T05
+
+- Question: Can you explain what a review ticket is in simple words?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 71934.05
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly refuses to provide information due to lack of specifics in the documents regarding 'review ticket'. The refusal is consistent, avoids hallucination, and references academic office or portal for details. Personalization aligns with session goal for beginner-friendly style. Memory is relevant as refusal pattern aligns with prior turns on unknown topics.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.1741042137145996,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "section": "Purpose of Revaluation and Script Review",
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501093",
+      "doc_id": "ncie_revaluation_and_answer_script_review"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.2086801528930664,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "section": "Revaluation Request Workflow",
+      "confidence": 1.0,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.238739013671875,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "version": 1,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "section": "Eligibility for Revaluation Requests",
+      "created_at": "2026-03-28T12:50:20.501184"
+    }
+  },
+  {
+    "id": "doc_51",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Role of Academic Offices and Faculty",
+    "similarity": 1.2931327819824219,
+    "confidence": 1.0,
+    "text": "of Academic Offices and Faculty\n\nGrading at NCIE involves coordinated responsibilities:\n\n* **Course Instructors**\n  Conduct evaluation and submit Continuous Assessment marks.\n\n* **Department Academic Coordinators**\n  Verify grading consistency and completeness.\n\n* **Examination Cell**\n  Manages End-Semester Examination evaluation and result processing.\n\nFinal grades are published only after verification across these roles.\n\n## 10. Revisions and Result Updates\n\nIn cases where evaluation outcomes change due to processes such as revaluation:\n\n* Updated ESE scores replace previous records\n* Integrated grades are recalculated\n* Revised grades are reflected in the academic system\n\nOnce updated, grades are treated as final for academic purposes.\n\n## 11. Academic Record Integrity\n\nNCIE emphasizes",
+    "metadata": {
+      "section": "Role of Academic Offices and Faculty",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.496799",
+      "updated_at": "2026-03-28T12:50:20.496802",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.2999248504638672,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494512",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Role of Departments and Academic Offices",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 71934.05,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T06
+
+- Question: Why does the system ask users to upload proof?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 63578.88
+- Metric tags: personalization, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer correctly refuses due to lack of specific information in documents about why the system asks for proof uploads. It notes related attendance mentions but no direct relation to proof upload. The refusal is appropriate and aligned with zero-knowledge compliance. However, it fails to apply personalization (no beginner-friendly explanation attempted), and the response is incomplete and low in relevance to the query, lacking detailed beginner-friendly reasoning as per session goal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.1049785614013672,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501278",
+      "status": "active",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "section": "Revaluation Request Workflow",
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.1271464824676514,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501184",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "confidence": 1.0,
+      "section": "Eligibility for Revaluation Requests"
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.1897351741790771,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.501093",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "version": 1,
+      "section": "Purpose of Revaluation and Script Review",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.2987115383148193,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "section": "Role of the Examination Cell",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501374"
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.3135712146759033,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "section": "Examinations Covered Under Registration",
+      "created_at": "2026-03-28T12:50:20.493822",
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 63578.88,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-004 T07
+
+- Question: Can you walk me through the whole workflow again step by step?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 64330.75
+- Metric tags: personalization, session_context, task_success
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The user requested a detailed beginner-friendly step-by-step workflow explanation, but the system refused with a generic statement about lacking details, failing to provide any stepwise or personalized explanation. Although the refusal is consistent with document coverage, it does not meet the user's expectation for a walkthrough, thus the response is not relevant or complete.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 0.9185959696769714,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "version": 1,
+      "section": "Attendance and CA Linkage",
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.491619",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 0.9221999645233154,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.491390",
+      "section": "Evaluation and Mark Allocation",
+      "version": 1,
+      "doc_id": "ncie_continuous_assessment_overview"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 0.969404935836792,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "section": "Revaluation Request Workflow",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.0204603672027588,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493822",
+      "section": "Examinations Covered Under Registration",
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_31",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Online Registration Workflow",
+    "similarity": 1.0589812994003296,
+    "confidence": 1.0,
+    "text": "nline Registration Workflow\n\nThe standard exam registration workflow at NCIE follows these steps:\n\n1. The student logs into the NCIE academic portal using institutional credentials.\n2. The system displays a list of courses eligible for end-semester examination based on enrollment data.\n3. The student reviews and selects the courses for which they intend to appear.\n4. Automated validation checks are performed by the system.\n5. Examination fee details, if applicable, are displayed.\n6. The student confirms the registration submission.\n7. A registration acknowledgment is generated and stored in the system.\n\nOnce confirmed, the registration data is forwarded to examination scheduling and evaluation modules.\n\n## 6. Examination Fee Handling\n\nFor certain examination categories, NCIE may require th",
+    "metadata": {
+      "status": "active",
+      "section": "Online Registration Workflow",
+      "active": true,
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494079",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.494081",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 64330.75,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T01
+
+- Question: Please keep answers short, but include one practical example whenever helpful.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 19000.53
+- Metric tags: preference_extraction, learning_turn
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer does not address the query about including practical examples or extracting preferences, missing the expected response style and content.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_preference_extraction": true
+}
+```
+
+### Answer
+
+Hello Arjun, what's on your mind today?
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.6119592189788818,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "section": "Summary",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499787",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks"
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.6864211559295654,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "created_at": "2026-03-28T12:50:20.499084",
+      "confidence": 1.0,
+      "active": true,
+      "section": "Components of Laboratory Evaluation",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks"
+    }
+  },
+  {
+    "id": "doc_68",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Student Visibility and Feedback",
+    "similarity": 1.7178765535354614,
+    "confidence": 1.0,
+    "text": "and Feedback\n\nDepending on departmental practices and system availability, students may be able to:\n\n* View provisional internal marks\n* Receive feedback on lab performance\n* Discuss evaluation outcomes with instructors\n\nFeedback is intended to support improvement and reinforce learning outcomes.\n\n## 8. Handling Missed or Incomplete Lab Work\n\nStudents may occasionally miss lab sessions due to valid reasons. In such cases:\n\n* Students are expected to inform the lab instructor\n* Make-up lab sessions or alternate evaluations may be arranged\n* Documentation may be requested where applicable\n\nThe handling of missed lab work is coordinated at the department level and recorded in the system.\n\n## 9. Role of Faculty and Departments\n\nLaboratory evaluation involves coordinated responsibilities:\n\n* **",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.499320",
+      "section": "Student Visibility and Feedback",
+      "updated_at": "2026-03-28T12:50:20.499323",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_65",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Role of Laboratory Evaluation in Academic Assessment",
+    "similarity": 1.7571897506713867,
+    "confidence": 1.0,
+    "text": "cepts through practice\n* Encourage systematic experimentation and documentation\n* Evaluate problem-solving and analytical skills\n\nFor laboratory courses, lab evaluation forms a significant portion of the **40% Continuous Assessment** allocated to the course.\n\n## 3. Structure of Laboratory Courses\n\nLaboratory courses at NCIE are typically structured with:\n\n* Weekly or scheduled lab sessions\n* Defined experiments or practical exercises\n* Continuous monitoring of student participation\n* Periodic assessment checkpoints\n\nEach laboratory course is linked to a corresponding theory or application area, where applicable.\n\n## 4. Components of Laboratory Evaluation\n\nLaboratory evaluation at NCIE may include multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiment",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498973",
+      "section": "Role of Laboratory Evaluation in Academic Assessment",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.498975"
+    }
+  },
+  {
+    "id": "doc_5",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Identification and Support of Academic Challenges",
+    "similarity": 1.7754666805267334,
+    "confidence": 1.0,
+    "text": "of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n* Consistent assessment difficulties\n* Course overload concerns\n* Academic planning uncertainties\n* Adjustment issues consideration\n\nWhen necessary, advisors coordinate with departments or academic offices to guide students toward appropriate support mechanisms.\n\n## 10. Role of Departments in Advising Oversight\n\nDepartments at NCIE oversee academic advising by:\n\n* Assigning and monitoring advisor responsibilities\n* Ensuring advising consistency across student groups\n* Supporting advisors with academic information and system access\n* Coordinating interventions when needed\n\nDepartmental oversight ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and",
+    "metadata": {
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.490155",
+      "updated_at": "2026-03-28T12:50:20.490157",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Identification and Support of Academic Challenges",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 19000.53,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T02
+
+- Question: What are the main rules for course withdrawal?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 42370.61
+- Metric tags: personalization, groundedness, task_success
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer is partially grounded but lacks the expected formatting (lists) and completeness regarding the full withdrawal rules, missing key procedural steps despite being consistent with the source. Personalization is present but insufficient detail and no practical example given, failing the session goal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, course withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.5705801844596863,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "status": "active",
+      "section": "Course Withdrawal Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492956",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 0.6592106819152832,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492839",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Drop Course Process"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.9747732877731323,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "confidence": 1.0,
+      "section": "Course Withdrawal Process",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.0087546110153198,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.492490",
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "status": "active",
+      "section": "Introduction",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.0548298358917236,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.492726",
+      "created_at": "2026-03-28T12:50:20.492724",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Add Course Process"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 42370.61,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T03
+
+- Question: Also, what's the difference between add, drop, and withdrawal?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 35051.69
+- Metric tags: personalization, groundedness
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer accurately reflects the source content about drop vs withdrawal but omits explanation for 'add' despite it being part of the question. The response is personalized in style but incomplete regarding all three terms, failing the objective of a concise, example-friendly explanation covering add, drop, and withdrawal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, dropping a course ensures that the student is not evaluated or examined for that course, whereas withdrawal acknowledges partial participation without full academic evaluation. Dropping a course is typically done when the course has not progressed significantly, whereas withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.1348015069961548,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492839",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "active": true,
+      "section": "Drop Course Process",
+      "updated_at": "2026-03-28T12:50:20.492841"
+    }
+  },
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.1613820791244507,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.492956",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.492954",
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "Course Withdrawal Process",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.1969518661499023,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.492726",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.492724",
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "Add Course Process",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.2742583751678467,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Special Considerations",
+      "created_at": "2026-03-28T12:50:20.493447",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.4081580638885498,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "section": "Course Withdrawal Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493068",
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 35051.69,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T04
+
+- Question: Who usually needs to approve a withdrawal?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 34822.33
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer correctly identifies roles (Faculty Advisor or Department Academic Coordinator) who approve withdrawal, based on strong document evidence. It is concise and aligned with user preferences, showing correct personalization. Slightly incomplete as it lacks explicit listing format and example, but remains relevant and grounded.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, the Faculty Advisor or Department Academic Coordinator needs to approve a withdrawal.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.9966468811035156,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Course Withdrawal Process",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.492956",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.1462862491607666,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Drop Course Process",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.492839",
+      "status": "active",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.351877212524414,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493185",
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Impact on Examination Registration"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.3610143661499023,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "section": "Special Considerations",
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.493447"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.3859537839889526,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Course Withdrawal Process",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "active": true,
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.493068"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 34822.33,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T05
+
+- Question: What happens to my records after that?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 25275.49
+- Metric tags: personalization, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer is a refusal with no information about records post-withdrawal, despite relevant documents being available. Personalization was expected but not applied. Relevant context was sufficient to generate a grounded answer. Thus, the response failed due to retrieval or generation failure.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I apologize, but I encountered an error while generating a response.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.3452595472335815,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "section": "Role of the Examination Cell",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "version": 1,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.501374",
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.3638858795166016,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "version": 1,
+      "section": "Handling Internship Variations",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_51",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Role of Academic Offices and Faculty",
+    "similarity": 1.4312193393707275,
+    "confidence": 1.0,
+    "text": "of Academic Offices and Faculty\n\nGrading at NCIE involves coordinated responsibilities:\n\n* **Course Instructors**\n  Conduct evaluation and submit Continuous Assessment marks.\n\n* **Department Academic Coordinators**\n  Verify grading consistency and completeness.\n\n* **Examination Cell**\n  Manages End-Semester Examination evaluation and result processing.\n\nFinal grades are published only after verification across these roles.\n\n## 10. Revisions and Result Updates\n\nIn cases where evaluation outcomes change due to processes such as revaluation:\n\n* Updated ESE scores replace previous records\n* Integrated grades are recalculated\n* Revised grades are reflected in the academic system\n\nOnce updated, grades are treated as final for academic purposes.\n\n## 11. Academic Record Integrity\n\nNCIE emphasizes",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.496799",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "status": "active",
+      "version": 1,
+      "section": "Role of Academic Offices and Faculty",
+      "updated_at": "2026-03-28T12:50:20.496802",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.455510139465332,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Course Withdrawal Process"
+    }
+  },
+  {
+    "id": "doc_45",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "System Integration and Record Management",
+    "similarity": 1.4579910039901733,
+    "confidence": 1.0,
+    "text": "tegration and Record Management\n\nFinal-year project records are maintained across multiple academic systems, including:\n\n* Project evaluation databases\n* Continuous Assessment tracking modules\n* Academic performance records\n\nAccurate data management ensures reliable academic outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, the final-year project serves as a comprehensive academic experience that integrates learning, application, and evaluation across two semesters. Through structured supervision, milestone-based reviews, and coordinated assessment practices, the project framework supports academic excellence and student development.",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496151",
+      "version": 1,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "section": "System Integration and Record Management",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.496144"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 25275.49,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T06
+
+- Question: Can I still attend classes after a withdrawal request is processed?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 34668.73
+- Metric tags: personalization, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is grounded in the provided context and explicitly acknowledges absence of direct information on attending classes post withdrawal. It is relevant and accurate without hallucination but lacks personalization and practical example as requested.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+According to the context, withdrawn courses are reflected distinctly in academic records to indicate non-completion. However, there's no explicit information about attending classes after a withdrawal request is processed.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.6317668557167053,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "section": "Course Withdrawal Process",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492956"
+    }
+  },
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 0.8017938733100891,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492839",
+      "section": "Drop Course Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.9457305073738098,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Course Withdrawal Process",
+      "created_at": "2026-03-28T12:50:20.493068",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493070"
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.1362758874893188,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492490",
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "active": true,
+      "section": "Introduction",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.1472210884094238,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492726",
+      "created_at": "2026-03-28T12:50:20.492724",
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Add Course Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 34668.73,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-005 T07
+
+- Question: Can you turn all that into a very short practical guide with one example?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 23095.61
+- Metric tags: personalization, instruction_following, task_success
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The response is an error message and provides no useful content or a practical guide as requested, despite sufficient context and memory; personalization was not applied.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true
+}
+```
+
+### Answer
+
+I apologize, but I encountered an error while generating a response.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.4545609951019287,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.499084",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "section": "Components of Laboratory Evaluation"
+    }
+  },
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 1.501399040222168,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "section": "Project Allocation and Topic Selection",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "created_at": "2026-03-28T12:50:20.500162",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_65",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Role of Laboratory Evaluation in Academic Assessment",
+    "similarity": 1.5014818906784058,
+    "confidence": 1.0,
+    "text": "cepts through practice\n* Encourage systematic experimentation and documentation\n* Evaluate problem-solving and analytical skills\n\nFor laboratory courses, lab evaluation forms a significant portion of the **40% Continuous Assessment** allocated to the course.\n\n## 3. Structure of Laboratory Courses\n\nLaboratory courses at NCIE are typically structured with:\n\n* Weekly or scheduled lab sessions\n* Defined experiments or practical exercises\n* Continuous monitoring of student participation\n* Periodic assessment checkpoints\n\nEach laboratory course is linked to a corresponding theory or application area, where applicable.\n\n## 4. Components of Laboratory Evaluation\n\nLaboratory evaluation at NCIE may include multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiment",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "section": "Role of Laboratory Evaluation in Academic Assessment",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.498975",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.498973",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.5235017538070679,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.490028",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "section": "Advising Related to Assessment and Performance",
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.5287843942642212,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 23095.61,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T01
+
+- Question: This semester I'm taking Machine Learning and Database Systems.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 43715.61
+- Metric tags: fact_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: retrieval_failure
+- Judge reasoning: Answer correctly acknowledges the user's courses but notes lack of supporting context despite multiple relevant documents; the response is grounded in context by referring to missing info but does not provide extracted facts. Refusal to confirm courses from docs is appropriate given absence of direct evidence in provided sources.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_fact_extraction": true
+}
+```
+
+### Answer
+
+Hello Arjun. I see you're taking Machine Learning and Database Systems this semester. Unfortunately, I don't see any information in the provided context about these specific courses.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_45",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "System Integration and Record Management",
+    "similarity": 1.1626298427581787,
+    "confidence": 1.0,
+    "text": "tegration and Record Management\n\nFinal-year project records are maintained across multiple academic systems, including:\n\n* Project evaluation databases\n* Continuous Assessment tracking modules\n* Academic performance records\n\nAccurate data management ensures reliable academic outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, the final-year project serves as a comprehensive academic experience that integrates learning, application, and evaluation across two semesters. Through structured supervision, milestone-based reviews, and coordinated assessment practices, the project framework supports academic excellence and student development.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "System Integration and Record Management",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.496151",
+      "created_at": "2026-03-28T12:50:20.496144",
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.1632134914398193,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492490",
+      "section": "Introduction",
+      "status": "active",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_16",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Exceptions and Special Considerations",
+    "similarity": 1.1692039966583252,
+    "confidence": 1.0,
+    "text": "tensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations\n\nThese cases are managed through coordination between instructors, departments, and academic offices.\n\n## 13. System Dependencies\n\nThe Continuous Assessment process relies on multiple academic systems, including:\n\n* Course enrollment databases\n* Assessment scheduling tools\n* Attendance tracking systems\n* Academic performance portals\n\nSystem synchronization is essential to maintain accurate and timely CA records.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, Continuous Assessment is a structured and essential component of the academic evaluation framework. Accounting for **40% of total course evaluation**, it supports continuous learning, timely feedback, and academic accountabilit",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Exceptions and Special Considerations",
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.492229",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.492223",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_81",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "System Integration and Record Management",
+    "similarity": 1.1717079877853394,
+    "confidence": 1.0,
+    "text": "The project workflow at NCIE relies on coordinated data management across:\n\n* Course enrollment systems\n* Continuous Assessment records\n* Project evaluation databases\n* Academic performance portals\n\nAccurate data entry and synchronization ensure reliable evaluation outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, project submission and review follow a structured, milestone-based workflow that supports continuous learning and evaluation. Integrated within the Continuous Assessment framework, project work enables students to apply theoretical knowledge in practical contexts while maintaining academic rigor and consistency.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.500908",
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "updated_at": "2026-03-28T12:50:20.500910",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "System Integration and Record Management"
+    }
+  },
+  {
+    "id": "doc_17",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Summary",
+    "similarity": 1.1730525493621826,
+    "confidence": 1.0,
+    "text": "al course evaluation**, it supports continuous learning, timely feedback, and academic accountability throughout the semester. Effective coordination between students, faculty, and academic systems ensures the reliability and integrity of the CA process.",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.492371",
+      "version": 1,
+      "section": "Summary",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.492368",
+      "status": "active",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 43715.61,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T02
+
+- Question: What should I focus on this week?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 46149.39
+- Metric tags: memory_relevance, task_success
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer refuses to provide study focus advice citing lack of specific document information, which is accurate per sources provided, but it fails to use the remembered courses (Machine Learning and Database Systems) to give natural study planning advice as expected. The response is grounded in documents but does not address the user's question or leverage memory effectively, resulting in poor relevance and completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.222646951675415,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.492490",
+      "status": "active",
+      "section": "Introduction",
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.2908904552459717,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494939",
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "section": "Special Student Categories",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process"
+    }
+  },
+  {
+    "id": "doc_80",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Final Submission and Closure",
+    "similarity": 1.2911230325698853,
+    "confidence": 1.0,
+    "text": "l Submission and Closure\n\nFor projects with a final submission component, students are required to:\n\n* Complete all scheduled reviews\n* Submit finalized documentation\n* Participate in final presentations or evaluations\n\nOnce evaluated, project records are finalized and integrated into the academic performance system.\n\n## 12. Special Cases and Variations\n\nCertain project scenarios may involve additional coordination, such as:\n\n* Interdisciplinary projects\n* Industry-mentored projects\n* Projects aligned with internships\n* Students with academic accommodations\n\nThese cases are handled through coordination between departments and academic offices.\n\n## 13. System Integration and Record Management\n\nThe project workflow at NCIE relies on coordinated data management across:\n\n* Course enrollment sy",
+    "metadata": {
+      "section": "Final Submission and Closure",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "created_at": "2026-03-28T12:50:20.500781",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.500783",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_45",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "System Integration and Record Management",
+    "similarity": 1.3212227821350098,
+    "confidence": 1.0,
+    "text": "tegration and Record Management\n\nFinal-year project records are maintained across multiple academic systems, including:\n\n* Project evaluation databases\n* Continuous Assessment tracking modules\n* Academic performance records\n\nAccurate data management ensures reliable academic outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, the final-year project serves as a comprehensive academic experience that integrates learning, application, and evaluation across two semesters. Through structured supervision, milestone-based reviews, and coordinated assessment practices, the project framework supports academic excellence and student development.",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "updated_at": "2026-03-28T12:50:20.496151",
+      "section": "System Integration and Record Management",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.496144",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_81",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "System Integration and Record Management",
+    "similarity": 1.326840877532959,
+    "confidence": 1.0,
+    "text": "The project workflow at NCIE relies on coordinated data management across:\n\n* Course enrollment systems\n* Continuous Assessment records\n* Project evaluation databases\n* Academic performance portals\n\nAccurate data entry and synchronization ensure reliable evaluation outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, project submission and review follow a structured, milestone-based workflow that supports continuous learning and evaluation. Integrated within the Continuous Assessment framework, project work enables students to apply theoretical knowledge in practical contexts while maintaining academic rigor and consistency.",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "section": "System Integration and Record Management",
+      "confidence": 1.0,
+      "active": true,
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.500910",
+      "created_at": "2026-03-28T12:50:20.500908"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 46149.39,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T03
+
+- Question: Based on those courses, which type of work will probably take more time?
+- Status: completed (200)
+- Retry count: 1
+- Latency ms: 79835.47
+- Metric tags: memory_relevance
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly extracts available types of Continuous Assessment work from the context and refuses to judge which type takes more time due to lack of explicit data, aligning well with the context and objective. Memory is used appropriately by tying to Continuous Assessment components. However, the context does not provide time estimations, reducing completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+According to the context, the types of work associated with Continuous Assessment are:
+
+* Tests / Internal Examinations
+* Assignments and Quizzes
+* Laboratory Performance
+* Project Reviews
+
+However, since the question asks which type of work is likely to take more time in courses that consider attendance records as part of the assessment framework, I must refuse as there is no explicit information in the context about the time required for each type of work.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_16",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Exceptions and Special Considerations",
+    "similarity": 0.6227660179138184,
+    "confidence": 1.0,
+    "text": "tensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations\n\nThese cases are managed through coordination between instructors, departments, and academic offices.\n\n## 13. System Dependencies\n\nThe Continuous Assessment process relies on multiple academic systems, including:\n\n* Course enrollment databases\n* Assessment scheduling tools\n* Attendance tracking systems\n* Academic performance portals\n\nSystem synchronization is essential to maintain accurate and timely CA records.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, Continuous Assessment is a structured and essential component of the academic evaluation framework. Accounting for **40% of total course evaluation**, it supports continuous learning, timely feedback, and academic accountabilit",
+    "metadata": {
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492229",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.492223",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "section": "Exceptions and Special Considerations"
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 0.6754385232925415,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "section": "Evaluation and Mark Allocation",
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.491390",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_8",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 0.6827298402786255,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, Continuous Assessment (CA) represents the ongoing evaluation of student performance throughout a semester. It is designed to assess learning progression, practical understanding, and engagement with coursework prior to the end-semester examination.\n\nContinuous Assessment contributes **40% of the total course evaluation**, with the remaining **60%** assessed through the End-Semester Examination (ESE). CA activities are conducted, recorded, and monitored during the semester as part of the academic workflow.\n\nThis document outlines the structure, components, evaluation practices, and administrative flow of continuous assessment at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at N",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.490530",
+      "section": "Introduction",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490527"
+    }
+  },
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 0.7292879223823547,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.491619",
+      "section": "Attendance and CA Linkage",
+      "version": 1,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "status": "active",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_10",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Components of Continuous Assessment",
+    "similarity": 0.7413343787193298,
+    "confidence": 1.0,
+    "text": "r Tests / Internal Examinations**\n  Written or online assessments conducted during the semester.\n\n* **Assignments and Quizzes**\n  Individual or group-based tasks designed to evaluate conceptual understanding.\n\n* **Laboratory Performance**\n  Assessment of practical skills, lab execution, and record maintenance for laboratory courses.\n\n* **Project Reviews**\n  Periodic evaluation of mini-projects or course-linked project work, where applicable.\n\nThe exact combination of components is determined at the course level and communicated to students at the start of the semester.\n\n## 4. Scheduling and Conduct of Assessments\n\nContinuous Assessment activities are scheduled by course instructors and departments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overl",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490932",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.490927",
+      "section": "Components of Continuous Assessment",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 79835.47,
+  "response_received": true,
+  "retry_count": 1,
+  "retry_recovered": true,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T04
+
+- Question: If I have limited time this week, how should I divide my effort?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 75978.34
+- Metric tags: memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly refuses to provide unsupported advice and is grounded in the cited documents, which do not contain specific guidance on study effort division. It shows appropriate memory use by referencing attendance and Continuous Assessment but lacks practical suggestions. Refusal is appropriate given evidence absence.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_10",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Components of Continuous Assessment",
+    "similarity": 0.7370896339416504,
+    "confidence": 1.0,
+    "text": "r Tests / Internal Examinations**\n  Written or online assessments conducted during the semester.\n\n* **Assignments and Quizzes**\n  Individual or group-based tasks designed to evaluate conceptual understanding.\n\n* **Laboratory Performance**\n  Assessment of practical skills, lab execution, and record maintenance for laboratory courses.\n\n* **Project Reviews**\n  Periodic evaluation of mini-projects or course-linked project work, where applicable.\n\nThe exact combination of components is determined at the course level and communicated to students at the start of the semester.\n\n## 4. Scheduling and Conduct of Assessments\n\nContinuous Assessment activities are scheduled by course instructors and departments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overl",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "section": "Components of Continuous Assessment",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.490932",
+      "created_at": "2026-03-28T12:50:20.490927"
+    }
+  },
+  {
+    "id": "doc_16",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Exceptions and Special Considerations",
+    "similarity": 0.818362295627594,
+    "confidence": 1.0,
+    "text": "tensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations\n\nThese cases are managed through coordination between instructors, departments, and academic offices.\n\n## 13. System Dependencies\n\nThe Continuous Assessment process relies on multiple academic systems, including:\n\n* Course enrollment databases\n* Assessment scheduling tools\n* Attendance tracking systems\n* Academic performance portals\n\nSystem synchronization is essential to maintain accurate and timely CA records.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, Continuous Assessment is a structured and essential component of the academic evaluation framework. Accounting for **40% of total course evaluation**, it supports continuous learning, timely feedback, and academic accountabilit",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492229",
+      "created_at": "2026-03-28T12:50:20.492223",
+      "active": true,
+      "section": "Exceptions and Special Considerations",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_8",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 0.8272485733032227,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, Continuous Assessment (CA) represents the ongoing evaluation of student performance throughout a semester. It is designed to assess learning progression, practical understanding, and engagement with coursework prior to the end-semester examination.\n\nContinuous Assessment contributes **40% of the total course evaluation**, with the remaining **60%** assessed through the End-Semester Examination (ESE). CA activities are conducted, recorded, and monitored during the semester as part of the academic workflow.\n\nThis document outlines the structure, components, evaluation practices, and administrative flow of continuous assessment at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at N",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490530",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.490527",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_9",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 0.8771673440933228,
+    "confidence": 1.0,
+    "text": "ent at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at NCIE serves multiple academic purposes:\n\n* Monitoring student learning progress over time\n* Providing early feedback on academic performance\n* Supporting practical and applied learning\n* Ensuring alignment between teaching objectives and evaluation\n\nCA is an integral part of the semester and is automatically associated with course enrollment. Students do not register separately for continuous assessment components.\n\n## 3. Components of Continuous Assessment\n\nContinuous Assessment at NCIE may include one or more of the following components, depending on the nature of the course:\n\n* **Mid-Semester Tests / Internal Examinations**\n  Written or online assessments conducted during the semester.\n\n*",
+    "metadata": {
+      "version": 1,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.490718",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.490712",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 0.9222899675369263,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "section": "Scheduling and Conduct of Lab Assessments",
+      "confidence": 1.0,
+      "active": true,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499207",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499210"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 75978.34,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T05
+
+- Question: By the way, can you also explain exam registration?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 33416.21
+- Metric tags: memory_relevance, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer is fully supported by multiple document excerpts describing NCIE exam registration process. It is relevant to the question without forcing remembered courses into the explanation. The answer focuses correctly on the exam registration policy, avoiding irrelevant course memory. Some details could provide more completeness, but overall it adequately covers the process.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_memory_irrelevance_avoidance": true
+}
+```
+
+### Answer
+
+Exam registration at NCIE is a student-initiated process conducted primarily through the institutional academic portal. It links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 0.6232998371124268,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "section": "System Dependencies and Data Flow",
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.495165"
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.6510336399078369,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "section": "Overview",
+      "created_at": "2026-03-28T12:50:20.493573",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_exam_registration_process",
+      "updated_at": "2026-03-28T12:50:20.493575"
+    }
+  },
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 0.6534886956214905,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.494512",
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "section": "Role of Departments and Academic Offices",
+      "active": true,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_28",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.7127504348754883,
+    "confidence": 1.0,
+    "text": "bserved scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registration\n\nAt NCIE, exam registration applies to the following categories of assessments:\n\n* **End-Semester Examinations (ESE)**\n  Comprehensive examinations conducted at the end of each semester, contributing **60%** of the total course evaluation.\n\n* **Supplementary / Reappearance Examinations**\n  Examinations for students who need to reattempt a course evaluation from a previous semester.\n\n* **Makeup Examinations**\n  Special examinations conducted for students who were unable to appear for a scheduled exam due to approved reasons.\n\nRegistration for continuous assessment components is handled implicitly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligib",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493699",
+      "section": "Overview",
+      "created_at": "2026-03-28T12:50:20.493697",
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "active": true,
+      "doc_id": "ncie_exam_registration_process"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 0.72144615650177,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "status": "active",
+      "section": "Special Student Categories",
+      "created_at": "2026-03-28T12:50:20.494939",
+      "version": 1,
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 33416.21,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T06
+
+- Question: Based on what you know about me, what kind of academic planning advice would help most?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38520.19
+- Metric tags: memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is well grounded in multiple relevant academic advising sections, references course planning and academic workflows explicitly found in the documents. It is relevant and leverages prior memory (student courses and advising context). However, it lacks detailed personalized actionable advice and focuses on general guidance, making completeness moderate but not extensive.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, academic planning advice that would help most is guidance on course selection and enrollment, as well as understanding academic workflows and expectations.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.1359323263168335,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "version": 1,
+      "section": "Introduction",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "confidence": 1.0,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.489561",
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "type": "canonical_knowledge",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_3",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Interactions and Communication",
+    "similarity": 1.1437954902648926,
+    "confidence": 1.0,
+    "text": "urse adjustment periods, and examination preparation phases.\n\n## 6. Advising in Course Enrollment and Adjustments\n\nFaculty Advisors play an important role in enrollment-related processes by:\n\n* Discussing academic workload feasibility\n* Advising on elective selection\n* Reviewing add, drop, or withdrawal requests\n* Ensuring alignment with academic progression plans\n\nAdvisory input supports informed decisions but final actions are recorded through formal academic workflows.\n\n## 7. Advising Related to Assessment and Performance\n\nAdvisors may assist students in understanding:\n\n* Continuous Assessment components and expectations\n* Integration of CA and End-Semester Examination outcomes\n* Interpretation of academic performance records\n* Steps available after result declaration, such as revaluati",
+    "metadata": {
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.489922",
+      "confidence": 1.0,
+      "section": "Advising Interactions and Communication",
+      "updated_at": "2026-03-28T12:50:20.489924"
+    }
+  },
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 1.1628791093826294,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "active": true,
+      "section": "Project Allocation and Topic Selection",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.500162"
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.1790874004364014,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "created_at": "2026-03-28T12:50:20.490028",
+      "section": "Advising Related to Assessment and Performance",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_1",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Purpose of Academic Advising",
+    "similarity": 1.1992889642715454,
+    "confidence": 1.0,
+    "text": "tudents in course planning and progression\n* Assist in understanding academic workflows and expectations\n* Identify and address academic or adjustment challenges early\n* Provide continuity and support across semesters\n\nAdvising emphasizes guidance and coordination rather than evaluation.\n\n## 3. Faculty Advisor Assignment\n\nEach student at NCIE is assigned a **Faculty Advisor** at the beginning of the academic program or academic year. The Faculty Advisor serves as the primary academic point of contact for the student throughout the advising period.\n\nAdvisor assignments are recorded in the academic system and may be updated by the department when required.\n\n## 4. Role of the Faculty Advisor\n\nThe Faculty Advisor at NCIE typically supports students by:\n\n* Guiding course selection and enrollmen",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.489711",
+      "active": true,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Purpose of Academic Advising",
+      "updated_at": "2026-03-28T12:50:20.489714",
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38520.19,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-006 T07
+
+- Question: Do you remember which courses I mentioned earlier?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37350.65
+- Metric tags: memory_relevance, session_context
+- Judge verdict: reject
+- Judge error type: memory_error
+- Judge reasoning: The answer recalls course names mentioned earlier by the user but this information is not grounded in the provided documents, which do not contain any data on user-specific courses. The response fails to cite or link to any evidence from the academic documents. It implies direct recall from memory not supported by the context, thus constituting a memory error. No refusal or clearer memory acknowledgment is made, reducing completeness and grounding.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+You mentioned earlier that you're taking courses in Machine Learning and Database Systems.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.0946232080459595,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492490",
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_50",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Grading Scale and Grade Representation",
+    "similarity": 1.1743865013122559,
+    "confidence": 1.0,
+    "text": "ades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion verification\n\nNumerical computation details, where applicable, are managed internally within the academic system.\n\n## 8. Special Course Categories\n\nCertain academic components may follow modified grading practices, including:\n\n* **Laboratory-only courses**\n  Emphasis on internal and practical evaluation.\n\n* **Project modules**\n  Evaluation through reviews and submissions as part of Continuous Assessment.\n\n* **Internship components**\n  Evaluated based on completion and academic review, without theory-based grading.\n\nThese variations remain aligned with the overall academic framework.\n\n## 9. Role of Academic Offices and Faculty\n\nGrading at NCIE involves coordinated responsibilities:\n\n* **Course",
+    "metadata": {
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.496691",
+      "section": "Grading Scale and Grade Representation",
+      "active": true,
+      "version": 1,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "updated_at": "2026-03-28T12:50:20.496693",
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.214561939239502,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492017",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "version": 1,
+      "section": "Integration with End-Semester Evaluation",
+      "status": "active",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_74",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Types of Academic Projects",
+    "similarity": 1.2324587106704712,
+    "confidence": 1.0,
+    "text": "undergraduate programs, including:\n\n* **Course-Linked Mini Projects**\n  Projects associated with specific courses, typically conducted within a single semester.\n\n* **Departmental Mini Projects**\n  Project work undertaken as part of departmental academic requirements, often in mid-program semesters.\n\n* **Final-Year Project**\n  A multi-semester project carried out during **Semester 7 and Semester 8**, involving sustained development and evaluation.\n\nEach project type follows a similar submission and review framework, with variations in duration and evaluation depth.\n\n## 3. Project Allocation and Topic Selection\n\nProject topics at NCIE may be allocated or approved through one of the following approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.500033",
+      "version": 1,
+      "section": "Types of Academic Projects",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.500030",
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_project_submission_and_review_flow"
+    }
+  },
+  {
+    "id": "doc_71",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Special Laboratory Contexts",
+    "similarity": 1.2355856895446777,
+    "confidence": 1.0,
+    "text": "undertaking internships alongside coursework\n\nThese contexts are managed through departmental coordination.\n\n## 13. System Dependencies\n\nLaboratory evaluation workflows at NCIE rely on:\n\n* Course enrollment systems\n* Continuous Assessment tracking modules\n* Academic performance databases\n* Faculty evaluation interfaces\n\nSystem synchronization ensures reliable assessment outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, laboratory evaluation and internal marks form a structured and essential part of the Continuous Assessment framework. Through consistent evaluation practices, timely feedback, and coordinated data management, laboratory courses support practical learning while maintaining academic rigor and integrity.",
+    "metadata": {
+      "section": "Special Laboratory Contexts",
+      "created_at": "2026-03-28T12:50:20.499667",
+      "updated_at": "2026-03-28T12:50:20.499669",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37350.65,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 16,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T01
+
+- Question: I'm Hemanth, a 3rd year Computer Science student.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 27889.05
+- Metric tags: fact_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly refuses to provide information not present in the documents, avoiding hallucination and maintaining compliance with evidence. It is relevant to the query about personal data extraction, clearly stating lack of access to specific personal details. The response is appropriate and safely guides the user to alternative sources.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_fact_extraction": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.3867491483688354,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "section": "Introduction",
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.497178",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_38",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Introduction",
+    "similarity": 1.4496084451675415,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the Final-Year Project represents a capstone academic activity that allows students to apply accumulated knowledge and skills to a sustained problem-solving initiative. The project spans the **seventh and eighth semesters** of the undergraduate program and is conducted under faculty supervision.\n\nThe final-year project is evaluated through structured reviews and submissions and forms part of the **Continuous Assessment (CA)** framework for the relevant project modules. This document outlines the academic practices, workflow, and coordination involved in final-year project execution at NCIE.\n\n## 2. Objectives of the Final-Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative lea",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.495285",
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "section": "Introduction",
+      "created_at": "2026-03-28T12:50:20.495282",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.4548983573913574,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "System Updates and Data Integrity"
+    }
+  },
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 1.4622061252593994,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Objectives of the Final-Year Project",
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.495384",
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495386"
+    }
+  },
+  {
+    "id": "doc_81",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "System Integration and Record Management",
+    "similarity": 1.478447675704956,
+    "confidence": 1.0,
+    "text": "The project workflow at NCIE relies on coordinated data management across:\n\n* Course enrollment systems\n* Continuous Assessment records\n* Project evaluation databases\n* Academic performance portals\n\nAccurate data entry and synchronization ensure reliable evaluation outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, project submission and review follow a structured, milestone-based workflow that supports continuous learning and evaluation. Integrated within the Continuous Assessment framework, project work enables students to apply theoretical knowledge in practical contexts while maintaining academic rigor and consistency.",
+    "metadata": {
+      "section": "System Integration and Record Management",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.500910",
+      "status": "active",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.500908"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 27889.05,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T02
+
+- Question: What academic advice would you give me based on that?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 46229.24
+- Metric tags: memory_relevance, task_success
+- Judge verdict: reject
+- Judge error type: memory_error
+- Judge reasoning: The answer is generally grounded in the academic advising content from documents but fails to appropriately use the user's profile ('Hemanth, a 3rd year CS student') to provide personalized academic advice. The response oddly states 'advised by None' which implies an incorrect recall or application of memory. The advice given is generic and does not leverage the session history or profile information, which was expected per the session goal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, I would say that I can help you understand academic processes, plan coursework, and address challenges that may arise during your program. However, I don't have a specific advisor assigned to you, as it's mentioned that you're advised by None.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.1389051675796509,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "section": "Summary",
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499787",
+      "status": "active",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.2916653156280518,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "created_at": "2026-03-28T12:50:20.490028",
+      "confidence": 1.0,
+      "section": "Advising Related to Assessment and Performance",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.3606163263320923,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "status": "active",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true,
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.3890515565872192,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "section": "System Updates and Data Integrity",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493325"
+    }
+  },
+  {
+    "id": "doc_3",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Interactions and Communication",
+    "similarity": 1.4304250478744507,
+    "confidence": 1.0,
+    "text": "urse adjustment periods, and examination preparation phases.\n\n## 6. Advising in Course Enrollment and Adjustments\n\nFaculty Advisors play an important role in enrollment-related processes by:\n\n* Discussing academic workload feasibility\n* Advising on elective selection\n* Reviewing add, drop, or withdrawal requests\n* Ensuring alignment with academic progression plans\n\nAdvisory input supports informed decisions but final actions are recorded through formal academic workflows.\n\n## 7. Advising Related to Assessment and Performance\n\nAdvisors may assist students in understanding:\n\n* Continuous Assessment components and expectations\n* Integration of CA and End-Semester Examination outcomes\n* Interpretation of academic performance records\n* Steps available after result declaration, such as revaluati",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.489922",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Advising Interactions and Communication",
+      "updated_at": "2026-03-28T12:50:20.489924",
+      "confidence": 1.0,
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 46229.24,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T03
+
+- Question: What kind of workload should a 3rd year CSE student watch carefully?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38104.8
+- Metric tags: memory_relevance
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer is partially grounded in provided documents mentioning 'academic performance summaries' and 'eligibility lists', which relates to workload monitoring. However, the response lacks explicit linkage to '3rd year CSE students' and specific workload types to monitor. It does not address the workload aspects such as project-heavy courses or internship alignment indicated in the documents, hence incompletely answers the question. Memory use is demonstrated by referencing prior identity context. Overall, the response is underspecified and insufficiently detailed, warranting rejection.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, a 3rd year CSE student should watch their academic performance summaries carefully, as they are included in the eligibility lists.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.0556553602218628,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "section": "System Updates and Data Integrity",
+      "updated_at": "2026-03-28T12:50:20.493325"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.1170724630355835,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "section": "Integration with End-Semester Evaluation",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_47",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Components of Course Evaluation",
+    "similarity": 1.1906052827835083,
+    "confidence": 1.0,
+    "text": "ngoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Comprehensive examination conducted at the end of the semester.\n\nTogether, these components determine the final academic outcome for a course.\n\n## 3. Weightage Distribution\n\nAt NCIE, the standard weightage distribution for regular academic courses is:\n\n* **Continuous Assessment (CA): 40%**\n* **End-Semester Examination (ESE): 60%**\n\nThis distribution applies uniformly across undergraduate courses unless a course is explicitly designed with a different evaluation structure (such as project-only or laboratory-only modules).\n\n## 4. Continuous Assessment Contribution\n\nThe **40% Continuous Assessment** component may include one or more of the following, depending on the course design:\n\n* Mid-semester tes",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.496390",
+      "section": "Components of Course Evaluation",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.496388",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_11",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Scheduling and Conduct of Assessments",
+    "similarity": 1.1933495998382568,
+    "confidence": 1.0,
+    "text": "tments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overlap between major assessments\n* Allowing sufficient preparation time\n* Distributing assessments evenly across the semester\n\nAssessment schedules are typically communicated through:\n\n* Course briefings\n* Academic portal announcements\n* Classroom communication\n\n## 5. Evaluation and Mark Allocation\n\nEach Continuous Assessment component carries a defined weightage contributing to the overall **40% CA score**. Instructors evaluate student performance based on predefined academic criteria relevant to the course objectives.\n\nEvaluation practices emphasize:\n\n* Transparency in assessment criteria\n* Consistency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA co",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.491147",
+      "updated_at": "2026-03-28T12:50:20.491155",
+      "section": "Scheduling and Conduct of Assessments",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_8",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 1.1945579051971436,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, Continuous Assessment (CA) represents the ongoing evaluation of student performance throughout a semester. It is designed to assess learning progression, practical understanding, and engagement with coursework prior to the end-semester examination.\n\nContinuous Assessment contributes **40% of the total course evaluation**, with the remaining **60%** assessed through the End-Semester Examination (ESE). CA activities are conducted, recorded, and monitored during the semester as part of the academic workflow.\n\nThis document outlines the structure, components, evaluation practices, and administrative flow of continuous assessment at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at N",
+    "metadata": {
+      "section": "Introduction",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.490527",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.490530",
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "status": "active"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38104.8,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T04
+
+- Question: One more thing, I'm worried about attendance shortage too.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 61476.1
+- Metric tags: fact_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer references attendance impact on CA components and eligibility appropriately based on documents; however, explicit extraction of the user's concern about attendance shortage is partial as it does not quote the concern verbatim but adequately addresses it in context.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_fact_extraction": true
+}
+```
+
+### Answer
+
+Based on the context, a 3rd year CSE student should watch their attendance records carefully, as attendance data is maintained separately and may influence eligibility or completion status of CA components, which are included in the eligibility lists.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 0.9246655106544495,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "section": "System Updates and Data Integrity",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 1.048026204109192,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.491390",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "status": "active",
+      "section": "Evaluation and Mark Allocation"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.0889289379119873,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "status": "active",
+      "section": "Special Student Categories",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.494939",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.105207920074463,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493822",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "section": "Examinations Covered Under Registration",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 1.1075927019119263,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "confidence": 1.0,
+      "section": "Attendance and CA Linkage",
+      "created_at": "2026-03-28T12:50:20.491619"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 61476.1,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 9,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T05
+
+- Question: What should I do next about that?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 76988.43
+- Metric tags: memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly references attendance and academic performance as relevant for eligibility, grounded in the retrieved documents discussing CA components and attendance linkage. It uses memory of user concern about attendance. The answer is relevant and mostly complete, though it could be more proactive in suggesting concrete next actions. No evidence of hallucination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, a 3rd year CSE student should watch their academic performance summaries and attendance records carefully, as they are included in the eligibility lists and may influence eligibility or completion status of CA components.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 0.6490806341171265,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "status": "active",
+      "section": "Evaluation and Mark Allocation",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.491390",
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.7414525151252747,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "confidence": 1.0,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492017",
+      "version": 1,
+      "status": "active",
+      "section": "Integration with End-Semester Evaluation",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 0.8102501630783081,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.491619",
+      "section": "Attendance and CA Linkage",
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_continuous_assessment_overview"
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.8974255919456482,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.496587",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "active": true,
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "version": 1,
+      "section": "End-Semester Examination Contribution"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 0.9512902498245239,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "System Updates and Data Integrity",
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493322"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 76988.43,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 9,
+  "fact_count_after": 10,
+  "fact_count_delta": 1,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T06
+
+- Question: What do you know about me so far?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 30795.51
+- Metric tags: memory_relevance, session_context
+- Judge verdict: reject
+- Judge error type: generation_hallucination
+- Judge reasoning: The assistant claims knowledge of the user's name and course details not supported by any provided document or prior memory; mentioning courses 'Machine Learning and Database Systems' is not grounded. The advisor being 'None' is consistent with past turns. The response attempts partial recall but largely hallucinates details. It is only somewhat relevant and incomplete for the question asking what is known about the user.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+I know that your name is Hemanth and you're taking courses in Machine Learning and Database Systems. You're also advised by None.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_63",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Summary",
+    "similarity": 1.7355074882507324,
+    "confidence": 1.0,
+    "text": "ramework.",
+    "metadata": {
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.498757",
+      "section": "Summary",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.498755",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.8581483364105225,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "section": "Introduction",
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.8611363172531128,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.489561",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Introduction",
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  },
+  {
+    "id": "doc_7",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "System Integration",
+    "similarity": 1.865192174911499,
+    "confidence": 1.0,
+    "text": "13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student academic profiles\n* Course enrollment systems\n* Assessment and examination records\n* Project and internship tracking modules\n\nSystem access enables advisors to provide informed and timely guidance.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, academic advising and mentorship provide structured, continuous support for students across their academic lifecycle. Through coordinated guidance, clear communication, and system-enabled oversight, advising helps students navigate academic processes effectively while remaining aligned with institutional frameworks.",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.490406",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "section": "System Integration",
+      "updated_at": "2026-03-28T12:50:20.490409"
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.8827614784240723,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "created_at": "2026-03-28T12:50:20.490028",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Advising Related to Assessment and Performance",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "confidence": 1.0,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 30795.51,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-007 T07
+
+- Question: Can you explain exam registration in a way that makes sense for someone like me?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38201.92
+- Metric tags: memory_relevance, groundedness, personalization
+- Judge verdict: reject
+- Judge error type: personalization_error
+- Judge reasoning: The answer is well grounded in the provided documents and relevant to the question about exam registration process. However, it lacks personalization to Hemanth, the 3rd year CSE student, despite the session goal and history indicating expectation of profile-aware explanation. Memory relevance is minimal, as it does not incorporate student's profile or concerns into the explanation. Therefore, the response fails to meet the personalization expectation and completeness in addressing the user's context.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Exam registration at NCIE is a student-initiated process conducted primarily through the institutional academic portal. It links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 0.605635404586792,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "doc_id": "ncie_exam_registration_process",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.495165",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "section": "System Dependencies and Data Flow",
+      "updated_at": "2026-03-28T12:50:20.495171"
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.6991288065910339,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493573",
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Overview",
+      "updated_at": "2026-03-28T12:50:20.493575",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 0.7222416996955872,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Role of Departments and Academic Offices",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494512",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "version": 1,
+      "doc_id": "ncie_exam_registration_process",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 0.7881909012794495,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "section": "Special Student Categories",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.494939"
+    }
+  },
+  {
+    "id": "doc_28",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.8214921951293945,
+    "confidence": 1.0,
+    "text": "bserved scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registration\n\nAt NCIE, exam registration applies to the following categories of assessments:\n\n* **End-Semester Examinations (ESE)**\n  Comprehensive examinations conducted at the end of each semester, contributing **60%** of the total course evaluation.\n\n* **Supplementary / Reappearance Examinations**\n  Examinations for students who need to reattempt a course evaluation from a previous semester.\n\n* **Makeup Examinations**\n  Special examinations conducted for students who were unable to appear for a scheduled exam due to approved reasons.\n\nRegistration for continuous assessment components is handled implicitly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligib",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "section": "Overview",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493699",
+      "created_at": "2026-03-28T12:50:20.493697",
+      "version": 1,
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38201.92,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T01
+
+- Question: Can you explain how exam registration works?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 26942.3
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is accurate and faithful to the provided documents, correctly describing the exam registration process as student-initiated, automated via the academic portal, with departmental support. It is relevant and sufficiently complete for establishing topic context but does not give exhaustive details (which is acceptable for the initial question). No hallucinations or contradictions are present.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+At Nova Crest Institute of Engineering, exam registration is a student-initiated process conducted primarily through the institutional academic portal. The workflow is largely automated, but academic offices and departments provide support for verification, exception handling, and issue resolution when required.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 0.5769257545471191,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "status": "active",
+      "confidence": 1.0,
+      "doc_id": "ncie_exam_registration_process",
+      "section": "System Dependencies and Data Flow",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "created_at": "2026-03-28T12:50:20.495165",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.6325774192810059,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493573",
+      "confidence": 1.0,
+      "section": "Overview",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493575",
+      "doc_id": "ncie_exam_registration_process"
+    }
+  },
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 0.6921010613441467,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "section": "Role of Departments and Academic Offices",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "doc_id": "ncie_exam_registration_process",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.494512"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 0.7249057292938232,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "section": "Special Student Categories",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494939",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "status": "active",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_28",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.733704686164856,
+    "confidence": 1.0,
+    "text": "bserved scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registration\n\nAt NCIE, exam registration applies to the following categories of assessments:\n\n* **End-Semester Examinations (ESE)**\n  Comprehensive examinations conducted at the end of each semester, contributing **60%** of the total course evaluation.\n\n* **Supplementary / Reappearance Examinations**\n  Examinations for students who need to reattempt a course evaluation from a previous semester.\n\n* **Makeup Examinations**\n  Special examinations conducted for students who were unable to appear for a scheduled exam due to approved reasons.\n\nRegistration for continuous assessment components is handled implicitly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligib",
+    "metadata": {
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493699",
+      "created_at": "2026-03-28T12:50:20.493697",
+      "confidence": 1.0,
+      "active": true,
+      "section": "Overview",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 26942.3,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T02
+
+- Question: What if someone registers late?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 42433.94
+- Metric tags: session_context, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly states that there is no explicit information on late registration, but reasonably points to departmental contact for resolution as per the source. It does not hallucinate unsupported details, aligns with the provided context, and appropriately refuses to guess, maintaining high confidence and relevance.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, there's no specific information about what happens if someone registers late. However, it's mentioned that most issues can be resolved by contacting the department office with relevant details and supporting information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.3757790327072144,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "section": "Role of Departments and Academic Offices",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.494512"
+    }
+  },
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 1.4465711116790771,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.491619",
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "section": "Attendance and CA Linkage",
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.460719347000122,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "type": "canonical_knowledge",
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.494939",
+      "doc_id": "ncie_exam_registration_process",
+      "section": "Special Student Categories",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.4978760480880737,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "active": true,
+      "section": "Examinations Covered Under Registration",
+      "version": 1,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "created_at": "2026-03-28T12:50:20.493822",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 1.4986567497253418,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.495165",
+      "section": "System Dependencies and Data Flow",
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 42433.94,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T03
+
+- Question: Who handles that process?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 33322.78
+- Metric tags: session_context, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer 'Examination Cell handles the revaluation process' is grounded in the provided doc_85 excerpt, but the user query 'Who handles that process?' refers to exam registration process mentioned previously, not revaluation. The response does not resolve pronoun 'that' correctly based on prior turns. The content is accurate but not relevant to the referenced process, indicating retrieval or context linkage failure.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, the Examination Cell handles the revaluation process.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_80",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Final Submission and Closure",
+    "similarity": 1.4044575691223145,
+    "confidence": 1.0,
+    "text": "l Submission and Closure\n\nFor projects with a final submission component, students are required to:\n\n* Complete all scheduled reviews\n* Submit finalized documentation\n* Participate in final presentations or evaluations\n\nOnce evaluated, project records are finalized and integrated into the academic performance system.\n\n## 12. Special Cases and Variations\n\nCertain project scenarios may involve additional coordination, such as:\n\n* Interdisciplinary projects\n* Industry-mentored projects\n* Projects aligned with internships\n* Students with academic accommodations\n\nThese cases are handled through coordination between departments and academic offices.\n\n## 13. System Integration and Record Management\n\nThe project workflow at NCIE relies on coordinated data management across:\n\n* Course enrollment sy",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.500783",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.500781",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "section": "Final Submission and Closure",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_7",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "System Integration",
+    "similarity": 1.4075061082839966,
+    "confidence": 1.0,
+    "text": "13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student academic profiles\n* Course enrollment systems\n* Assessment and examination records\n* Project and internship tracking modules\n\nSystem access enables advisors to provide informed and timely guidance.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, academic advising and mentorship provide structured, continuous support for students across their academic lifecycle. Through coordinated guidance, clear communication, and system-enabled oversight, advising helps students navigate academic processes effectively while remaining aligned with institutional frameworks.",
+    "metadata": {
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "System Integration",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.490409",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490406"
+    }
+  },
+  {
+    "id": "doc_88",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Special Considerations",
+    "similarity": 1.4303191900253296,
+    "confidence": 1.0,
+    "text": "managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflow depends on integration between:\n\n* Examination result databases\n* Academic performance records\n* Student academic portals\n* Evaluation assignment systems\n\nAccurate system synchronization ensures reliable updates.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, the revaluation and answer script review process provides a structured academic pathway for students to seek verification of end-semester examination evaluation. Through centralized coordination, controlled workflows, and transparent result updates, NCIE maintains fairness and confidence in its assessment system.",
+    "metadata": {
+      "section": "Special Considerations",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501577",
+      "created_at": "2026-03-28T12:50:20.501575",
+      "status": "active",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.447670340538025,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "version": 1,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Revaluation Request Workflow",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.453670859336853,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "confidence": 1.0,
+      "section": "Advising Related to Assessment and Performance",
+      "created_at": "2026-03-28T12:50:20.490028",
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 33322.78,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T04
+
+- Question: And after that, what usually gets updated in the system?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 34111.95
+- Metric tags: session_context, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer directly cites multiple relevant source excerpts describing system updates after exam registration, perfectly matching the user's follow-up query. The response is fully grounded in provided documents without hallucination, is highly relevant, and uses prior conversation context effectively. Although more elaboration on impact or process could enhance completeness, the core information is accurate and sufficient.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, after exam registration, the following systems get updated:
+
+* Course enrollment databases
+* Continuous Assessment records
+* Examination eligibility lists
+* Academic performance summaries
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.3377978801727295,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "section": "Impact on Examination Registration",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493185"
+    }
+  },
+  {
+    "id": "doc_88",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Special Considerations",
+    "similarity": 1.4553182125091553,
+    "confidence": 1.0,
+    "text": "managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflow depends on integration between:\n\n* Examination result databases\n* Academic performance records\n* Student academic portals\n* Evaluation assignment systems\n\nAccurate system synchronization ensures reliable updates.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, the revaluation and answer script review process provides a structured academic pathway for students to seek verification of end-semester examination evaluation. Through centralized coordination, controlled workflows, and transparent result updates, NCIE maintains fairness and confidence in its assessment system.",
+    "metadata": {
+      "section": "Special Considerations",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501577",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501575",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_52",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Revisions and Result Updates",
+    "similarity": 1.4891287088394165,
+    "confidence": 1.0,
+    "text": "ades are treated as final for academic purposes.\n\n## 11. Academic Record Integrity\n\nNCIE emphasizes integrity and accuracy in grading by ensuring:\n\n* Timely recording of evaluation data\n* Verification before result publication\n* Controlled updates to academic records\n* Traceability of grading components\n\nStudents are encouraged to review academic records and report discrepancies through established academic channels.\n\n## 12. System Dependencies\n\nThe grading framework at NCIE depends on synchronized operation of:\n\n* Continuous Assessment tracking systems\n* Examination evaluation databases\n* Academic performance management modules\n* Student academic portals\n\nSystem consistency ensures reliable grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading i",
+    "metadata": {
+      "section": "Revisions and Result Updates",
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.496907",
+      "updated_at": "2026-03-28T12:50:20.496910",
+      "version": 1,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_80",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Final Submission and Closure",
+    "similarity": 1.5012298822402954,
+    "confidence": 1.0,
+    "text": "l Submission and Closure\n\nFor projects with a final submission component, students are required to:\n\n* Complete all scheduled reviews\n* Submit finalized documentation\n* Participate in final presentations or evaluations\n\nOnce evaluated, project records are finalized and integrated into the academic performance system.\n\n## 12. Special Cases and Variations\n\nCertain project scenarios may involve additional coordination, such as:\n\n* Interdisciplinary projects\n* Industry-mentored projects\n* Projects aligned with internships\n* Students with academic accommodations\n\nThese cases are handled through coordination between departments and academic offices.\n\n## 13. System Integration and Record Management\n\nThe project workflow at NCIE relies on coordinated data management across:\n\n* Course enrollment sy",
+    "metadata": {
+      "status": "active",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "section": "Final Submission and Closure",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.500783",
+      "created_at": "2026-03-28T12:50:20.500781",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.5231027603149414,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.494939",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Special Student Categories",
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 34111.95,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T05
+
+- Question: Is any of that linked to final grading later on?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 45761.02
+- Metric tags: session_context, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer content is grounded and relevant to grading at NCIE, supported by the provided sources. However, it fails to explicitly link exam registration to final grading as queried. Thus, the context connection is not established, impacting completeness and relevance to the session goal.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, the grading framework at Nova Crest Institute of Engineering supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs. The grading structure is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.7479411363601685,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "System Dependencies",
+      "updated_at": "2026-03-28T12:50:20.497048",
+      "created_at": "2026-03-28T12:50:20.497044",
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 0.7609800100326538,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.496289",
+      "active": true,
+      "section": "Introduction",
+      "confidence": 1.0,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.496292",
+      "status": "active",
+      "doc_id": "ncie_grading_components_and_weightage"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.7678207755088806,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492017",
+      "active": true,
+      "confidence": 1.0,
+      "section": "Integration with End-Semester Evaluation",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview"
+    }
+  },
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 0.7695821523666382,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.499210",
+      "version": 1,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.499207",
+      "section": "Scheduling and Conduct of Lab Assessments",
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_48",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Continuous Assessment Contribution",
+    "similarity": 0.8133798837661743,
+    "confidence": 1.0,
+    "text": "ponent may include one or more of the following, depending on the course design:\n\n* Mid-semester tests or internal examinations\n* Assignments and quizzes\n* Laboratory performance and internal marks\n* Project reviews or coursework evaluations\n\nMarks from these components are accumulated over the semester and recorded in the academic system before end-semester examinations.\n\n## 5. End-Semester Examination Contribution\n\nThe **60% End-Semester Examination** component typically involves:\n\n* A written examination conducted at the end of the semester\n* Evaluation based on syllabus coverage and learning outcomes\n* Centralized scheduling and evaluation coordinated by the Examination Cell\n\nOnly students who have completed required academic processes, including exam registration, are considered for E",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.496488",
+      "section": "Continuous Assessment Contribution",
+      "created_at": "2026-03-28T12:50:20.496486",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 45761.02,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T06
+
+- Question: And what if results change later because of revaluation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37130.04
+- Metric tags: session_context, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer directly supported by multiple retrieved documents indicating that revaluation outcomes affect grades, academic records, and eligibility for further actions, fully relevant to the query about changes due to revaluation. Response is concise but sufficiently complete and well-grounded with no hallucination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, revaluation outcomes directly affect course grade outcomes, academic performance records, and eligibility for subsequent academic actions.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 0.9574522376060486,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501374",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "section": "Role of the Examination Cell",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.0764929056167603,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "active": true,
+      "section": "Revaluation Request Workflow",
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "status": "active",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_88",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Special Considerations",
+    "similarity": 1.08152174949646,
+    "confidence": 1.0,
+    "text": "managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflow depends on integration between:\n\n* Examination result databases\n* Academic performance records\n* Student academic portals\n* Evaluation assignment systems\n\nAccurate system synchronization ensures reliable updates.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, the revaluation and answer script review process provides a structured academic pathway for students to seek verification of end-semester examination evaluation. Through centralized coordination, controlled workflows, and transparent result updates, NCIE maintains fairness and confidence in its assessment system.",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501575",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501577",
+      "type": "canonical_knowledge",
+      "section": "Special Considerations",
+      "version": 1,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_87",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Communication of Outcomes",
+    "similarity": 1.114335298538208,
+    "confidence": 1.0,
+    "text": "cademic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation feedback may not always be provided, depending on the review mechanism used.\n\n## 10. Limitations and Scope\n\nThe revaluation process at NCIE:\n\n* Applies only to End-Semester Examination scripts\n* Does not modify Continuous Assessment records\n* Does not alter examination structure or syllabus coverage\n\nRevaluation focuses strictly on evaluation correctness.\n\n## 11. Special Considerations\n\nCertain academic scenarios may involve additional coordination, such as:\n\n* Final-year students awaiting graduation clearance\n* Courses with multiple evaluators\n* High-volume revaluation requests\n\nThese cases are managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflo",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.501473",
+      "updated_at": "2026-03-28T12:50:20.501475",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Communication of Outcomes",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 1.189708948135376,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.501001",
+      "active": true,
+      "section": "Introduction",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "status": "active",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37130.04,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-008 T07
+
+- Question: Can you summarize this whole conversation in one connected explanation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 57909.36
+- Metric tags: session_context, task_success
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer is factually grounded in the sources but only summarizes grading framework aspects, missing the entire conversation's multiple topics including exam registration and revaluation processes. Thus, it lacks completeness and full relevance for the query asking for a connected explanation of the whole conversation.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+The grading framework at Nova Crest Institute of Engineering supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs. With a **40% CA and 60% ESE** distribution, the grading framework is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. Revaluation outcomes directly affect course grade outcomes, academic performance records, and eligibility for subsequent academic actions.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.4029681086540222,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "section": "System Dependencies",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497044",
+      "updated_at": "2026-03-28T12:50:20.497048",
+      "version": 1,
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 0.5780911445617676,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.496289",
+      "confidence": 1.0,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.496292",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 0.6159613132476807,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "created_at": "2026-03-28T12:50:20.493447",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Special Considerations",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 0.6687756180763245,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Introduction",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.501001"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 0.6978205442428589,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "section": "System Updates and Data Integrity",
+      "doc_id": "ncie_course_add_drop_and_withdrawal"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 57909.36,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T01
+
+- Question: I'm a bit confused. How do CA, ESE, and lab evaluation all fit into the grading system?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 29081.66
+- Metric tags: groundedness, completeness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer is fully supported by multiple provided policy documents detailing the integration of CA, ESE, and lab evaluation into the grading system with correct weightages and roles. It is relevant, accurate, and sufficiently complete for the question asked.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, the grading system at NCIE involves combining Continuous Assessment (CA) and End-Semester Examination (ESE) scores. The CA score is made up of internal marks from laboratory evaluations, which are recorded and verified by course instructors and academic coordinators. The CA score is then combined with the ESE result, which carries a 60% weightage, to determine the overall course outcome. The CA portion carries a 40% weightage.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.5361235737800598,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "section": "End-Semester Examination Contribution",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.496587",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 0.6160290241241455,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499210",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499207",
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Scheduling and Conduct of Lab Assessments"
+    }
+  },
+  {
+    "id": "doc_69",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.6426208019256592,
+    "confidence": 1.0,
+    "text": "Role of Faculty and Departments\n\nLaboratory evaluation involves coordinated responsibilities:\n\n* **Lab Instructors**\n  Conduct sessions, evaluate performance, and record marks.\n\n* **Course Instructors**\n  Ensure alignment between lab and theory components.\n\n* **Department Academic Coordinators**\n  Oversee consistency and data integrity across laboratory courses.\n\nDepartments ensure that lab evaluation practices are consistent and academically aligned.\n\n## 10. Integration with Course Evaluation\n\nLaboratory internal marks are integrated with other Continuous Assessment components to compute the final CA score for the course. This CA score is then combined with the **End-Semester Examination (60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are co",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499437",
+      "active": true,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.499435",
+      "confidence": 1.0,
+      "section": "Role of Faculty and Departments",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.6439350843429565,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.497048",
+      "section": "System Dependencies",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "created_at": "2026-03-28T12:50:20.497044"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.6541111469268799,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "version": 1,
+      "section": "Integration with End-Semester Evaluation",
+      "status": "active",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 29081.66,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 10,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T02
+
+- Question: So does lab evaluation come under CA or ESE?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 46733.69
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly places lab evaluation under Continuous Assessment (CA) and is directly supported by multiple retrieved document excerpts. The response is concise and relevant, with no hallucination or contradiction. While the answer is accurate, completeness could improve by specifying the relation to overall grading weightage.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, laboratory evaluation comes under **Continuous Assessment (CA)**.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_69",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.7949707508087158,
+    "confidence": 1.0,
+    "text": "Role of Faculty and Departments\n\nLaboratory evaluation involves coordinated responsibilities:\n\n* **Lab Instructors**\n  Conduct sessions, evaluate performance, and record marks.\n\n* **Course Instructors**\n  Ensure alignment between lab and theory components.\n\n* **Department Academic Coordinators**\n  Oversee consistency and data integrity across laboratory courses.\n\nDepartments ensure that lab evaluation practices are consistent and academically aligned.\n\n## 10. Integration with Course Evaluation\n\nLaboratory internal marks are integrated with other Continuous Assessment components to compute the final CA score for the course. This CA score is then combined with the **End-Semester Examination (60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are co",
+    "metadata": {
+      "confidence": 1.0,
+      "section": "Role of Faculty and Departments",
+      "updated_at": "2026-03-28T12:50:20.499437",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499435",
+      "status": "active",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks"
+    }
+  },
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 0.8065065741539001,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.499207",
+      "section": "Scheduling and Conduct of Lab Assessments",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.499210",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.8151393532752991,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.496587",
+      "version": 1,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "type": "canonical_knowledge",
+      "section": "End-Semester Examination Contribution",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_70",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Integration with Course Evaluation",
+    "similarity": 0.849614143371582,
+    "confidence": 1.0,
+    "text": "60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are considered in final grade computation.\n\n## 11. Data Accuracy and Verification\n\nNCIE emphasizes accuracy in recording laboratory evaluation data through:\n\n* Timely entry of marks\n* Review by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to raise concerns promptly through appropriate academic channels.\n\n## 12. Special Laboratory Contexts\n\nCertain laboratory courses may involve additional considerations, such as:\n\n* Project-oriented labs\n* Interdisciplinary laboratory work\n* Labs conducted in collaboration with industry or research units\n* Students undertaking internships alongside coursework\n\nThese contexts are managed through departmental coord",
+    "metadata": {
+      "section": "Integration with Course Evaluation",
+      "created_at": "2026-03-28T12:50:20.499548",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499551",
+      "version": 1,
+      "active": true,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_64",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Introduction",
+    "similarity": 0.8652195930480957,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, laboratory courses play a vital role in reinforcing practical understanding and applied skills. Laboratory evaluation is an integral part of the **Continuous Assessment (CA)** framework and contributes to the internal evaluation component of applicable courses.\n\nThis document describes how laboratory performance is evaluated, how internal marks are recorded, and how laboratory assessment integrates with the overall academic evaluation system at NCIE.\n\n## 2. Role of Laboratory Evaluation in Academic Assessment\n\nLaboratory evaluation at NCIE is designed to:\n\n* Assess hands-on technical competence\n* Reinforce theoretical concepts through practice\n* Encourage systematic experimentation and documentation\n* Evaluate problem-s",
+    "metadata": {
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "section": "Introduction",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.498867",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.498869"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 46733.69,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 10,
+  "fact_count_after": 12,
+  "fact_count_delta": 2,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T03
+
+- Question: If a course has both theory and lab, how are the marks usually coordinated?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36782.09
+- Metric tags: groundedness, completeness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer is minimally grounded in the source mentioning alignment between lab and theory by course instructors but lacks explanation about how marks are coordinated or combined for theory and lab. The context contains detailed info on CA and ESE weighting, lab internal marks, scheduling, and integrated evaluation, but none of these details are incorporated into the answer. The response is incomplete and not directly responsive to the query about mark coordination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, course instructors ensure alignment between lab and theory components.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_69",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.891741931438446,
+    "confidence": 1.0,
+    "text": "Role of Faculty and Departments\n\nLaboratory evaluation involves coordinated responsibilities:\n\n* **Lab Instructors**\n  Conduct sessions, evaluate performance, and record marks.\n\n* **Course Instructors**\n  Ensure alignment between lab and theory components.\n\n* **Department Academic Coordinators**\n  Oversee consistency and data integrity across laboratory courses.\n\nDepartments ensure that lab evaluation practices are consistent and academically aligned.\n\n## 10. Integration with Course Evaluation\n\nLaboratory internal marks are integrated with other Continuous Assessment components to compute the final CA score for the course. This CA score is then combined with the **End-Semester Examination (60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are co",
+    "metadata": {
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499437",
+      "section": "Role of Faculty and Departments",
+      "created_at": "2026-03-28T12:50:20.499435",
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 0.9249249696731567,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.499210",
+      "section": "Scheduling and Conduct of Lab Assessments",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.499207",
+      "type": "canonical_knowledge",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_70",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Integration with Course Evaluation",
+    "similarity": 0.9301910400390625,
+    "confidence": 1.0,
+    "text": "60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are considered in final grade computation.\n\n## 11. Data Accuracy and Verification\n\nNCIE emphasizes accuracy in recording laboratory evaluation data through:\n\n* Timely entry of marks\n* Review by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to raise concerns promptly through appropriate academic channels.\n\n## 12. Special Laboratory Contexts\n\nCertain laboratory courses may involve additional considerations, such as:\n\n* Project-oriented labs\n* Interdisciplinary laboratory work\n* Labs conducted in collaboration with industry or research units\n* Students undertaking internships alongside coursework\n\nThese contexts are managed through departmental coord",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499548",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.499551",
+      "active": true,
+      "section": "Integration with Course Evaluation",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_65",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Role of Laboratory Evaluation in Academic Assessment",
+    "similarity": 1.0483366250991821,
+    "confidence": 1.0,
+    "text": "cepts through practice\n* Encourage systematic experimentation and documentation\n* Evaluate problem-solving and analytical skills\n\nFor laboratory courses, lab evaluation forms a significant portion of the **40% Continuous Assessment** allocated to the course.\n\n## 3. Structure of Laboratory Courses\n\nLaboratory courses at NCIE are typically structured with:\n\n* Weekly or scheduled lab sessions\n* Defined experiments or practical exercises\n* Continuous monitoring of student participation\n* Periodic assessment checkpoints\n\nEach laboratory course is linked to a corresponding theory or application area, where applicable.\n\n## 4. Components of Laboratory Evaluation\n\nLaboratory evaluation at NCIE may include multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiment",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.498975",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.498973",
+      "status": "active",
+      "section": "Role of Laboratory Evaluation in Academic Assessment",
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.0682363510131836,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.499084",
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "section": "Components of Laboratory Evaluation",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36782.09,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T04
+
+- Question: Then which part can actually change after revaluation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36837.55
+- Metric tags: groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: Answer states marks may remain unchanged or be revised after revaluation but does not specify which parts (components) can be changed. Context clarifies only End-Semester Examination scripts are eligible for revaluation and Continuous Assessment is not, which is missing in the answer. Thus, answer is incomplete and insufficiently grounded regarding eligible components for revaluation.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, marks may remain unchanged or be revised based on evaluation findings after revaluation or review.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.17185378074646,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "section": "Role of the Examination Cell",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "version": 1,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "created_at": "2026-03-28T12:50:20.501374"
+    }
+  },
+  {
+    "id": "doc_87",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Communication of Outcomes",
+    "similarity": 1.2819572687149048,
+    "confidence": 1.0,
+    "text": "cademic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation feedback may not always be provided, depending on the review mechanism used.\n\n## 10. Limitations and Scope\n\nThe revaluation process at NCIE:\n\n* Applies only to End-Semester Examination scripts\n* Does not modify Continuous Assessment records\n* Does not alter examination structure or syllabus coverage\n\nRevaluation focuses strictly on evaluation correctness.\n\n## 11. Special Considerations\n\nCertain academic scenarios may involve additional coordination, such as:\n\n* Final-year students awaiting graduation clearance\n* Courses with multiple evaluators\n* High-volume revaluation requests\n\nThese cases are managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflo",
+    "metadata": {
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Communication of Outcomes",
+      "created_at": "2026-03-28T12:50:20.501473",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.501475"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.2869555950164795,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "section": "Revaluation Request Workflow",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 1.351122498512268,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "section": "Introduction",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501001",
+      "doc_id": "ncie_revaluation_and_answer_script_review"
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.3572391271591187,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "section": "Eligibility for Revaluation Requests",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501184"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36837.55,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T05
+
+- Question: Also, does exam registration affect whether someone is considered for ESE evaluation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 45633.68
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is explicitly supported by multiple source excerpts stating that exam registration includes ESE and that students who have completed academic processes, including registration, are considered for ESE evaluation.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, students who have completed required academic processes, including exam registration, are considered for ESE evaluation.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_28",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.7575159072875977,
+    "confidence": 1.0,
+    "text": "bserved scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registration\n\nAt NCIE, exam registration applies to the following categories of assessments:\n\n* **End-Semester Examinations (ESE)**\n  Comprehensive examinations conducted at the end of each semester, contributing **60%** of the total course evaluation.\n\n* **Supplementary / Reappearance Examinations**\n  Examinations for students who need to reattempt a course evaluation from a previous semester.\n\n* **Makeup Examinations**\n  Special examinations conducted for students who were unable to appear for a scheduled exam due to approved reasons.\n\nRegistration for continuous assessment components is handled implicitly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligib",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.493699",
+      "section": "Overview",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493697",
+      "active": true,
+      "doc_id": "ncie_exam_registration_process"
+    }
+  },
+  {
+    "id": "doc_37",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "System Dependencies and Data Flow",
+    "similarity": 0.8181198835372925,
+    "confidence": 1.0,
+    "text": "can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam registration is a structured, student-driven process that ensures accurate alignment between course enrollment, assessment eligibility, and examination scheduling. While largely automated, the process relies on coordinated support from departments and academic offices to handle exceptions and ensure smooth execution.",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.495165",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495171",
+      "section": "System Dependencies and Data Flow",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.8523139953613281,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "section": "End-Semester Examination Contribution",
+      "created_at": "2026-03-28T12:50:20.496587",
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.496589"
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 0.8786634802818298,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "status": "active",
+      "section": "Purpose of Revaluation and Script Review",
+      "created_at": "2026-03-28T12:50:20.501093",
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_27",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Overview",
+    "similarity": 0.8967840075492859,
+    "confidence": 1.0,
+    "text": "## 1. Overview\n\nAt **Nova Crest Institute of Engineering (NCIE)**, exam registration is a formal academic process through which students confirm their intent to appear for scheduled assessments in a given semester. The process links course enrollment records with examination scheduling, evaluation workflows, and result processing systems.\n\nExam registration at NCIE is **student-initiated** and conducted primarily through the institutional academic portal. While the workflow is largely automated, academic offices and departments provide support for verification, exception handling, and issue resolution when required.\n\nThis document describes the standard practices, system flow, and commonly observed scenarios related to exam registration at NCIE.\n\n## 2. Examinations Covered Under Registrati",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Overview",
+      "updated_at": "2026-03-28T12:50:20.493575",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.493573"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 45633.68,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T06
+
+- Question: And project reviews can count toward CA too, right?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38332.51
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is directly supported by multiple cited documents that confirm project reviews contribute to the CA component, making it factually grounded and relevant to the question.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, project reviews can contribute to the Continuous Assessment (CA) component of relevant courses or project modules.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.1754122972488403,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "active": true,
+      "confidence": 1.0,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "section": "Integration with End-Semester Evaluation"
+    }
+  },
+  {
+    "id": "doc_73",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Introduction",
+    "similarity": 1.2871742248535156,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, project work forms an important component of academic learning, emphasizing practical application, problem-solving, and independent exploration. Project activities are integrated into the curriculum across selected semesters and are evaluated through structured reviews and final submissions.\n\nProject evaluation contributes to the **Continuous Assessment (CA)** component of relevant courses or project modules. This document describes the standard workflow for project submission, review, evaluation, and academic coordination at NCIE.\n\n## 2. Types of Academic Projects\n\nNCIE incorporates different forms of project work within undergraduate programs, including:\n\n* **Course-Linked Mini Projects**\n  Projects associated with sp",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "section": "Introduction",
+      "created_at": "2026-03-28T12:50:20.499917",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499920",
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_project_submission_and_review_flow"
+    }
+  },
+  {
+    "id": "doc_77",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Role of Faculty and Review Panels",
+    "similarity": 1.2886312007904053,
+    "confidence": 1.0,
+    "text": "es technical guidance, monitors progress, and participates in evaluations.\n\n* **Review Panel Members**\n  Faculty members who assess project progress during scheduled reviews.\n\n* **Department Academic Coordinator**\n  Ensures consistency in evaluation practices across project groups.\n\nFeedback from reviews is communicated to students to support improvement in subsequent stages.\n\n## 7. Submission of Project Deliverables\n\nProject submissions at NCIE typically include one or more of the following deliverables:\n\n* Project proposal or synopsis\n* Interim reports\n* Final project report\n* Source code or design artifacts, where applicable\n* Demonstration or presentation materials\n\nSubmissions are generally made through designated academic platforms or departmental channels and are recorded for evalua",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Role of Faculty and Review Panels",
+      "confidence": 1.0,
+      "version": 1,
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "created_at": "2026-03-28T12:50:20.500417",
+      "updated_at": "2026-03-28T12:50:20.500420"
+    }
+  },
+  {
+    "id": "doc_41",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Group Formation and Supervision",
+    "similarity": 1.2949126958847046,
+    "confidence": 1.0,
+    "text": "demic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones\n\nProjects at NCIE follow a milestone-based progression, which may include:\n\n* Proposal submission and approval\n* Literature survey or requirement analysis\n* Design and methodology definition\n* Incremental implementation phases\n* Testing, validation, or analysis\n* Final documentation and presentation\n\nMilestones are distributed across the project duration to ensure steady progress.\n\n## 7. Review and Evaluation Process\n\nFinal-year project evaluation is conducted through **scheduled reviews**, which form part of Continuous Assessment. Reviews may involve:\n\n* Progress presentations\n* Demonstration of implemented components\n* Technical discussions with faculty panels\n* Submission of interim repo",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Group Formation and Supervision",
+      "created_at": "2026-03-28T12:50:20.495612",
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.495616",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_76",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Timeline and Milestones",
+    "similarity": 1.3023269176483154,
+    "confidence": 1.0,
+    "text": "inal-year projects, milestones are distributed across two semesters, allowing for iterative development and evaluation.\n\n## 5. Review Process and Evaluation Structure\n\nProject evaluation at NCIE is conducted through **periodic reviews**, which form part of Continuous Assessment. Reviews may include:\n\n* Progress presentations\n* Demonstrations of work completed\n* Submission of interim reports\n* Technical discussions with review panels\n\nEach review focuses on assessing progress, clarity of objectives, and adherence to the approved project plan.\n\n## 6. Role of Faculty and Review Panels\n\nProject supervision and evaluation involve multiple academic roles:\n\n* **Project Guide / Supervisor**\n  Provides technical guidance, monitors progress, and participates in evaluations.\n\n* **Review Panel Members",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.500279",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.500281",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "section": "Project Timeline and Milestones",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38332.51,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-009 T07
+
+- Question: Can you put all of that together in one clear explanation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 35951.56
+- Metric tags: groundedness, completeness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response is well grounded in multiple cited documents covering projects, labs, and course enrollment, matching the session goal on grading and evaluation components. It accurately synthesizes key points about project originality, evaluation criteria, lab assessment procedures, and enrollment coordination. The answer is relevant and coherent but does not explicitly include grading weights or clear integration of CA, ESE, and labs discussed in history, slightly reducing completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, here's a clear explanation of the relevant information:
+
+Project work at NCIE emphasizes originality and academic integrity. Students are expected to clearly reference external resources, avoid uncredited reuse of existing work, and demonstrate independent contribution. Concerns related to originality are addressed through academic review mechanisms.
+
+For projects with a final submission component, students are required to meet certain objectives, including technical depth and methodology, consistency of progress, quality of documentation, and communication effectiveness. Marks awarded contribute to the Continuous Assessment (40%) component of the project modules.
+
+Laboratory assessments are conducted throughout the semester during scheduled lab sessions, and instructors communicate expectations related to experiment completion timelines, submission formats for lab records, evaluation checkpoints, and maintaining academic rigor and integrity.
+
+Students are encouraged to consult academic advisors before initiating enrollment changes, and certain academic contexts may require additional coordination, such as final-year project semesters or internship-aligned semesters.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_79",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Handling Delays and Deviations",
+    "similarity": 1.6870245933532715,
+    "confidence": 1.0,
+    "text": "to technical complexity, resource constraints, or unforeseen challenges. In such cases:\n\n* Students are expected to communicate with their project guide\n* Revised timelines may be discussed at the departmental level\n* Progress expectations may be adjusted where appropriate\n\nAll deviations are documented to maintain transparency in evaluation.\n\n## 10. Academic Integrity and Originality\n\nProject work at NCIE emphasizes originality and academic integrity. Students are expected to:\n\n* Clearly reference external resources\n* Avoid uncredited reuse of existing work\n* Demonstrate independent contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Final Submission and Closure\n\nFor projects with a final submission component, students are required to:",
+    "metadata": {
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Handling Delays and Deviations",
+      "confidence": 1.0,
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.500659",
+      "updated_at": "2026-03-28T12:50:20.500662"
+    }
+  },
+  {
+    "id": "doc_43",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Evaluation Criteria and Mark Recording",
+    "similarity": 1.7007898092269897,
+    "confidence": 1.0,
+    "text": "f objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality of documentation\n* Communication and presentation effectiveness\n\nMarks awarded contribute to the **Continuous Assessment (40%)** component of the project modules and are recorded in the academic system after verification.\n\n## 10. Academic Integrity and Original Contribution\n\nStudents are expected to maintain academic integrity throughout the project. This includes:\n\n* Clearly acknowledging external references\n* Avoiding uncredited reuse of existing work\n* Demonstrating individual or group contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Coordination with Internships and External Engagements\n\nIn some cases, final-year projects may align t",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495835",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "updated_at": "2026-03-28T12:50:20.495838",
+      "section": "Evaluation Criteria and Mark Recording"
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.7096755504608154,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.499084",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Components of Laboratory Evaluation",
+      "type": "canonical_knowledge",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.722027063369751,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "version": 1,
+      "section": "Summary",
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499787",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.7794969081878662,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "System Updates and Data Integrity",
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493322"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 35951.56,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-010 T01
+
+- Question: I heard the new circular says CA is now 50% instead of 40%.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 43038.24
+- Metric tags: contradiction, knowledge_evolution, claim_detection
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly identifies the absence of specific policy change information in the documents, properly refuses to confirm the claim, suggests contacting official sources, and matches the policy claim detection. The refusal is appropriate and supported by the document content.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_claim_detection": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.4131479263305664,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Integration with End-Semester Evaluation",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "status": "active",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 1.478971004486084,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "active": true,
+      "section": "Attendance and CA Linkage",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.491619",
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "status": "active",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 1.5040638446807861,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Evaluation and Mark Allocation",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.491390"
+    }
+  },
+  {
+    "id": "doc_11",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Scheduling and Conduct of Assessments",
+    "similarity": 1.52024507522583,
+    "confidence": 1.0,
+    "text": "tments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overlap between major assessments\n* Allowing sufficient preparation time\n* Distributing assessments evenly across the semester\n\nAssessment schedules are typically communicated through:\n\n* Course briefings\n* Academic portal announcements\n* Classroom communication\n\n## 5. Evaluation and Mark Allocation\n\nEach Continuous Assessment component carries a defined weightage contributing to the overall **40% CA score**. Instructors evaluate student performance based on predefined academic criteria relevant to the course objectives.\n\nEvaluation practices emphasize:\n\n* Transparency in assessment criteria\n* Consistency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA co",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.491147",
+      "section": "Scheduling and Conduct of Assessments",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.491155",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.5274046659469604,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.493068",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Course Withdrawal Process",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 43038.24,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": true,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-010 T02
+
+- Question: If that were true, what else would probably be affected?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 69478.31
+- Metric tags: contradiction, knowledge_evolution
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response accurately reflects the available document content, properly refuses to affirm an unverified claim, and discusses related implications without treating the claim as truth, matching the session goal for contradiction and knowledge evolution.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_claim_detection": false
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 0.7431752681732178,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "active": true,
+      "section": "Attendance and CA Linkage",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.491619"
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 0.7620783448219299,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "version": 1,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Evaluation and Mark Allocation",
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.491390",
+      "updated_at": "2026-03-28T12:50:20.491397"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.7901312112808228,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "section": "Course Withdrawal Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.8854631185531616,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492017",
+      "section": "Integration with End-Semester Evaluation",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.492020"
+    }
+  },
+  {
+    "id": "doc_8",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 0.9159773588180542,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, Continuous Assessment (CA) represents the ongoing evaluation of student performance throughout a semester. It is designed to assess learning progression, practical understanding, and engagement with coursework prior to the end-semester examination.\n\nContinuous Assessment contributes **40% of the total course evaluation**, with the remaining **60%** assessed through the End-Semester Examination (ESE). CA activities are conducted, recorded, and monitored during the semester as part of the academic workflow.\n\nThis document outlines the structure, components, evaluation practices, and administrative flow of continuous assessment at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at N",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490527",
+      "version": 1,
+      "status": "active",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.490530",
+      "section": "Introduction",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 69478.31,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-010 T03
+
+- Question: I also saw a screenshot saying the exam registration deadline is now flexible for everyone.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 70258.4
+- Metric tags: contradiction, knowledge_evolution, claim_detection
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response correctly detects the claim and refuses to confirm due to lack of supporting documents, citing relevant academic policy documents that do not mention flexible exam registration deadlines. Refusal is appropriate, and contradiction is acknowledged properly. No hallucinations or contradictions detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_claim_detection": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents mention that attendance records may be considered as part of the Continuous Assessment framework and may influence eligibility, but don't provide specific thresholds or consequences. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.7354382276535034,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "type": "canonical_knowledge",
+      "section": "Course Withdrawal Process",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_11",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Scheduling and Conduct of Assessments",
+    "similarity": 0.7594258785247803,
+    "confidence": 1.0,
+    "text": "tments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overlap between major assessments\n* Allowing sufficient preparation time\n* Distributing assessments evenly across the semester\n\nAssessment schedules are typically communicated through:\n\n* Course briefings\n* Academic portal announcements\n* Classroom communication\n\n## 5. Evaluation and Mark Allocation\n\nEach Continuous Assessment component carries a defined weightage contributing to the overall **40% CA score**. Instructors evaluate student performance based on predefined academic criteria relevant to the course objectives.\n\nEvaluation practices emphasize:\n\n* Transparency in assessment criteria\n* Consistency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA co",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "confidence": 1.0,
+      "status": "active",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.491155",
+      "created_at": "2026-03-28T12:50:20.491147",
+      "type": "canonical_knowledge",
+      "section": "Scheduling and Conduct of Assessments"
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 0.8249444961547852,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "confidence": 1.0,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492017",
+      "section": "Integration with End-Semester Evaluation",
+      "status": "active",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492020"
+    }
+  },
+  {
+    "id": "doc_8",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Introduction",
+    "similarity": 0.8524349331855774,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, Continuous Assessment (CA) represents the ongoing evaluation of student performance throughout a semester. It is designed to assess learning progression, practical understanding, and engagement with coursework prior to the end-semester examination.\n\nContinuous Assessment contributes **40% of the total course evaluation**, with the remaining **60%** assessed through the End-Semester Examination (ESE). CA activities are conducted, recorded, and monitored during the semester as part of the academic workflow.\n\nThis document outlines the structure, components, evaluation practices, and administrative flow of continuous assessment at NCIE.\n\n## 2. Role of Continuous Assessment in the Academic System\n\nContinuous Assessment at N",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.490527",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.490530",
+      "section": "Introduction",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 0.8861650228500366,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "section": "Evaluation and Mark Allocation",
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "created_at": "2026-03-28T12:50:20.491390",
+      "active": true,
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 70258.4,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": true,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-010 T04
+
+- Question: If a policy really has changed, what should the system do next?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 33127.47
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is grounded in provided documents which advise completing enrollment changes before exam registration to avoid inconsistencies. It is relevant and mostly complete but lacks explicit mention of steps the system should take beyond ordering these actions.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, if a policy really has changed, the system should ensure that enrollment changes are completed before initiating exam registration to avoid inconsistencies.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.5087844133377075,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493185",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Impact on Examination Registration",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.533721923828125,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.501374",
+      "section": "Role of the Examination Cell",
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.6309521198272705,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493068",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Course Withdrawal Process"
+    }
+  },
+  {
+    "id": "doc_5",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Identification and Support of Academic Challenges",
+    "similarity": 1.645892858505249,
+    "confidence": 1.0,
+    "text": "of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n* Consistent assessment difficulties\n* Course overload concerns\n* Academic planning uncertainties\n* Adjustment issues consideration\n\nWhen necessary, advisors coordinate with departments or academic offices to guide students toward appropriate support mechanisms.\n\n## 10. Role of Departments in Advising Oversight\n\nDepartments at NCIE oversee academic advising by:\n\n* Assigning and monitoring advisor responsibilities\n* Ensuring advising consistency across student groups\n* Supporting advisors with academic information and system access\n* Coordinating interventions when needed\n\nDepartmental oversight ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490157",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.490155",
+      "section": "Identification and Support of Academic Challenges",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_6",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Role of Departments in Advising Oversight",
+    "similarity": 1.6975767612457275,
+    "confidence": 1.0,
+    "text": "ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and Record Keeping\n\nAdvising-related records at NCIE may include:\n\n* Advisor assignments\n* Advising session summaries, where applicable\n* Enrollment adjustment approvals\n* Academic progression notes\n\nRecords are maintained to support continuity and coordination across academic systems.\n\n## 12. Advising Boundaries and Scope\n\nAcademic advising at NCIE focuses on guidance and coordination. It does not involve:\n\n* Modification of assessment outcomes\n* Override of evaluation decisions\n* Independent alteration of academic records\n\nFormal academic processes remain governed by established workflows.\n\n## 13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student ac",
+    "metadata": {
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "confidence": 1.0,
+      "section": "Role of Departments in Advising Oversight",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.490268",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.490266",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 33127.47,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-010 T05
+
+- Question: And if I mention an update without any proof, how should the system react?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 47291.49
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: Answer suggests verifying updates through established academic channels but lacks explicit support or details from any provided sources about the system's proof-request behavior, resulting in partial grounding and incomplete explanation.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, if you mention an update without any proof, the system should verify the update through established academic channels.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_79",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Handling Delays and Deviations",
+    "similarity": 1.5146191120147705,
+    "confidence": 1.0,
+    "text": "to technical complexity, resource constraints, or unforeseen challenges. In such cases:\n\n* Students are expected to communicate with their project guide\n* Revised timelines may be discussed at the departmental level\n* Progress expectations may be adjusted where appropriate\n\nAll deviations are documented to maintain transparency in evaluation.\n\n## 10. Academic Integrity and Originality\n\nProject work at NCIE emphasizes originality and academic integrity. Students are expected to:\n\n* Clearly reference external resources\n* Avoid uncredited reuse of existing work\n* Demonstrate independent contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Final Submission and Closure\n\nFor projects with a final submission component, students are required to:",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Handling Delays and Deviations",
+      "status": "active",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.500662",
+      "created_at": "2026-03-28T12:50:20.500659"
+    }
+  },
+  {
+    "id": "doc_52",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Revisions and Result Updates",
+    "similarity": 1.60186767578125,
+    "confidence": 1.0,
+    "text": "ades are treated as final for academic purposes.\n\n## 11. Academic Record Integrity\n\nNCIE emphasizes integrity and accuracy in grading by ensuring:\n\n* Timely recording of evaluation data\n* Verification before result publication\n* Controlled updates to academic records\n* Traceability of grading components\n\nStudents are encouraged to review academic records and report discrepancies through established academic channels.\n\n## 12. System Dependencies\n\nThe grading framework at NCIE depends on synchronized operation of:\n\n* Continuous Assessment tracking systems\n* Examination evaluation databases\n* Academic performance management modules\n* Student academic portals\n\nSystem consistency ensures reliable grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading i",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.496910",
+      "section": "Revisions and Result Updates",
+      "doc_id": "ncie_grading_components_and_weightage",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.496907",
+      "confidence": 1.0,
+      "status": "active",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_35",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Post-Registration Verification",
+    "similarity": 1.6149908304214478,
+    "confidence": 1.0,
+    "text": "to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or makeup)\n* Registration status and acknowledgment\n* Payment confirmation, if applicable\n\nEarly verification helps prevent discrepancies during examination scheduling and result processing.\n\n## 11. Modifications After Submission\n\nChanges to exam registration after submission are generally limited. However, modifications may be considered in situations such as:\n\n* Correction of clerical or system errors\n* Administrative updates initiated by academic offices\n* Approved course status changes\n\nSuch modifications require coordination between the department and the Examination Cell.\n\n## 12. Special Student Categories\n\nCertain student categories may follow slightly modified registration workflows, inclu",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.494761",
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1,
+      "section": "Post-Registration Verification",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.494754"
+    }
+  },
+  {
+    "id": "doc_43",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Evaluation Criteria and Mark Recording",
+    "similarity": 1.6313719749450684,
+    "confidence": 1.0,
+    "text": "f objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality of documentation\n* Communication and presentation effectiveness\n\nMarks awarded contribute to the **Continuous Assessment (40%)** component of the project modules and are recorded in the academic system after verification.\n\n## 10. Academic Integrity and Original Contribution\n\nStudents are expected to maintain academic integrity throughout the project. This includes:\n\n* Clearly acknowledging external references\n* Avoiding uncredited reuse of existing work\n* Demonstrating individual or group contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Coordination with Internships and External Engagements\n\nIn some cases, final-year projects may align t",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495838",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.495835",
+      "type": "canonical_knowledge",
+      "section": "Evaluation Criteria and Mark Recording",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  },
+  {
+    "id": "doc_68",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Student Visibility and Feedback",
+    "similarity": 1.6318814754486084,
+    "confidence": 1.0,
+    "text": "and Feedback\n\nDepending on departmental practices and system availability, students may be able to:\n\n* View provisional internal marks\n* Receive feedback on lab performance\n* Discuss evaluation outcomes with instructors\n\nFeedback is intended to support improvement and reinforce learning outcomes.\n\n## 8. Handling Missed or Incomplete Lab Work\n\nStudents may occasionally miss lab sessions due to valid reasons. In such cases:\n\n* Students are expected to inform the lab instructor\n* Make-up lab sessions or alternate evaluations may be arranged\n* Documentation may be requested where applicable\n\nThe handling of missed lab work is coordinated at the department level and recorded in the system.\n\n## 9. Role of Faculty and Departments\n\nLaboratory evaluation involves coordinated responsibilities:\n\n* **",
+    "metadata": {
+      "section": "Student Visibility and Feedback",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499323",
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499320",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 47291.49,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-010 T06
+
+- Question: What makes something look like a genuine policy-change claim rather than just a rumor?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 40788.24
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer is minimally grounded with no explicit reference to claim cues or review triggers differentiating genuine policy claims from rumors, despite high confidence and relevant documents. It only states verification via academic channels without explaining indicators or system reactions, lacking completeness and context detail.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, a genuine policy-change claim should be verified through established academic channels.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.737973690032959,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493185",
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Impact on Examination Registration",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_79",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Handling Delays and Deviations",
+    "similarity": 1.7691144943237305,
+    "confidence": 1.0,
+    "text": "to technical complexity, resource constraints, or unforeseen challenges. In such cases:\n\n* Students are expected to communicate with their project guide\n* Revised timelines may be discussed at the departmental level\n* Progress expectations may be adjusted where appropriate\n\nAll deviations are documented to maintain transparency in evaluation.\n\n## 10. Academic Integrity and Originality\n\nProject work at NCIE emphasizes originality and academic integrity. Students are expected to:\n\n* Clearly reference external resources\n* Avoid uncredited reuse of existing work\n* Demonstrate independent contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Final Submission and Closure\n\nFor projects with a final submission component, students are required to:",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.500659",
+      "section": "Handling Delays and Deviations",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "updated_at": "2026-03-28T12:50:20.500662",
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.8085386753082275,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "section": "Role of the Examination Cell",
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501374"
+    }
+  },
+  {
+    "id": "doc_5",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Identification and Support of Academic Challenges",
+    "similarity": 1.8195008039474487,
+    "confidence": 1.0,
+    "text": "of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n* Consistent assessment difficulties\n* Course overload concerns\n* Academic planning uncertainties\n* Adjustment issues consideration\n\nWhen necessary, advisors coordinate with departments or academic offices to guide students toward appropriate support mechanisms.\n\n## 10. Role of Departments in Advising Oversight\n\nDepartments at NCIE oversee academic advising by:\n\n* Assigning and monitoring advisor responsibilities\n* Ensuring advising consistency across student groups\n* Supporting advisors with academic information and system access\n* Coordinating interventions when needed\n\nDepartmental oversight ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.490157",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "version": 1,
+      "status": "active",
+      "section": "Identification and Support of Academic Challenges",
+      "created_at": "2026-03-28T12:50:20.490155",
+      "confidence": 1.0,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.8204213380813599,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498069",
+      "section": "Handling Internship Variations",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 40788.24,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-011 T01
+
+- Question: Someone told me internships now replace final project evaluation.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 45092.01
+- Metric tags: contradiction, knowledge_evolution, claim_detection
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly identifies the claim as unsupported by the documents and refuses with an appropriate suggestion to contact the academic office. The refusal matches the detected contradictory claim and is fully grounded in the provided evidence.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_claim_detection": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.7434129118919373,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "created_at": "2026-03-28T12:50:20.497903",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Internship Evaluation Framework"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.7778291702270508,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "doc_id": "ncie_final_year_project_guidelines",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "version": 1,
+      "section": "Coordination with Internships and External Engagements",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.8306848406791687,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "status": "active",
+      "section": "Role of Faculty and Departments",
+      "version": 1,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497726",
+      "active": true,
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.8785717487335205,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "version": 1,
+      "section": "Introduction",
+      "active": true,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 1.0037686824798584,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "created_at": "2026-03-28T12:50:20.498377",
+      "confidence": 1.0,
+      "active": true,
+      "section": "Delays, Extensions, and Special Cases",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 45092.01,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 12,
+  "fact_count_delta": 0,
+  "policy_claim_detected": true,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-011 T02
+
+- Question: That sounds like it conflicts with the current rules. What should happen next?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 70883.49
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer is well grounded and accurate but fails to address the user's implied concern about the next steps after recognizing a contradiction. It does not explain any workflow for contradicting policy interpretations or guidance on resolving conflict, thus failing the objective of explaining workflow after a contradiction.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the academic documents, internships are evaluated but not treated as theory courses. Internship performance contributes to academic progression and recognition, but it does not replace or alter the 40% Continuous Assessment / 60% End-Semester Examination structure used for regular courses.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.5684841275215149,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Role of Faculty and Departments",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497726",
+      "updated_at": "2026-03-28T12:50:20.497731"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.5866963863372803,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "version": 1,
+      "section": "Internship Evaluation Framework",
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497903"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.7029079794883728,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495952",
+      "confidence": 1.0,
+      "section": "Coordination with Internships and External Engagements",
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 0.768329918384552,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.498069",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "section": "Handling Internship Variations",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.7832229733467102,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "active": true,
+      "section": "Introduction",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 70883.49,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 12,
+  "fact_count_after": 15,
+  "fact_count_delta": 3,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-011 T03
+
+- Question: If I upload proof of a policy change, what workflow follows after that?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 62184.44
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer correctly states that no specific workflow is mentioned in the documents about evaluating a policy change or proof-upload process, which is accurate based on given sources. However, it does not explain what happens after proof upload, omitting any procedural details that might have been present or suggested in the documents. The response is somewhat relevant and grounded but incomplete, lacking actionable workflow steps or process description following proof upload. Given the session goal about policy update workflows, the answer fails to adequately address the user's direct question.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the academic documents, there is no specific workflow mentioned for evaluating a policy change that affects the evaluation of internships as part of academic progression and recognition.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.7368000149726868,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "status": "active",
+      "section": "Internship Evaluation Framework",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.497903",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.771095335483551,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "section": "Role of Faculty and Departments",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497726"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 0.7975366115570068,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498069",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Handling Internship Variations",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_62",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Coordination with Final-Year Projects",
+    "similarity": 0.8502066135406494,
+    "confidence": 1.0,
+    "text": "requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination between:\n\n* Academic portal systems\n* Departmental review mechanisms\n* Internship or placement coordination systems\n* Academic record management modules\n\nSystem synchronization ensures accurate tracking and evaluation.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, internship registration and evaluation follow a structured academic workflow that emphasizes learning outcomes, documentation, and academic relevance. Through coordinated oversight by faculty and departments, internships contribute meaningfully to student development while remaining aligned with the institutional academic framework.",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498612",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Coordination with Final-Year Projects",
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.498617"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.8624101281166077,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "version": 1,
+      "section": "Coordination with Internships and External Engagements",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.495952",
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 62184.44,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-011 T04
+
+- Question: Who actually reviews the ticket once the proof is uploaded?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37096.04
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer describes the Examination Cell's role in revaluation of answer scripts according to cited documents, but the user query asks specifically about who reviews the ticket once the proof is uploaded related to internships or policy updates. The provided context is about examination revaluation, which does not match the user question about ticket review after proof upload, resulting in an off-topic, less relevant response.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, the Examination Cell at NCIE coordinates the revaluation process by managing revaluation request timelines, assigning answer scripts for review or reassessment, ensuring anonymity and integrity during evaluation, and updating verified results in the academic system.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.5957400798797607,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501093",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "type": "canonical_knowledge",
+      "section": "Purpose of Revaluation and Script Review",
+      "confidence": 1.0,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.599471092224121,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "active": true,
+      "version": 1,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "status": "active",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.501184",
+      "section": "Eligibility for Revaluation Requests",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.6158980131149292,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "section": "Revaluation Request Workflow",
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_revaluation_and_answer_script_review"
+    }
+  },
+  {
+    "id": "doc_32",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Online Registration Workflow",
+    "similarity": 1.6325271129608154,
+    "confidence": 1.0,
+    "text": "on modules.\n\n## 6. Examination Fee Handling\n\nFor certain examination categories, NCIE may require the payment of examination-related fees as part of the registration process. Fee handling is integrated into the academic portal and typically includes:\n\n* Fee calculation based on the number and type of courses\n* Online payment through supported digital payment methods\n* Automatic linkage of payment status with registration records\n\nIn case of payment interruption or failure, the registration status may remain pending until confirmation is completed.\n\n## 7. Late and Special Registration Cases\n\nLate registration or special consideration for exam registration may arise due to circumstances such as:\n\n* Documented medical reasons\n* Technical issues with the academic portal\n* Overlapping instituti",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_exam_registration_process",
+      "section": "Online Registration Workflow",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494222",
+      "updated_at": "2026-03-28T12:50:20.494224",
+      "type": "canonical_knowledge",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 1.6372915506362915,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.501001",
+      "confidence": 1.0,
+      "section": "Introduction"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37096.04,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-011 T05
+
+- Question: How does the system figure out which chunks are affected?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 46252.15
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer claims the system figures out affected chunks through enrollment synchronization as stated in section 6 of 'ncie_course_add_drop_and_withdrawal - Course Withdrawal Process' but the provided source text does not explicitly describe how the system identifies which specific chunks are affected or the chunk-search and semantic matching mechanism. The answer is only tenuously grounded and partially relevant but lacks detail and clarity required by the objective.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, the system figures out which chunks are affected by the enrollment changes through synchronization between enrollment status and assessment records, as stated in section 6 of the "ncie_course_add_drop_and_withdrawal - Course Withdrawal Process".
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_67",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Scheduling and Conduct of Lab Assessments",
+    "similarity": 1.6964452266693115,
+    "confidence": 1.0,
+    "text": "* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* Assessment rubrics, where applicable\n\nAssessments are designed to align with the academic calendar and avoid conflicts with other major evaluation activities.\n\n## 6. Allocation and Recording of Internal Marks\n\nMarks awarded for laboratory evaluation contribute to the **Continuous Assessment (CA)** portion of the course. The process includes:\n\n* Periodic assessment of performance\n* Compilation of internal marks over the semester\n* Entry of marks into the academic portal by course instructors\n\nInternal marks are subject to review and verification before being finalized.\n\n## 7. Student Visibility and Feedback\n\nDepending on departmental practices and system availability, students may be able to:",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.499207",
+      "version": 1,
+      "confidence": 1.0,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "section": "Scheduling and Conduct of Lab Assessments",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499210"
+    }
+  },
+  {
+    "id": "doc_12",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Evaluation and Mark Allocation",
+    "similarity": 1.7087161540985107,
+    "confidence": 1.0,
+    "text": "istency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA components are recorded in the academic system as they are completed.\n\n## 6. Recording and Monitoring of CA Marks\n\nContinuous Assessment marks at NCIE are recorded through the institutional academic portal. The system allows:\n\n* Periodic entry of marks by instructors\n* Review of submitted marks by academic coordinators\n* Monitoring of completion status for each assessment component\n\nStudents may be able to view provisional CA marks during the semester, depending on system availability and departmental practices.\n\n## 7. Attendance and CA Linkage\n\nFor certain courses, attendance records may be considered as part of the Continuous Assessment framework. Attendance data is maintained separately but",
+    "metadata": {
+      "version": 1,
+      "section": "Evaluation and Mark Allocation",
+      "active": true,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.491397",
+      "created_at": "2026-03-28T12:50:20.491390",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_70",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Integration with Course Evaluation",
+    "similarity": 1.7146735191345215,
+    "confidence": 1.0,
+    "text": "60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are considered in final grade computation.\n\n## 11. Data Accuracy and Verification\n\nNCIE emphasizes accuracy in recording laboratory evaluation data through:\n\n* Timely entry of marks\n* Review by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to raise concerns promptly through appropriate academic channels.\n\n## 12. Special Laboratory Contexts\n\nCertain laboratory courses may involve additional considerations, such as:\n\n* Project-oriented labs\n* Interdisciplinary laboratory work\n* Labs conducted in collaboration with industry or research units\n* Students undertaking internships alongside coursework\n\nThese contexts are managed through departmental coord",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.499551",
+      "created_at": "2026-03-28T12:50:20.499548",
+      "section": "Integration with Course Evaluation"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.7269068956375122,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "confidence": 1.0,
+      "section": "Course Withdrawal Process"
+    }
+  },
+  {
+    "id": "doc_48",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Continuous Assessment Contribution",
+    "similarity": 1.7301044464111328,
+    "confidence": 1.0,
+    "text": "ponent may include one or more of the following, depending on the course design:\n\n* Mid-semester tests or internal examinations\n* Assignments and quizzes\n* Laboratory performance and internal marks\n* Project reviews or coursework evaluations\n\nMarks from these components are accumulated over the semester and recorded in the academic system before end-semester examinations.\n\n## 5. End-Semester Examination Contribution\n\nThe **60% End-Semester Examination** component typically involves:\n\n* A written examination conducted at the end of the semester\n* Evaluation based on syllabus coverage and learning outcomes\n* Centralized scheduling and evaluation coordinated by the Examination Cell\n\nOnly students who have completed required academic processes, including exam registration, are considered for E",
+    "metadata": {
+      "section": "Continuous Assessment Contribution",
+      "created_at": "2026-03-28T12:50:20.496486",
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.496488"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 46252.15,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-011 T06
+
+- Question: Why is deprecation considered safer than silently overwriting the old content?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 62310.66
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: accept
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer correctly refuses to speculate due to lack of relevant documented information on the question about policy on deprecation vs silent overwrite. The refusal matches the ground-truth documents and is appropriate, avoiding hallucination. However, the answer is low in relevance and completeness as there is no direct information available in the provided documents about deprecation or auditability governance. The refusal is correctly applied and zero-knowledge compliant.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 0.9340465664863586,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "version": 1,
+      "section": "Introduction",
+      "active": true,
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.501001"
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 0.9599580764770508,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "version": 1,
+      "active": true,
+      "section": "Revaluation Request Workflow",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_88",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Special Considerations",
+    "similarity": 0.9603389501571655,
+    "confidence": 1.0,
+    "text": "managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflow depends on integration between:\n\n* Examination result databases\n* Academic performance records\n* Student academic portals\n* Evaluation assignment systems\n\nAccurate system synchronization ensures reliable updates.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, the revaluation and answer script review process provides a structured academic pathway for students to seek verification of end-semester examination evaluation. Through centralized coordination, controlled workflows, and transparent result updates, NCIE maintains fairness and confidence in its assessment system.",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.501575",
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Special Considerations",
+      "updated_at": "2026-03-28T12:50:20.501577",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_87",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Communication of Outcomes",
+    "similarity": 1.06731116771698,
+    "confidence": 1.0,
+    "text": "cademic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation feedback may not always be provided, depending on the review mechanism used.\n\n## 10. Limitations and Scope\n\nThe revaluation process at NCIE:\n\n* Applies only to End-Semester Examination scripts\n* Does not modify Continuous Assessment records\n* Does not alter examination structure or syllabus coverage\n\nRevaluation focuses strictly on evaluation correctness.\n\n## 11. Special Considerations\n\nCertain academic scenarios may involve additional coordination, such as:\n\n* Final-year students awaiting graduation clearance\n* Courses with multiple evaluators\n* High-volume revaluation requests\n\nThese cases are managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflo",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501473",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501475",
+      "section": "Communication of Outcomes"
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.0871450901031494,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "status": "active",
+      "section": "Eligibility for Revaluation Requests",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501184",
+      "doc_id": "ncie_revaluation_and_answer_script_review"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 62310.66,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-012 T01
+
+- Question: Are internships mandatory at NCIE?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 26953.34
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer correctly states internships are mandatory at NCIE, supported by multiple active documents explicitly saying internships are mandatory components. However, the answer could be more detailed by mentioning eligibility criteria or registration requirements to improve completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Internships are mandatory components of the academic program at NCIE.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_55",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Purpose of Internship Engagement",
+    "similarity": 0.5898468494415283,
+    "confidence": 1.0,
+    "text": "nships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n* Enhance technical and professional skills\n* Provide exposure to real-world problem-solving\n* Support career readiness and academic enrichment\n\nInternship experiences are treated as structured academic activities rather than informal external engagements.\n\n## 3. Internship Eligibility and Timing\n\nInternships are typically undertaken during designated academic periods, such as:\n\n* Semester breaks\n* Summer or winter academic recess\n* Approved academic windows within a semester, where applicable\n\nEligibility to undertake an internship is determined by:\n\n* Academic standing of the student\n* Completion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship reg",
+    "metadata": {
+      "active": true,
+      "section": "Purpose of Internship Engagement",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.497303",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497306",
+      "confidence": 1.0,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_56",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Eligibility and Timing",
+    "similarity": 0.6180986166000366,
+    "confidence": 1.0,
+    "text": "tion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship registration is required before the commencement of the internship period.\n\n## 4. Internship Registration Workflow\n\nThe standard internship registration process at NCIE includes the following steps:\n\n1. The student identifies an internship opportunity relevant to their academic program.\n2. Internship details are submitted through the NCIE academic portal or designated departmental system.\n3. Required information may include organization details, duration, and nature of work.\n4. The submission is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n5. Upon approval, the internship registration is recorded in the academic system.\n\nInternship activities undertaken without pr",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497431",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Internship Eligibility and Timing",
+      "created_at": "2026-03-28T12:50:20.497428"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.7183219194412231,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "version": 1,
+      "section": "Internship Evaluation Framework",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.497903"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.7361080050468445,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "section": "Introduction",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497178",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_57",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Registration Workflow",
+    "similarity": 0.7423686385154724,
+    "confidence": 1.0,
+    "text": "rnship registration is recorded in the academic system.\n\nInternship activities undertaken without prior registration may require additional verification before being recognized.\n\n## 5. Role of Faculty and Departments\n\nMultiple academic roles support internship activities at NCIE:\n\n* **Faculty Advisor**\n  Guides students on internship relevance and academic alignment.\n\n* **Department Academic Coordinator**\n  Oversees internship approvals and ensures consistency with academic objectives.\n\n* **Internship or Placement Cell (where applicable)**\n  Facilitates coordination with organizations and supports documentation processes.\n\nDepartments ensure that internship engagements align with program outcomes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the inte",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497590",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497584",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Internship Registration Workflow",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 26953.34,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-012 T02
+
+- Question: Do internships replace any part of final project evaluation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 43701.36
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer directly reflects multiple sourced document excerpts confirming internships do not replace project evaluation requirements, maintaining strict separation as per the question. No hallucinations or contradictions detected. Response is complete and relevant.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Internships do not replace project evaluation requirements.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.6726664304733276,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497903",
+      "type": "canonical_knowledge",
+      "section": "Internship Evaluation Framework"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.7305241823196411,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "status": "active",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "version": 1,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "section": "Coordination with Internships and External Engagements",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.7568674683570862,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497726",
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "section": "Role of Faculty and Departments",
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.9328592419624329,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "active": true,
+      "confidence": 1.0,
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 0.9484797716140747,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.498377",
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Delays, Extensions, and Special Cases",
+      "active": true,
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 43701.36,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-012 T03
+
+- Question: How are internships usually evaluated?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 35140.48
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer is fully supported by multiple retrieved excerpts describing internship evaluation criteria at NCIE, mentioning learning outcomes focus, evaluation inputs, and recording in academic records. The response is relevant and sufficiently complete for the asked question.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Internships at NCIE are evaluated based on learning outcomes rather than examination-based assessment. Evaluation inputs may include internship completion reports, supervisor or mentor feedback, faculty review of submitted documentation, and presentations or discussions conducted after completion.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.5427233576774597,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497903",
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Internship Evaluation Framework",
+      "updated_at": "2026-03-28T12:50:20.497907"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.5783714056015015,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497726",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "section": "Role of Faculty and Departments"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.6713453531265259,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "active": true,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "status": "active",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 0.8810508847236633,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498069",
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Handling Internship Variations",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.8909207582473755,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.495952",
+      "section": "Coordination with Internships and External Engagements",
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 35140.48,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-012 T04
+
+- Question: Then how are final year projects evaluated?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 34249.28
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is fully supported by multiple cited document excerpts describing the evaluation through scheduled reviews as part of Continuous Assessment, listing presentations, demos, technical discussions, and interim reports. It is relevant and aligns exactly with the question about final year project evaluation. While a bit concise (no mention of all evaluation criteria or deliverables), the core process is clearly stated and grounded.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Final-year projects at NCIE are evaluated through **scheduled reviews**, which form part of Continuous Assessment. These reviews may involve:
+
+* Progress presentations
+* Demonstration of implemented components
+* Technical discussions with faculty panels
+* Submission of interim reports
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_42",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Review and Evaluation Process",
+    "similarity": 0.645734965801239,
+    "confidence": 1.0,
+    "text": "n of implemented components\n* Technical discussions with faculty panels\n* Submission of interim reports\n\nEach review provides structured feedback to guide subsequent project phases.\n\n## 8. Project Deliverables\n\nKey deliverables associated with the final-year project may include:\n\n* Approved project proposal\n* Interim progress reports\n* Final project report\n* Source code, design files, or experimental data\n* Presentation and demonstration materials\n\nDeliverables are submitted through designated academic or departmental platforms.\n\n## 9. Evaluation Criteria and Mark Recording\n\nEvaluation of final-year projects considers multiple academic dimensions, such as:\n\n* Problem definition and clarity of objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality",
+    "metadata": {
+      "doc_id": "ncie_final_year_project_guidelines",
+      "section": "Review and Evaluation Process",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.495723",
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495725"
+    }
+  },
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 0.8097819089889526,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "section": "Objectives of the Final-Year Project",
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495386",
+      "created_at": "2026-03-28T12:50:20.495384"
+    }
+  },
+  {
+    "id": "doc_38",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Introduction",
+    "similarity": 0.8445857763290405,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the Final-Year Project represents a capstone academic activity that allows students to apply accumulated knowledge and skills to a sustained problem-solving initiative. The project spans the **seventh and eighth semesters** of the undergraduate program and is conducted under faculty supervision.\n\nThe final-year project is evaluated through structured reviews and submissions and forms part of the **Continuous Assessment (CA)** framework for the relevant project modules. This document outlines the academic practices, workflow, and coordination involved in final-year project execution at NCIE.\n\n## 2. Objectives of the Final-Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative lea",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495285",
+      "status": "active",
+      "section": "Introduction",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495282",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_40",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Project Duration and Structure",
+    "similarity": 0.8458906412124634,
+    "confidence": 1.0,
+    "text": ", and final evaluation.\n\nProgress across both semesters is monitored through periodic academic reviews.\n\n## 4. Project Topic Selection and Approval\n\nProject topics may originate from:\n\n* Student-proposed ideas\n* Faculty-suggested problem statements\n* Industry- or research-aligned themes\n\nStudents are required to submit project proposals for academic review. Topic approval is coordinated at the department level to ensure feasibility, relevance, and academic alignment.\n\n## 5. Group Formation and Supervision\n\nFinal-year projects may be undertaken:\n\n* Individually, or\n* In small student groups, as guided by the department\n\nEach project or group is assigned a **Project Guide** responsible for academic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495490",
+      "status": "active",
+      "section": "Project Duration and Structure",
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "created_at": "2026-03-28T12:50:20.495487",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_41",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Group Formation and Supervision",
+    "similarity": 0.8528913259506226,
+    "confidence": 1.0,
+    "text": "demic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones\n\nProjects at NCIE follow a milestone-based progression, which may include:\n\n* Proposal submission and approval\n* Literature survey or requirement analysis\n* Design and methodology definition\n* Incremental implementation phases\n* Testing, validation, or analysis\n* Final documentation and presentation\n\nMilestones are distributed across the project duration to ensure steady progress.\n\n## 7. Review and Evaluation Process\n\nFinal-year project evaluation is conducted through **scheduled reviews**, which form part of Continuous Assessment. Reviews may involve:\n\n* Progress presentations\n* Demonstration of implemented components\n* Technical discussions with faculty panels\n* Submission of interim repo",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495612",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.495616",
+      "active": true,
+      "confidence": 1.0,
+      "section": "Group Formation and Supervision",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 34249.28,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-012 T05
+
+- Question: What's the main difference between internship evaluation and project evaluation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 47693.86
+- Metric tags: groundedness, completeness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is grounded well in provided documents, correctly contrasting internship evaluation focused on learning outcomes versus project evaluation as Continuous Assessment. It is relevant and supported by multiple source excerpts. However, it lacks fuller comparative details from project evaluation such as review meetings, presentations, and technical discussions mentioned in sources, resulting in moderate completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Internship evaluation and project evaluation are evaluated differently. Internship evaluation focuses on learning outcomes rather than examination-based assessment, whereas project evaluation contributes to the Continuous Assessment (CA) component of relevant courses or project modules.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.6752756237983704,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "active": true,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Role of Faculty and Departments",
+      "created_at": "2026-03-28T12:50:20.497726",
+      "updated_at": "2026-03-28T12:50:20.497731"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.7270585298538208,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Internship Evaluation Framework",
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497903",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.809220016002655,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "section": "Coordination with Internships and External Engagements",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495952"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.8879030346870422,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "status": "active",
+      "section": "Introduction",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.497178",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_73",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Introduction",
+    "similarity": 1.0306180715560913,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, project work forms an important component of academic learning, emphasizing practical application, problem-solving, and independent exploration. Project activities are integrated into the curriculum across selected semesters and are evaluated through structured reviews and final submissions.\n\nProject evaluation contributes to the **Continuous Assessment (CA)** component of relevant courses or project modules. This document describes the standard workflow for project submission, review, evaluation, and academic coordination at NCIE.\n\n## 2. Types of Academic Projects\n\nNCIE incorporates different forms of project work within undergraduate programs, including:\n\n* **Course-Linked Mini Projects**\n  Projects associated with sp",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "created_at": "2026-03-28T12:50:20.499917",
+      "version": 1,
+      "section": "Introduction",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.499920",
+      "status": "active",
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 47693.86,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-012 T06
+
+- Question: Can you compare internship, project, and lab evaluation briefly for me?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36217.61
+- Metric tags: groundedness, completeness, task_success
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: Answer is factually grounded and relevant based on sources but incomplete; it omits explicit comparison and details for lab evaluation and lacks integration of differences among the three evaluation types as requested.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Internships at NCIE are evaluated based on learning outcomes rather than examination-based assessment. Project evaluation contributes to the Continuous Assessment (CA) component of relevant courses or project modules. Laboratory evaluation and internal marks form a structured part of the Continuous Assessment framework.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.8552214503288269,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "section": "Role of Faculty and Departments",
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497726",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497731"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.8768524527549744,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "section": "Internship Evaluation Framework",
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497903"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.9191035032272339,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "section": "Coordination with Internships and External Engagements",
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.9355521202087402,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "created_at": "2026-03-28T12:50:20.497178",
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Introduction",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_71",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Special Laboratory Contexts",
+    "similarity": 0.9414806962013245,
+    "confidence": 1.0,
+    "text": "undertaking internships alongside coursework\n\nThese contexts are managed through departmental coordination.\n\n## 13. System Dependencies\n\nLaboratory evaluation workflows at NCIE rely on:\n\n* Course enrollment systems\n* Continuous Assessment tracking modules\n* Academic performance databases\n* Faculty evaluation interfaces\n\nSystem synchronization ensures reliable assessment outcomes.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, laboratory evaluation and internal marks form a structured and essential part of the Continuous Assessment framework. Through consistent evaluation practices, timely feedback, and coordinated data management, laboratory courses support practical learning while maintaining academic rigor and integrity.",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499669",
+      "status": "active",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499667",
+      "version": 1,
+      "section": "Special Laboratory Contexts"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36217.61,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-013 T01
+
+- Question: I'm confused about add, drop, and withdrawal. What's the difference?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 45556.51
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer accurately reflects the sourced document information about add, drop, and withdrawal processes with good relevance and grounding. It clearly distinguishes the three concepts based on the context. Minor completeness deduction because more details on add process workflow could enhance completeness but the essentials are present.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Hey Hemanth, I'd be happy to help clarify the difference between add, drop, and withdrawal. 
+
+According to the context, dropping a course allows you to remove a course from your enrollment early in the semester, typically when the course has not progressed significantly. This ensures that you're not evaluated or examined for that course.
+
+On the other hand, course withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. This acknowledges partial participation without full academic evaluation.
+
+As for adding a course, it's not directly related to dropping or withdrawing, but it's mentioned that added courses become eligible for exam registration.
+
+That's the main difference I could find in the context.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.1361253261566162,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "section": "Drop Course Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.492839",
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "status": "active",
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.1509778499603271,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Course Withdrawal Process",
+      "version": 1,
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.492954",
+      "updated_at": "2026-03-28T12:50:20.492956"
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.2006664276123047,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492724",
+      "version": 1,
+      "section": "Add Course Process",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.492726"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.2837717533111572,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "section": "Special Considerations",
+      "created_at": "2026-03-28T12:50:20.493447",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.3751380443572998,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "section": "Course Withdrawal Process"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 45556.51,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 15,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-013 T02
+
+- Question: When is withdrawal usually the right option?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 30341.5
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is fully supported by the provided context and directly addresses the question by explaining withdrawal timing. It is relevant and grounded, but could be slightly more complete by including rationale or conditions for withdrawal beyond timing.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.9925333857536316,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "status": "active",
+      "section": "Course Withdrawal Process",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492956",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal"
+    }
+  },
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.1744248867034912,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492839",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "status": "active",
+      "section": "Drop Course Process",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.4411613941192627,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "section": "Course Withdrawal Process",
+      "created_at": "2026-03-28T12:50:20.493068",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.549250841140747,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "section": "Impact on Examination Registration",
+      "created_at": "2026-03-28T12:50:20.493185"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.5581551790237427,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493447",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "section": "Special Considerations",
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "confidence": 1.0,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 30341.5,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 15,
+  "fact_count_after": 16,
+  "fact_count_delta": 1,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-013 T03
+
+- Question: Will withdrawal affect my academic records?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36128.59
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is directly supported by multiple retrieved document excerpts explicitly stating that withdrawn courses are distinctly reflected in academic records to indicate non-completion. It is relevant and sufficiently complete for the question asked, although additional details about effects on transcripts or GPA could improve completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, withdrawn courses are reflected distinctly in academic records to indicate non-completion.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 0.8566684722900391,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "active": true,
+      "confidence": 1.0,
+      "section": "Course Withdrawal Process",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492956"
+    }
+  },
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.0292452573776245,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.492839",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Drop Course Process"
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.0428249835968018,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493068",
+      "version": 1,
+      "section": "Course Withdrawal Process",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.0849101543426514,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "section": "Role of the Examination Cell",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501374",
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "status": "active",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.1823816299438477,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "section": "Impact on Examination Registration",
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.493185"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36128.59,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-013 T04
+
+- Question: Who normally approves add or drop related changes?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36388.04
+- Metric tags: groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer directly matches multiple source excerpts indicating that the Faculty Advisor or Department Academic Coordinator review and approve add/drop changes. The response is relevant and sufficiently complete for the question. No hallucinations or contradictions are detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, the Faculty Advisor or Department Academic Coordinator reviews and approves add or drop related changes.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.326019525527954,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493185",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Impact on Examination Registration"
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.3442422151565552,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.492726",
+      "active": true,
+      "section": "Add Course Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.492724"
+    }
+  },
+  {
+    "id": "doc_35",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Post-Registration Verification",
+    "similarity": 1.3571890592575073,
+    "confidence": 1.0,
+    "text": "to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or makeup)\n* Registration status and acknowledgment\n* Payment confirmation, if applicable\n\nEarly verification helps prevent discrepancies during examination scheduling and result processing.\n\n## 11. Modifications After Submission\n\nChanges to exam registration after submission are generally limited. However, modifications may be considered in situations such as:\n\n* Correction of clerical or system errors\n* Administrative updates initiated by academic offices\n* Approved course status changes\n\nSuch modifications require coordination between the department and the Examination Cell.\n\n## 12. Special Student Categories\n\nCertain student categories may follow slightly modified registration workflows, inclu",
+    "metadata": {
+      "status": "active",
+      "section": "Post-Registration Verification",
+      "confidence": 1.0,
+      "version": 1,
+      "active": true,
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.494761",
+      "created_at": "2026-03-28T12:50:20.494754"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.4035190343856812,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493447",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "Special Considerations",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_77",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Role of Faculty and Review Panels",
+    "similarity": 1.4436250925064087,
+    "confidence": 1.0,
+    "text": "es technical guidance, monitors progress, and participates in evaluations.\n\n* **Review Panel Members**\n  Faculty members who assess project progress during scheduled reviews.\n\n* **Department Academic Coordinator**\n  Ensures consistency in evaluation practices across project groups.\n\nFeedback from reviews is communicated to students to support improvement in subsequent stages.\n\n## 7. Submission of Project Deliverables\n\nProject submissions at NCIE typically include one or more of the following deliverables:\n\n* Project proposal or synopsis\n* Interim reports\n* Final project report\n* Source code or design artifacts, where applicable\n* Demonstration or presentation materials\n\nSubmissions are generally made through designated academic platforms or departmental channels and are recorded for evalua",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.500417",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "confidence": 1.0,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.500420",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "section": "Role of Faculty and Review Panels"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36388.04,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-013 T05
+
+- Question: Before I request withdrawal, what should I check first?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 43483.63
+- Metric tags: groundedness, completeness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is directly supported by the cited source text stating that withdrawal applies after the semester passes the early adjustment phase. The answer is relevant and factual with no hallucinations. However, it is somewhat brief and does not include the full withdrawal process steps or additional practical considerations mentioned in the source, limiting completeness. The context provided suffices to support the key guidance given.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Before you request withdrawal, you should check if the semester has progressed beyond the early adjustment phase.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.0341949462890625,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Course Withdrawal Process",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492956",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.492954"
+    }
+  },
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.155587911605835,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.492839",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Drop Course Process"
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.3927570581436157,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493185",
+      "section": "Impact on Examination Registration",
+      "updated_at": "2026-03-28T12:50:20.493187"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.4245556592941284,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "confidence": 1.0,
+      "status": "active",
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "created_at": "2026-03-28T12:50:20.493447",
+      "section": "Special Considerations",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_29",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Examinations Covered Under Registration",
+    "similarity": 1.4323840141296387,
+    "confidence": 1.0,
+    "text": "citly through course enrollment and is **not part of the exam registration workflow**.\n\n## 3. Eligibility Verification Before Registration\n\nBefore a student can complete exam registration, the NCIE academic system performs eligibility checks to ensure that the student is academically active and enrolled in the relevant courses.\n\nEligibility verification typically considers:\n\n* Active enrollment in the course for the semester\n* Completion status of required continuous assessment components\n* Availability of attendance and coursework records in the system\n* Absence of unresolved academic or administrative flags\n* Completion of applicable examination fee requirements\n\nIf an eligibility condition is not satisfied, the system may restrict registration and display an explanatory message to the s",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493822",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "status": "active",
+      "section": "Examinations Covered Under Registration",
+      "updated_at": "2026-03-28T12:50:20.493824",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 43483.63,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-013 T06
+
+- Question: Can you give me a simple decision guide for add vs drop vs withdrawal?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36404.67
+- Metric tags: groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is fully supported by multiple high-confidence context documents explaining add, drop, and withdrawal procedures. It directly addresses the question with a clear, concise, and accurate decision guide without extraneous rules or hallucinations. The explanation could be slightly expanded with mention of approval steps for completeness, but this is minor.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Based on the context, here's a simple decision guide for add vs drop vs withdrawal:
+
+* **Add a course**: When you want to join a course that you haven't enrolled in yet.
+* **Drop a course**: When you want to remove a course from your enrollment early in the semester, typically when the course has not progressed significantly.
+* **Withdraw from a course**: When you want to exit a course after the semester has progressed beyond the early adjustment phase.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_21",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Drop Course Process",
+    "similarity": 1.1890588998794556,
+    "confidence": 1.0,
+    "text": "pically when the course has not progressed significantly.\n\nDropping a course ensures that the student is not evaluated or examined for that course.\n\n### 4.2 Drop Course Workflow\n\nThe standard drop process at NCIE includes:\n\n1. Student submits a drop request through the academic portal.\n2. The request is reviewed for academic feasibility.\n3. Approval is obtained from the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is removed from the enrollment record.\n5. Associated assessment and examination records are cleared from the system.\n\nDropped courses do not appear in the student\u2019s academic performance records.\n\n## 5. Course Withdrawal Process\n\n### 5.1 Purpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.492839",
+      "updated_at": "2026-03-28T12:50:20.492841",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge",
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Drop Course Process"
+    }
+  },
+  {
+    "id": "doc_20",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Add Course Process",
+    "similarity": 1.20900297164917,
+    "confidence": 1.0,
+    "text": "The typical add course process at NCIE includes:\n\n1. Student initiates an add request through the academic portal.\n2. The system verifies eligibility and timetable compatibility.\n3. Approval is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n4. Upon approval, the course is added to the student\u2019s enrollment record.\n5. The academic system updates assessment and examination mappings accordingly.\n\nOnce added, the course becomes subject to Continuous Assessment and End-Semester Examination requirements.\n\n## 4. Drop Course Process\n\n### 4.1 Purpose of Dropping a Course\n\nDropping a course allows a student to remove a course from their enrollment early in the semester, typically when the course has not progressed significantly.\n\nDropping a course ensures that the studen",
+    "metadata": {
+      "version": 1,
+      "section": "Add Course Process",
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.492724",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.492726",
+      "status": "active",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.209130048751831,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.493447",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "section": "Special Considerations",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.2421455383300781,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "section": "Course Withdrawal Process",
+      "active": true,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492956"
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.3855476379394531,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493185",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "active": true,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "Impact on Examination Registration",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36404.67,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-014 T01
+
+- Question: I forgot to submit my project phase 1 report, and I'm also worried about attendance.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 30109.14
+- Metric tags: fact_extraction, risk_alert, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer is mostly grounded in the provided documents, advising to inform the course instructor or Faculty Advisor and that supporting documentation may be requested. However, it does not mention the attendance concern explicitly, which was part of the user's question, so completeness is moderate. The answer is relevant and factual per the provided sources.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_fact_extraction": true
+}
+```
+
+### Answer
+
+If you forgot to submit your project phase 1 report, you should inform the course instructor or Faculty Advisor. Supporting documentation may be requested where applicable.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.0517042875289917,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "version": 1,
+      "section": "Role of Departments and Academic Offices",
+      "doc_id": "ncie_exam_registration_process",
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.494512"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.1529483795166016,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "confidence": 1.0,
+      "status": "active",
+      "version": 1,
+      "section": "System Updates and Data Integrity",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_13",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Attendance and CA Linkage",
+    "similarity": 1.1558558940887451,
+    "confidence": 1.0,
+    "text": "sidered as part of the Continuous Assessment framework. Attendance data is maintained separately but may influence eligibility or completion status of CA components.\n\nAttendance data is synchronized with the academic system to support accurate assessment tracking.\n\n## 8. Handling Absences and Missed Assessments\n\nStudents may miss Continuous Assessment activities due to valid or unforeseen reasons. In such cases:\n\n* Students are expected to inform the course instructor or Faculty Advisor\n* Supporting documentation may be requested where applicable\n* Alternate assessment opportunities may be provided at the discretion of the department\n\nThe handling of missed CA components may vary across courses and departments but is recorded explicitly in the system.\n\n## 9. Role of Faculty and Departments",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.491619",
+      "type": "canonical_knowledge",
+      "section": "Attendance and CA Linkage",
+      "status": "active",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "updated_at": "2026-03-28T12:50:20.491626",
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_36",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Special Student Categories",
+    "similarity": 1.1653345823287964,
+    "confidence": 1.0,
+    "text": "nt Categories\n\nCertain student categories may follow slightly modified registration workflows, including:\n\n* Final-year students involved in long-duration projects\n* Students undertaking internships during the semester\n* Students requiring academic accommodations\n\nThese cases are handled through additional verification and coordination mechanisms.\n\n## 13. System Dependencies and Data Flow\n\nThe exam registration process at NCIE depends on accurate synchronization between multiple systems, including:\n\n* Course enrollment databases\n* Continuous assessment records\n* Attendance tracking systems\n* Fee management modules\n* Examination scheduling systems\n\nAny delay or inconsistency in these systems can affect the registration process.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, exam r",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.494939",
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.494943",
+      "section": "Special Student Categories",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.207012414932251,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "created_at": "2026-03-28T12:50:20.492017",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Integration with End-Semester Evaluation",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 30109.14,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-014 T02
+
+- Question: What should I prioritize first?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 38495.36
+- Metric tags: memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly uses memory of the user's concerns about the missed project report and attendance, prioritizing informing the instructor as per the recalled context. The response is relevant and grounded. Completeness is moderate since it only addresses the missed report specifically and does not elaborate on attendance concerns or additional steps. No hallucination or contradictions detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, it seems like you have two concerns: submitting your project phase 1 report and attendance. I would recommend prioritizing informing the course instructor or Faculty Advisor about the missed project phase 1 report submission.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_11",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Scheduling and Conduct of Assessments",
+    "similarity": 1.5071909427642822,
+    "confidence": 1.0,
+    "text": "tments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overlap between major assessments\n* Allowing sufficient preparation time\n* Distributing assessments evenly across the semester\n\nAssessment schedules are typically communicated through:\n\n* Course briefings\n* Academic portal announcements\n* Classroom communication\n\n## 5. Evaluation and Mark Allocation\n\nEach Continuous Assessment component carries a defined weightage contributing to the overall **40% CA score**. Instructors evaluate student performance based on predefined academic criteria relevant to the course objectives.\n\nEvaluation practices emphasize:\n\n* Transparency in assessment criteria\n* Consistency across student groups\n* Alignment with learning outcomes\n\nMarks awarded for individual CA co",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.491147",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.491155",
+      "status": "active",
+      "section": "Scheduling and Conduct of Assessments",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 1.5340797901153564,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.500162",
+      "confidence": 1.0,
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "section": "Project Allocation and Topic Selection",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_40",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Project Duration and Structure",
+    "similarity": 1.6097674369812012,
+    "confidence": 1.0,
+    "text": ", and final evaluation.\n\nProgress across both semesters is monitored through periodic academic reviews.\n\n## 4. Project Topic Selection and Approval\n\nProject topics may originate from:\n\n* Student-proposed ideas\n* Faculty-suggested problem statements\n* Industry- or research-aligned themes\n\nStudents are required to submit project proposals for academic review. Topic approval is coordinated at the department level to ensure feasibility, relevance, and academic alignment.\n\n## 5. Group Formation and Supervision\n\nFinal-year projects may be undertaken:\n\n* Individually, or\n* In small student groups, as guided by the department\n\nEach project or group is assigned a **Project Guide** responsible for academic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.495487",
+      "version": 1,
+      "active": true,
+      "section": "Project Duration and Structure",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495490",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.6251522302627563,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "status": "active",
+      "active": true,
+      "version": 1,
+      "section": "System Updates and Data Integrity"
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.6296896934509277,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "confidence": 1.0,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "section": "Impact on Examination Registration",
+      "status": "active",
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.493185"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 38495.36,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-014 T03
+
+- Question: What kind of academic risk do you see in what I just said?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 33986.6
+- Metric tags: memory_relevance, risk_alert
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer identifies an academic risk (academic penalty for missed submission) that is reasonable given the user's mention of forgetting the report. However, no relevant grounded evidence from the provided documents explicitly links missed project submission to such a penalty or details risk metadata. The sources mostly discuss general academic policies, internships, advising, and academic rigor without specifying consequences or risk alerts for missed submissions. Memory reuse is minimal and lacks explicit grounding. Thus, the response is insufficiently grounded and incomplete.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, I see a risk of academic penalty due to the missed project phase 1 report submission.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.1690503358840942,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "confidence": 1.0,
+      "section": "Summary",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499787",
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "active": true,
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.3011157512664795,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "section": "System Updates and Data Integrity",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493325"
+    }
+  },
+  {
+    "id": "doc_55",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Purpose of Internship Engagement",
+    "similarity": 1.4353768825531006,
+    "confidence": 1.0,
+    "text": "nships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n* Enhance technical and professional skills\n* Provide exposure to real-world problem-solving\n* Support career readiness and academic enrichment\n\nInternship experiences are treated as structured academic activities rather than informal external engagements.\n\n## 3. Internship Eligibility and Timing\n\nInternships are typically undertaken during designated academic periods, such as:\n\n* Semester breaks\n* Summer or winter academic recess\n* Approved academic windows within a semester, where applicable\n\nEligibility to undertake an internship is determined by:\n\n* Academic standing of the student\n* Completion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship reg",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497306",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "section": "Purpose of Internship Engagement",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.497303",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.4416601657867432,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "status": "active",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.497178"
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.4442908763885498,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "section": "Advising Related to Assessment and Performance",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.490028",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 33986.6,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-014 T04
+
+- Question: What should I ask my guide or faculty advisor about this?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37054.29
+- Metric tags: memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer is fully grounded in the provided documents about academic advising at NCIE, specifically about the role of faculty advisors and advising topics. It is relevant to the user's query about what to ask an advisor. The answer references key advising functions such as academic workflows, course planning, and challenges, matching the source content. It appropriately uses memory from the past user concerns about academic issues but could be slightly more specific about the user's recent context (missed submission and attendance). No hallucinations or contradictions detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, you should ask your guide or Faculty Advisor about academic workflows and expectations, course planning and progression, and any academic or adjustment challenges you may be facing.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_1",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Purpose of Academic Advising",
+    "similarity": 1.1355878114700317,
+    "confidence": 1.0,
+    "text": "tudents in course planning and progression\n* Assist in understanding academic workflows and expectations\n* Identify and address academic or adjustment challenges early\n* Provide continuity and support across semesters\n\nAdvising emphasizes guidance and coordination rather than evaluation.\n\n## 3. Faculty Advisor Assignment\n\nEach student at NCIE is assigned a **Faculty Advisor** at the beginning of the academic program or academic year. The Faculty Advisor serves as the primary academic point of contact for the student throughout the advising period.\n\nAdvisor assignments are recorded in the academic system and may be updated by the department when required.\n\n## 4. Role of the Faculty Advisor\n\nThe Faculty Advisor at NCIE typically supports students by:\n\n* Guiding course selection and enrollmen",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.489714",
+      "section": "Purpose of Academic Advising",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.489711",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.1368868350982666,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.490028",
+      "type": "canonical_knowledge",
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "status": "active",
+      "version": 1,
+      "section": "Advising Related to Assessment and Performance"
+    }
+  },
+  {
+    "id": "doc_5",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Identification and Support of Academic Challenges",
+    "similarity": 1.1507890224456787,
+    "confidence": 1.0,
+    "text": "of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n* Consistent assessment difficulties\n* Course overload concerns\n* Academic planning uncertainties\n* Adjustment issues consideration\n\nWhen necessary, advisors coordinate with departments or academic offices to guide students toward appropriate support mechanisms.\n\n## 10. Role of Departments in Advising Oversight\n\nDepartments at NCIE oversee academic advising by:\n\n* Assigning and monitoring advisor responsibilities\n* Ensuring advising consistency across student groups\n* Supporting advisors with academic information and system access\n* Coordinating interventions when needed\n\nDepartmental oversight ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and",
+    "metadata": {
+      "status": "active",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "section": "Identification and Support of Academic Challenges",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.490157",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490155"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.1561164855957031,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "status": "active",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "created_at": "2026-03-28T12:50:20.489561",
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_3",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Interactions and Communication",
+    "similarity": 1.2045414447784424,
+    "confidence": 1.0,
+    "text": "urse adjustment periods, and examination preparation phases.\n\n## 6. Advising in Course Enrollment and Adjustments\n\nFaculty Advisors play an important role in enrollment-related processes by:\n\n* Discussing academic workload feasibility\n* Advising on elective selection\n* Reviewing add, drop, or withdrawal requests\n* Ensuring alignment with academic progression plans\n\nAdvisory input supports informed decisions but final actions are recorded through formal academic workflows.\n\n## 7. Advising Related to Assessment and Performance\n\nAdvisors may assist students in understanding:\n\n* Continuous Assessment components and expectations\n* Integration of CA and End-Semester Examination outcomes\n* Interpretation of academic performance records\n* Steps available after result declaration, such as revaluati",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.489922",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "status": "active",
+      "version": 1,
+      "section": "Advising Interactions and Communication",
+      "updated_at": "2026-03-28T12:50:20.489924",
+      "active": true,
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37054.29,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-014 T05
+
+- Question: Can you turn that into a short action plan for me?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 46603.51
+- Metric tags: memory_relevance, instruction_following
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The action plan is well grounded in multiple documents detailing the final year project timeline and structure, specifically across semesters 7 and 8, aligning with the user's academic concerns. It correctly reflects the project phases and recommends periodic reviews. However, the response lacks explicit linkage to the user's specific issues about the missed project report and attendance risks, missing some personalization and completeness aspects.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on the context, here's a short action plan:
+
+* **Semester 7**: Focus on problem identification, background study, planning, and initial development.
+* **Semester 8**: Focus on implementation completion, validation, documentation, and final evaluation.
+* Regularly monitor progress through periodic academic reviews.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 1.6604924201965332,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "version": 1,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "active": true,
+      "section": "Project Allocation and Topic Selection",
+      "created_at": "2026-03-28T12:50:20.500162",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "type": "canonical_knowledge",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_26",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Special Considerations",
+    "similarity": 1.7141815423965454,
+    "confidence": 1.0,
+    "text": "departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineering, course add, drop, and withdrawal processes provide structured flexibility within the academic system. Through coordinated workflows, these processes ensure accurate enrollment records, reliable assessment tracking, and alignment with examination and evaluation frameworks.",
+    "metadata": {
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493447",
+      "section": "Special Considerations",
+      "active": true,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.493449",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 1.7156198024749756,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.495386",
+      "status": "active",
+      "active": true,
+      "section": "Objectives of the Final-Year Project",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "created_at": "2026-03-28T12:50:20.495384",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_22",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.7276955842971802,
+    "confidence": 1.0,
+    "text": "urpose of Course Withdrawal\n\nCourse withdrawal applies to situations where a student exits a course after the semester has progressed beyond the early adjustment phase. Withdrawal acknowledges partial participation without full academic evaluation.\n\n### 5.2 Withdrawal Workflow\n\nThe withdrawal process at NCIE generally includes:\n\n1. Student submits a withdrawal request through the academic portal.\n2. The request is reviewed by academic authorities.\n3. Supporting context or documentation may be requested.\n4. Approval is coordinated by the department.\n5. The withdrawal status is recorded in the academic system.\n\nWithdrawn courses are reflected distinctly in academic records to indicate non-completion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assess",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Course Withdrawal Process",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.492956",
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.492954",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_74",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Types of Academic Projects",
+    "similarity": 1.7404098510742188,
+    "confidence": 1.0,
+    "text": "undergraduate programs, including:\n\n* **Course-Linked Mini Projects**\n  Projects associated with specific courses, typically conducted within a single semester.\n\n* **Departmental Mini Projects**\n  Project work undertaken as part of departmental academic requirements, often in mid-program semesters.\n\n* **Final-Year Project**\n  A multi-semester project carried out during **Semester 7 and Semester 8**, involving sustained development and evaluation.\n\nEach project type follows a similar submission and review framework, with variations in duration and evaluation depth.\n\n## 3. Project Allocation and Topic Selection\n\nProject topics at NCIE may be allocated or approved through one of the following approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided",
+    "metadata": {
+      "section": "Types of Academic Projects",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.500033",
+      "created_at": "2026-03-28T12:50:20.500030",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "confidence": 1.0,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 46603.51,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-014 T06
+
+- Question: What from this conversation is actually worth remembering?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 23117.07
+- Metric tags: memory_relevance, session_context
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The response briefly summarizes topics discussed but lacks explicit reflection on what specific memory signals or details from the conversation are worth remembering, missing the expected explicit analysis of memory relevance.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+Based on our conversation, it seems that we discussed the academic risk of missing a project phase 1 report submission and created a short action plan for you.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_63",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Summary",
+    "similarity": 1.6151570081710815,
+    "confidence": 1.0,
+    "text": "ramework.",
+    "metadata": {
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.498755",
+      "section": "Summary",
+      "updated_at": "2026-03-28T12:50:20.498757",
+      "version": 1,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.7513149976730347,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.499787",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "type": "canonical_knowledge",
+      "section": "Summary",
+      "status": "active",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_17",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Summary",
+    "similarity": 1.768465518951416,
+    "confidence": 1.0,
+    "text": "al course evaluation**, it supports continuous learning, timely feedback, and academic accountability throughout the semester. Effective coordination between students, faculty, and academic systems ensures the reliability and integrity of the CA process.",
+    "metadata": {
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.492371",
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.492368",
+      "section": "Summary"
+    }
+  },
+  {
+    "id": "doc_64",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Introduction",
+    "similarity": 1.7929320335388184,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, laboratory courses play a vital role in reinforcing practical understanding and applied skills. Laboratory evaluation is an integral part of the **Continuous Assessment (CA)** framework and contributes to the internal evaluation component of applicable courses.\n\nThis document describes how laboratory performance is evaluated, how internal marks are recorded, and how laboratory assessment integrates with the overall academic evaluation system at NCIE.\n\n## 2. Role of Laboratory Evaluation in Academic Assessment\n\nLaboratory evaluation at NCIE is designed to:\n\n* Assess hands-on technical competence\n* Reinforce theoretical concepts through practice\n* Encourage systematic experimentation and documentation\n* Evaluate problem-s",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.498869",
+      "active": true,
+      "confidence": 1.0,
+      "section": "Introduction",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498867",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks"
+    }
+  },
+  {
+    "id": "doc_70",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Integration with Course Evaluation",
+    "similarity": 1.8249034881591797,
+    "confidence": 1.0,
+    "text": "60%)** result to determine the overall course outcome.\n\nOnly verified and finalized lab marks are considered in final grade computation.\n\n## 11. Data Accuracy and Verification\n\nNCIE emphasizes accuracy in recording laboratory evaluation data through:\n\n* Timely entry of marks\n* Review by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to raise concerns promptly through appropriate academic channels.\n\n## 12. Special Laboratory Contexts\n\nCertain laboratory courses may involve additional considerations, such as:\n\n* Project-oriented labs\n* Interdisciplinary laboratory work\n* Labs conducted in collaboration with industry or research units\n* Students undertaking internships alongside coursework\n\nThese contexts are managed through departmental coord",
+    "metadata": {
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.499548",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.499551",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "version": 1,
+      "section": "Integration with Course Evaluation"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 23117.07,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T01
+
+- Question: Please keep your answers short and direct. No need for long explanations.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 17104.25
+- Metric tags: preference_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly refuses with reference to insufficient specific info in the documents; refusal matches the expected behavior and is well-grounded with no hallucination.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_preference_extraction": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_72",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Summary",
+    "similarity": 1.585902452468872,
+    "confidence": 1.0,
+    "text": "e maintaining academic rigor and integrity.",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.499789",
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.499787",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "section": "Summary",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_66",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Components of Laboratory Evaluation",
+    "similarity": 1.6662585735321045,
+    "confidence": 1.0,
+    "text": "clude multiple components, such as:\n\n* **Experiment Performance**\n  Execution of assigned experiments during lab sessions.\n\n* **Observation and Participation**\n  Active involvement, preparedness, and adherence to lab procedures.\n\n* **Lab Records and Documentation**\n  Maintenance of lab notebooks, reports, or digital submissions.\n\n* **Viva or Practical Discussions**\n  Oral assessment to evaluate conceptual understanding.\n\nThe combination and emphasis of components may vary depending on the course design.\n\n## 5. Scheduling and Conduct of Lab Assessments\n\nLaboratory assessments are conducted throughout the semester during scheduled lab sessions. Instructors communicate expectations related to:\n\n* Experiment completion timelines\n* Submission formats for lab records\n* Evaluation checkpoints\n* A",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "section": "Components of Laboratory Evaluation",
+      "created_at": "2026-03-28T12:50:20.499084",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.499088",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_42",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Review and Evaluation Process",
+    "similarity": 1.7414366006851196,
+    "confidence": 1.0,
+    "text": "n of implemented components\n* Technical discussions with faculty panels\n* Submission of interim reports\n\nEach review provides structured feedback to guide subsequent project phases.\n\n## 8. Project Deliverables\n\nKey deliverables associated with the final-year project may include:\n\n* Approved project proposal\n* Interim progress reports\n* Final project report\n* Source code, design files, or experimental data\n* Presentation and demonstration materials\n\nDeliverables are submitted through designated academic or departmental platforms.\n\n## 9. Evaluation Criteria and Mark Recording\n\nEvaluation of final-year projects considers multiple academic dimensions, such as:\n\n* Problem definition and clarity of objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality",
+    "metadata": {
+      "section": "Review and Evaluation Process",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "updated_at": "2026-03-28T12:50:20.495725",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495723",
+      "type": "canonical_knowledge",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_40",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Project Duration and Structure",
+    "similarity": 1.7842864990234375,
+    "confidence": 1.0,
+    "text": ", and final evaluation.\n\nProgress across both semesters is monitored through periodic academic reviews.\n\n## 4. Project Topic Selection and Approval\n\nProject topics may originate from:\n\n* Student-proposed ideas\n* Faculty-suggested problem statements\n* Industry- or research-aligned themes\n\nStudents are required to submit project proposals for academic review. Topic approval is coordinated at the department level to ensure feasibility, relevance, and academic alignment.\n\n## 5. Group Formation and Supervision\n\nFinal-year projects may be undertaken:\n\n* Individually, or\n* In small student groups, as guided by the department\n\nEach project or group is assigned a **Project Guide** responsible for academic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.495490",
+      "section": "Project Duration and Structure",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495487",
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  },
+  {
+    "id": "doc_10",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Components of Continuous Assessment",
+    "similarity": 1.7875878810882568,
+    "confidence": 1.0,
+    "text": "r Tests / Internal Examinations**\n  Written or online assessments conducted during the semester.\n\n* **Assignments and Quizzes**\n  Individual or group-based tasks designed to evaluate conceptual understanding.\n\n* **Laboratory Performance**\n  Assessment of practical skills, lab execution, and record maintenance for laboratory courses.\n\n* **Project Reviews**\n  Periodic evaluation of mini-projects or course-linked project work, where applicable.\n\nThe exact combination of components is determined at the course level and communicated to students at the start of the semester.\n\n## 4. Scheduling and Conduct of Assessments\n\nContinuous Assessment activities are scheduled by course instructors and departments in alignment with the academic calendar. Scheduling considerations include:\n\n* Avoiding overl",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Components of Continuous Assessment",
+      "created_at": "2026-03-28T12:50:20.490927",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.490932",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "version": 1,
+      "active": true,
+      "status": "active"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 17104.25,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 16,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T02
+
+- Question: I'm a 4th year student, and I'm handling both my final project and internship right now.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 43100.57
+- Metric tags: fact_extraction, learning_turn
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer accurately reflects the coordination requirements for a 4th year student handling final project and internship, grounded in multiple cited documents. The response is relevant and sufficiently derived from source texts, though it could elaborate further on details. No hallucination or contradiction detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_fact_extraction": true
+}
+```
+
+### Answer
+
+As a 4th year student handling both your final project and internship, you may need to coordinate with your faculty guidance and departmental review to ensure alignment and proper documentation.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.9069816470146179,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "section": "Coordination with Internships and External Engagements",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.495952"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.9424589276313782,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.497178",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "section": "Introduction",
+      "active": true,
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_43",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Evaluation Criteria and Mark Recording",
+    "similarity": 1.0809850692749023,
+    "confidence": 1.0,
+    "text": "f objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality of documentation\n* Communication and presentation effectiveness\n\nMarks awarded contribute to the **Continuous Assessment (40%)** component of the project modules and are recorded in the academic system after verification.\n\n## 10. Academic Integrity and Original Contribution\n\nStudents are expected to maintain academic integrity throughout the project. This includes:\n\n* Clearly acknowledging external references\n* Avoiding uncredited reuse of existing work\n* Demonstrating individual or group contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Coordination with Internships and External Engagements\n\nIn some cases, final-year projects may align t",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "created_at": "2026-03-28T12:50:20.495835",
+      "section": "Evaluation Criteria and Mark Recording",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.495838",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.0926282405853271,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498069",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "section": "Handling Internship Variations",
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_38",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Introduction",
+    "similarity": 1.1137601137161255,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the Final-Year Project represents a capstone academic activity that allows students to apply accumulated knowledge and skills to a sustained problem-solving initiative. The project spans the **seventh and eighth semesters** of the undergraduate program and is conducted under faculty supervision.\n\nThe final-year project is evaluated through structured reviews and submissions and forms part of the **Continuous Assessment (CA)** framework for the relevant project modules. This document outlines the academic practices, workflow, and coordination involved in final-year project execution at NCIE.\n\n## 2. Objectives of the Final-Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative lea",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.495285",
+      "active": true,
+      "section": "Introduction",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495282"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 43100.57,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 16,
+  "fact_count_after": 17,
+  "fact_count_delta": 1,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T03
+
+- Question: How should I plan this month academically?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 36046.01
+- Metric tags: personalization, memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly personalizes the response based on the user's 4th year status with a final project and internship, confirming coordination with faculty as reflected in documents. It honestly notes the lack of specific monthly planning info in the context, avoiding hallucination. While somewhat general and short, it is relevant and grounded in the provided sources about project milestones and faculty guidance. Memory relevance is high due to proper use of user profile and history.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_personalization": true,
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+As a 4th year student handling both your final project and internship, you may need to coordinate with your faculty guidance and departmental review to ensure alignment and proper documentation. 
+
+However, I don't see any specific information in the context about planning for this month academically.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 1.2681859731674194,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "active": true,
+      "section": "Project Allocation and Topic Selection",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.500162",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.3198566436767578,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "section": "System Updates and Data Integrity",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "status": "active",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.34421706199646,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.492490",
+      "updated_at": "2026-03-28T12:50:20.492492",
+      "type": "canonical_knowledge",
+      "active": true,
+      "section": "Introduction",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 1.3448494672775269,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.495384",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "section": "Objectives of the Final-Year Project",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495386",
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_1",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Purpose of Academic Advising",
+    "similarity": 1.3667683601379395,
+    "confidence": 1.0,
+    "text": "tudents in course planning and progression\n* Assist in understanding academic workflows and expectations\n* Identify and address academic or adjustment challenges early\n* Provide continuity and support across semesters\n\nAdvising emphasizes guidance and coordination rather than evaluation.\n\n## 3. Faculty Advisor Assignment\n\nEach student at NCIE is assigned a **Faculty Advisor** at the beginning of the academic program or academic year. The Faculty Advisor serves as the primary academic point of contact for the student throughout the advising period.\n\nAdvisor assignments are recorded in the academic system and may be updated by the department when required.\n\n## 4. Role of the Faculty Advisor\n\nThe Faculty Advisor at NCIE typically supports students by:\n\n* Guiding course selection and enrollmen",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.489711",
+      "section": "Purpose of Academic Advising",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.489714",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 36046.01,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T04
+
+- Question: Do internships replace any part of final project evaluation?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37982.58
+- Metric tags: personalization, memory_relevance, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: Answer directly matches multiple provided document excerpts stating internships do not replace final project evaluation; answer is relevant, grounded, uses memory about user's 4th-year internship status, and correctly states the policy.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true,
+  "expects_personalization": true,
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+According to the context, internships do not replace any part of final project evaluation. It is stated that "Internship activities do not replace project evaluation requirements."
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.6726664304733276,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true,
+      "section": "Internship Evaluation Framework",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497903",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.7305241823196411,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Coordination with Internships and External Engagements",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.7568674683570862,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497726",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "section": "Role of Faculty and Departments",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 0.9328592419624329,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497178",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "section": "Introduction",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 0.9484797716140747,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.498377",
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "section": "Delays, Extensions, and Special Cases",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37982.58,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T05
+
+- Question: What do you know about me so far?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 35606.78
+- Metric tags: memory_relevance, session_context
+- Judge verdict: reject
+- Judge error type: generation_hallucination
+- Judge reasoning: The answer claims knowledge of the user's name and courses that were not present in any provided context or history, indicating hallucination and lack of memory recall.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+I know that your name is Hemanth, and you're taking courses in Machine Learning and Database Systems.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_63",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Summary",
+    "similarity": 1.7355074882507324,
+    "confidence": 1.0,
+    "text": "ramework.",
+    "metadata": {
+      "active": true,
+      "version": 1,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.498755",
+      "updated_at": "2026-03-28T12:50:20.498757",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "section": "Summary"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.8581483364105225,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "section": "Introduction",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.497178"
+    }
+  },
+  {
+    "id": "doc_0",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Introduction",
+    "similarity": 1.8611363172531128,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, academic advising and mentorship form a structured support mechanism that guides students through their academic journey. Advising focuses on helping students understand academic processes, plan coursework, monitor progress, and address challenges that may arise during the program.\n\nAcademic advising at NCIE is integrated into the institutional academic framework and operates in coordination with course enrollment, assessment, examination, and project workflows.\n\n## 2. Purpose of Academic Advising\n\nThe academic advising and mentorship framework at NCIE is designed to:\n\n* Support informed academic decision-making\n* Guide students in course planning and progression\n* Assist in understanding academic workflows and expectat",
+    "metadata": {
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "updated_at": "2026-03-28T12:50:20.489597",
+      "status": "active",
+      "section": "Introduction",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.489561"
+    }
+  },
+  {
+    "id": "doc_7",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "System Integration",
+    "similarity": 1.865192174911499,
+    "confidence": 1.0,
+    "text": "13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student academic profiles\n* Course enrollment systems\n* Assessment and examination records\n* Project and internship tracking modules\n\nSystem access enables advisors to provide informed and timely guidance.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, academic advising and mentorship provide structured, continuous support for students across their academic lifecycle. Through coordinated guidance, clear communication, and system-enabled oversight, advising helps students navigate academic processes effectively while remaining aligned with institutional frameworks.",
+    "metadata": {
+      "version": 1,
+      "type": "canonical_knowledge",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.490406",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.490409",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active",
+      "section": "System Integration"
+    }
+  },
+  {
+    "id": "doc_4",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Advising Related to Assessment and Performance",
+    "similarity": 1.8827614784240723,
+    "confidence": 1.0,
+    "text": "tation of academic performance records\n* Steps available after result declaration, such as revaluation processes\n\nAdvisors help students navigate academic systems without intervening in evaluation decisions.\n\n## 8. Mentorship During Projects and Internships\n\nDuring project and internship phases, academic mentorship may include:\n\n* Guidance on aligning activities with academic objectives\n* Support in managing timelines and milestones\n* Coordination with project guides or departmental coordinators\n* Clarifying documentation and submission expectations\n\nMentorship complements, but does not replace, formal project supervision or internship evaluation mechanisms.\n\n## 9. Identification and Support of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n*",
+    "metadata": {
+      "active": true,
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490028",
+      "updated_at": "2026-03-28T12:50:20.490030",
+      "section": "Advising Related to Assessment and Performance",
+      "confidence": 1.0,
+      "doc_id": "ncie_academic_advising_and_mentorship"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 35606.78,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T06
+
+- Question: If I suddenly claim the internship policy changed yesterday, what should the system do?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 52648.64
+- Metric tags: knowledge_evolution, groundedness
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly refuses to provide a specific response due to lack of detailed information in the documents, which aligns with the source content. The refusal matches the expected behavior and is justified, though the answer could be slightly more complete by referencing the general policy claim workflow if available.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 0.9595117568969727,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "status": "active",
+      "confidence": 1.0,
+      "section": "Internship Evaluation Framework",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497903"
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.9660513401031494,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.495952",
+      "doc_id": "ncie_final_year_project_guidelines",
+      "active": true,
+      "version": 1,
+      "status": "active",
+      "section": "Coordination with Internships and External Engagements",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.495955"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.0290305614471436,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "active": true,
+      "section": "Handling Internship Variations",
+      "version": 1,
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 1.031402587890625,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.498377",
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "section": "Delays, Extensions, and Special Cases"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 1.035157322883606,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "confidence": 1.0,
+      "section": "Role of Faculty and Departments",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.497726",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 52648.64,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T07
+
+- Question: The new notice says answer script review is open for CA as well.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 72513.88
+- Metric tags: contradiction, knowledge_evolution, claim_detection
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response correctly refuses to confirm the claim due to lack of supporting information in the documents, consistent with system guidelines. The refusal matches expected behavior for unverified claims about policy changes. No hallucination or contradiction is found, and the answer is relevant and cautious in this context.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_claim_detection": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.1201359033584595,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Handling Internship Variations",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 1.1998200416564941,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.498377",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "status": "active",
+      "active": true,
+      "section": "Delays, Extensions, and Special Cases",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 1.241005539894104,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "status": "active",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "section": "Coordination with Internships and External Engagements"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.2890970706939697,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.493322",
+      "confidence": 1.0,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "System Updates and Data Integrity"
+    }
+  },
+  {
+    "id": "doc_6",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Role of Departments in Advising Oversight",
+    "similarity": 1.2909131050109863,
+    "confidence": 1.0,
+    "text": "ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and Record Keeping\n\nAdvising-related records at NCIE may include:\n\n* Advisor assignments\n* Advising session summaries, where applicable\n* Enrollment adjustment approvals\n* Academic progression notes\n\nRecords are maintained to support continuity and coordination across academic systems.\n\n## 12. Advising Boundaries and Scope\n\nAcademic advising at NCIE focuses on guidance and coordination. It does not involve:\n\n* Modification of assessment outcomes\n* Override of evaluation decisions\n* Independent alteration of academic records\n\nFormal academic processes remain governed by established workflows.\n\n## 13. System Integration\n\nAcademic advising processes are supported by integration with:\n\n* Student ac",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.490266",
+      "section": "Role of Departments in Advising Oversight",
+      "active": true,
+      "confidence": 1.0,
+      "status": "active",
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "updated_at": "2026-03-28T12:50:20.490268",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 72513.88,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": true,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T08
+
+- Question: Is that actually consistent with the current knowledge base?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 65347.84
+- Metric tags: contradiction, groundedness, session_context
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The refusal is fully grounded in the knowledge base citing lack of specific information about the policy change, correctly respects current policies with no hallucination or contradictions.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 0.9846400022506714,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "section": "Introduction",
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.501001"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 1.0114836692810059,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "confidence": 1.0,
+      "version": 1,
+      "section": "Internship Evaluation Framework",
+      "created_at": "2026-03-28T12:50:20.497903",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.021185040473938,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "section": "Purpose of Revaluation and Script Review",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "type": "canonical_knowledge",
+      "version": 1,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "created_at": "2026-03-28T12:50:20.501093"
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 1.043402910232544,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501184",
+      "active": true,
+      "status": "active",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Eligibility for Revaluation Requests",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.0552237033843994,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "status": "active",
+      "version": 1,
+      "section": "Handling Internship Variations",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 65347.84,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 16,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-015 T09
+
+- Question: Can you give me a final personalized summary of what I should remember?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 42700.46
+- Metric tags: personalization, memory_relevance, session_context, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The response correctly refuses to provide a personalized summary due to lack of specific information in the documents. It is fully grounded with no hallucination and complies with zero-knowledge principles. However, it does not provide a personalized summary despite the session goal, indicating personalization was not applied. The refusal is appropriate given the insufficient data.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_personalization": true,
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+I don't have specific information about that in the academic documents I have access to. The documents provide some general information but lack the specific details needed to fully answer your question. Please contact the academic office directly or check the student portal for more precise information.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 0.8265365362167358,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "status": "active",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "created_at": "2026-03-28T12:50:20.501001",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "section": "Introduction"
+    }
+  },
+  {
+    "id": "doc_84",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Eligibility for Revaluation Requests",
+    "similarity": 0.888081967830658,
+    "confidence": 1.0,
+    "text": "to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following academic review mechanisms:\n\n* **Answer Script Review**\n  Verification of mark allocation, totaling, and recording accuracy.\n\n* **Revaluation**\n  Reassessment of the answer script by an evaluator following institutional procedures.\n\nThe availability of these mechanisms may vary depending on academic scheduling and evaluation workflows.\n\n## 5. Revaluation Request Workflow\n\nThe standard revaluation process at NCIE includes:\n\n1. Student accesses the academic portal after result declaration.\n2. Eligible courses are displayed for revaluation or review.\n3. Student submits a request for the selected course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and for",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501184",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Eligibility for Revaluation Requests",
+      "updated_at": "2026-03-28T12:50:20.501186",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_88",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Special Considerations",
+    "similarity": 0.9769648313522339,
+    "confidence": 1.0,
+    "text": "managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflow depends on integration between:\n\n* Examination result databases\n* Academic performance records\n* Student academic portals\n* Evaluation assignment systems\n\nAccurate system synchronization ensures reliable updates.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, the revaluation and answer script review process provides a structured academic pathway for students to seek verification of end-semester examination evaluation. Through centralized coordination, controlled workflows, and transparent result updates, NCIE maintains fairness and confidence in its assessment system.",
+    "metadata": {
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "updated_at": "2026-03-28T12:50:20.501577",
+      "confidence": 1.0,
+      "status": "active",
+      "section": "Special Considerations",
+      "active": true,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501575"
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.0379952192306519,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501093",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Purpose of Revaluation and Script Review",
+      "active": true,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_85",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Revaluation Request Workflow",
+    "similarity": 1.0444835424423218,
+    "confidence": 1.0,
+    "text": "course(s).\n4. Required details and acknowledgments are completed.\n5. The request is recorded and forwarded to the Examination Cell.\n6. Revaluation or review is conducted as per academic workflow.\n7. Updated results, if any, are reflected in the academic system.\n\nRequests submitted outside the designated request window may require additional verification.\n\n## 6. Role of the Examination Cell\n\nThe **Examination Cell** at NCIE coordinates the revaluation process by:\n\n* Managing revaluation request timelines\n* Assigning answer scripts for review or reassessment\n* Ensuring anonymity and integrity during evaluation\n* Updating verified results in the academic system\n\nThe Examination Cell acts as the central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates",
+    "metadata": {
+      "section": "Revaluation Request Workflow",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "created_at": "2026-03-28T12:50:20.501278",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.501281",
+      "confidence": 1.0,
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 42700.46,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 18,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 17,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": true,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T01
+
+- Question: I'm in 4th year CSE, doing project and internship together, and I'm worried that attendance issues might affect both. What should I clarify first?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 11419.42
+- Metric tags: reasoning, memory_relevance, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly references academic standing as a primary factor in internship eligibility as supported by multiple documents. It is relevant to the question about clarifying attendance issues affecting project and internship. However, the response is somewhat incomplete as it does not explicitly address attendance or how to manage coordination between project and internship, which are also key concerns stated in the question.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_memory_use": true
+}
+```
+
+### Answer
+
+You should clarify your academic standing first. Eligibility to undertake an internship is determined by your academic standing of the student.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.0454158782958984,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "section": "System Updates and Data Integrity",
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "version": 1,
+      "doc_id": "ncie_course_add_drop_and_withdrawal"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 1.094183087348938,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "status": "active",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.497903",
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "version": 1,
+      "active": true,
+      "section": "Internship Evaluation Framework",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 1.1284948587417603,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "section": "Coordination with Internships and External Engagements",
+      "confidence": 1.0,
+      "active": true,
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.495952",
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_55",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Purpose of Internship Engagement",
+    "similarity": 1.131195068359375,
+    "confidence": 1.0,
+    "text": "nships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n* Enhance technical and professional skills\n* Provide exposure to real-world problem-solving\n* Support career readiness and academic enrichment\n\nInternship experiences are treated as structured academic activities rather than informal external engagements.\n\n## 3. Internship Eligibility and Timing\n\nInternships are typically undertaken during designated academic periods, such as:\n\n* Semester breaks\n* Summer or winter academic recess\n* Approved academic windows within a semester, where applicable\n\nEligibility to undertake an internship is determined by:\n\n* Academic standing of the student\n* Completion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship reg",
+    "metadata": {
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "updated_at": "2026-03-28T12:50:20.497306",
+      "created_at": "2026-03-28T12:50:20.497303",
+      "confidence": 1.0,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Purpose of Internship Engagement",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 1.1417962312698364,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.498069",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Handling Internship Variations",
+      "status": "active",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 11419.42,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 17,
+  "fact_count_after": 18,
+  "fact_count_delta": 1,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T02
+
+- Question: If I miss a review because of internship work, which academic process matters more to document immediately?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 42144.88
+- Metric tags: reasoning, session_context, task_success
+- Judge verdict: reject
+- Judge error type: retrieval_failure
+- Judge reasoning: The answer is partially grounded in the source documents which mention communication with Faculty Advisor for internship-related delays, but it fails to address the prioritization of academic processes to document immediately when a review is missed due to internship work. It lacks explanation or reasoning on which academic process matters more to document immediately, thus missing completeness and direct relevance to the user's question about prioritization among overlapping academic obligations.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+If you miss a review because of internship work, you should communicate with your Faculty Advisor.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 0.8655953407287598,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Handling Internship Variations",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "updated_at": "2026-03-28T12:50:20.498074",
+      "active": true,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.8886998891830444,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.497726",
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "section": "Role of Faculty and Departments",
+      "type": "canonical_knowledge",
+      "active": true
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 1.0109946727752686,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "section": "Internship Evaluation Framework",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.497903",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.0515217781066895,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497178",
+      "active": true,
+      "version": 1,
+      "section": "Introduction",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "status": "active",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 1.0520997047424316,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "section": "Coordination with Internships and External Engagements",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "confidence": 1.0,
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 42144.88,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 4,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 18,
+  "fact_count_after": 20,
+  "fact_count_delta": 2,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T03
+
+- Question: What should I ask my project guide, internship coordinator, and lab faculty separately so I don't miss something important?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 37714.59
+- Metric tags: reasoning, completeness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly identifies relevant topics to ask each role based on multiple sourced documents about projects, internships, and lab roles with high confidence. It is role-aware and relevant. However, it could be more complete by explicitly including attendance or coordination questions, which is a part of the user's broader session concern. No hallucination or contradictions detected.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+You should ask your project guide about project-related matters, such as project planning, milestones, and evaluation input. You should ask your internship coordinator about internship registration, monitoring, and evaluation processes. You should ask your lab faculty about academic supervision, progress monitoring, and any specific lab-related requirements.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_44",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Coordination with Internships and External Engagements",
+    "similarity": 0.9815036654472351,
+    "confidence": 1.0,
+    "text": "ordination with Internships and External Engagements\n\nIn some cases, final-year projects may align thematically with internships or external engagements. Such alignment is coordinated through:\n\n* Faculty guidance\n* Departmental review\n* Clear separation of evaluation records\n\nInternship participation does not replace project evaluation requirements.\n\n## 12. Handling Delays and Project Modifications\n\nProjects may encounter delays or require scope adjustments due to technical or logistical factors. In such cases:\n\n* Students communicate changes to the Project Guide\n* Revised plans are discussed at the departmental level\n* Adjustments are documented for evaluation transparency\n\n## 13. System Integration and Record Management\n\nFinal-year project records are maintained across multiple academic",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495955",
+      "created_at": "2026-03-28T12:50:20.495952",
+      "status": "active",
+      "confidence": 1.0,
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Coordination with Internships and External Engagements",
+      "version": 1,
+      "doc_id": "ncie_final_year_project_guidelines"
+    }
+  },
+  {
+    "id": "doc_40",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Project Duration and Structure",
+    "similarity": 1.0943303108215332,
+    "confidence": 1.0,
+    "text": ", and final evaluation.\n\nProgress across both semesters is monitored through periodic academic reviews.\n\n## 4. Project Topic Selection and Approval\n\nProject topics may originate from:\n\n* Student-proposed ideas\n* Faculty-suggested problem statements\n* Industry- or research-aligned themes\n\nStudents are required to submit project proposals for academic review. Topic approval is coordinated at the department level to ensure feasibility, relevance, and academic alignment.\n\n## 5. Group Formation and Supervision\n\nFinal-year projects may be undertaken:\n\n* Individually, or\n* In small student groups, as guided by the department\n\nEach project or group is assigned a **Project Guide** responsible for academic supervision, progress monitoring, and evaluation input.\n\n## 6. Project Planning and Milestones",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "updated_at": "2026-03-28T12:50:20.495490",
+      "created_at": "2026-03-28T12:50:20.495487",
+      "version": 1,
+      "status": "active",
+      "section": "Project Duration and Structure"
+    }
+  },
+  {
+    "id": "doc_54",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Introduction",
+    "similarity": 1.1003791093826294,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, internships are an integral part of undergraduate academic learning, providing students with exposure to professional environments and practical applications of their academic knowledge. Internship activities are embedded within the academic framework and are monitored, recorded, and evaluated through institutional processes.\n\nInternships at NCIE are **mandatory components** of the academic program and are evaluated as part of the student\u2019s academic progression. This document outlines the workflow for internship registration, monitoring, evaluation, and academic coordination.\n\n## 2. Purpose of Internship Engagement\n\nInternships at NCIE are designed to:\n\n* Bridge the gap between academic learning and industry practices\n*",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497178",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.497181",
+      "active": true,
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "section": "Introduction",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_62",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Coordination with Final-Year Projects",
+    "similarity": 1.1108288764953613,
+    "confidence": 1.0,
+    "text": "requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination between:\n\n* Academic portal systems\n* Departmental review mechanisms\n* Internship or placement coordination systems\n* Academic record management modules\n\nSystem synchronization ensures accurate tracking and evaluation.\n\n## 14. Summary\n\nAt Nova Crest Institute of Engineering, internship registration and evaluation follow a structured academic workflow that emphasizes learning outcomes, documentation, and academic relevance. Through coordinated oversight by faculty and departments, internships contribute meaningfully to student development while remaining aligned with the institutional academic framework.",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.498617",
+      "version": 1,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.498612",
+      "section": "Coordination with Final-Year Projects"
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 1.1109732389450073,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "section": "Delays, Extensions, and Special Cases",
+      "created_at": "2026-03-28T12:50:20.498377",
+      "active": true,
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "confidence": 1.0,
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 37714.59,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 6,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T04
+
+- Question: Can you turn that into a sequence of actions for this week instead of general advice?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 59304.62
+- Metric tags: reasoning, session_context, instruction_following
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer provides a list of stakeholders to ask questions but fails to convert multi-factor reasoning into a clear, ordered sequence of actions for the week as requested, making it incomplete and only partially relevant despite being grounded in the source documents.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+You should ask your Faculty Advisor about communicating with them in case you miss a review due to internship work. You should ask your project guide about project-related matters, such as project planning, milestones, and evaluation input. You should ask your internship coordinator about internship registration, monitoring, and evaluation processes. You should ask your lab faculty about academic supervision, progress monitoring, and any specific lab-related requirements.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_58",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Role of Faculty and Departments",
+    "similarity": 0.9401220679283142,
+    "confidence": 1.0,
+    "text": "comes and academic expectations.\n\n## 6. Internship Monitoring and Progress Tracking\n\nDuring the internship period, students may be required to:\n\n* Submit periodic progress updates\n* Maintain activity logs or journals\n* Participate in review meetings or discussions\n\nMonitoring mechanisms help ensure that internship activities remain aligned with academic goals and learning objectives.\n\n## 7. Internship Evaluation Framework\n\nInternship evaluation at NCIE focuses on learning outcomes rather than examination-based assessment. Evaluation inputs may include:\n\n* Internship completion reports\n* Supervisor or mentor feedback\n* Faculty review of submitted documentation\n* Presentations or discussions conducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as par",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.497726",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Role of Faculty and Departments",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.497731",
+      "doc_id": "ncie_internship_registration_and_evaluation"
+    }
+  },
+  {
+    "id": "doc_60",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Handling Internship Variations",
+    "similarity": 0.9748982191085815,
+    "confidence": 1.0,
+    "text": "including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to academic projects\n* Internships undertaken remotely or on-site\n\nSuch variations are handled through departmental review to ensure academic relevance and proper documentation.\n\n## 10. Delays, Extensions, and Special Cases\n\nInternship timelines may be affected by factors such as:\n\n* Organizational constraints\n* Academic scheduling conflicts\n* Personal or logistical challenges\n\nIn such cases, students are expected to:\n\n* Communicate with their Faculty Advisor\n* Submit revised timelines or documentation\n* Obtain approval for any significant changes\n\nAll deviations are documented in the academic system.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may i",
+    "metadata": {
+      "active": true,
+      "type": "canonical_knowledge",
+      "version": 1,
+      "confidence": 1.0,
+      "section": "Handling Internship Variations",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "created_at": "2026-03-28T12:50:20.498069",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.498074"
+    }
+  },
+  {
+    "id": "doc_59",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Evaluation Framework",
+    "similarity": 1.0378010272979736,
+    "confidence": 1.0,
+    "text": "onducted after completion\n\nInternship evaluation outcomes are recorded in the academic system as part of the student\u2019s academic record.\n\n## 8. Integration with Academic Assessment\n\nInternships at NCIE are **evaluated but not treated as theory courses**. While internship performance contributes to academic progression and recognition, it does not replace or alter the **40% Continuous Assessment / 60% End-Semester Examination** structure used for regular courses.\n\nInternship evaluation records may be referenced for academic credit fulfillment, project alignment, or program completion requirements.\n\n## 9. Handling Internship Variations\n\nInternship experiences may vary in structure and context, including:\n\n* Industry-based internships\n* Research-oriented internships\n* Internships linked to aca",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.497903",
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.497907",
+      "confidence": 1.0,
+      "section": "Internship Evaluation Framework"
+    }
+  },
+  {
+    "id": "doc_61",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Delays, Extensions, and Special Cases",
+    "similarity": 1.0714282989501953,
+    "confidence": 1.0,
+    "text": "m.\n\n## 11. Documentation and Record Maintenance\n\nInternship-related records maintained at NCIE may include:\n\n* Registration approvals\n* Progress reports\n* Completion certificates or confirmations\n* Evaluation summaries\n\nAccurate documentation ensures traceability and supports academic verification processes.\n\n## 12. Coordination with Final-Year Projects\n\nIn some cases, internships may be thematically aligned with final-year projects. Such alignment is encouraged when academically appropriate and is coordinated through:\n\n* Faculty guidance\n* Department-level review\n* Clear distinction between internship evaluation and project assessment\n\nInternship activities do not replace project evaluation requirements.\n\n## 13. System Dependencies\n\nThe internship workflow at NCIE relies on coordination b",
+    "metadata": {
+      "status": "active",
+      "section": "Delays, Extensions, and Special Cases",
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.498377",
+      "updated_at": "2026-03-28T12:50:20.498389",
+      "active": true,
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_56",
+    "doc_id": "ncie_internship_registration_and_evaluation",
+    "section": "Internship Eligibility and Timing",
+    "similarity": 1.0731837749481201,
+    "confidence": 1.0,
+    "text": "tion of prerequisite coursework, where relevant\n* Departmental guidance and approval\n\nInternship registration is required before the commencement of the internship period.\n\n## 4. Internship Registration Workflow\n\nThe standard internship registration process at NCIE includes the following steps:\n\n1. The student identifies an internship opportunity relevant to their academic program.\n2. Internship details are submitted through the NCIE academic portal or designated departmental system.\n3. Required information may include organization details, duration, and nature of work.\n4. The submission is reviewed by the **Faculty Advisor** or **Department Academic Coordinator**.\n5. Upon approval, the internship registration is recorded in the academic system.\n\nInternship activities undertaken without pr",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.497431",
+      "created_at": "2026-03-28T12:50:20.497428",
+      "section": "Internship Eligibility and Timing",
+      "version": 1,
+      "confidence": 1.0,
+      "doc_id": "ncie_internship_registration_and_evaluation",
+      "active": true,
+      "status": "active"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 59304.62,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 8,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T05
+
+- Question: Which of these issues are definitely covered by policy and which parts should I confirm manually?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 51189.67
+- Metric tags: reasoning, groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer correctly uses multiple sections from the provided documents to identify which issues are definitely covered by policy and which require manual confirmation. The listed issues match the source text from the exam registration process documents. However, the answer omits explicitly connecting this to the session goal's broader constraints (project, internship, attendance) and does not comprehensively cover all possible relevant issues, limiting completeness slightly.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Based on the context, the following issues are definitely covered by policy:
+
+* Eligible courses not appearing in the portal
+* Incorrect course details displayed
+* Registration blocked due to incomplete assessment records
+* Payment confirmation delays
+* Missing registration acknowledgment
+
+These issues can be resolved by contacting the department office with relevant details and supporting information.
+
+For the following issues, you should confirm manually:
+
+* Documented medical reasons
+* Technical issues with the academic portal
+* Overlapping institutional academic activities
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.3253618478775024,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "section": "Role of Departments and Academic Offices",
+      "confidence": 1.0,
+      "doc_id": "ncie_exam_registration_process",
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.494512",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_33",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Late and Special Registration Cases",
+    "similarity": 1.4148437976837158,
+    "confidence": 1.0,
+    "text": "s:\n\n* Documented medical reasons\n* Technical issues with the academic portal\n* Overlapping institutional academic activities\n\nSuch cases are usually handled through:\n\n* Student requests submitted to the department\n* Verification by the **Faculty Advisor** or **Department Academic Coordinator**\n* Coordination with the Examination Cell for manual updates\n\nApproval-based registrations are recorded explicitly in the system.\n\n## 8. Role of Departments and Academic Offices\n\nWhile exam registration is centrally managed, departments at NCIE play an important supporting role, including:\n\n* Assisting students with eligibility clarification\n* Validating enrollment or assessment records\n* Facilitating resolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nD",
+    "metadata": {
+      "section": "Late and Special Registration Cases",
+      "updated_at": "2026-03-28T12:50:20.494358",
+      "created_at": "2026-03-28T12:50:20.494356",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1,
+      "active": true,
+      "confidence": 1.0,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.4765231609344482,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "System Updates and Data Integrity",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_24",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Impact on Examination Registration",
+    "similarity": 1.4790961742401123,
+    "confidence": 1.0,
+    "text": "enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Faculty and Departments\n\nAcademic roles involved in enrollment adjustments include:\n\n* **Faculty Advisor**\n  Provides guidance on academic planning and feasibility.\n\n* **Department Academic Coordinator**\n  Oversees approvals and ensures consistency across the department.\n\nDepartments ensure that enrollment changes do not adversely affect academic progression or system integrity.\n\n## 9. System Updates and Data Integrity\n\nCourse add, drop, and withdrawal actions trigger updates across multiple academic systems, including:\n\n* Course enrollment databases\n* Continuous Assessment records\n* Examination eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to pre",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.493185",
+      "section": "Impact on Examination Registration",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.493187",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "active": true,
+      "confidence": 1.0,
+      "version": 1
+    }
+  },
+  {
+    "id": "doc_42",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Review and Evaluation Process",
+    "similarity": 1.4972169399261475,
+    "confidence": 1.0,
+    "text": "n of implemented components\n* Technical discussions with faculty panels\n* Submission of interim reports\n\nEach review provides structured feedback to guide subsequent project phases.\n\n## 8. Project Deliverables\n\nKey deliverables associated with the final-year project may include:\n\n* Approved project proposal\n* Interim progress reports\n* Final project report\n* Source code, design files, or experimental data\n* Presentation and demonstration materials\n\nDeliverables are submitted through designated academic or departmental platforms.\n\n## 9. Evaluation Criteria and Mark Recording\n\nEvaluation of final-year projects considers multiple academic dimensions, such as:\n\n* Problem definition and clarity of objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.495725",
+      "active": true,
+      "status": "active",
+      "section": "Review and Evaluation Process",
+      "created_at": "2026-03-28T12:50:20.495723",
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "type": "canonical_knowledge"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 51189.67,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 10,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T06
+
+- Question: If I only have time to resolve one issue today, how should I choose?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 40270.71
+- Metric tags: reasoning, task_success
+- Judge verdict: reject
+- Judge error type: generation_hallucination
+- Judge reasoning: The answer references issues 'definitely covered by policy' but this classification and list were not supported or mentioned in the provided source documents, which focus on project guidelines and academic advising rather than policy coverage of specific attendance or registration issues. The answer partially addresses prioritization but does not provide reasoning or rationale based on the session context or documents, and relies on prior conversation content not substantiated by the given sources. This leads to hallucination and insufficient completeness.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Based on the context, if you only have time to resolve one issue today, you should choose the issue that is definitely covered by policy, such as those mentioned in the previous conversation: eligible courses not appearing in the portal, incorrect course details displayed, registration blocked due to incomplete assessment records, payment confirmation delays, or missing registration acknowledgment.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_75",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Project Allocation and Topic Selection",
+    "similarity": 1.4797039031982422,
+    "confidence": 1.0,
+    "text": "approaches:\n\n* Topic proposals submitted by students or student groups\n* Topic suggestions provided by faculty members\n* Department-approved problem statements\n\nStudents are typically required to finalize project topics early in the project timeline. Faculty guides or supervisors are assigned to oversee progress and provide academic guidance.\n\n## 4. Project Timeline and Milestones\n\nProject activities are structured around defined milestones to ensure steady progress. Common milestones include:\n\n* Topic approval\n* Literature review or background study\n* Design or planning phase\n* Implementation or development phase\n* Testing, validation, or analysis\n* Final documentation and submission\n\nFor final-year projects, milestones are distributed across two semesters, allowing for iterative developm",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.500162",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.500166",
+      "section": "Project Allocation and Topic Selection"
+    }
+  },
+  {
+    "id": "doc_39",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Objectives of the Final-Year Project",
+    "similarity": 1.5975351333618164,
+    "confidence": 1.0,
+    "text": "Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative learning\n* Develop problem analysis and solution design skills\n* Apply theoretical concepts to real-world or research-oriented problems\n* Strengthen documentation, communication, and presentation abilities\n\nThe project emphasizes learning outcomes and academic rigor over purely outcome-based results.\n\n## 3. Project Duration and Structure\n\nThe final-year project is structured across two consecutive semesters:\n\n* **Semester 7**\n  Focuses on problem identification, background study, planning, and initial development.\n\n* **Semester 8**\n  Focuses on implementation completion, validation, documentation, and final evaluation.\n\nProgress across both semesters is monitored through periodic academic revie",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.495386",
+      "confidence": 1.0,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.495384",
+      "version": 1,
+      "section": "Objectives of the Final-Year Project"
+    }
+  },
+  {
+    "id": "doc_38",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Introduction",
+    "similarity": 1.6626298427581787,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the Final-Year Project represents a capstone academic activity that allows students to apply accumulated knowledge and skills to a sustained problem-solving initiative. The project spans the **seventh and eighth semesters** of the undergraduate program and is conducted under faculty supervision.\n\nThe final-year project is evaluated through structured reviews and submissions and forms part of the **Continuous Assessment (CA)** framework for the relevant project modules. This document outlines the academic practices, workflow, and coordination involved in final-year project execution at NCIE.\n\n## 2. Objectives of the Final-Year Project\n\nThe final-year project at NCIE aims to:\n\n* Encourage independent and collaborative lea",
+    "metadata": {
+      "version": 1,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "created_at": "2026-03-28T12:50:20.495282",
+      "updated_at": "2026-03-28T12:50:20.495285",
+      "confidence": 1.0,
+      "active": true
+    }
+  },
+  {
+    "id": "doc_42",
+    "doc_id": "ncie_final_year_project_guidelines",
+    "section": "Review and Evaluation Process",
+    "similarity": 1.6669909954071045,
+    "confidence": 1.0,
+    "text": "n of implemented components\n* Technical discussions with faculty panels\n* Submission of interim reports\n\nEach review provides structured feedback to guide subsequent project phases.\n\n## 8. Project Deliverables\n\nKey deliverables associated with the final-year project may include:\n\n* Approved project proposal\n* Interim progress reports\n* Final project report\n* Source code, design files, or experimental data\n* Presentation and demonstration materials\n\nDeliverables are submitted through designated academic or departmental platforms.\n\n## 9. Evaluation Criteria and Mark Recording\n\nEvaluation of final-year projects considers multiple academic dimensions, such as:\n\n* Problem definition and clarity of objectives\n* Technical depth and methodology\n* Consistency of progress across semesters\n* Quality",
+    "metadata": {
+      "active": true,
+      "doc_id": "ncie_final_year_project_guidelines",
+      "version": 1,
+      "status": "active",
+      "section": "Review and Evaluation Process",
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.495723",
+      "updated_at": "2026-03-28T12:50:20.495725",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_5",
+    "doc_id": "ncie_academic_advising_and_mentorship",
+    "section": "Identification and Support of Academic Challenges",
+    "similarity": 1.6781814098358154,
+    "confidence": 1.0,
+    "text": "of Academic Challenges\n\nFaculty Advisors may assist in identifying academic challenges such as:\n\n* Consistent assessment difficulties\n* Course overload concerns\n* Academic planning uncertainties\n* Adjustment issues consideration\n\nWhen necessary, advisors coordinate with departments or academic offices to guide students toward appropriate support mechanisms.\n\n## 10. Role of Departments in Advising Oversight\n\nDepartments at NCIE oversee academic advising by:\n\n* Assigning and monitoring advisor responsibilities\n* Ensuring advising consistency across student groups\n* Supporting advisors with academic information and system access\n* Coordinating interventions when needed\n\nDepartmental oversight ensures advising effectiveness and alignment with institutional practices.\n\n## 11. Documentation and",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.490155",
+      "section": "Identification and Support of Academic Challenges",
+      "active": true,
+      "version": 1,
+      "doc_id": "ncie_academic_advising_and_mentorship",
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.490157",
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 40270.71,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 12,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-016 T07
+
+- Question: Summarize the risk tradeoff in simple words.
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 67146.46
+- Metric tags: reasoning, session_context
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: The answer repeats advice about choosing issues covered by policy from the previous turn instead of summarizing the risk tradeoff in simple words as requested. It lacks concise reasoning or summary relevant to risk tradeoff, thus incomplete and less relevant despite being grounded and contextually linked.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+Based on the context, if you only have time to resolve one issue today, you should choose the issue that is definitely covered by policy, such as eligible courses not appearing in the portal, incorrect course details displayed, registration blocked due to incomplete assessment records, payment confirmation delays, or missing registration acknowledgment.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 0.9188877940177917,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "status": "active",
+      "doc_id": "ncie_exam_registration_process",
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.494512",
+      "section": "Role of Departments and Academic Offices"
+    }
+  },
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.1047735214233398,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "version": 1,
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "status": "active",
+      "type": "canonical_knowledge",
+      "section": "System Updates and Data Integrity",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "confidence": 1.0,
+      "updated_at": "2026-03-28T12:50:20.493325"
+    }
+  },
+  {
+    "id": "doc_33",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Late and Special Registration Cases",
+    "similarity": 1.1140035390853882,
+    "confidence": 1.0,
+    "text": "s:\n\n* Documented medical reasons\n* Technical issues with the academic portal\n* Overlapping institutional academic activities\n\nSuch cases are usually handled through:\n\n* Student requests submitted to the department\n* Verification by the **Faculty Advisor** or **Department Academic Coordinator**\n* Coordination with the Examination Cell for manual updates\n\nApproval-based registrations are recorded explicitly in the system.\n\n## 8. Role of Departments and Academic Offices\n\nWhile exam registration is centrally managed, departments at NCIE play an important supporting role, including:\n\n* Assisting students with eligibility clarification\n* Validating enrollment or assessment records\n* Facilitating resolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nD",
+    "metadata": {
+      "active": true,
+      "confidence": 1.0,
+      "created_at": "2026-03-28T12:50:20.494356",
+      "version": 1,
+      "updated_at": "2026-03-28T12:50:20.494358",
+      "status": "active",
+      "section": "Late and Special Registration Cases",
+      "doc_id": "ncie_exam_registration_process",
+      "type": "canonical_knowledge"
+    }
+  },
+  {
+    "id": "doc_18",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Introduction",
+    "similarity": 1.174268126487732,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, course registration adjustments are managed through a structured academic workflow that allows students to modify their enrolled course list within defined academic timelines. These adjustments may include adding a course, dropping a course, or withdrawing from a course after initial registration.\n\nThe add, drop, and withdrawal processes ensure flexibility for students while maintaining academic record accuracy and alignment with assessment and examination systems.\n\nThis document describes how course enrollment changes are handled at NCIE during a semester.\n\n## 2. Course Enrollment Context\n\nAt the start of each semester, students at NCIE enroll in courses as part of the academic registration process. Once enrolled, the",
+    "metadata": {
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.492490",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.492492"
+    }
+  },
+  {
+    "id": "doc_35",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Post-Registration Verification",
+    "similarity": 1.1800940036773682,
+    "confidence": 1.0,
+    "text": "to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or makeup)\n* Registration status and acknowledgment\n* Payment confirmation, if applicable\n\nEarly verification helps prevent discrepancies during examination scheduling and result processing.\n\n## 11. Modifications After Submission\n\nChanges to exam registration after submission are generally limited. However, modifications may be considered in situations such as:\n\n* Correction of clerical or system errors\n* Administrative updates initiated by academic offices\n* Approved course status changes\n\nSuch modifications require coordination between the department and the Examination Cell.\n\n## 12. Special Student Categories\n\nCertain student categories may follow slightly modified registration workflows, inclu",
+    "metadata": {
+      "confidence": 1.0,
+      "active": true,
+      "section": "Post-Registration Verification",
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.494754",
+      "updated_at": "2026-03-28T12:50:20.494761",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_exam_registration_process",
+      "version": 1
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 67146.46,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 14,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-017 T01
+
+- Question: I'm confused because one person told me CA can be revaluated and another said only ESE can. How should I reason about that based on current rules?
+- Status: completed (200)
+- Retry count: 0
+- Latency ms: 28939.26
+- Metric tags: reasoning, groundedness, task_success
+- Judge verdict: accept
+- Judge error type: no_error
+- Judge reasoning: The answer directly references the policy that only End-Semester Examination scripts are eligible for revaluation and explicitly states that Continuous Assessment components are not subject to revaluation, consistent with multiple cited source sections. The contradiction in understanding (whether CA or ESE can be revaluated) is addressed correctly by citing the authoritative policy, with no hallucination or unsupported claims. The answer is relevant, complete, and grounded.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+According to the context, Continuous Assessment (CA) components are **not subject to revaluation** under the process described. This is stated in section 3: "Eligibility for Revaluation Requests", which says "Continuous Assessment components are **not subject to revaluation** under this process."
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_87",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Communication of Outcomes",
+    "similarity": 1.17903733253479,
+    "confidence": 1.0,
+    "text": "cademic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation feedback may not always be provided, depending on the review mechanism used.\n\n## 10. Limitations and Scope\n\nThe revaluation process at NCIE:\n\n* Applies only to End-Semester Examination scripts\n* Does not modify Continuous Assessment records\n* Does not alter examination structure or syllabus coverage\n\nRevaluation focuses strictly on evaluation correctness.\n\n## 11. Special Considerations\n\nCertain academic scenarios may involve additional coordination, such as:\n\n* Final-year students awaiting graduation clearance\n* Courses with multiple evaluators\n* High-volume revaluation requests\n\nThese cases are managed through Examination Cell coordination.\n\n## 12. System Dependencies\n\nThe revaluation workflo",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501475",
+      "created_at": "2026-03-28T12:50:20.501473",
+      "status": "active",
+      "active": true,
+      "type": "canonical_knowledge",
+      "section": "Communication of Outcomes",
+      "version": 1,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 1.187974452972412,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "created_at": "2026-03-28T12:50:20.496587",
+      "active": true,
+      "section": "End-Semester Examination Contribution",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_83",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Purpose of Revaluation and Script Review",
+    "similarity": 1.2168420553207397,
+    "confidence": 1.0,
+    "text": "ow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling or assessment\n* Provide academic reassurance through structured review\n* Maintain trust in the examination evaluation process\n\nRevaluation is not intended to replace academic evaluation standards but to ensure correctness and consistency.\n\n## 3. Eligibility for Revaluation Requests\n\nStudents may request revaluation or answer script review for courses in which:\n\n* End-Semester Examination results have been officially declared\n* The course evaluation includes a written ESE component\n* The student has completed required examination registration\n\nContinuous Assessment components are **not subject to revaluation** under this process.\n\n## 4. Types of Review Mechanisms\n\nNCIE supports the following",
+    "metadata": {
+      "status": "active",
+      "updated_at": "2026-03-28T12:50:20.501095",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501093",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "active": true,
+      "section": "Purpose of Revaluation and Script Review",
+      "version": 1,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_82",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Introduction",
+    "similarity": 1.280821681022644,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, the revaluation and answer script review process provides students with a formal academic mechanism to request a reassessment or review of their evaluated examination scripts. This process supports transparency and confidence in the examination and evaluation system.\n\nRevaluation and script review apply **only to End-Semester Examinations (ESE)** and are initiated after the declaration of examination results. This document outlines the workflow, roles involved, and academic practices associated with revaluation at NCIE.\n\n## 2. Purpose of Revaluation and Script Review\n\nThe revaluation process at NCIE is intended to:\n\n* Allow students to seek verification of evaluation accuracy\n* Address potential errors in mark totaling",
+    "metadata": {
+      "updated_at": "2026-03-28T12:50:20.501004",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Introduction",
+      "created_at": "2026-03-28T12:50:20.501001",
+      "active": true,
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 1.2963051795959473,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "confidence": 1.0,
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.501374",
+      "status": "active",
+      "version": 1,
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Role of the Examination Cell"
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 5,
+  "latency_ms": 28939.26,
+  "response_received": true,
+  "retry_count": 0,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": true,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-017 T02
+
+- Question: If my final grade changes only after ESE revaluation, which parts of the grading pipeline stay unchanged?
+- Status: failed (200)
+- Retry count: 5
+- Latency ms: 122095.52
+- Metric tags: reasoning, groundedness, completeness
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: No API response after retry budget.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+I apologize, but I encountered an error while generating a response.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_86",
+    "doc_id": "ncie_revaluation_and_answer_script_review",
+    "section": "Role of the Examination Cell",
+    "similarity": 0.8492754697799683,
+    "confidence": 1.0,
+    "text": "central authority for managing revaluation workflows.\n\n## 7. Evaluation Outcomes and Result Updates\n\nAfter revaluation or review:\n\n* Marks may remain unchanged\n* Marks may be revised based on evaluation findings\n* Updated marks are reflected in the academic portal\n\nRevised results replace previous records for academic computation and reporting.\n\n## 8. Impact on Academic Records\n\nRevaluation outcomes directly affect:\n\n* Course grade outcomes\n* Academic performance records\n* Eligibility for subsequent academic actions\n\nOnce updated, revaluation results are treated as final within the academic system.\n\n## 9. Communication of Outcomes\n\nStudents are notified of revaluation outcomes through:\n\n* Academic portal notifications\n* Official institutional communication channels\n\nDetailed evaluation fe",
+    "metadata": {
+      "created_at": "2026-03-28T12:50:20.501374",
+      "updated_at": "2026-03-28T12:50:20.501377",
+      "type": "canonical_knowledge",
+      "confidence": 1.0,
+      "active": true,
+      "doc_id": "ncie_revaluation_and_answer_script_review",
+      "section": "Role of the Examination Cell",
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_49",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "End-Semester Examination Contribution",
+    "similarity": 0.9904657602310181,
+    "confidence": 1.0,
+    "text": "ts who have completed required academic processes, including exam registration, are considered for ESE evaluation.\n\n## 6. Integration of CA and ESE Scores\n\nFinal course evaluation involves combining verified CA and ESE scores according to the prescribed weightage. The integrated score forms the basis for determining the course grade.\n\nThe integration process occurs only after:\n\n* CA marks are finalized and verified\n* ESE results are declared or updated (including revaluation, where applicable)\n\n## 7. Grading Scale and Grade Representation\n\nNCIE uses a **letter-grade system** to represent academic outcomes. Letter grades indicate performance ranges and are recorded in the academic system.\n\nGrades are used for:\n\n* Academic performance tracking\n* Progression evaluation\n* Program completion ve",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "section": "End-Semester Examination Contribution",
+      "created_at": "2026-03-28T12:50:20.496587",
+      "updated_at": "2026-03-28T12:50:20.496589",
+      "type": "canonical_knowledge",
+      "active": true,
+      "version": 1,
+      "status": "active"
+    }
+  },
+  {
+    "id": "doc_53",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "System Dependencies",
+    "similarity": 0.994963526725769,
+    "confidence": 1.0,
+    "text": "grade computation and reporting.\n\n## 13. Summary\n\nAt Nova Crest Institute of Engineering, grading is a structured integration of Continuous Assessment and End-Semester Examination outcomes. With a **40% CA and 60% ESE** distribution, the grading framework supports comprehensive evaluation of student learning while maintaining consistency, transparency, and academic integrity across programs.",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "confidence": 1.0,
+      "section": "System Dependencies",
+      "created_at": "2026-03-28T12:50:20.497044",
+      "version": 1,
+      "status": "active",
+      "type": "canonical_knowledge",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.497048"
+    }
+  },
+  {
+    "id": "doc_46",
+    "doc_id": "ncie_grading_components_and_weightage",
+    "section": "Introduction",
+    "similarity": 1.0159059762954712,
+    "confidence": 1.0,
+    "text": "## 1. Introduction\n\nAt **Nova Crest Institute of Engineering (NCIE)**, grading is the academic mechanism through which student performance in a course is evaluated and recorded. Grades reflect a combination of continuous academic engagement and end-semester assessment outcomes.\n\nThe grading structure at NCIE is designed to ensure transparency, consistency, and alignment with learning objectives across courses and semesters. This document describes the components involved in grading and how weightage is applied within the academic evaluation framework.\n\n## 2. Components of Course Evaluation\n\nCourse evaluation at NCIE is composed of two primary components:\n\n* **Continuous Assessment (CA)**\n  Ongoing evaluation conducted throughout the semester.\n\n* **End-Semester Examination (ESE)**\n  Compreh",
+    "metadata": {
+      "doc_id": "ncie_grading_components_and_weightage",
+      "type": "canonical_knowledge",
+      "section": "Introduction",
+      "status": "active",
+      "version": 1,
+      "active": true,
+      "created_at": "2026-03-28T12:50:20.496289",
+      "updated_at": "2026-03-28T12:50:20.496292",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_23",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "Course Withdrawal Process",
+    "similarity": 1.0358070135116577,
+    "confidence": 1.0,
+    "text": "letion.\n\n## 6. Impact on Continuous Assessment\n\nEnrollment changes directly affect Continuous Assessment tracking:\n\n* Added courses require initiation of CA components.\n* Dropped courses remove CA obligations entirely.\n* Withdrawn courses may retain partial CA records depending on timing.\n\nThe academic system ensures synchronization between enrollment status and assessment records.\n\n## 7. Impact on Examination Registration\n\nCourse enrollment status determines examination eligibility:\n\n* Added courses become eligible for exam registration.\n* Dropped courses are excluded from exam registration.\n* Withdrawn courses are not eligible for end-semester examination.\n\nStudents are advised to complete enrollment changes before initiating exam registration to avoid inconsistencies.\n\n## 8. Role of Fac",
+    "metadata": {
+      "status": "active",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.493070",
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "section": "Course Withdrawal Process",
+      "created_at": "2026-03-28T12:50:20.493068",
+      "version": 1,
+      "type": "canonical_knowledge",
+      "confidence": 1.0
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 0,
+  "latency_ms": 122095.52,
+  "response_received": false,
+  "retry_count": 5,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": false,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+
+## AVS-017 T03
+
+- Question: What would be the wrong assumption a student might make here?
+- Status: failed (200)
+- Retry count: 5
+- Latency ms: 180067.37
+- Metric tags: reasoning, groundedness
+- Judge verdict: reject
+- Judge error type: task_failure
+- Judge reasoning: No API response after retry budget.
+
+### Expected Behaviors
+
+```json
+{
+  "expects_grounded_answer": true
+}
+```
+
+### Answer
+
+I apologize, but I encountered an error while generating a response.
+
+### Sources
+
+```json
+[
+  {
+    "id": "doc_25",
+    "doc_id": "ncie_course_add_drop_and_withdrawal",
+    "section": "System Updates and Data Integrity",
+    "similarity": 1.3863739967346191,
+    "confidence": 1.0,
+    "text": "eligibility lists\n* Academic performance summaries\n\nAccurate and timely updates are essential to prevent discrepancies.\n\n## 10. Common Scenarios and Clarifications\n\nCommon situations handled through these processes include:\n\n* Switching between elective courses\n* Adjusting workload due to academic difficulty\n* Aligning courses with project or internship commitments\n\nStudents are encouraged to consult academic advisors before initiating enrollment changes.\n\n## 11. Special Considerations\n\nCertain academic contexts may require additional coordination, such as:\n\n* Final-year project semesters\n* Internship-aligned semesters\n* Students with academic accommodations\n\nThese cases are handled through departmental review and documented explicitly.\n\n## 12. Summary\n\nAt Nova Crest Institute of Engineeri",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "updated_at": "2026-03-28T12:50:20.493325",
+      "active": true,
+      "doc_id": "ncie_course_add_drop_and_withdrawal",
+      "confidence": 1.0,
+      "status": "active",
+      "created_at": "2026-03-28T12:50:20.493322",
+      "version": 1,
+      "section": "System Updates and Data Integrity"
+    }
+  },
+  {
+    "id": "doc_34",
+    "doc_id": "ncie_exam_registration_process",
+    "section": "Role of Departments and Academic Offices",
+    "similarity": 1.3941704034805298,
+    "confidence": 1.0,
+    "text": "esolution of system discrepancies\n* Coordinating with the Examination Cell for exception handling\n\nDepartments act as the first point of contact for most student queries related to registration issues.\n\n## 9. Common Registration Issues\n\nStudents may encounter issues such as:\n\n* Eligible courses not appearing in the portal\n* Incorrect course details displayed\n* Registration blocked due to incomplete assessment records\n* Payment confirmation delays\n* Missing registration acknowledgment\n\nMost issues can be resolved by contacting the department office with relevant details and supporting information.\n\n## 10. Post-Registration Verification\n\nAfter completing exam registration, students are advised to verify:\n\n* The list of registered courses\n* Examination category (regular, supplementary, or mak",
+    "metadata": {
+      "version": 1,
+      "status": "active",
+      "confidence": 1.0,
+      "section": "Role of Departments and Academic Offices",
+      "updated_at": "2026-03-28T12:50:20.494517",
+      "type": "canonical_knowledge",
+      "active": true,
+      "doc_id": "ncie_exam_registration_process",
+      "created_at": "2026-03-28T12:50:20.494512"
+    }
+  },
+  {
+    "id": "doc_79",
+    "doc_id": "ncie_project_submission_and_review_flow",
+    "section": "Handling Delays and Deviations",
+    "similarity": 1.4018107652664185,
+    "confidence": 1.0,
+    "text": "to technical complexity, resource constraints, or unforeseen challenges. In such cases:\n\n* Students are expected to communicate with their project guide\n* Revised timelines may be discussed at the departmental level\n* Progress expectations may be adjusted where appropriate\n\nAll deviations are documented to maintain transparency in evaluation.\n\n## 10. Academic Integrity and Originality\n\nProject work at NCIE emphasizes originality and academic integrity. Students are expected to:\n\n* Clearly reference external resources\n* Avoid uncredited reuse of existing work\n* Demonstrate independent contribution\n\nConcerns related to originality are addressed through academic review mechanisms.\n\n## 11. Final Submission and Closure\n\nFor projects with a final submission component, students are required to:",
+    "metadata": {
+      "section": "Handling Delays and Deviations",
+      "type": "canonical_knowledge",
+      "status": "active",
+      "version": 1,
+      "created_at": "2026-03-28T12:50:20.500659",
+      "active": true,
+      "updated_at": "2026-03-28T12:50:20.500662",
+      "doc_id": "ncie_project_submission_and_review_flow",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "doc_15",
+    "doc_id": "ncie_continuous_assessment_overview",
+    "section": "Integration with End-Semester Evaluation",
+    "similarity": 1.403205156326294,
+    "confidence": 1.0,
+    "text": "inalized, CA scores are integrated with End-Semester Examination results to compute the final course outcome.\n\nOnly completed and validated CA records are considered during final grade computation.\n\n## 11. Data Accuracy and Verification\n\nAccuracy of CA data is essential for fair evaluation. NCIE emphasizes:\n\n* Timely entry of marks\n* Verification by academic coordinators\n* Resolution of discrepancies before finalization\n\nStudents are encouraged to report discrepancies early through appropriate academic channels.\n\n## 12. Exceptions and Special Considerations\n\nCertain academic scenarios may involve variations in Continuous Assessment practices, such as:\n\n* Project-heavy courses\n* Laboratory-intensive courses\n* Final-year project semesters\n* Students on internships or academic accommodations",
+    "metadata": {
+      "version": 1,
+      "confidence": 1.0,
+      "status": "active",
+      "active": true,
+      "section": "Integration with End-Semester Evaluation",
+      "updated_at": "2026-03-28T12:50:20.492020",
+      "doc_id": "ncie_continuous_assessment_overview",
+      "type": "canonical_knowledge",
+      "created_at": "2026-03-28T12:50:20.492017"
+    }
+  },
+  {
+    "id": "doc_68",
+    "doc_id": "ncie_lab_evaluation_and_internal_marks",
+    "section": "Student Visibility and Feedback",
+    "similarity": 1.4264185428619385,
+    "confidence": 1.0,
+    "text": "and Feedback\n\nDepending on departmental practices and system availability, students may be able to:\n\n* View provisional internal marks\n* Receive feedback on lab performance\n* Discuss evaluation outcomes with instructors\n\nFeedback is intended to support improvement and reinforce learning outcomes.\n\n## 8. Handling Missed or Incomplete Lab Work\n\nStudents may occasionally miss lab sessions due to valid reasons. In such cases:\n\n* Students are expected to inform the lab instructor\n* Make-up lab sessions or alternate evaluations may be arranged\n* Documentation may be requested where applicable\n\nThe handling of missed lab work is coordinated at the department level and recorded in the system.\n\n## 9. Role of Faculty and Departments\n\nLaboratory evaluation involves coordinated responsibilities:\n\n* **",
+    "metadata": {
+      "type": "canonical_knowledge",
+      "doc_id": "ncie_lab_evaluation_and_internal_marks",
+      "created_at": "2026-03-28T12:50:20.499320",
+      "section": "Student Visibility and Feedback",
+      "updated_at": "2026-03-28T12:50:20.499323",
+      "confidence": 1.0,
+      "version": 1,
+      "status": "active",
+      "active": true
+    }
+  }
+]
+```
+
+### Rule Checks
+
+```json
+{
+  "source_count": 0,
+  "latency_ms": 180067.37,
+  "response_received": false,
+  "retry_count": 5,
+  "retry_recovered": false,
+  "session_message_count": 2,
+  "preference_extracted": false,
+  "applied_preferences_detected": false,
+  "fact_count_before": 20,
+  "fact_count_after": 20,
+  "fact_count_delta": 0,
+  "policy_claim_detected": false,
+  "claim_detection_match": true,
+  "refusal_observed": false,
+  "refusal_match": true,
+  "risk_alert_count": 0
+}
+```
+

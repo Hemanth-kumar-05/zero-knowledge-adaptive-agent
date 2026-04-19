@@ -219,6 +219,7 @@ class RAGPipeline:
             'answer': generation_result['answer'],
             'sources': sources,
             'refused': generation_result['refused'],
+            'generation_error': generation_result.get('generation_error'),
             'retrieval_count': len(retrieved_chunks),
             'retrieval_time_ms': retrieval_time,
             'generation_time_ms': generation_time,

@@ -19,10 +19,13 @@ class CodeRepairResponse(BaseModel):
     fixed_code: str
 
 class Source(BaseModel):
+    id: Optional[str] = None
     doc_id: str
     section: str
     similarity: float
     confidence: float
+    text: Optional[str] = None
+    metadata: Optional[dict] = None
 
 class RiskAlert(BaseModel):
     """Risk alert detected from conversation patterns"""
@@ -49,6 +52,7 @@ class QueryResponse(BaseModel):
     answer: str
     sources: Optional[List[Source]]
     refused: bool = Field(default=False)
+    generation_error: Optional[dict] = Field(default=None)
     session_id: str
     user_message_id: Optional[str] = Field(default=None)
     assistant_message_id: Optional[str] = Field(default=None)

@@ -19,6 +19,11 @@ logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
+def _can_manage_ticket_proofs(current_user: dict) -> bool:
+    """Only faculty/admin users should be able to manage ticket proof cleanup."""
+    return current_user.get("role") in {"admin", "faculty"}
+
+
 class ProofUploadResponse(BaseModel):
     """Response for proof upload"""
     success: bool
@@ -194,8 +199,11 @@ async def delete_ticket_proofs(
     Only accessible by admins or the ticket owner
     """
     try:
-        # TODO: Add admin role check
-        # For now, allow ticket owner or any authenticated user
+        if not _can_manage_ticket_proofs(current_user):
+            raise HTTPException(
+                status_code=403,
+                detail="Only faculty or admin users can delete policy proof files"
+            )
         
         deleted_count = await cloudinary_service.delete_ticket_proofs(ticket_id)
         

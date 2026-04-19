@@ -1,0 +1,37 @@
+{
+  "run_metadata": {
+    "run_id": "20260331163903",
+    "started_at": "2026-03-31T16:39:03.161071+00:00",
+    "validator_provider": "openai",
+    "validator_model": "gpt-4.1-mini",
+    "base_url": "http://127.0.0.1:8000",
+    "authenticated_user": "hemanthlaxvel1@gmail.com",
+    "resumed": false,
+    "managed_backend": true
+  },
+  "total_turns": 110,
+  "completed_turns": 108,
+  "failed_turns": 2,
+  "average_latency_ms": 42847.8,
+  "p95_latency_ms": 71934.05,
+  "metrics": {
+    "personalization_accuracy": 0.7391,
+    "zero_knowledge_compliance": 1.0,
+    "user_memory_relevance_score": 1.476,
+    "grounded_response_fidelity": 0.7162,
+    "contradiction_resolution_rate": 1.0,
+    "knowledge_evolution_stability": 1.0,
+    "end_to_end_task_success_rate": 0.6909,
+    "hallucination_rate": 0.037,
+    "context_sufficiency_rate": 0.7037,
+    "retry_recovery_rate": 0.3333,
+    "refusal_correctness_rate": null,
+    "policy_claim_false_alarm_rate": 0.0
+  },
+  "failure_categories": {
+    "task_failure": 11,
+    "no_error": 7,
+    "retrieval_failure": 14,
+    "generation_hallucination": 2
+  }
+}

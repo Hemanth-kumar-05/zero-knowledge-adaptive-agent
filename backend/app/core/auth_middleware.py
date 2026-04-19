@@ -5,7 +5,7 @@ Dependency injection for protected routes
 
 from fastapi import Depends, HTTPException, status, Header
 from typing import Optional, Dict
-from backend.app.utils.auth import AuthUtils
+from app.utils.auth import AuthUtils
 
 
 async def get_current_user(authorization: Optional[str] = Header(None)) -> Dict:

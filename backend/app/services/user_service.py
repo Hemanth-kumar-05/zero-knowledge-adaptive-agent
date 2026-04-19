@@ -5,8 +5,8 @@ Business logic for user management
 
 from typing import Optional, Dict, List
 from datetime import datetime
-from backend.app.db.repositories.users_repo import UsersRepository
-from backend.app.utils.logger import get_logger
+from app.db.repositories.users_repo import UsersRepository
+from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

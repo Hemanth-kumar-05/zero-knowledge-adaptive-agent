@@ -328,6 +328,7 @@ class QueryService:
             "answer": rag_response.get("answer", ""),
             "sources": rag_response.get("sources", []),
             "refused": rag_response.get("refused", False),
+            "generation_error": rag_response.get("generation_error"),
             "timestamp": datetime.now(),
             "retrieval_time_ms": rag_response.get("retrieval_time_ms"),
             "generation_time_ms": rag_response.get("generation_time_ms"),
@@ -422,6 +423,7 @@ class QueryService:
                 "retrieval_time_ms": rag_response.get("retrieval_time_ms"),
                 "generation_time_ms": rag_response.get("generation_time_ms"),
                 "total_time_ms": rag_response.get("total_time_ms"),
+                "generation_error": rag_response.get("generation_error"),
             }
             if not is_extension_session and risk_alerts_list:
                 metadata["risk_alerts"] = risk_alerts_list
@@ -470,10 +472,13 @@ class QueryService:
 
         sources = [
             Source(
+                id=src.get("id"),
                 doc_id=src["doc_id"],
                 section=src["section"],
                 similarity=src["similarity"],
-                confidence=src["confidence"]
+                confidence=src["confidence"],
+                text=src.get("text"),
+                metadata=src.get("metadata")
             ) for src in rag_response.get("sources", [])
         ]
 
@@ -541,6 +546,7 @@ class QueryService:
             answer=rag_response.get("answer", "Error generating answer."),
             sources=sources if sources else None,
             refused=rag_response.get("refused", False),
+            generation_error=rag_response.get("generation_error"),
             session_id=request.session_id,
             user_message_id=user_message_id,
             assistant_message_id=assistant_message_id,

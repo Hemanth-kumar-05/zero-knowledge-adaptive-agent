@@ -67,6 +67,15 @@ def get_chunk_service():
     return chunk_deprecation_service
 
 
+def require_reviewer_role(current_user: dict) -> None:
+    """Allow only faculty/admin users to access policy review endpoints."""
+    if current_user.get("role") not in {"admin", "faculty"}:
+        raise HTTPException(
+            status_code=403,
+            detail="Only faculty or admin users can access policy review features"
+        )
+
+
 # ============================================
 # Ticket Management Endpoints
 # ============================================
@@ -144,6 +153,7 @@ async def list_policy_update_tickets(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         offset = (page - 1) * page_size
@@ -199,6 +209,7 @@ async def get_policy_update_ticket(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         ticket = await tickets_repo.get_ticket_by_id(ticket_id)
@@ -243,6 +254,7 @@ async def approve_policy_update_ticket(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         # Check if ticket exists
@@ -315,6 +327,7 @@ async def reject_policy_update_ticket(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         # Check if ticket exists
@@ -398,6 +411,7 @@ async def get_audit_history(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         offset = (page - 1) * page_size
@@ -449,6 +463,7 @@ async def get_ticket_statistics(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         # Count by status
@@ -522,6 +537,7 @@ async def find_affected_chunks(
             status_code=503,
             detail="Policy unlearning feature is currently disabled"
         )
+    require_reviewer_role(current_user)
     
     try:
         # Get ticket

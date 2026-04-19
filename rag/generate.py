@@ -20,6 +20,7 @@ class Generator:
         # Determine provider from env or parameter
         self.provider = provider or os.getenv("LLM_PROVIDER", "gemini")
         self.temperature = temperature
+        self.last_generation_error = None
         
         # Initialize based on provider
         if self.provider == "groq":
@@ -31,6 +32,53 @@ class Generator:
             self.model = model or "gemini-1.5-flash-8b"
             print(f"🤖 Using Gemini with model: {self.model}")
     
+    def _classify_generation_exception(self, error: Exception) -> Dict[str, any]:
+        message = str(error)
+        status_code = getattr(error, "status_code", None)
+        error_type = None
+        error_code = None
+        retry_after_seconds = None
+        retryable = False
+        category = "provider_error"
+
+        body = getattr(error, "body", None)
+        if isinstance(body, dict):
+            payload_error = body.get("error", {})
+            error_type = payload_error.get("type")
+            error_code = payload_error.get("code")
+            message = payload_error.get("message") or message
+
+        if status_code == 429:
+            retryable = True
+            category = "provider_rate_limit"
+        elif status_code == 413 and "rate_limit_exceeded" in (error_code or ""):
+            category = "provider_rate_limit"
+        elif "rate limit" in message.lower() or "rate_limit_exceeded" in message.lower():
+            category = "provider_rate_limit"
+            retryable = status_code == 429
+
+        if "Please try again in" in message:
+            try:
+                retry_fragment = message.split("Please try again in", 1)[1].split(".", 1)[0].strip()
+                if retry_fragment.endswith("ms"):
+                    retry_after_seconds = max(0.0, float(retry_fragment[:-2].strip()) / 1000.0)
+                elif retry_fragment.endswith("s"):
+                    retry_after_seconds = max(0.0, float(retry_fragment[:-1].strip()))
+            except Exception:
+                retry_after_seconds = None
+
+        return {
+            "category": category,
+            "provider": self.provider,
+            "model": self.model,
+            "status_code": status_code,
+            "error_type": error_type,
+            "error_code": error_code,
+            "message": message,
+            "retryable": retryable,
+            "retry_after_seconds": retry_after_seconds,
+        }
+
     def create_rag_prompt(
         self,
         query: str,
@@ -197,6 +245,7 @@ Provide a clear, direct answer to the current question above:"""
         extension_system_prompt: Optional[str] = None,
         max_tokens: int = 4096
     ) -> str:
+        self.last_generation_error = None
         try:
             # Create the prompt with history, preferences, user context, and extension
             prompt = self.create_rag_prompt(
@@ -233,6 +282,7 @@ Provide a clear, direct answer to the current question above:"""
         except Exception as e:
             # Handle errors gracefully - show full error for debugging
             print(f"❌ Error in {self.provider}: {e}")
+            self.last_generation_error = self._classify_generation_exception(e)
             return "I apologize, but I encountered an error while generating a response."
     
     def should_refuse(self, context: str, query: str) -> bool:
@@ -383,7 +433,8 @@ Provide a clear, direct answer to the current question above:"""
                 'refused': True,
                 'context_used': False,
                 'sources_count': 0,
-                'confidence': 'none'
+                'confidence': 'none',
+                'generation_error': None
             }
         
         # Generate answer with history, preferences, user context, and extension
@@ -417,7 +468,8 @@ Provide a clear, direct answer to the current question above:"""
                     'refused': True,
                     'context_used': False,
                     'sources_count': 0,
-                    'confidence': 'none'
+                    'confidence': 'none',
+                    'generation_error': self.last_generation_error
                 }
             
             # ⚠️ NEW: Detect hallucinations in the generated answer
@@ -436,6 +488,7 @@ Provide a clear, direct answer to the current question above:"""
                     'context_used': False,
                     'sources_count': 0,
                     'confidence': 'none',
+                    'generation_error': self.last_generation_error,
                     'hallucination_detected': True,
                     'hallucination_indicators': hallucination_check['hallucination_indicators']
                 }
@@ -460,7 +513,8 @@ Provide a clear, direct answer to the current question above:"""
                 'refused': False,
                 'context_used': context_used,
                 'confidence': confidence,
-                'hallucination_detected': False
+                'hallucination_detected': False,
+                'generation_error': self.last_generation_error
             }
             
         except Exception as e:
@@ -469,7 +523,8 @@ Provide a clear, direct answer to the current question above:"""
                 'answer': self.get_refusal_message(context),
                 'refused': True,
                 'context_used': False,
-                'confidence': 'none'
+                'confidence': 'none',
+                'generation_error': self._classify_generation_exception(e)
             }
 
 
