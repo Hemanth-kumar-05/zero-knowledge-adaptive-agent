@@ -42,7 +42,7 @@ class AIFactExtractor:
         
         if self.llm_provider == "groq":
             self.groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-            self.model = "llama-3.1-8b-instant"
+            self.model = os.getenv("GROQ_MODEL", "llama-3.1-8b-instant")
             logger.info("🧠 AIFactExtractor initialized with Groq")
         else:
             genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))

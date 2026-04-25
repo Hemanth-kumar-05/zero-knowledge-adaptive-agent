@@ -17,6 +17,8 @@ from bson import ObjectId
 import logging
 import asyncio
 
+import os
+
 # Phase 3: Policy Unlearning imports (conditional)
 try:
     from config import config
@@ -792,7 +794,7 @@ User message: "{user_message}"
 Does this message contain a policy claim or update? Answer with ONLY "yes" or "no"."""
 
             response = client.chat.completions.create(
-                model="llama-3.1-8b-instant",
+                model=os.getenv("GROQ_MODEL", "llama-3.1-8b-instant"),
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=10

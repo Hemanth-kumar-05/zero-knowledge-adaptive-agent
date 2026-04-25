@@ -77,7 +77,7 @@ Respond ONLY with valid JSON:
 
         try:
             response = self.groq_client.chat.completions.create(
-                model="llama-3.1-8b-instant",
+                model=os.getenv("GROQ_MODEL", "llama-3.1-8b-instant"),
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=300
@@ -184,7 +184,7 @@ Respond with ONLY: high, possible, or unrelated"""
 
             try:
                 response = self.groq_client.chat.completions.create(
-                    model="llama-3.1-8b-instant",
+                    os.getenv("GROQ_MODEL", "llama-3.1-8b-instant"),
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.1,
                     max_tokens=10
