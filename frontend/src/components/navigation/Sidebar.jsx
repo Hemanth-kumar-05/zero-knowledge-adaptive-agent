@@ -377,6 +377,18 @@ function Sidebar({ sessions, currentSession, onNewChat, onSelectSession, onRefre
                   </svg>
                   <span>Memory</span>
                 </button>
+                <button className="user-menu-item" onClick={() => {
+                  setShowUserMenu(false);
+                  navigate('/validation');
+                }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M3 3v18h18"></path>
+                    <rect x="7" y="12" width="3" height="5"></rect>
+                    <rect x="12" y="8" width="3" height="9"></rect>
+                    <rect x="17" y="5" width="3" height="12"></rect>
+                  </svg>
+                  <span>Validation</span>
+                </button>
                 
                 {/* RBAC: Extensions - Available for Faculty and Admin only */}
                 {(user?.role === 'faculty' || user?.role === 'admin') && (

@@ -15,6 +15,7 @@ import ExtensionsPage from './pages/extensions/ExtensionsPage';
 import AdminExtensionsPage from './pages/admin/AdminExtensionsPage';
 import AdminUsersPage from './pages/admin/AdminUsersPage';
 import AdminChromaChunksPage from './pages/admin/AdminChromaChunksPage';
+import ValidationDashboard from './pages/validation/ValidationDashboard';
 import Toast from './components/common/Toast';
 import Dialog from './components/common/Dialog';
 import { auth } from './utils/auth';
@@ -590,6 +591,83 @@ function MemoryView() {
         onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
         showToast={showToast}
       />
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
+    </div>
+  );
+}
+
+function ValidationView() {
+  const navigate = useNavigate();
+  const [sessions, setSessions] = useState([]);
+  const [user, setUser] = useState(auth.getUser());
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = 'info') => {
+    setToast({ message, type });
+  };
+
+  useEffect(() => {
+    if (user) {
+      loadSessions();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    const handleAuthUserUpdate = () => setUser(auth.getUser());
+    window.addEventListener('auth-user-updated', handleAuthUserUpdate);
+    return () => window.removeEventListener('auth-user-updated', handleAuthUserUpdate);
+  }, []);
+
+  const loadSessions = async () => {
+    try {
+      const data = await api.getSessions();
+      setSessions(data.sessions || []);
+    } catch (error) {
+      console.error('Failed to load sessions:', error);
+      showToast('Failed to load sessions', 'error');
+    }
+  };
+
+  const handleLogout = () => {
+    auth.logout();
+    setUser(null);
+    navigate('/');
+  };
+
+  const handleDeleteSession = async (sessionId) => {
+    try {
+      await api.deleteSession(sessionId);
+      setSessions(sessions.filter(s => s.id !== sessionId));
+      showToast('Chat deleted successfully', 'success');
+    } catch (error) {
+      console.error('Failed to delete session:', error);
+      showToast('Failed to delete session', 'error');
+    }
+  };
+
+  return (
+    <div className="app">
+      <Sidebar
+        sessions={sessions}
+        currentSession={null}
+        onNewChat={() => navigate('/')}
+        onSelectSession={(session) => navigate(`/${session.id}`)}
+        onRefresh={loadSessions}
+        isOpen={isSidebarOpen}
+        onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+        user={user}
+        healthStatus={null}
+        onLogout={handleLogout}
+        onDeleteSession={handleDeleteSession}
+      />
+      <ValidationDashboard onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
       {toast && (
         <Toast
           message={toast.message}
@@ -1203,6 +1281,7 @@ function App() {
         <Route path="/verify-identity" element={<IdentityVerification onVerified={handleVerificationSuccess} />} />
         <Route path="/preferences" element={<VerificationGuard><PreferencesView /></VerificationGuard>} />
         <Route path="/memory" element={<VerificationGuard><MemoryView /></VerificationGuard>} />
+        <Route path="/validation" element={<VerificationGuard><ValidationView /></VerificationGuard>} />
         <Route path="/extensions" element={<VerificationGuard><ExtensionsView /></VerificationGuard>} />
         <Route path="/extensions/manage" element={<VerificationGuard><AdminExtensionsView /></VerificationGuard>} />
         <Route path="/admin/users" element={<VerificationGuard><AdminUsersView /></VerificationGuard>} />
